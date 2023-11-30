@@ -1,0 +1,26 @@
+query RoutesQuery {
+  routes: allRouteItems(filter: { parent: { exists: false } }) {
+    ...routeItemFrag
+    children {
+      ...routeItemFrag
+      children {
+        ...routeItemFrag
+        children {
+          ...routeItemFrag
+        }
+      }
+    }
+  }
+}
+
+fragment routeItemFrag on RouteItemRecord {
+  id
+  _modelApiKey
+  _allTitleLocales {
+    locale
+    value
+  }
+  isHome
+  isDynamic
+  associatedModel
+}

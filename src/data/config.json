@@ -1,0 +1,136 @@
+{
+  "defaultLocale": "it",
+  "locales": [
+    "it",
+    "en"
+  ],
+  "translations": [
+    {
+      "articoli": {
+        "en": "articles"
+      }
+    },
+    {
+      "chi-siamo": {
+        "en": "about"
+      }
+    },
+    {
+      "contatti": {
+        "en": "contacts"
+      }
+    },
+    {
+      "il-team": {
+        "en": "the-team"
+      }
+    },
+    {
+      "info": {
+        "en": "info"
+      }
+    },
+    {
+      "privacy-policy": {
+        "en": "privacy-policy"
+      }
+    },
+    {
+      "prodotti": {
+        "en": "products"
+      }
+    }
+  ],
+  "paths": [
+    "/",
+    "/contatti",
+    "/privacy-policy",
+    "/[slug]",
+    "/articoli/[slug]",
+    "/prodotti/[slug]",
+    "/info/il-team/[slug]",
+    "/info/chi-siamo"
+  ],
+  "models": [
+    {
+      "path": "/",
+      "routeInfo": {
+        "queryName": "home",
+        "isHome": true,
+        "isDynamic": false,
+        "isDefaultLocale": false,
+        "model": "page"
+      }
+    },
+    {
+      "path": "/contatti",
+      "routeInfo": {
+        "queryName": "contacts",
+        "isHome": false,
+        "isDynamic": false,
+        "isDefaultLocale": false,
+        "model": "page"
+      }
+    },
+    {
+      "path": "/privacy-policy",
+      "routeInfo": {
+        "queryName": "privacyPolicy",
+        "isHome": false,
+        "isDynamic": false,
+        "isDefaultLocale": false,
+        "model": "legal_page"
+      }
+    },
+    {
+      "path": "/[slug]",
+      "routeInfo": {
+        "queryName": "slug",
+        "isHome": false,
+        "isDynamic": true,
+        "isDefaultLocale": false,
+        "model": "page"
+      }
+    },
+    {
+      "path": "/articoli/[slug]",
+      "routeInfo": {
+        "queryName": "articles",
+        "isHome": false,
+        "isDynamic": true,
+        "isDefaultLocale": false,
+        "model": "post"
+      }
+    },
+    {
+      "path": "/prodotti/[slug]",
+      "routeInfo": {
+        "queryName": "products",
+        "isHome": false,
+        "isDynamic": true,
+        "isDefaultLocale": false,
+        "model": "tag"
+      }
+    },
+    {
+      "path": "/info/il-team/[slug]",
+      "routeInfo": {
+        "queryName": "theTeam",
+        "isHome": false,
+        "isDynamic": true,
+        "isDefaultLocale": false,
+        "model": "person"
+      }
+    },
+    {
+      "path": "/info/chi-siamo",
+      "routeInfo": {
+        "queryName": "about",
+        "isHome": false,
+        "isDynamic": false,
+        "isDefaultLocale": false,
+        "model": "page"
+      }
+    }
+  ]
+}
