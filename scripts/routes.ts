@@ -126,11 +126,9 @@ function getPaths(routes: any, defaultLocale: string) {
 
 (async () => {
   const start = Date.now();
-
   const { routes, _site } = await fetchData(query);
   const { locales } = _site;
   const defaultLocale = locales[0];
-
   //get translations, uniq and only folders, no home , no slug
   const routeNames = getTranslations(routes, defaultLocale);
   const keys = routeNames.map((i: any) => Object.keys(i)[0]).sort();
