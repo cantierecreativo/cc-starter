@@ -17,7 +17,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
         images {
           id
           responsiveImage {
-            ...DatoImage_responsiveImage
+            ...rImage
           }
         }
       }
@@ -62,7 +62,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
           description
           picture {
             responsiveImage {
-              ...DatoImage_responsiveImage
+              ...rImage
             }
           }
         }
@@ -95,7 +95,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
         displayOptions
         heroImage {
           responsiveImage {
-            ...DatoImage_responsiveImage
+            ...rImage
           }
         }
       }
@@ -111,7 +111,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
         }
         videoThumbnail {
           responsiveImage {
-            ...DatoImage_responsiveImage
+            ...rImage
           }
         }
       }
@@ -124,7 +124,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
         imagePosition
         image {
           responsiveImage {
-            ...DatoImage_responsiveImage
+            ...rImage
           }
         }
       }
@@ -145,7 +145,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
           reviewerName
           reviewerPicture {
             responsiveImage {
-              ...DatoImage_responsiveImage
+              ...rImage
             }
           }
           reviewerTitle
@@ -201,7 +201,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
             description
             image {
               responsiveImage {
-                ...DatoImage_responsiveImage
+                ...rImage
               }
             }
           }
@@ -211,7 +211,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
             slug
             picture {
               responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
-                ...DatoImage_responsiveImage
+                ...rImage
               }
             }
           }
@@ -230,7 +230,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
           featureDescription
           featureIcon {
             responsiveImage {
-              ...DatoImage_responsiveImage
+              ...rImage
             }
           }
         }
@@ -267,7 +267,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
       description
       image {
         responsiveImage {
-          ...DatoImage_responsiveImage
+          ...rImage
         }
       }
     }
@@ -277,7 +277,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
       bio
       picture {
         responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
-          ...DatoImage_responsiveImage
+          ...rImage
         }
       }
     }
@@ -285,14 +285,4 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
   _allPostsMeta(locale: $locale, filter: { title: { isBlank: "false" } }) {
     count
   }
-}
-
-fragment DatoImage_responsiveImage on ResponsiveImage {
-  src
-  srcSet
-  base64
-  width
-  height
-  alt
-  title
 }
