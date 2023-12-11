@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Maybe } from 'graphql/jsutils/Maybe';
-import { AnimatePresence, motion } from 'framer-motion';
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
-import { PricingTierRecord } from '@/graphql/generated';
+import { useState } from "react";
+import { Maybe } from "graphql/jsutils/Maybe";
+import { AnimatePresence, motion } from "framer-motion";
+import ReactMarkdown from "react-markdown";
+import { PricingTierRecord } from "@/graphql/generated";
 
 type Props = {
   header: string;
@@ -17,7 +17,7 @@ const FeatureListSelector = ({ header, subheader, plans }: Props) => {
 
   const selectedPlanFeatures = plans
     .find((plan) => plan.tierName === selectedPlan)
-    ?.planFeatures.split(', ');
+    ?.planFeatures.split(", ");
 
   return (
     <div className="mt-16 bg-white py-16 dark:bg-gray-900">
@@ -27,7 +27,7 @@ const FeatureListSelector = ({ header, subheader, plans }: Props) => {
         </h1>
 
         <div className="mx-auto mt-4 max-w-2xl text-center text-gray-500 dark:text-gray-300 xl:mt-6">
-          <ReactMarkdown>{subheader || ''}</ReactMarkdown>
+          <ReactMarkdown>{subheader || ""}</ReactMarkdown>
         </div>
 
         <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-3 xl:mt-12">
@@ -38,16 +38,16 @@ const FeatureListSelector = ({ header, subheader, plans }: Props) => {
                 key={plan.id}
                 onClick={() => setSelectedPlan(plan.tierName)}
                 className={
-                  'flex cursor-pointer items-center justify-between rounded-xl border px-8 py-4' +
-                  (planIsSelected ? ' border-primary' : '')
+                  "flex cursor-pointer items-center justify-between rounded-xl border px-8 py-4" +
+                  (planIsSelected ? " border-primary" : "")
                 }
               >
                 <div className="flex flex-col items-center space-y-1">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className={
-                      'h-5 w-5 sm:h-7 sm:w-7' +
-                      (planIsSelected ? ' text-primary' : ' text-gray-400')
+                      "h-5 w-5 sm:h-7 sm:w-7" +
+                      (planIsSelected ? " text-primary" : " text-gray-400")
                     }
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -66,11 +66,11 @@ const FeatureListSelector = ({ header, subheader, plans }: Props) => {
 
                 <h2
                   className={
-                    'text-2xl font-semibold sm:text-3xl' +
-                    (planIsSelected ? ' text-primary' : ' text-gray-500')
+                    "text-2xl font-semibold sm:text-3xl" +
+                    (planIsSelected ? " text-primary" : " text-gray-500")
                   }
                 >
-                  ${plan.monthlyPrice}{' '}
+                  ${plan.monthlyPrice}{" "}
                   <span className="text-base font-medium">/Month</span>
                 </h2>
               </div>

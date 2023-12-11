@@ -1,8 +1,8 @@
-import { AuthorRecord, ResponsiveImage, SiteLocale } from '@/graphql/generated';
-import { Maybe } from 'graphql/jsutils/Maybe';
-import Link from 'next/link';
-import { Image as DatoImage } from 'react-datocms';
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
+import { AuthorRecord, ResponsiveImage, SiteLocale } from "@/graphql/generated";
+import { Maybe } from "graphql/jsutils/Maybe";
+import Link from "next/link";
+import { Image as DatoImage } from "react-datocms";
+import ReactMarkdown from "react-markdown";
 
 type Props = {
   header: Maybe<string>;
@@ -20,7 +20,7 @@ const CompactTeam = ({ header, subheader, members, lng }: Props) => {
         </h1>
 
         <div className="mx-auto my-6 max-w-2xl text-center text-gray-500 dark:text-gray-300">
-          <ReactMarkdown>{subheader || ''}</ReactMarkdown>
+          <ReactMarkdown>{subheader || ""}</ReactMarkdown>
         </div>
 
         <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 xl:mt-16 xl:grid-cols-3">

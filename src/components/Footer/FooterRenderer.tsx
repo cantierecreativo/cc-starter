@@ -1,15 +1,15 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import SvgRenderer from '../Common/SvgRenderer';
+import Image from "next/image";
+import Link from "next/link";
+import SvgRenderer from "../Common/SvgRenderer";
 import {
   ChangeLogRecord,
   FooterQuery,
   LegalPageRecord,
   SiteLocale,
-} from '@/graphql/generated';
-import { notFound } from 'next/navigation';
-import { primaryColor } from '@/app/i18n/settings';
-import ReactMarkdown from 'react-markdown';
+} from "@/graphql/generated";
+import { notFound } from "next/navigation";
+import primaryColor from "@/data/primaryColor";
+import ReactMarkdown from "react-markdown";
 
 type Props = {
   data: FooterQuery;
@@ -23,8 +23,8 @@ const Footer = ({ data, lng }: Props) => {
         <div className="flex w-full flex-col justify-between md:flex-row md:px-16">
           <div className="w-full">
             <div className="mx- mb-12 lg:mb-16">
-              <Link href={'/' + lng + '/home'} className="mb-8 inline-block">
-                {data.layout?.footerLogo && (
+              <Link href={"/" + lng + "/home"} className="mb-8 inline-block">
+                {data?.layout?.footerLogo && (
                   <Image
                     src={data.layout.footerLogo.url}
                     alt="logo"
@@ -36,11 +36,11 @@ const Footer = ({ data, lng }: Props) => {
               </Link>
               <div className="mb-9 text-base font-medium leading-relaxed text-body-color">
                 <ReactMarkdown>
-                  {data.layout!.footerSubtitle || ''}
+                  {data?.layout?.footerSubtitle || ""}
                 </ReactMarkdown>
               </div>
               <div className="flex items-center justify-center md:justify-start">
-                {data.layout!.socialMediaLinks.map((socialMedia) => {
+                {data?.layout?.socialMediaLinks.map((socialMedia) => {
                   return (
                     <a
                       href={socialMedia.url}
@@ -63,16 +63,16 @@ const Footer = ({ data, lng }: Props) => {
                   Legal
                 </h2>
                 <ul>
-                  {data.layout!.footerLinks.map((link) => {
+                  {data?.layout?.footerLinks.map((link) => {
                     const pageLink = link as LegalPageRecord; // The field has a "at least one" validation
                     return (
                       <li key={pageLink.id}>
                         <a
-                          href={'/' + lng + '/legal/' + pageLink.slug}
+                          href={"/" + lng + "/legal/" + pageLink.slug}
                           className="mb-4 inline-block text-base font-medium text-body-color hover:text-primary"
                         >
-                          {' '}
-                          {pageLink.title}{' '}
+                          {" "}
+                          {pageLink.title}{" "}
                         </a>
                       </li>
                     );
@@ -94,7 +94,7 @@ const Footer = ({ data, lng }: Props) => {
           <circle opacity="0.8" cx="49.5" cy="49.5" r="49.5" fill="#959CB1" />
           <mask
             id="mask0_94:899"
-            style={{ maskType: 'alpha' }}
+            style={{ maskType: "alpha" }}
             maskUnits="userSpaceOnUse"
             x="0"
             y="0"

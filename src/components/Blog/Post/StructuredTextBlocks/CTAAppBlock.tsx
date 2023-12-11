@@ -1,5 +1,5 @@
-import { Maybe } from 'graphql/jsutils/Maybe';
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
+import { Maybe } from "graphql/jsutils/Maybe";
+import ReactMarkdown from "react-markdown";
 
 type Props = {
   title: string;
@@ -17,7 +17,7 @@ const CTAAppBlock = ({ title, text, googleURL, appleURL }: Props) => {
         </h2>
 
         <div className="mt-4 block max-w-4xl text-gray-500 dark:text-gray-300">
-          <ReactMarkdown>{text || ''}</ReactMarkdown>
+          <ReactMarkdown>{text || ""}</ReactMarkdown>
         </div>
 
         <div className="mt-6">

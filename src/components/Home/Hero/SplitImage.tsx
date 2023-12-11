@@ -1,7 +1,7 @@
-import { ButtonRecord, FileField } from '@/graphql/generated';
-import { Maybe } from 'graphql/jsutils/Maybe';
-import { Image as DatoImage } from 'react-datocms';
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
+import { ButtonRecord, FileField } from "@/graphql/generated";
+import { Maybe } from "graphql/jsutils/Maybe";
+import { Image as DatoImage } from "react-datocms";
+import ReactMarkdown from "react-markdown";
 
 type Props = {
   heroTitle: string;
@@ -38,18 +38,18 @@ const SplitImage = ({ heroTitle, heroSubtitle, buttons, image }: Props) => {
             {heroTitle}
           </h2>
           <div className="mb-5 pr-5 text-base text-gray-700 md:text-lg">
-            <ReactMarkdown>{heroSubtitle || ''}</ReactMarkdown>
+            <ReactMarkdown>{heroSubtitle || ""}</ReactMarkdown>
           </div>
           <div className="flex items-center">
             {buttons.map((button) => {
               const primary =
-                'hover:bg-primary/90 focus:shadow-outline mr-6 inline-flex h-12 items-center justify-center rounded bg-primary px-6 font-medium tracking-wide text-white shadow-md transition duration-200 focus:outline-none';
+                "hover:bg-primary/90 focus:shadow-outline mr-6 inline-flex h-12 items-center justify-center rounded bg-primary px-6 font-medium tracking-wide text-white shadow-md transition duration-200 focus:outline-none";
               const secondary =
-                'hover:text-deep-purple-accent-700 inline-flex items-center font-semibold text-gray-800 transition-colors duration-200';
+                "hover:text-deep-purple-accent-700 inline-flex items-center font-semibold text-gray-800 transition-colors duration-200";
               return (
                 <a
                   key={button.id}
-                  href={button.url || '#'}
+                  href={button.url || "#"}
                   className={button.primary ? primary : secondary}
                 >
                   {button.label}

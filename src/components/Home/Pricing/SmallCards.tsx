@@ -1,6 +1,6 @@
-import { PricingTierRecord } from '@/graphql/generated';
-import { Maybe } from 'graphql/jsutils/Maybe';
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
+import { PricingTierRecord } from "@/graphql/generated";
+import { Maybe } from "graphql/jsutils/Maybe";
+import ReactMarkdown from "react-markdown";
 
 type Props = {
   header: string;
@@ -17,7 +17,7 @@ const SmallCards = ({ header, subheader, plans }: Props) => {
         </h1>
 
         <div className="mx-auto mt-4 max-w-2xl text-center text-gray-500 dark:text-gray-300 xl:mt-6">
-          <ReactMarkdown>{subheader || ''}</ReactMarkdown>
+          <ReactMarkdown>{subheader || ""}</ReactMarkdown>
         </div>
 
         <div className="mt-6 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:mt-12 xl:gap-12">

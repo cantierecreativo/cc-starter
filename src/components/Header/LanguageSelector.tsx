@@ -1,10 +1,9 @@
-'use client';
+"use client";
 
-import { SiteLocale } from '@/graphql/generated';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import React, { useState } from 'react';
-import { getLangNameFromCode } from 'language-name-map';
+import { SiteLocale } from "@/graphql/generated";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import React, { useState } from "react";
 
 type Props = {
   lng: SiteLocale;
@@ -14,10 +13,10 @@ type Props = {
 const LanguageSelector = ({ lng, languages }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-  const pathArray = pathname.split('/');
+  const pathArray = pathname.split("/");
   const currentLocale = pathArray[1] as SiteLocale; //will be a SiteLocale because of the middleware redirect rules
 
-  const pathString = pathArray.splice(2, pathArray.length).join('/');
+  const pathString = pathArray.splice(2, pathArray.length).join("/");
 
   return (
     <div className="relative">
@@ -33,14 +32,14 @@ const LanguageSelector = ({ lng, languages }: Props) => {
         className="ml-4 inline-flex w-28 items-center overflow-hidden rounded-md bg-white transition duration-100 hover:bg-gray-200 active:scale-95 active:bg-gray-300"
       >
         <button className="inline-flex cursor-pointer items-center justify-center rounded-lg px-4 py-2 text-sm font-medium text-gray-800">
-          {getLangNameFromCode(currentLocale)?.name || currentLocale}
+          {currentLocale}
         </button>
       </div>
 
       <div
         className={
-          'absolute end-0 z-10 ml-4 mt-1 w-28 rounded-md border border-gray-100 bg-white shadow-lg' +
-          (isOpen ? '' : ' hidden')
+          "absolute end-0 z-10 ml-4 mt-1 w-28 rounded-md border border-gray-100 bg-white shadow-lg" +
+          (isOpen ? "" : " hidden")
         }
         role="menu"
       >
@@ -51,13 +50,11 @@ const LanguageSelector = ({ lng, languages }: Props) => {
               className="inline-flex w-full cursor-pointer items-end justify-start rounded-lg text-sm font-medium text-gray-900 hover:bg-gray-100"
             >
               <Link
-                href={'/' + locale + '/' + pathString}
+                href={"/" + locale + "/" + pathString}
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
                 role="menuitem"
               >
-                <div className="inline-flex">
-                  {getLangNameFromCode(locale)?.name || currentLocale}
-                </div>
+                <div className="inline-flex">{locale}</div>
               </Link>
             </div>
           );

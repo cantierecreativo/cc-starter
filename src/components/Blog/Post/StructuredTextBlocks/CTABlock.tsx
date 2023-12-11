@@ -1,6 +1,6 @@
-import { ImageFileField } from '@/graphql/generated';
-import { Image as DatoImage } from 'react-datocms';
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
+import { ImageFileField } from "@/graphql/generated";
+import { Image as DatoImage } from "react-datocms";
+import ReactMarkdown from "react-markdown";
 
 type Props = {
   title: string;
@@ -29,7 +29,7 @@ const CTABlock = ({ title, subtitle, buttonLabel, image }: Props) => {
             </h2>
 
             <div className="text-m mb-8 max-w-md text-gray-600">
-              <ReactMarkdown>{subtitle || ''}</ReactMarkdown>
+              <ReactMarkdown>{subtitle || ""}</ReactMarkdown>
             </div>
 
             <div className="mt-auto">

@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { ButtonRecord } from '@/graphql/generated';
-import { Maybe } from 'graphql/jsutils/Maybe';
-import Link from 'next/link';
-import { delay, motion } from 'framer-motion';
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
+import { ButtonRecord } from "@/graphql/generated";
+import { Maybe } from "graphql/jsutils/Maybe";
+import Link from "next/link";
+import { delay, motion } from "framer-motion";
+import ReactMarkdown from "react-markdown";
 
 type Props = {
   heroTitle: string;
@@ -65,7 +65,7 @@ const GradientHero = ({ heroTitle, heroSubtitle, buttons }: Props) => {
               className="leading-tighter mb-4 text-6xl font-extrabold tracking-tighter md:text-8xl"
               data-aos="zoom-y-out"
             >
-              {heroTitleWords.join(' ')}{' '}
+              {heroTitleWords.join(" ")}{" "}
               <span className="bg-gradient-to-r from-primary to-teal-400 bg-clip-text text-transparent">
                 {lastWord}
               </span>
@@ -76,7 +76,7 @@ const GradientHero = ({ heroTitle, heroSubtitle, buttons }: Props) => {
                 data-aos="zoom-y-out"
                 data-aos-delay="150"
               >
-                <ReactMarkdown>{heroSubtitle || ''}</ReactMarkdown>
+                <ReactMarkdown>{heroSubtitle || ""}</ReactMarkdown>
               </div>
               <div
                 className="mx-auto flex max-w-xs flex-col justify-center sm:max-w-none sm:flex-row"
@@ -85,14 +85,14 @@ const GradientHero = ({ heroTitle, heroSubtitle, buttons }: Props) => {
               >
                 {buttons.map((button) => {
                   const primary =
-                    'mb-4 w-full cursor-pointer rounded-lg bg-gradient-to-r from-primary to-teal-400 p-4 text-xl font-bold text-white transition-all hover:opacity-80 sm:mb-0 sm:w-auto';
+                    "mb-4 w-full cursor-pointer rounded-lg bg-gradient-to-r from-primary to-teal-400 p-4 text-xl font-bold text-white transition-all hover:opacity-80 sm:mb-0 sm:w-auto";
                   const secondary =
-                    'btn -md w-full cursor-pointer rounded bg-gray-900 p-4 text-xl text-white transition-all hover:bg-gray-700 sm:ml-4 sm:w-auto';
+                    "btn -md w-full cursor-pointer rounded bg-gray-900 p-4 text-xl text-white transition-all hover:bg-gray-700 sm:ml-4 sm:w-auto";
 
                   return (
                     <Link
                       key={button.id}
-                      href={button.url || '#'}
+                      href={button.url || "#"}
                       className={button.primary ? primary : secondary}
                       id={button.id}
                     >

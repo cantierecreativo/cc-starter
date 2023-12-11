@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { primaryColor } from '@/app/i18n/settings';
-import { ButtonRecord } from '@/graphql/generated';
-import { useScroll, useTransform, motion } from 'framer-motion';
-import { Maybe } from 'graphql/jsutils/Maybe';
-import Link from 'next/link';
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
+import primaryColor from "@/data/primaryColor";
+import { ButtonRecord } from "@/graphql/generated";
+import { useScroll, useTransform, motion } from "framer-motion";
+import { Maybe } from "graphql/jsutils/Maybe";
+import Link from "next/link";
+import ReactMarkdown from "react-markdown";
 
 type Props = {
   heroTitle: string;
@@ -15,7 +15,7 @@ type Props = {
 
 const Hero = ({ heroTitle, heroSubtitle, buttons }: Props) => {
   const { scrollYProgress } = useScroll();
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '500%']);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "500%"]);
 
   return (
     <>
@@ -36,7 +36,7 @@ const Hero = ({ heroTitle, heroSubtitle, buttons }: Props) => {
                     {heroTitle}
                   </h1>
                   <div className="mb-12 text-base font-medium !leading-relaxed text-body-color dark:text-white dark:opacity-90 sm:text-lg md:text-xl">
-                    <ReactMarkdown>{heroSubtitle || ''}</ReactMarkdown>
+                    <ReactMarkdown>{heroSubtitle || ""}</ReactMarkdown>
                   </div>
                 </motion.div>
                 <motion.div
@@ -47,18 +47,18 @@ const Hero = ({ heroTitle, heroSubtitle, buttons }: Props) => {
                 >
                   {buttons.map((button) => {
                     const primary =
-                      'bg-primary text-white hover:bg-primary opacity-80';
+                      "bg-primary text-white hover:bg-primary opacity-80";
                     const secondary =
-                      'bg-black/20 hover:bg-black/30 text-black';
+                      "bg-black/20 hover:bg-black/30 text-black";
                     return (
                       <Link
                         key={button.id}
-                        href={button.url || '#'}
+                        href={button.url || "#"}
                         style={{
                           backgroundColor: button.primary ? primary : secondary,
                         }}
                         className={
-                          'rounded-md px-8 py-4 text-base font-semibold duration-300 ease-in-out ' +
+                          "rounded-md px-8 py-4 text-base font-semibold duration-300 ease-in-out " +
                           (button.primary ? primary : secondary)
                         }
                         id={button.id}

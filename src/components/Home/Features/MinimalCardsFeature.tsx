@@ -1,7 +1,7 @@
-import { FeatureRecord } from '@/graphql/generated';
-import { Maybe } from 'graphql/jsutils/Maybe';
-import { Image as DatoImage } from 'react-datocms';
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
+import { FeatureRecord } from "@/graphql/generated";
+import { Maybe } from "graphql/jsutils/Maybe";
+import { Image as DatoImage } from "react-datocms";
+import ReactMarkdown from "react-markdown";
 
 type Props = {
   features: FeatureRecord[];
@@ -39,7 +39,7 @@ const MinimalCardsFeature = ({
             </h2>
 
             <div className="mt-2 text-sm text-gray-600 dark:text-gray-200">
-              <ReactMarkdown>{feature.featureDescription || ''}</ReactMarkdown>
+              <ReactMarkdown>{feature.featureDescription || ""}</ReactMarkdown>
             </div>
           </div>
         );

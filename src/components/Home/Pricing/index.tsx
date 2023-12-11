@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import SectionTitle from '../../Common/SectionTitle';
-import OfferList from './OfferList';
-import PricingBox from './PricingBox';
-import { Maybe } from 'graphql/jsutils/Maybe';
-import { primaryColor } from '@/app/i18n/settings';
-import { PricingTierRecord } from '@/graphql/generated';
+import { useState } from "react";
+import SectionTitle from "../../Common/SectionTitle";
+import OfferList from "./OfferList";
+import PricingBox from "./PricingBox";
+import { Maybe } from "graphql/jsutils/Maybe";
+import primaryColor from "@/data/primaryColor";
+import { PricingTierRecord } from "@/graphql/generated";
 
 type Props = {
   header: string;
@@ -32,8 +32,8 @@ const Pricing = ({ header, subheader, plans }: Props) => {
               onClick={() => setIsMonthly(true)}
               className={`${
                 isMonthly
-                  ? 'pointer-events-none text-primary'
-                  : 'text-dark dark:text-white'
+                  ? "pointer-events-none text-primary"
+                  : "text-dark dark:text-white"
               } mr-4 cursor-pointer text-base font-semibold`}
             >
               Monthly
@@ -46,7 +46,7 @@ const Pricing = ({ header, subheader, plans }: Props) => {
                 <div className="h-5 w-14 rounded-full bg-[#1D2144] shadow-inner"></div>
                 <div
                   className={`${
-                    isMonthly ? '' : 'translate-x-full'
+                    isMonthly ? "" : "translate-x-full"
                   } shadow-switch-1 absolute left-0 top-[-4px] flex h-7 w-7 items-center justify-center rounded-full bg-primary transition`}
                 >
                   <span className="active h-4 w-4 rounded-full bg-white"></span>
@@ -57,8 +57,8 @@ const Pricing = ({ header, subheader, plans }: Props) => {
               onClick={() => setIsMonthly(false)}
               className={`${
                 isMonthly
-                  ? 'text-dark dark:text-white'
-                  : 'pointer-events-none text-primary'
+                  ? "text-dark dark:text-white"
+                  : "pointer-events-none text-primary"
               } ml-4 cursor-pointer text-base font-semibold`}
             >
               Yearly
@@ -68,14 +68,14 @@ const Pricing = ({ header, subheader, plans }: Props) => {
 
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
           {plans.map((plan) => {
-            const planFeatures = plan.planFeatures.split(', ');
+            const planFeatures = plan.planFeatures.split(", ");
 
             return (
               <PricingBox
                 key={plan.id}
                 packageName={plan.tierName}
                 price={isMonthly ? plan.monthlyPrice : plan.yearlyPrice}
-                duration={isMonthly ? 'mo' : 'yr'}
+                duration={isMonthly ? "mo" : "yr"}
                 subtitle={plan.tierDescription}
               >
                 {planFeatures.map((feature) => (

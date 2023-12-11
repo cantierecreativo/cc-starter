@@ -1,5 +1,5 @@
-import { primaryColor } from '@/app/i18n/settings';
-import { JSXElementConstructor, ReactElement } from 'react';
+import primaryColor from "@/data/primaryColor";
+import { JSXElementConstructor, ReactElement } from "react";
 
 type Props = {
   text:
@@ -75,7 +75,7 @@ const QuoteBlock = ({ text }: Props) => {
           />
           <mask
             id="mask0_111:596"
-            style={{ maskType: 'alpha' }}
+            style={{ maskType: "alpha" }}
             maskUnits="userSpaceOnUse"
             x="0"
             y="0"

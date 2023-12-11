@@ -7,8 +7,8 @@ const config: CodegenConfig = {
   schema: {
     "https://graphql.datocms.com": {
       headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_DATO_APIKEY}`,
-        "X-Environment": `${process.env.NEXT_PUBLIC_DATO_ENV || ""}`,
+        Authorization: `Bearer ${process.env.DATO_API_KEY}`,
+        "X-Environment": `${process.env.DATO_ENV || ""}`,
         "X-Exclude-Invalid": "true",
       },
     },

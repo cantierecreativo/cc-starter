@@ -1,7 +1,7 @@
-import { ChangeLogRecord, SiteLocale } from '@/graphql/generated';
-import { Maybe } from 'graphql/jsutils/Maybe';
-import Link from 'next/link';
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
+import { ChangeLogRecord, SiteLocale } from "@/graphql/generated";
+import { Maybe } from "graphql/jsutils/Maybe";
+import Link from "next/link";
+import ReactMarkdown from "react-markdown";
 
 type Props = {
   title: string;
@@ -20,7 +20,7 @@ const Changelog = ({ title, subtitle, featuredChangeLogs, locale }: Props) => {
               {title}
             </h1>
             <div>
-              <ReactMarkdown>{subtitle || ''}</ReactMarkdown>
+              <ReactMarkdown>{subtitle || ""}</ReactMarkdown>
             </div>
           </div>
         </div>
@@ -33,8 +33,8 @@ const Changelog = ({ title, subtitle, featuredChangeLogs, locale }: Props) => {
             >
               <div className="mt-6 inline-flex flex-grow items-center text-left sm:mt-0">
                 <span className="pr-12 text-xs font-semibold uppercase tracking-widest text-primary group-hover:text-neutral-600">
-                  {' '}
-                  {changeLog.versionName}{' '}
+                  {" "}
+                  {changeLog.versionName}{" "}
                 </span>
                 <span className="ml-auto text-blue-600 group-hover:text-neutral-600">
                   »

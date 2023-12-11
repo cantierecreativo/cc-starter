@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { PostRecord, SiteLocale } from '@/graphql/generated';
-import transformDate from '@/utils/transformDate';
-import { Maybe } from 'graphql/jsutils/Maybe';
-import Link from 'next/link';
-import { useState } from 'react';
-import { Image as DatoImage } from 'react-datocms';
+import { PostRecord, SiteLocale } from "@/graphql/generated";
+import transformDate from "@/lib/transformDate";
+import { Maybe } from "graphql/jsutils/Maybe";
+import Link from "next/link";
+import { useState } from "react";
+import { Image as DatoImage } from "react-datocms";
 
 type BlogProps = {
   blogData: PostRecord[];
@@ -70,7 +70,7 @@ const CarrouselFeaturedPosts = ({
             </p>
 
             <Link
-              href={'/' + locale + '/posts/' + currentReview.slug}
+              href={"/" + locale + "/posts/" + currentReview.slug}
               className="mt-2 inline-block text-blue-500 underline hover:text-blue-400"
             >
               Read more

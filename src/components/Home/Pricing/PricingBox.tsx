@@ -1,7 +1,7 @@
-import { primaryColor } from '@/app/i18n/settings';
-import Highlighter from '@/components/Common/Highlighter';
-import { PricingTierModelTierDescriptionField } from '@/graphql/generated';
-import { StructuredText } from 'react-datocms/structured-text';
+import primaryColor from "@/data/primaryColor";
+import Highlighter from "@/components/Common/Highlighter";
+import { PricingTierModelTierDescriptionField } from "@/graphql/generated";
+import { StructuredText } from "react-datocms/structured-text";
 
 const PricingBox = (props: {
   price: string;

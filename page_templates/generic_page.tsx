@@ -19,7 +19,7 @@ export default async function Page() {
     },
     isEnabled
   );
-  if (!data.page) notFound();
+  if (!data) notFound();
 
   return <GenericPage data={data} locale={siteLocale} />;
 }

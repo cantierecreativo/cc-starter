@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { ButtonRecord, FileField } from '@/graphql/generated';
-import { Maybe } from 'graphql/jsutils/Maybe';
-import Link from 'next/link';
-import { delay, motion } from 'framer-motion';
-import { Image as DatoImage } from 'react-datocms';
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
+import { ButtonRecord, FileField } from "@/graphql/generated";
+import { Maybe } from "graphql/jsutils/Maybe";
+import Link from "next/link";
+import { delay, motion } from "framer-motion";
+import { Image as DatoImage } from "react-datocms";
+import ReactMarkdown from "react-markdown";
 
 type Props = {
   heroTitle: string;
@@ -25,19 +25,19 @@ const RightImageHero = ({ heroTitle, heroSubtitle, buttons, image }: Props) => {
             </h1>
 
             <div className="mb-8 leading-relaxed text-gray-500 md:mb-12 lg:w-4/5 xl:text-lg">
-              <ReactMarkdown>{heroSubtitle || ''}</ReactMarkdown>
+              <ReactMarkdown>{heroSubtitle || ""}</ReactMarkdown>
             </div>
 
             <div className="flex w-full flex-row items-center justify-center gap-2.5 sm:justify-center lg:justify-start">
               {buttons.map((button) => {
                 const primary =
-                  'inline-block rounded-lg bg-primary/90 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base';
+                  "inline-block rounded-lg bg-primary/90 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base";
                 const secondary =
-                  'inline-block rounded-lg bg-gray-200 px-8 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base';
+                  "inline-block rounded-lg bg-gray-200 px-8 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base";
                 return (
                   <a
                     key={button.id}
-                    href={button.url || '#'}
+                    href={button.url || "#"}
                     className={button.primary ? primary : secondary}
                   >
                     {button.label}

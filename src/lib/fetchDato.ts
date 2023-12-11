@@ -13,16 +13,15 @@ export default async function fetchDato<
     "Content-Type": "application/json",
     Accept: "application/json",
     "X-Exclude-Invalid": "true",
-    Authorization: `Bearer ${process.env.NEXT_PUBLIC_DATO_APIKEY}`,
+    Authorization: `Bearer ${process.env.DATO_API_KEY}`,
   };
-  const hasEnv = process.env.NEXT_PUBLIC_DATO_ENV || null;
-  if (hasEnv)
-    headers["X-Environment"] = `${process.env.NEXT_PUBLIC_DATO_ENV || "main"}`;
+  const hasEnv = process.env.DATO_ENV || null;
+  if (hasEnv) headers["X-Environment"] = `${process.env.DATO_ENV || ""}`;
   if (isDraft) headers["X-Include-Drafts"] = "true";
 
   const { data } = await (
     await fetch("https://graphql.datocms.com/", {
-      cache: "force-cache",
+      // cache: "force-cache",
       // next: { tags: ["datocms"] }, //revalidate: 0
       next: { revalidate: 0 },
       method: "POST",

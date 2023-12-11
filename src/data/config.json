@@ -1,9 +1,7 @@
 {
+  "primaryColor": "#0000ff",
   "defaultLocale": "it",
-  "locales": [
-    "it",
-    "en"
-  ],
+  "locales": ["it", "en"],
   "translations": [
     {
       "articoli": {

@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { StructuredText } from 'react-datocms/structured-text';
-import { motion } from 'framer-motion';
-import { QuestionRecord } from '@/graphql/generated';
-import { Maybe } from 'graphql/jsutils/Maybe';
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
-import Highlighter from '../Common/Highlighter';
+import { useState } from "react";
+import { StructuredText } from "react-datocms/structured-text";
+import { motion } from "framer-motion";
+import { QuestionRecord } from "@/graphql/generated";
+import { Maybe } from "graphql/jsutils/Maybe";
+import ReactMarkdown from "react-markdown";
+import Highlighter from "../Common/Highlighter";
 
 const closeIcon = (
   <span className="rounded-full bg-gray-200 text-gray-400">
@@ -72,7 +72,7 @@ const FAQAccordion = ({ title, subtitle, questions }: Props) => {
           {title}
         </h1>
         <div className=" text-center text-gray-500">
-          <ReactMarkdown>{subtitle || ''}</ReactMarkdown>
+          <ReactMarkdown>{subtitle || ""}</ReactMarkdown>
         </div>
 
         <div className="mx-8 mt-8 grid gap-4 lg:mx-40">
@@ -83,7 +83,7 @@ const FAQAccordion = ({ title, subtitle, questions }: Props) => {
                 layout="position"
                 key={question.id}
                 className={
-                  'rounded-lg bg-gray-100 p-8 hover:cursor-pointer dark:bg-gray-800'
+                  "rounded-lg bg-gray-100 p-8 hover:cursor-pointer dark:bg-gray-800"
                 }
                 onClick={() => {
                   toggleQuestion(question.id);
@@ -97,15 +97,15 @@ const FAQAccordion = ({ title, subtitle, questions }: Props) => {
                 </button>
 
                 <motion.div
-                  animate={isOpen ? 'open' : 'closed'}
+                  animate={isOpen ? "open" : "closed"}
                   variants={{
                     open: { opacity: 1 },
                     closed: { opacity: 0 },
                   }}
                   transition={{ duration: 0.5 }}
                   className={
-                    'mt-6 text-sm text-gray-500 dark:text-gray-300' +
-                    (isOpen ? '' : ' hidden')
+                    "mt-6 text-sm text-gray-500 dark:text-gray-300" +
+                    (isOpen ? "" : " hidden")
                   }
                 >
                   <StructuredText

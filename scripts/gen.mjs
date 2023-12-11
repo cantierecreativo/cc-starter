@@ -43,13 +43,13 @@ console.info(chalk.green("folders", folders));
 await $`cp ${sourceFolder}layout.${ext} ./layout.${ext}`;
 //move home
 await $`cp ${sourceFolder}generic_page.${ext} ./page.${ext}`;
-await replaceInFile(destination, `#slug#`, "home");
+await replaceInFile(`./page.${ext}`, `##`, "home");
 
 for (let f of folders) {
   console.info(chalk.blue("create folder", f));
   await $`mkdir -p ${f}`;
-  const m = models.find((m) => m.path === f);
-  const r = m.routeInfo;
+  const m = models.find((m) => m.path === `/${f}`) || null;
+  const r = m?.routeInfo;
   if (r && r.model) {
     let source = "generic_page";
     switch (r.model) {
@@ -72,11 +72,7 @@ for (let f of folders) {
     await $`cp ${sourceFolder}${source}.${ext} ${destination}`;
     if (!r.isDynamic) {
       const lastPath = f.split("/").slice(-1)?.[0];
-      await replaceInFile(
-        destination,
-        `#slug#`,
-        lastPath ? lastPath : r.queryName
-      );
+      await replaceInFile(destination, `##`, lastPath ? lastPath : r.queryName);
     }
   }
 }

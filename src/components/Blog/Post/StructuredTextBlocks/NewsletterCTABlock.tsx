@@ -1,4 +1,4 @@
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
+import ReactMarkdown from "react-markdown";
 
 type Params = {
   title: string;
@@ -16,7 +16,7 @@ const NewsletterCTABlock = ({ title, subtitle, buttonLabel }: Params) => {
           </h2>
 
           <div className="hidden text-gray-500 sm:mt-4 sm:block">
-            <ReactMarkdown>{subtitle || ''}</ReactMarkdown>
+            <ReactMarkdown>{subtitle || ""}</ReactMarkdown>
           </div>
         </div>
 

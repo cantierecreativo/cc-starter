@@ -1,12 +1,10 @@
-import { MenuDocument, SiteLocale } from '@/graphql/generated';
-import Header from '.';
-import { getFallbackLocale } from '@/app/i18n/settings';
-import queryDatoCMS from '@/utils/queryDatoCMS';
-import RealTimeHeader from './RealTimeHeader';
+import { MenuDocument, MenuQuery, SiteLocale } from "@/graphql/generated";
+import Header from ".";
 
 type Props = {
-  lng: SiteLocale;
+  locale: SiteLocale;
   isDraft: boolean;
+  data: MenuQuery;
 };
 
 export type Menu = {
@@ -24,31 +22,8 @@ export type NotificationStripType = {
   url: string | undefined | null;
 };
 
-const HeaderRenderer = async ({ lng, isDraft }: Props) => {
-  const fallbackLng = await getFallbackLocale();
-  const data = await queryDatoCMS(
-    MenuDocument,
-    {
-      locale: lng,
-      fallbackLocale: [fallbackLng],
-    },
-    isDraft
-  );
-
-  return (
-    <>
-      {!isDraft && <Header lng={lng} data={data} />}
-      {isDraft && (
-        <RealTimeHeader
-          initialData={data}
-          locale={lng}
-          token={process.env.DATOCMS_READONLY_API_TOKEN || ''}
-          query={MenuDocument}
-          variables={{ locale: lng, fallbackLocale: fallbackLng }}
-        />
-      )}
-    </>
-  );
+const HeaderRenderer = async ({ data, locale, isDraft }: Props) => {
+  return <Header lng={locale} data={data} />;
 };
 
 export default HeaderRenderer;
