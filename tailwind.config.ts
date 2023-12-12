@@ -12,6 +12,17 @@ const config: Config = {
     themes: [
       "light",
       {
+        lorezz: {
+          primary: "#4c1d95",
+          secondary: "#f472b6",
+          accent: "#fbbf24",
+          neutral: "#0a0100",
+          "base-100": "#202020",
+          info: "#bae6fd",
+          success: "#6ee7b7",
+          warning: "#854d0e",
+          error: "#e11d48",
+        },
         dark: {
           primary: "#0000FF",
           "primary-content": "#ffffff",

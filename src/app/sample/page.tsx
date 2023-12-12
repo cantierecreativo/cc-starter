@@ -1,3 +1,8 @@
+import Feat from "@/components/Feat";
+import Testimonials from "@/components/Home/Testimonials";
+import Testimonial from "@/components/Testimonial";
+import Trusted from "@/components/Trusted";
+
 export default function Home() {
   return (
     <div className="container mx-auto p-4 lg:p-24">
@@ -12,7 +17,11 @@ export default function Home() {
           <li>Add Document</li>
         </ul>
       </div>
-
+      <Testimonial />
+      <div className="divider" />
+      <Feat />
+      <div className="divider" />
+      <Trusted />
       <div
         className="my-5   hero min-h-[50vh]"
         style={{

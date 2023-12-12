@@ -13,6 +13,7 @@
     "codegen": "graphql-codegen --config codegen.ts && bun run fix"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.18",
     "axios": "^1.6.2",
     "datocms-structured-text-utils": "^2.0.4",
     "framer-motion": "^10.16.16",

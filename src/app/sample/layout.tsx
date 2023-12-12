@@ -1,9 +1,8 @@
 import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { draftMode } from "next/headers";
-import { SiteLocale } from "@/graphql/generated";
-import HeaderRenderer from "@/components/Header/HeaderRenderer";
-import Footer from "@/components/Footer";
+import MyHeader from "@/components/MyHeader";
+import MyFooter from "@/components/MyFooter";
 
 const locale = "it";
 export const metadata: Metadata = {
@@ -16,13 +15,12 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { isEnabled } = draftMode();
   return (
-    <html lang={locale} data-theme="light">
+    <html lang={locale} data-theme="dracula">
       <body>
-        <HeaderRenderer lng={locale as SiteLocale} isDraft={isEnabled} />
+        <MyHeader />
         <main className="md:min-h-screen">{children}</main>
-        <Footer lng={locale as SiteLocale} />
+        <MyFooter />
       </body>
     </html>
   );
