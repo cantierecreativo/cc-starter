@@ -3,7 +3,7 @@ import ThemeSwitcher from "./ThemeSwitcher";
 
 export default function Footer() {
   return (
-    <header className="navbar shadow bg-base-100 text-base-content border-bottom-1 border-color-base-200">
+    <header className="navbar shadow bg-base text-base-content border-bottom-1 border-color-base-200">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

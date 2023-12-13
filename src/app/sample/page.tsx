@@ -5,8 +5,8 @@ import Trusted from "@/components/Trusted";
 
 export default function Home() {
   return (
-    <div className="container mx-auto p-4 lg:p-24">
-      <div className="my-5  text-sm breadcrumbs">
+    <div className="container bg-base mx-auto p-4 lg:p-24">
+      <div className="my-5 bg-base-content text-sm breadcrumbs">
         <ul>
           <li>
             <a>Home</a>
@@ -30,7 +30,7 @@ export default function Home() {
         }}
       >
         <div className="hero-overlay bg-opacity-60"></div>
-        <div className="hero-content text-center text-neutral-content">
+        <div className="hero-content text-center text-base-content">
           <div className="max-w-md">
             <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
             <p className="mb-5">
@@ -157,7 +157,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="card w-96 bg-neutral text-neutral-content">
+        <div className="card w-96 bg-neutral text-base-content">
           <div className="card-body items-center text-center">
             <h2 className="card-title">Cookies!</h2>
             <p>We are using cookies for no reason.</p>

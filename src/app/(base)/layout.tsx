@@ -40,7 +40,6 @@ export default async function RootLayout({
   return (
     <html lang={locale} data-theme="light">
       <body>
-        <MyHeader />
         <div className="relative">
           <HeaderRenderer
             data={menuData}
@@ -48,9 +47,10 @@ export default async function RootLayout({
             isDraft={isEnabled}
           />
         </div>
-        <main className="md:min-h-screen">{children}</main>
+        <main className="md:min-h-screen container mx-auto">{children}</main>
         <Footer data={footerData} locale={siteLocale} />
         <MyFooter />
+        <MyHeader />
       </body>
     </html>
   );
