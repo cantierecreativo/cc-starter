@@ -6,7 +6,7 @@ import Trusted from "@/components/Trusted";
 export default function Home() {
   return (
     <div className="container bg-base mx-auto p-4 lg:p-24">
-      <div className="my-5 bg-base-content text-sm breadcrumbs">
+      <div className="my-5 bg-base text-base-content text-sm breadcrumbs">
         <ul>
           <li>
             <a>Home</a>
