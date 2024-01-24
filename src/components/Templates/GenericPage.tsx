@@ -12,6 +12,9 @@ type GenericPageProps = {
   data: PageQuery;
 };
 
+
+
+
 export default function GenericPage({ data, locale }: GenericPageProps) {
   return (
     <Sections

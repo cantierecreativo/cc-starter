@@ -1,4 +1,5 @@
 "use client";
+import themes from "@/data/themes.json";
 
 import { ChangeEvent } from "react";
 
@@ -10,40 +11,6 @@ export default function ThemeSwitcher() {
     }
   }
 
-  const themes = [
-    "light",
-    "dark",
-    "cupcake",
-    "bumblebee",
-    "emerald",
-    "corporate",
-    "synthwave",
-    "retro",
-    "cyberpunk",
-    "valentine",
-    "halloween",
-    "garden",
-    "forest",
-    "aqua",
-    "lofi",
-    "pastel",
-    "fantasy",
-    "wireframe",
-    "black",
-    "luxury",
-    "dracula",
-    "cmyk",
-    "autumn",
-    "business",
-    "acid",
-    "lemonade",
-    "night",
-    "coffee",
-    "winter",
-    "dim",
-    "nord",
-    "sunset",
-  ];
   return (
     <select
       className="select select-bordered w-full max-w-xs"
@@ -52,11 +19,13 @@ export default function ThemeSwitcher() {
       <option disabled selected>
         change theme
       </option>
-      {themes.map((t) => (
-        <option key={t} value={t}>
-          {t}
-        </option>
-      ))}
+      {themes.map((t) => {
+        return (
+          <option key={t} value={t}>
+            {t}
+          </option>
+        );
+      })}
     </select>
   );
 }

@@ -1,7 +1,9 @@
 {
-  "primaryColor": "#0000ff",
   "defaultLocale": "it",
-  "locales": ["it", "en"],
+  "locales": [
+    "it",
+    "en"
+  ],
   "translations": [
     {
       "articoli": {
@@ -32,11 +34,6 @@
       "privacy-policy": {
         "en": "privacy-policy"
       }
-    },
-    {
-      "prodotti": {
-        "en": "products"
-      }
     }
   ],
   "paths": [
@@ -45,7 +42,7 @@
     "/privacy-policy",
     "/[slug]",
     "/articoli/[slug]",
-    "/prodotti/[slug]",
+    "/[prodotti]/[slug]",
     "/info/il-team/[slug]",
     "/info/chi-siamo"
   ],
@@ -57,7 +54,8 @@
         "isHome": true,
         "isDynamic": false,
         "isDefaultLocale": false,
-        "model": "page"
+        "model": "page",
+        "locale": "en"
       }
     },
     {
@@ -67,7 +65,8 @@
         "isHome": false,
         "isDynamic": false,
         "isDefaultLocale": false,
-        "model": "page"
+        "model": "page",
+        "locale": "en"
       }
     },
     {
@@ -77,7 +76,8 @@
         "isHome": false,
         "isDynamic": false,
         "isDefaultLocale": false,
-        "model": "legal_page"
+        "model": "legal_page",
+        "locale": "en"
       }
     },
     {
@@ -87,7 +87,8 @@
         "isHome": false,
         "isDynamic": true,
         "isDefaultLocale": false,
-        "model": "page"
+        "model": "page",
+        "locale": "en"
       }
     },
     {
@@ -97,17 +98,19 @@
         "isHome": false,
         "isDynamic": true,
         "isDefaultLocale": false,
-        "model": "post"
+        "model": "post",
+        "locale": "en"
       }
     },
     {
-      "path": "/prodotti/[slug]",
+      "path": "/[prodotti]/[slug]",
       "routeInfo": {
         "queryName": "products",
         "isHome": false,
         "isDynamic": true,
         "isDefaultLocale": false,
-        "model": "tag"
+        "model": "tag",
+        "locale": "en"
       }
     },
     {
@@ -117,7 +120,8 @@
         "isHome": false,
         "isDynamic": true,
         "isDefaultLocale": false,
-        "model": "person"
+        "model": "person",
+        "locale": "en"
       }
     },
     {
@@ -127,7 +131,8 @@
         "isHome": false,
         "isDynamic": false,
         "isDefaultLocale": false,
-        "model": "page"
+        "model": "page",
+        "locale": "en"
       }
     }
   ]

@@ -38,7 +38,7 @@ export default async function RootLayout({
   );
 
   return (
-    <html lang={locale} data-theme="light">
+    <html lang={locale} data-theme="custom">
       <body>
         <div className="relative">
           <HeaderRenderer

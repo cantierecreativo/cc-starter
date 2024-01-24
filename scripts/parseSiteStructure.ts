@@ -71,8 +71,9 @@ function camelize(str: string) {
     });
 }
 function formatRoute(route: any, isDefaultLocale: boolean) {
+  const english = "en";
   let enTitle = route._allTitleLocales.find(
-    (i: any) => i.locale === "en"
+    (i: any) => i.locale === english
   ).value;
   let queryName = enTitle;
   const { isHome, isDynamic, associatedModel: model, parent } = route;
@@ -81,12 +82,19 @@ function formatRoute(route: any, isDefaultLocale: boolean) {
   }
   if (isDynamic && parent) {
     let parentEnTitle = parent._allTitleLocales.find(
-      (i: any) => i.locale === "en"
+      (i: any) => i.locale === english
     ).value;
     queryName = parentEnTitle;
   }
   queryName = camelize(queryName);
-  return { queryName, isHome, isDynamic, isDefaultLocale, model };
+  return {
+    queryName,
+    isHome,
+    isDynamic,
+    model,
+    // isDefaultLocale,
+    // locale: english,
+  };
 }
 
 function getPaths(routes: any, defaultLocale: string) {
@@ -109,7 +117,7 @@ function getPaths(routes: any, defaultLocale: string) {
         title = `[${title}]`;
       }
       const newPath = `${path}/${title}`;
-      const routeInfo = formatRoute(route, defaultLocale === "en");
+      const routeInfo = formatRoute(route, defaultLocale == "en");
 
       if (route.children?.length > 0) {
         //recurse

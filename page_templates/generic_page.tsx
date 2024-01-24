@@ -7,6 +7,21 @@ import GenericPage from "@/components/Templates/GenericPage";
 const locale = "it";
 const siteLocale = locale as SiteLocale;
 
+
+export async function generateMetadata({ params }: BasicSlugPageProps) {
+  const { slug } = params;
+  const siteLocale = locale as SiteLocale;
+  const data = await fetchDato(
+    PageDocument,
+    { locale: siteLocale, slug },
+    false
+  );
+  const page: any = data?.page || null;
+  const meta = getSeoMeta(page);
+  return meta;
+}
+
+
 export default async function Page() {
   let slug = "##";
   const { isEnabled } = draftMode();

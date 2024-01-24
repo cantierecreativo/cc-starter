@@ -4383,6 +4383,7 @@ export type SeoField = {
   __typename?: 'SeoField';
   description?: Maybe<Scalars['String']['output']>;
   image?: Maybe<FileField>;
+  noIndex?: Maybe<Scalars['BooleanType']['output']>;
   title?: Maybe<Scalars['String']['output']>;
   twitterCard?: Maybe<Scalars['String']['output']>;
 };
@@ -4405,6 +4406,7 @@ export type Site = {
   faviconMetaTags: Array<Tag>;
   globalSeo?: Maybe<GlobalSeoField>;
   locales: Array<SiteLocale>;
+  noIndex?: Maybe<Scalars['BooleanType']['output']>;
 };
 
 
@@ -4422,6 +4424,34 @@ export enum SiteLocale {
   En = 'en',
   It = 'it'
 }
+
+/** Block of type Slide (slide) */
+export type SlideRecord = RecordInterface & {
+  __typename?: 'SlideRecord';
+  _createdAt: Scalars['DateTime']['output'];
+  /** Editing URL */
+  _editingUrl?: Maybe<Scalars['String']['output']>;
+  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _isValid: Scalars['BooleanType']['output'];
+  _modelApiKey: Scalars['String']['output'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  /** Generates SEO and Social card meta tags to be used in your frontend */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _updatedAt: Scalars['DateTime']['output'];
+  id: Scalars['ItemId']['output'];
+  image?: Maybe<FileField>;
+  text?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** Block of type Slide (slide) */
+export type SlideRecord_SeoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
+};
 
 /** Specifies how to filter Slug fields */
 export type SlugFilter = {
