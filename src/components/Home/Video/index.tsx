@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import SectionTitle from '../../Common/SectionTitle';
+import { useState } from "react";
+import SectionTitle from "../../Common/SectionTitle";
 
-import ModalVideo from 'react-modal-video';
-import { Maybe } from 'graphql/jsutils/Maybe';
-import { ImageFileField } from '@/graphql/generated';
-import { Image as DatoImage } from 'react-datocms';
-import Image from 'next/image';
+import ModalVideo from "react-modal-video";
+import { Maybe } from "graphql/jsutils/Maybe";
+import { ImageFileField } from "@/graphql/generated";
+import { Image as DatoImage } from "react-datocms";
+import Image from "next/image";
 
 type Props = {
   videoHeader: string;

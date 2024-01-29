@@ -29,6 +29,7 @@ import {
   RedirectSectionRecord,
   ReviewSectionRecord,
   SiteLocale,
+  SlideshowRecord,
   StatsSectionRecord,
   TeamSectionRecord,
   VideoSectionRecord,
@@ -57,6 +58,7 @@ import MinimalCardsFeature from "../Home/Features/MinimalCardsFeature";
 import BigImageHorizontalFeatures from "../Home/Features/BigImageHorizontalFeatures";
 import BigImageVerticalFeatures from "../Home/Features/BigImageVerticalFeatures";
 import Changelog from "../Changelog";
+import Carousel from "../Common/Carousel";
 
 type Props = {
   sections: Array<PageModelSectionsField>;
@@ -69,7 +71,12 @@ export default function Section({ sections, locale, posts, postMeta }: Props) {
   return (
     <>
       {sections?.map((section) => {
+        console.log("APIKEY", section._modelApiKey);
         switch (section._modelApiKey) {
+          case "slideshow": {
+            const carouselSection = section as SlideshowRecord;
+            return <Carousel slides={carouselSection.slides} locale={locale} />;
+          }
           case "changelog_section":
             const changeLogSection = section as ChangelogSectionRecord;
             return (
