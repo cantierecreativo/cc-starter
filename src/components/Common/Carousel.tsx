@@ -4,9 +4,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import {
   Autoplay,
   A11y,
-  Parallax,
   Pagination,
   Navigation,
+  Parallax,
 } from "swiper/modules";
 // import "swiper/css";
 // import "swiper/css/navigation";
@@ -27,15 +27,23 @@ export default function Carousel({
   return (
     <header className={`relative`}>
       <Swiper
-        modules={[Navigation, Pagination, Autoplay, Parallax, A11y]}
-        // onSlideChange={(info) => console.log("slide change", info)}
-        // onSwiper={(swiper) => console.log(swiper)}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Autoplay, Pagination, Navigation, A11y, Parallax]}
+        onSlideChange={(info) => console.log("slide change", info)}
+        onSwiper={(swiper) => console.log(swiper)}
       >
         {slides.map((slide: any, i: number) => {
           const { id, image, title, text } = slide;
 
           return (
-            <div className="h-full w-full" key={`slide-${id}`}>
+            <div className="h-full w-full m-t-[100px]" key={`slide-${id}`}>
               <SwiperSlide>
                 <div className="relative w-full min-h-[80vh]">
                   <Image
