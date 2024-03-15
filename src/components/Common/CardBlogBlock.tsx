@@ -42,11 +42,11 @@ const CardBlogBlock = ({ data, locale, i }: PropsCardBlog) => {
       <div
         className={`${renderClassByPositionMd(i)} ${renderClassByPositionLg(
           i
-        )} p-6 pb-2 bg-neutral-content duration-300 relative`}
+        )} p-6 pb-2 bg-base-300 text-content duration-300 relative`}
       >
         <DatoImage data={blogImage.responsiveImage} />
         {blogImageHover && (
-          <div className="absolute top-6 left-6 right-6 group-hover:opacity-100 opacity-0 duration-300">
+          <div className="absolute shadow-lg top-6 left-6 right-6 group-hover:opacity-100 opacity-0 duration-300">
             <DatoImage data={blogImageHover.responsiveImage} />
           </div>
         )}

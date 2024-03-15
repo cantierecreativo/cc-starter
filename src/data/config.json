@@ -2,64 +2,59 @@
   "defaultLocale": "it",
   "locales": [
     "it",
-    "en",
-    "de"
+    "en"
   ],
   "translations": {
     "anfore": {
-      "de": "die-amphoren",
       "en": "the-anfore"
     },
     "bio-integrale": {
-      "de": "bio-vollkorn",
       "en": "bio"
     },
     "blog": {
-      "de": "blog",
-      "en": "blog"
+      "en": "articles"
+    },
+    "categorie": {
+      "en": "categories"
     },
     "contatti": {
-      "de": "kontakte",
       "en": "contacts"
     },
     "esperienze": {
-      "de": "erfahrungen",
-      "en": "experiences"
+      "en": ""
     },
     "la-famiglia": {
-      "de": "die-familie",
-      "en": "the-family"
+      "en": ""
     },
     "prodotti": {
-      "de": "produkte",
-      "en": "products"
+      "en": ""
     },
     "storia": {
-      "de": "storia",
       "en": "story"
     },
     "tenute": {
-      "de": "die-stande",
-      "en": "tenute"
+      "en": ""
     },
     "vini": {
-      "de": "die-weine",
-      "en": "wines"
+      "en": ""
     }
   },
   "paths": [
     "/",
     "/storia",
+    "/la-famiglia/anfore",
     "/la-famiglia/tenute",
     "/la-famiglia/vini",
     "/la-famiglia/esperienze",
     "/la-famiglia/prodotti",
-    "/la-famiglia/anfore",
     "/la-famiglia",
     "/bio-integrale",
     "/blog/[slug]",
     "/blog",
-    "/contatti"
+    "/contatti",
+    "/prodotti/[slug]",
+    "/prodotti/categorie/[slug]",
+    "/prodotti/categorie"
   ],
   "models": [
     {
@@ -68,12 +63,13 @@
         "queryName": "home",
         "isHome": true,
         "isDynamic": false,
-        "model": "page"
+        "model": "page",
+        "isIndex": false,
+        "indexModel": ""
       },
       "slugs": {
-        "de": "home",
-        "en": "home",
-        "it": "home"
+        "it": "home",
+        "en": "home"
       }
     },
     {
@@ -88,70 +84,7 @@
       },
       "slugs": {
         "it": "storia",
-        "de": "storia",
         "en": "story"
-      }
-    },
-    {
-      "path": "/la-famiglia/tenute",
-      "routeInfo": {
-        "queryName": "tenute",
-        "isHome": false,
-        "isDynamic": false,
-        "model": "page",
-        "isIndex": null,
-        "indexModel": ""
-      },
-      "slugs": {
-        "it": "tenute",
-        "de": "die-stande",
-        "en": "tenute"
-      }
-    },
-    {
-      "path": "/la-famiglia/vini",
-      "routeInfo": {
-        "queryName": "wines",
-        "isHome": false,
-        "isDynamic": false,
-        "model": "page",
-        "isIndex": null,
-        "indexModel": ""
-      },
-      "slugs": {
-        "it": "vini",
-        "de": "die-weine",
-        "en": "wines"
-      }
-    },
-    {
-      "path": "/la-famiglia/esperienze",
-      "routeInfo": {
-        "queryName": "experiences",
-        "isHome": false,
-        "isDynamic": false,
-        "model": "page"
-      },
-      "slugs": {
-        "de": "erfahrungen",
-        "en": "experiences",
-        "it": "esperienze"
-      }
-    },
-    {
-      "path": "/la-famiglia/prodotti",
-      "routeInfo": {
-        "queryName": "products",
-        "isHome": false,
-        "isDynamic": false,
-        "model": "page",
-        "isIndex": false,
-        "indexModel": "product"
-      },
-      "slugs": {
-        "it": "prodotti",
-        "de": "produkte",
-        "en": "products"
       }
     },
     {
@@ -166,21 +99,79 @@
       },
       "slugs": {
         "it": "anfore",
-        "de": "die-amphoren",
         "en": "the-anfore"
+      }
+    },
+    {
+      "path": "/la-famiglia/tenute",
+      "routeInfo": {
+        "queryName": "",
+        "isHome": false,
+        "isDynamic": false,
+        "model": "page",
+        "isIndex": null,
+        "indexModel": ""
+      },
+      "slugs": {
+        "it": "tenute",
+        "en": ""
+      }
+    },
+    {
+      "path": "/la-famiglia/vini",
+      "routeInfo": {
+        "queryName": "",
+        "isHome": false,
+        "isDynamic": false,
+        "model": "page",
+        "isIndex": null,
+        "indexModel": ""
+      },
+      "slugs": {
+        "it": "vini",
+        "en": ""
+      }
+    },
+    {
+      "path": "/la-famiglia/esperienze",
+      "routeInfo": {
+        "queryName": "",
+        "isHome": false,
+        "isDynamic": false,
+        "model": "page",
+        "isIndex": null,
+        "indexModel": ""
+      },
+      "slugs": {
+        "it": "esperienze",
+        "en": ""
+      }
+    },
+    {
+      "path": "/la-famiglia/prodotti",
+      "routeInfo": {
+        "queryName": "",
+        "isHome": false,
+        "isDynamic": false,
+        "model": "page",
+        "isIndex": false,
+        "indexModel": "product"
+      },
+      "slugs": {
+        "it": "prodotti",
+        "en": ""
       }
     },
     {
       "path": "/la-famiglia",
       "routeInfo": {
-        "queryName": "theFamily",
+        "queryName": "",
         "isHome": false,
         "isDynamic": false,
         "model": "none"
       },
       "slugs": {
-        "de": "die-familie",
-        "en": "the-family",
+        "en": "",
         "it": "la-famiglia"
       }
     },
@@ -196,14 +187,13 @@
       },
       "slugs": {
         "it": "bio-integrale",
-        "de": "bio-vollkorn",
         "en": "bio"
       }
     },
     {
       "path": "/blog/[slug]",
       "routeInfo": {
-        "queryName": "slug",
+        "queryName": "",
         "isHome": false,
         "isDynamic": true,
         "model": "post"
@@ -213,7 +203,7 @@
     {
       "path": "/blog",
       "routeInfo": {
-        "queryName": "blog",
+        "queryName": "articles",
         "isHome": false,
         "isDynamic": false,
         "model": "page",
@@ -222,8 +212,7 @@
       },
       "slugs": {
         "it": "blog",
-        "de": "blog",
-        "en": "blog"
+        "en": "articles"
       }
     },
     {
@@ -238,8 +227,40 @@
       },
       "slugs": {
         "it": "contatti",
-        "de": "kontakte",
         "en": "contacts"
+      }
+    },
+    {
+      "path": "/prodotti/[slug]",
+      "routeInfo": {
+        "queryName": "",
+        "isHome": false,
+        "isDynamic": true,
+        "model": "page"
+      },
+      "slugs": {}
+    },
+    {
+      "path": "/prodotti/categorie/[slug]",
+      "routeInfo": {
+        "queryName": "",
+        "isHome": false,
+        "isDynamic": true,
+        "model": "tag"
+      },
+      "slugs": {}
+    },
+    {
+      "path": "/prodotti/categorie",
+      "routeInfo": {
+        "queryName": "categories",
+        "isHome": false,
+        "isDynamic": false,
+        "model": "page"
+      },
+      "slugs": {
+        "en": "categories",
+        "it": "categorie"
       }
     }
   ]

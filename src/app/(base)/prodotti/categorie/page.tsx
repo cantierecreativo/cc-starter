@@ -6,10 +6,10 @@ import GenericPage from "@/components/Templates/GenericPage";
 import getSeoMeta from "@/lib/seoUtils";
 import config from "@/data/config";
 
-const locale = "de";
+const locale = "it";
 const siteLocale = locale as SiteLocale;
 const defaultLocale = config.defaultLocale as SiteLocale;
-const pageSlug = "die-amphoren";
+const pageSlug = "categorie";
 
 export async function generateMetadata() {
   const data = await fetchDato(

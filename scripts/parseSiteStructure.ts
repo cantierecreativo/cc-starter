@@ -22,6 +22,25 @@ fragment routeItemFrag on RouteItemRecord {
   parent{
     title
     _allTitleLocales{locale, value}
+    reference {
+      __typename
+      ... on PageRecord {
+        isIndex
+        indexModel
+        _modelApiKey
+        _allSlugLocales {
+          locale
+          value
+        }
+      }
+      ... on PostRecord {
+        _modelApiKey
+        _allSlugLocales {
+          locale
+          value
+        }
+      }
+    }
   }
   id
   _modelApiKey

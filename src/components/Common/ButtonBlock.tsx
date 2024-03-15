@@ -18,7 +18,7 @@ export default function ButtonBlock({
           {label && label}
           <CustomIcon
             classes={`${
-              color === "light" ? "bg-base-100" : "bg-base-content"
+              color === "light" ? "bg-base-100" : "bg-neutral"
             } w-[14px] h-[14px] ml-2 group-hover:ml-6 inline-block motion-safe:duration-300`}
             fileName="arrow-oblique"
           />
@@ -41,7 +41,7 @@ export default function ButtonBlock({
           } inline-block relative px-5 py-2 bg-base-100 rounded-full`}
         >
           <CustomIcon
-            classes="w-[14px] h-[14px] bg-base-content group-hover:px-3 inline-block motion-safe:duration-200"
+            classes="w-[14px] h-[14px] bg-neutral group-hover:px-3 inline-block motion-safe:duration-200"
             fileName="arrow-right"
           />
         </div>
