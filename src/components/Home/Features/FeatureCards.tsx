@@ -16,7 +16,6 @@ const FeatureCards = ({
 }: Props) => {
   return (
     <section className="relative">
-      {/* Section background (needs .relative class on parent and next sibling elements) */}
       <div
         className="pointer-events-none absolute inset-0 top-1/2 bg-primary bg-opacity-5 md:mt-24 lg:mt-0"
         aria-hidden="true"
@@ -24,7 +23,6 @@ const FeatureCards = ({
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
         <div className="py-12 md:py-20">
-          {/* Section header */}
           <div className="mx-auto max-w-3xl pb-12 text-center md:pb-20">
             <h1 className="mb-4 text-3xl font-bold !leading-tight text-black dark:text-white sm:text-4xl md:text-[45px]">
               {featuresHeader}
@@ -44,13 +42,13 @@ const FeatureCards = ({
                   className="relative flex h-64 flex-col items-center justify-center rounded bg-white p-6 shadow-xl"
                 >
                   <div className="relative -mt-1 mb-2 flex h-20 w-20 items-center justify-center overflow-hidden rounded-full bg-primary bg-opacity-5">
-                    <DatoImage
+                    {/* <DatoImage
                       data={feature.featureIcon.responsiveImage}
                       className="h-full w-full object-contain"
                       layout="fill"
                       objectFit="cover"
                       objectPosition="50% 50%"
-                    />
+                    /> */}
                   </div>
                   <h4 className="mb-1 text-xl font-bold leading-snug tracking-tight">
                     {feature.featureTitle}

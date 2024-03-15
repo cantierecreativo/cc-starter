@@ -14,12 +14,16 @@ const { translations, defaultLocale, locales } = labels;
 const langs = locales.filter((l) => l != defaultLocale);
 
 //Replace locale in files
-async function replaceInFile(sourceFile, destFile, locale, defaultLocale) {
+async function replaceInFile(sourceFile, destFile, replacement) {
   try {
-    const contents = await fsPromises.readFile(sourceFile, "utf-8");
-    const re = new RegExp(`"${defaultLocale}"`, "g");
-    let replaced = contents.replace(re, `'${locale}'`);
-    await fsPromises.writeFile(destFile, replaced);
+    let contents = await fsPromises.readFile(sourceFile, "utf-8");
+    for (let r of replacement) {
+      const re = new RegExp(`"${r.from}"`, "g");
+      // console.info("replacing", r.from, r.to);
+      contents = contents.replace(re, `"${r.to}"`);
+    }
+    // console.info(contents);
+    await fsPromises.writeFile(destFile, contents);
   } catch (err) {
     console.error(err);
   }
@@ -39,7 +43,12 @@ function getTranslation(source, lang) {
   const translatedFile = translations[fileName]
     ? translations[fileName][lang]
     : fileName;
-  return { folder: translatedPath, file: `${translatedFile}.tsx`, source };
+  return {
+    sourceFolder: folders.slice(-1),
+    folder: translatedPath,
+    file: `${translatedFile}.tsx`,
+    source,
+  };
 }
 
 //START
@@ -108,22 +117,31 @@ within(async () => {
 
       //CREATE FILES
       console.info(chalk.blue("Generating page files..."));
-      const generateFiles = destinations.map((destination) => {
-        const { folder, file, source } = destination;
+      for (let destination of destinations) {
+        const { folder, file, source, sourceFolder } = destination;
         const dest = `${lang}/${folder}/${file}`;
 
-        return replaceInFile(
-          `../${BASE_FOLDER}/${source}`,
-          dest,
-          lang,
-          defaultLocale
-        );
+        // await replaceInFile(
+        //   `../${BASE_FOLDER}/${source}`,
+        //   dest,
+        //   defaultLocale, //toreplace
+        //   lang //replacement
+        // );
 
+        let replacement = [{ from: defaultLocale, to: lang }];
+
+        const lastFolder = folder.split("/").filter(Boolean).slice(-1)[0];
+
+        if (sourceFolder?.[0] && lastFolder && lastFolder != sourceFolder[0]) {
+          replacement.push({ from: sourceFolder[0], to: lastFolder });
+        }
+
+        console.info(replacement);
+        await replaceInFile(`../${BASE_FOLDER}/${source}`, dest, replacement);
         // await $`touch ${dest}`;
         // await fs.copy(source, dest);
         // return fs.writeFile(dest, templateStr);
-      });
-      await Promise.all(generateFiles);
+      }
     } catch (error) {
       console.info(error);
     }

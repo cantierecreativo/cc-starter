@@ -4,28 +4,25 @@ import ReactMarkdown from "react-markdown";
 const SectionTitle = ({
   title,
   paragraph,
-  width = "570px",
   center,
-  mb = "100px",
 }: {
   title: string;
   paragraph: Maybe<string>;
-  width?: string;
   center?: boolean;
-  mb?: string;
 }) => {
   return (
     <>
-      <div
-        className={` w-full ${center ? "mx-auto text-center" : ""}`}
-        style={{ maxWidth: width, marginBottom: mb }}
-      >
-        <h2 className="mb-4 text-3xl font-bold !leading-tight text-black dark:text-white sm:text-4xl md:text-[45px]">
-          {title}
-        </h2>
-        <div className="text-base !leading-relaxed text-body-color md:text-lg">
-          <ReactMarkdown>{paragraph || ""}</ReactMarkdown>
-        </div>
+      <div className={` w-full ${center ? "mx-auto text-center" : ""} mb-8`}>
+        {title && (
+          <h2 className="text-md uppercase max-w-prose mx-auto font-serif font-light mb-4 md:text-lg md:pb-2 md:pt-4 xl:py-8 lg:text-2xl md:col-span-10 md:col-start-2">
+            {title}
+          </h2>
+        )}
+        {paragraph && (
+          <div className="lg:text-md max-w-prose mx-auto md:col-span-10 md:col-start-2">
+            <ReactMarkdown>{paragraph || ""}</ReactMarkdown>
+          </div>
+        )}
       </div>
     </>
   );

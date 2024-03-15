@@ -36,7 +36,7 @@ export default function Carousel({
         }}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation, A11y, Parallax]}
-        onSlideChange={(info) => console.log("slide change", info)}
+        // onSlideChange={(info) => console.log("slide change", info)}
         onSwiper={(swiper) => console.log(swiper)}
       >
         {slides.map((slide: any, i: number) => {

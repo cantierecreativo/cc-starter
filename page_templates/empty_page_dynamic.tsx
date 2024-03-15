@@ -1,6 +1,6 @@
 import fetchDato from "@/lib/fetchDato";
 import { draftMode } from "next/headers";
-import { PostDocument, PageDocument, SiteLocale } from "@/graphql/generated";
+import { SiteLocale } from "@/graphql/generated";
 import { notFound } from "next/navigation";
 
 type Params = {

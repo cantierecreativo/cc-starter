@@ -2,49 +2,64 @@
   "defaultLocale": "it",
   "locales": [
     "it",
-    "en"
+    "en",
+    "de"
   ],
-  "translations": [
-    {
-      "articoli": {
-        "en": "articles"
-      }
+  "translations": {
+    "anfore": {
+      "de": "die-amphoren",
+      "en": "the-anfore"
     },
-    {
-      "chi-siamo": {
-        "en": "about"
-      }
+    "bio-integrale": {
+      "de": "bio-vollkorn",
+      "en": "bio"
     },
-    {
-      "contatti": {
-        "en": "contacts"
-      }
+    "blog": {
+      "de": "blog",
+      "en": "blog"
     },
-    {
-      "il-team": {
-        "en": "the-team"
-      }
+    "contatti": {
+      "de": "kontakte",
+      "en": "contacts"
     },
-    {
-      "info": {
-        "en": "info"
-      }
+    "esperienze": {
+      "de": "erfahrungen",
+      "en": "experiences"
     },
-    {
-      "privacy-policy": {
-        "en": "privacy-policy"
-      }
+    "la-famiglia": {
+      "de": "die-familie",
+      "en": "the-family"
+    },
+    "prodotti": {
+      "de": "produkte",
+      "en": "products"
+    },
+    "storia": {
+      "de": "storia",
+      "en": "story"
+    },
+    "tenute": {
+      "de": "die-stande",
+      "en": "tenute"
+    },
+    "vini": {
+      "de": "die-weine",
+      "en": "wines"
     }
-  ],
+  },
   "paths": [
     "/",
-    "/contatti",
-    "/privacy-policy",
-    "/[slug]",
-    "/articoli/[slug]",
-    "/[prodotti]/[slug]",
-    "/info/il-team/[slug]",
-    "/info/chi-siamo"
+    "/storia",
+    "/la-famiglia/tenute",
+    "/la-famiglia/vini",
+    "/la-famiglia/esperienze",
+    "/la-famiglia/prodotti",
+    "/la-famiglia/anfore",
+    "/la-famiglia",
+    "/bio-integrale",
+    "/blog/[slug]",
+    "/blog",
+    "/contatti"
   ],
   "models": [
     {
@@ -53,9 +68,162 @@
         "queryName": "home",
         "isHome": true,
         "isDynamic": false,
-        "isDefaultLocale": false,
+        "model": "page"
+      },
+      "slugs": {
+        "de": "home",
+        "en": "home",
+        "it": "home"
+      }
+    },
+    {
+      "path": "/storia",
+      "routeInfo": {
+        "queryName": "story",
+        "isHome": false,
+        "isDynamic": false,
         "model": "page",
-        "locale": "en"
+        "isIndex": false,
+        "indexModel": ""
+      },
+      "slugs": {
+        "it": "storia",
+        "de": "storia",
+        "en": "story"
+      }
+    },
+    {
+      "path": "/la-famiglia/tenute",
+      "routeInfo": {
+        "queryName": "tenute",
+        "isHome": false,
+        "isDynamic": false,
+        "model": "page",
+        "isIndex": null,
+        "indexModel": ""
+      },
+      "slugs": {
+        "it": "tenute",
+        "de": "die-stande",
+        "en": "tenute"
+      }
+    },
+    {
+      "path": "/la-famiglia/vini",
+      "routeInfo": {
+        "queryName": "wines",
+        "isHome": false,
+        "isDynamic": false,
+        "model": "page",
+        "isIndex": null,
+        "indexModel": ""
+      },
+      "slugs": {
+        "it": "vini",
+        "de": "die-weine",
+        "en": "wines"
+      }
+    },
+    {
+      "path": "/la-famiglia/esperienze",
+      "routeInfo": {
+        "queryName": "experiences",
+        "isHome": false,
+        "isDynamic": false,
+        "model": "page"
+      },
+      "slugs": {
+        "de": "erfahrungen",
+        "en": "experiences",
+        "it": "esperienze"
+      }
+    },
+    {
+      "path": "/la-famiglia/prodotti",
+      "routeInfo": {
+        "queryName": "products",
+        "isHome": false,
+        "isDynamic": false,
+        "model": "page",
+        "isIndex": false,
+        "indexModel": "product"
+      },
+      "slugs": {
+        "it": "prodotti",
+        "de": "produkte",
+        "en": "products"
+      }
+    },
+    {
+      "path": "/la-famiglia/anfore",
+      "routeInfo": {
+        "queryName": "theAnfore",
+        "isHome": false,
+        "isDynamic": false,
+        "model": "page",
+        "isIndex": false,
+        "indexModel": ""
+      },
+      "slugs": {
+        "it": "anfore",
+        "de": "die-amphoren",
+        "en": "the-anfore"
+      }
+    },
+    {
+      "path": "/la-famiglia",
+      "routeInfo": {
+        "queryName": "theFamily",
+        "isHome": false,
+        "isDynamic": false,
+        "model": "none"
+      },
+      "slugs": {
+        "de": "die-familie",
+        "en": "the-family",
+        "it": "la-famiglia"
+      }
+    },
+    {
+      "path": "/bio-integrale",
+      "routeInfo": {
+        "queryName": "bio",
+        "isHome": false,
+        "isDynamic": false,
+        "model": "page",
+        "isIndex": false,
+        "indexModel": ""
+      },
+      "slugs": {
+        "it": "bio-integrale",
+        "de": "bio-vollkorn",
+        "en": "bio"
+      }
+    },
+    {
+      "path": "/blog/[slug]",
+      "routeInfo": {
+        "queryName": "slug",
+        "isHome": false,
+        "isDynamic": true,
+        "model": "post"
+      },
+      "slugs": {}
+    },
+    {
+      "path": "/blog",
+      "routeInfo": {
+        "queryName": "blog",
+        "isHome": false,
+        "isDynamic": false,
+        "model": "page",
+        "isIndex": true,
+        "indexModel": "post"
+      },
+      "slugs": {
+        "it": "blog",
+        "de": "blog",
+        "en": "blog"
       }
     },
     {
@@ -64,75 +232,14 @@
         "queryName": "contacts",
         "isHome": false,
         "isDynamic": false,
-        "isDefaultLocale": false,
         "model": "page",
-        "locale": "en"
-      }
-    },
-    {
-      "path": "/privacy-policy",
-      "routeInfo": {
-        "queryName": "privacyPolicy",
-        "isHome": false,
-        "isDynamic": false,
-        "isDefaultLocale": false,
-        "model": "legal_page",
-        "locale": "en"
-      }
-    },
-    {
-      "path": "/[slug]",
-      "routeInfo": {
-        "queryName": "slug",
-        "isHome": false,
-        "isDynamic": true,
-        "isDefaultLocale": false,
-        "model": "page",
-        "locale": "en"
-      }
-    },
-    {
-      "path": "/articoli/[slug]",
-      "routeInfo": {
-        "queryName": "articles",
-        "isHome": false,
-        "isDynamic": true,
-        "isDefaultLocale": false,
-        "model": "post",
-        "locale": "en"
-      }
-    },
-    {
-      "path": "/[prodotti]/[slug]",
-      "routeInfo": {
-        "queryName": "products",
-        "isHome": false,
-        "isDynamic": true,
-        "isDefaultLocale": false,
-        "model": "tag",
-        "locale": "en"
-      }
-    },
-    {
-      "path": "/info/il-team/[slug]",
-      "routeInfo": {
-        "queryName": "theTeam",
-        "isHome": false,
-        "isDynamic": true,
-        "isDefaultLocale": false,
-        "model": "person",
-        "locale": "en"
-      }
-    },
-    {
-      "path": "/info/chi-siamo",
-      "routeInfo": {
-        "queryName": "about",
-        "isHome": false,
-        "isDynamic": false,
-        "isDefaultLocale": false,
-        "model": "page",
-        "locale": "en"
+        "isIndex": null,
+        "indexModel": ""
+      },
+      "slugs": {
+        "it": "contatti",
+        "de": "kontakte",
+        "en": "contacts"
       }
     }
   ]

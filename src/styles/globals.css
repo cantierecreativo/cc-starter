@@ -1,76 +1,69 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+/* @import "root.css"; */
 
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   html {
-    font-family: "Roboto", system-ui, sans-serif;
+    /* @apply font-sans !scroll-smooth; */
+  }
+  @media (prefers-reduced-motion) {
+    html {
+      @apply !scroll-auto;
+    }
+  }
+  body {
+    @apply bg-base-200;
   }
 }
-/*
+
 @layer components {
-
-  .swiper .swiper-pagination .swiper-pagination-bullet,
-  .swiper-gallery .swiper-pagination .swiper-pagination-bullet,
-  .swiper-gallery-standard .swiper-pagination .swiper-pagination-bullet {
-    @apply mx-2 h-3 w-3 bg-white md:hidden;
+  .formatted p {
+    @apply text-sm text-neutral/80 xl:text-base;
+  }
+  .formatted strong {
+    @apply text-base text-neutral xl:text-md;
   }
 
-  .swiper .swiper-button-prev,
-  .swiper-gallery .swiper-button-prev,
-  .swiper-gallery-standard .swiper-button-prev {
-    @apply top-auto bottom-12 left-16 hidden h-14 w-14 before:absolute before:inset-0 before:scale-0 before:rounded-full before:border before:border-white before:duration-300 before:ease-in after:h-full after:w-3/5 after:bg-arrow-left after:bg-center after:bg-no-repeat after:text-white hover:before:scale-100 md:flex 2xl:bottom-24;
+  .gallery .swiper-wrapper {
+    @apply items-center;
   }
-
-  .swiper .swiper-button-next,
-  .swiper-gallery .swiper-button-next,
-  .swiper-gallery-standard .swiper-button-next {
-    @apply top-auto bottom-12 left-32 hidden h-14 w-14 before:absolute before:inset-0 before:scale-0 before:rounded-full before:border before:border-white before:duration-300 before:ease-in after:h-full after:w-3/5 after:bg-arrow-right after:bg-center after:bg-no-repeat after:text-white hover:before:scale-100 md:flex 2xl:bottom-24;
+  .gallery .swiper-button-prev,
+  .gallery .swiper-button-next {
+    @apply absolute bottom-0 top-auto z-10 bg-base-100 border border-primary-content w-[60px] h-[40px] rounded-full;
   }
-
-  .swiper.swiper-button-prev,
-  .swiper-gallery .swiper-button-prev {
-    @apply left-[-33%] bottom-0 before:border-black after:bg-arrow-left-black xl:left-[calc(-33%+1.5rem)] xl:bottom-8 2xl:-left-[333px];
+  .gallery .swiper-button-prev {
+    @apply left-0;
   }
-
-  .swiper.swiper-button-next,
-  .swiper-gallery .swiper-button-next {
-    @apply bottom-0 left-[calc(-33%+3.5rem)] before:border-black after:bg-arrow-right-black xl:bottom-8 xl:left-[calc(-33%+5rem)] 2xl:-left-[calc(333px-3.5rem)];
+  .gallery .swiper-button-next {
+    @apply right-0;
   }
-
-  .swiper-gallery-standard .swiper-button-prev {
+  .gallery .swiper-button-prev:after,
+  .gallery .swiper-button-next:after {
+    @apply text-base text-primary-content;
+  }
+  .gallery .swiper {
+    @apply pb-16;
+  }
+  .gallery .swiper-pagination {
     @apply hidden;
   }
 
-  .swiper-gallery-standard .swiper-button-next {
-    @apply right-0 left-auto top-1/2 after:bg-arrow-right-black hover:before:border-black;
+  .checkbox-custom {
+    @apply absolute h-6 w-6 opacity-0;
   }
-
-  .swiper-gallery-standard {
-    @apply relative;
+  input:checked + div div {
+    @apply w-3 h-3 opacity-100;
   }
-
-  @media (min-width: 1536px) {
-    .mySwiper .swiper-button-prev {
-      left: calc((100vw - 1380px) / 2);
-    }
+  input:focus-visible + div {
+    @apply border-transparent;
   }
-
-  @media (min-width: 1536px) {
-    .mySwiper .swiper-button-prev {
-      left: calc((100vw - 1380px) / 2);
-    }
-
-    .mySwiper .swiper-button-next {
-      left: calc(((100vw - 1380px) / 2) + 70px);
-    }
+  input:checked + div svg {
+    @apply block;
   }
-
-  .swiper-notification {
-    @apply sr-only;
+  .custom-arrow svg {
+    @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-[0.5];
   }
-
-
-} */
+}

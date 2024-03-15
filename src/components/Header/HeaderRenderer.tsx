@@ -1,4 +1,4 @@
-import { MenuDocument, MenuQuery, SiteLocale } from "@/graphql/generated";
+import { MenuQuery, SiteLocale } from "@/graphql/generated";
 import Header from ".";
 
 type Props = {
@@ -8,6 +8,7 @@ type Props = {
 };
 
 export type Menu = {
+  menuImage?: any;
   id: string;
   title: string;
   path?: string;

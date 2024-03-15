@@ -1,0 +1,13 @@
+fragment detailSectionRecord on DetailSectionRecord {
+  _modelApiKey
+  id
+  details {
+    value
+  }
+  imagePosition
+  image {
+    responsiveImage {
+      ...rImage
+    }
+  }
+}

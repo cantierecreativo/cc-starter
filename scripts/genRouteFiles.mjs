@@ -7,8 +7,11 @@ const BASE_FOLDER = "(base)";
 async function replaceInFile(destFile, toReplace, replaceWith) {
   try {
     const contents = await fsPromises.readFile(destFile, "utf-8");
-    const re = new RegExp(`"${toReplace}"`, "g");
-    let replaced = contents.replace(re, `'${replaceWith}'`);
+    const re1 = new RegExp(`"${toReplace}"`, "g");
+    const re2 = new RegExp(`"${toReplace}"`, "g");
+    let replaced = contents
+      .replace(re1, `"${replaceWith}"`)
+      .replace(re2, `'${replaceWith}'`);
     await fsPromises.writeFile(destFile, replaced);
   } catch (err) {
     console.error(err);
@@ -50,7 +53,9 @@ for (let f of folders) {
   await $`mkdir -p ${f}`;
   const m = models.find((m) => m.path === `/${f}`) || null;
   const r = m?.routeInfo;
-  if (r && r.model) {
+  console.info(chalk.blue(m.path, ":", r.model));
+
+  if (r && r.model && r.model !== "none") {
     let source = "generic_page";
     switch (r.model) {
       case "page":
@@ -58,7 +63,10 @@ for (let f of folders) {
         break;
       case "legal_page":
         source = "legal_page";
+        break;
       case "post":
+        source = "generic_post";
+        break;
       case "tag":
       default:
         source = "empty_page";
@@ -66,6 +74,15 @@ for (let f of folders) {
     }
     if (r.isDynamic) {
       source = `${source}_dynamic`;
+    }
+    if (r.isIndex) {
+      // && r.indexModel === "post"
+      source = `index_page`;
+      if (r.indexModel === "post") {
+        source = `blog_index_page`;
+      } else if (r.indexModel === "product") {
+        source = `product_index_page`;
+      }
     }
 
     const destination = `${f}/page.${ext}`;

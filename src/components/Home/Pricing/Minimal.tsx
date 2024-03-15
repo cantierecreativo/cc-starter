@@ -77,7 +77,7 @@ const Minimal = ({ header, subheader, plans }: Props) => {
 
             <div className="mt-4 h-24 text-gray-300">
               <StructuredText
-                data={planInEvidence.tierDescription.value}
+                data={planInEvidence.tierDescription.value as any}
                 renderNode={Highlighter}
               />
             </div>
@@ -128,7 +128,7 @@ const Minimal = ({ header, subheader, plans }: Props) => {
 
                 <div className="mt-4 h-24 text-gray-500 dark:text-gray-300">
                   <StructuredText
-                    data={plan.tierDescription.value}
+                    data={plan.tierDescription.value as any}
                     renderNode={Highlighter}
                   />
                 </div>

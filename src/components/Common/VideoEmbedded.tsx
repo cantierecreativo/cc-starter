@@ -1,62 +1,21 @@
 "use client";
-import { useRef, useEffect, useState } from "react";
-import ReactPlayer from "react-player";
+import dynamic from "next/dynamic";
 
-function useWindowSize() {
-  // Initialize state with undefined width/height so server and client renders match
-  // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
-  const [windowSize, setWindowSize] = useState({
-    width: undefined,
-    height: undefined,
-  });
-  useEffect(() => {
-    // Handler to call on window resize
-    function handleResize() {
-      // Set window width/height to state
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      } as any);
-    }
-    // Add event listener
-    window.addEventListener("resize", handleResize);
-    // Call handler right away so state gets updated with initial window size
-    handleResize();
-    // Remove event listener on cleanup
-    return () => window.removeEventListener("resize", handleResize);
-  }, []); // Empty array ensures that effect is only run on mount
-  return windowSize;
-}
+import { VideoField } from "@/graphql/generated";
 
-const VideoEmbedded = (props: any) => {
-  const size = useWindowSize();
+const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 
-  const { id, video, autoPlay, loop, muted, controls } = props;
-  const ref = useRef<any>();
-  const [width, setWidth] = useState(null);
-
-  useEffect(() => {
-    if (ref?.current) {
-      //&& !width
-      const rect = (ref?.current as any).getBoundingClientRect()?.toJSON();
-      setWidth(rect.width);
-    }
-  }, [ref?.current, width, size]);
-
+const VideoEmbedded = ({ video }: { video: VideoField }) => {
   return (
-    <div ref={ref} key={id} style={{ width: "100%", backgroundColor: "#000" }}>
-      {width && (
-        <ReactPlayer
-          controls={controls}
-          muted={muted}
-          width={width}
-          autoPlay={autoPlay}
-          height={(width / 4) * 3}
-          loop={loop}
-          url={video.url}
-        />
-      )}
-    </div>
+    <ReactPlayer
+      autoPlay={false}
+      playing={false}
+      width="100%"
+      height="100%"
+      url={video.url}
+      controls={true}
+      className="react-player-custom"
+    />
   );
 };
 

@@ -1,27 +1,21 @@
 import { toNextMetadata } from "react-datocms";
-import { LocaleValue, AltsProps, PageSeoProps } from "@/types";
+import { LocaleValue, PageSeoProps } from "@/_types";
 import resolveLink from "@/lib/resolveLink";
 import config from "@/data/config";
 
-const HOST = process.env.NEXT_PUBLIC_HOST;
+const HOST = process.env.HOST;
 
 export function getAlts(page: PageSeoProps) {
   if (!page) return [];
-  const alts = page?.titles?.map((item: LocaleValue) => {
-    const { value, locale } = item;
-    const slug =
-      page?.slugs && page?.slugs.length > 0
-        ? page?.slugs.find((s: LocaleValue) => s.locale === locale)?.value
-        : "";
-    const title = value;
+  const alts = page?.slugs?.map((item: LocaleValue) => {
+    const { locale } = item;
     const _modelApiKey = page?._modelApiKey || "";
-    const section = page?.section || "";
-    return { slug, title: `${title}`, locale, _modelApiKey, section };
+    return { slugs: page?.slugs, locale, _modelApiKey };
   });
   return alts;
 }
 
-export default function getSeoMeta(page: PageSeoProps) {
+export default function getSeoMeta(page: PageSeoProps, currentLocale: string) {
   if (!page) return null;
 
   const tags = page?.seo || [];
@@ -29,21 +23,43 @@ export default function getSeoMeta(page: PageSeoProps) {
 
   const nextTags = toNextMetadata(tags || []);
   const dl = config.defaultLocale;
-  const alternates = alts?.reduce((obj: any, a: any) => {
-    const { locale } = a;
-    const path = resolveLink({ ...a, locale });
+
+  console.log("ALTS", alts);
+  const alternates = alts?.reduce((obj: any, alt: any) => {
+    const path = resolveLink(alt);
     const url = `${HOST}${path}`;
-    if (dl === locale) {
-      return { ...obj, canonical: url };
-    }
+    const { locale } = alt;
     let languages = obj.languages || {};
-    return {
-      ...Object,
+
+    //ADD language to ALTERNATES
+    obj = {
+      ...obj,
       languages: {
         ...languages,
         [locale]: url,
       },
     };
+    languages = obj.languages || {};
+
+    //X-DEFAULT
+    if (dl === locale) {
+      obj = {
+        ...obj,
+        languages: {
+          ...languages,
+          ["x-default"]: url,
+        },
+      };
+    }
+    //CANONICAL
+    if (currentLocale === locale) {
+      obj = {
+        ...obj,
+        canonical: url,
+      };
+    }
+
+    return obj;
   }, {});
   const meta = { ...nextTags, alternates };
   // console.log(meta);

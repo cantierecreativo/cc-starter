@@ -1,0 +1,15 @@
+fragment attachmentsBlockRecord on AttachmentsBlockRecord {
+  id
+  _modelApiKey
+  __typename
+  attachmentPrefix
+  attachmentTitle
+  attachmentText
+  attachments {
+    file {
+      id
+      url
+    }
+    title
+  }
+}

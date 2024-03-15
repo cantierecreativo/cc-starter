@@ -1,4 +1,4 @@
-import { ButtonRecord, FileField } from "@/graphql/generated";
+import { ButtonRecord, ImageAltTitleFileField } from "@/graphql/generated";
 import { Maybe } from "graphql/jsutils/Maybe";
 import { Image as DatoImage } from "react-datocms";
 import ReactMarkdown from "react-markdown";
@@ -7,7 +7,7 @@ type Props = {
   heroTitle: string;
   heroSubtitle: Maybe<string>;
   buttons: ButtonRecord[];
-  image: Maybe<FileField> | undefined;
+  image: Maybe<ImageAltTitleFileField> | undefined;
 };
 
 const SplitImage = ({ heroTitle, heroSubtitle, buttons, image }: Props) => {

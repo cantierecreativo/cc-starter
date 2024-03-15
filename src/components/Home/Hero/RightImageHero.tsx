@@ -11,7 +11,7 @@ type Props = {
   heroTitle: string;
   heroSubtitle: Maybe<string>;
   buttons: ButtonRecord[];
-  image: Maybe<FileField> | undefined;
+  image: any;
 };
 
 const RightImageHero = ({ heroTitle, heroSubtitle, buttons, image }: Props) => {

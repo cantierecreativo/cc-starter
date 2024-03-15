@@ -1,5 +1,15 @@
-import type { ResolveLinkProps } from "@/types";
 import config from "@/data/config";
+
+type RouteProps = {
+  _modelApiKey: string;
+  locale: string;
+  slugs?: [
+    {
+      locale: string;
+      value: string;
+    }
+  ];
+};
 
 export function t(section: string, locale: string) {
   if (locale === config.defaultLocale) return section;
@@ -7,119 +17,54 @@ export function t(section: string, locale: string) {
   return key?.[locale] ?? section;
 }
 
+function matchCustomRoute({ slugs, _modelApiKey, locale }: RouteProps) {
+  const slug = slugs?.find((i) => i.locale === locale)?.value;
+  if (!slug) return null;
+
+  const matchingRoute = config.models.find(
+    (i) =>
+      !i.routeInfo.isDynamic &&
+      !i.routeInfo.isHome &&
+      i.routeInfo.model === _modelApiKey &&
+      i.slugs?.[locale] === slug
+  );
+
+  if (!matchingRoute) return null;
+  if (locale === config.defaultLocale) return matchingRoute.path;
+  const defaultPathChunks = matchingRoute.path.replace(slug, "").split("/");
+  let prefix = defaultPathChunks.map((i) => t(i, locale)).join("/");
+  return `/${prefix}/${slug}`;
+}
+
 export default function resolveLink({
-  slug,
   slugs,
   _modelApiKey,
-  section,
   locale,
-}: ResolveLinkProps): string {
+}: RouteProps): string {
   //language prefix
-  const lp = locale === config.defaultLocale ? "" : `/${locale}`;
-  //page section?
-  const s = section?.toLowerCase() || "";
-  //localized section, used for pages section
-  const ls = s ? t(`${s}`, locale) : "";
-  //localized lslug
-  let lslug = slug;
-  // check redirect
-  let redirect = false;
-  if (slugs) {
-    const item = slugs.find((e: any) => e.locale == locale);
-    lslug = item?.value || slug;
-    redirect = !item?.value;
-    // console.log("redirect", redirect);
+  const lang = locale === config.defaultLocale ? "" : `/${locale}`;
+  const slug = slugs?.find((i) => i.locale === locale)?.value;
+  if (slug === "home") {
+    return lang;
   }
-  if (!_modelApiKey) {
-    return "#";
+  //custom routing
+  if (slug) {
+    const customRoute = matchCustomRoute({ slugs, _modelApiKey, locale });
+    if (customRoute) {
+      // console.log("custom route found: ", slug, customRoute);
+      return `${lang}${customRoute}`;
+    }
   }
+  console.log("resolve default route  : ", slug, _modelApiKey);
+  //default routing
   switch (_modelApiKey) {
     case "page":
-      if (!s || s === "-") {
-        return `${lp}/${lslug}`;
-      } else if (s === "festival") {
-        return `${lp}/${ls}/p/${lslug}`;
-      } else {
-        return `${lp}/${ls}/${lslug}`;
-      }
-    case "festival_edition":
-      return `${lp}/${t(`festival`, locale)}/${lslug}`;
-    case "education_page":
-      return `${lp}/studio/${t(`formazione`, locale)}/`;
-    case "workshop_category":
-      return `${lp}/studio/${t(`formazione`, locale)}/c/${lslug}`;
-    case "workshop":
-      if (redirect) {
-        return `${lp}`;
-      } else {
-        return `${lp}/studio/${t(`formazione`, locale)}/${lslug}`;
-      }
-    case "artistic_residencies_index":
-      return `${lp}/studio/${t(`residenze-artistiche`, locale)}/`;
-    case "artistic_residecy":
-      return `${lp}/studio/${t(`artisti`, locale)}/${slug}`;
-    case "artists_index":
-      return `${lp}/studio/${t(`artisti-associati`, locale)}/`;
-    case "artist":
-      return `${lp}/studio/${t(`artisti`, locale)}/${slug}`;
-    case "company":
-      return `${lp}/studio/${t(`compagnie`, locale)}/${lslug}`;
-    case "events_index":
-      return `${lp}/people/${t(`eventi`, locale)}/`;
-    case "event":
-      if (redirect) {
-        return `${lp}`;
-      } else {
-        return `${lp}/people/${t(`eventi`, locale)}/${lslug}`;
-      }
-    case "projects_index":
-      return `${lp}/people/${t(`progetti`, locale)}/`;
-    case "project":
-      return `${lp}/people/${t(`progetti`, locale)}/${lslug}`;
-    case "networks_index":
-      return `${lp}/people/${t(`reti`, locale)}/`;
-    case "network":
-      return `${lp}/people/${t(`reti`, locale)}/${lslug}`;
-    case "news_index":
-      return `${lp}/${t(`news`, locale)}/`;
-    case "news":
-      if (redirect) {
-        return `${lp}`;
-      } else {
-        return `${lp}/${t(`news`, locale)}/${lslug}`;
-      }
-    case "videos_index":
-      return `${lp}/${t(`video`, locale)}/`;
-    case "audios_index":
-      return `${lp}/${t(`audio`, locale)}/`;
-    case "publication":
-      return `${lp}/${t(`pubblicazioni`, locale)}/${lslug}`;
-    case "media_photo":
-      return `${lp}/${t(`foto`, locale)}/${lslug}`;
-    case "media_video":
-      return `${lp}/${t(`video`, locale)}/${lslug}`;
-    case "media_document":
-      return `${lp}/${t(`doc`, locale)}/${lslug}`;
-    case "media_audio":
-      return `${lp}/${t(`audio`, locale)}/${lslug}`;
-    case "artists_companies_archive":
-      return `${lp}/${t(`archivio`, locale)}/${t(`artisti-compagnie`, locale)}`;
-    case "activities_archive":
-      return `${lp}/${t(`archivio`, locale)}/${t(`attivita`, locale)}`;
-    case "festival_editions_archive":
-      return `${lp}/${t(`archivio`, locale)}/${t(`festival`, locale)}`;
-    case "media_archive":
-      return `${lp}/${t(`archivio`, locale)}/${t(`media`, locale)}`;
-    case "news_publications_archive":
-      return `${lp}/${t(`archivio`, locale)}/${t(
-        `news-pubblicazioni`,
-        locale
-      )}`;
-    case "partners_networks_archive":
-      return `${lp}/${t(`archivio`, locale)}/${t(`partner-reti`, locale)}`;
-    case "years_archive":
-      return `${lp}/${t(`archivio`, locale)}/${t(`timeline`, locale)}`;
+      return `${lang}/${slug}`;
+    case "post":
+      return `${lang}/${t(`blog`, locale)}/${slug}`;
+    case "legal_page":
+      return `${lang}/${t(`legal`, locale)}/${slug}`;
     default:
-      return `${lp}/${lslug ? lslug : ""}`;
+      return `${lang}/${slug ? slug : ""}`;
   }
 }
