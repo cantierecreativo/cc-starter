@@ -1,15 +1,42 @@
 {
   "defaultLocale": "it",
-  "locales": [
-    "it",
-    "en"
-  ],
-  "translations": {},
+  "locales": ["it", "en"],
+  "translations": {
+    "articoli": {
+      "en": "articles"
+    },
+    "blog": {
+      "en": "blog"
+    },
+    "chi-siamo": {
+      "en": "about"
+    },
+    "contatti": {
+      "en": "contacts"
+    },
+    "il-team": {
+      "en": "the-team"
+    },
+    "info": {
+      "en": "info"
+    },
+    "privacy-policy": {
+      "en": "privacy-policy"
+    },
+    "prodotti": {
+      "en": "products"
+    },
+    "slug": {
+      "en": "slug"
+    }
+  },
   "paths": [
     "/",
     "/articoli/[slug]",
-    "/articoli",
-    "/[slug]"
+    "/prodotti/[slug]",
+    "/info/il-team/[slug]",
+    "/info/chi-siamo",
+    "/blog/[slug]"
   ],
   "models": [
     {
@@ -21,54 +48,129 @@
         "isHome": true,
         "isVirtual": false,
         "isDynamic": false,
-        "isIndex": false
+        "titles": [
+          {
+            "locale": "en",
+            "value": "home"
+          },
+          {
+            "locale": "it",
+            "value": "home"
+          }
+        ]
       },
-      "slugs": {
-        "en": "home",
-        "it": "home"
-      }
+      "level": 0
     },
     {
-      "path": "/articoli/[slug]",
+      "path": "/contatti",
       "routeInfo": {
-        "model": "post",
-        "querySlug": "slug",
-        "indexModel": "",
+        "queryName": "contacts",
         "isHome": false,
-        "isVirtual": false,
-        "isDynamic": true,
-        "isIndex": false
+        "isDynamic": false,
+        "model": "page",
+        "titles": [
+          {
+            "locale": "en",
+            "value": "contacts"
+          },
+          {
+            "locale": "it",
+            "value": "contatti"
+          }
+        ]
       },
-      "slugs": {}
+      "level": 0
     },
     {
-      "path": "/articoli",
+      "path": "/privacy-policy",
       "routeInfo": {
-        "model": "page",
-        "querySlug": "home",
-        "indexModel": "post",
-        "isHome": true,
-        "isVirtual": false,
+        "queryName": "privacyPolicy",
+        "isHome": false,
         "isDynamic": false,
-        "isIndex": true
+        "model": "legal_page",
+        "titles": [
+          {
+            "locale": "en",
+            "value": "privacy-policy"
+          },
+          {
+            "locale": "it",
+            "value": "privacy-policy"
+          }
+        ]
       },
-      "slugs": {
-        "en": "posts",
-        "it": "articoli"
-      }
+      "level": 0
     },
     {
       "path": "/[slug]",
       "routeInfo": {
-        "model": "page",
-        "querySlug": "slug",
-        "indexModel": "",
+        "queryName": "slug",
+        "isHome": false,
+        "isDynamic": true,
+        "model": "page"
+      },
+      "level": 0
+    },
+    {
+      "path": "/articoli/[slug]",
+      "routeInfo": {
+        "queryName": "articles",
+        "isHome": false,
+        "isDynamic": true,
+        "model": "post"
+      },
+      "level": 1
+    },
+    {
+      "path": "/prodotti/[slug]",
+      "routeInfo": {
+        "queryName": "products",
         "isHome": false,
         "isVirtual": false,
         "isDynamic": true,
-        "isIndex": false
+        "model": "tag"
       },
-      "slugs": {}
+      "level": 1
+    },
+    {
+      "path": "/articoli",
+      "routeInfo": {
+        "queryName": "theTeam",
+        "isHome": false,
+        "isDynamic": true,
+        "model": "person"
+      },
+      "level": 2
+    },
+    {
+      "path": "/info/chi-siamo",
+      "routeInfo": {
+        "queryName": "about",
+        "isHome": false,
+        "isDynamic": false,
+        "model": "page",
+        "titles": [
+          {
+            "locale": "en",
+            "value": "about"
+          },
+          {
+            "locale": "it",
+            "value": "chi-siamo"
+          }
+        ]
+      },
+      "level": 1
+    },
+    {
+      "path": "/blog/[slug]",
+      "routeInfo": {
+        "queryName": "blog",
+        "isHome": false,
+        "isDynamic": true,
+        "model": "post"
+      },
+      "level": 1
     }
   ]
 }

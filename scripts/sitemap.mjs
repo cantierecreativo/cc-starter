@@ -3,13 +3,22 @@ import path from "path";
 import { promises as fs } from "fs";
 import { buildClient, LogLevel } from "@datocms/cma-client-node";
 
-// dotenv.config({ path: ".env.local" }); //SE USATE direnv non serve specificare il path
-dotenv.config();
+dotenv.config({ path: ".env.local" }); //SE USATE direnv non serve specificare il path
+// dotenv.config();
 
 //contiene le rotte e loro prefissi
-const routeInfo.models = JSON.parse(
-  await fs.readFile(new URL("./src/data/config.json", import.meta.url))
+const conf = JSON.parse(
+  await fs.readFile(new URL("../src/data/config.json", import.meta.url))
 );
+
+const t = (section, locale) => {
+  if (!section || section.includes("slug")) return "";
+  if (locale === conf.defaultLocale) return section;
+  const key = conf.translations[section];
+  return key?.[locale] ?? section;
+};
+
+const { models, locales, defaultLocale } = conf || {};
 
 const API_KEY = process.env.DATO_API_KEY; //use your read api key variable name here
 const ENV = process.env.DATO_ENV ?? "";
@@ -45,6 +54,7 @@ async function getRecords(models) {
   if (ENV) {
     options.environment = ENV;
   }
+
   let client = await buildClient(options);
 
   const itemTypesMap = await (
@@ -55,16 +65,6 @@ async function getRecords(models) {
     return itm;
   }, {});
   // console.log("itemTypesMap", JSON.stringify(itemTypesMap, null, 2));
-
-  // for (const m of models.split(",")) {
-  //   console.log("MODEL:", m);
-  //   await client.items.list({
-  //     filter: {
-  //       type: m,
-  //       slugField: { exists: true },
-  //     },
-  //   });
-  // }
 
   let records = [];
   // TO GET ALL RECORDS INSTEAD OF SOME
@@ -81,46 +81,76 @@ async function getRecords(models) {
       records.push(item);
     }
   }
-  // console.log("records", records.length);
 
   return records;
-  //   records = await client.items.list({ filter: { type: models } });
-  //   return records
-  //     .map((record) => {
-  //       const { id, title, slug, item_type } = record;
-  //       const apiKey = itemTypesMap[item_type.id];
-  //       return { id, title, slug, apiKey };
-  //     })
-  //     .filter((r) => r.slug);
 }
 
-function resolvePath(slug, apiKey) {
-  const info = routeInfo.models.find((r) => r.routeInfo.model === apiKey);
-  if (info?.path) {
-    return `${info.prefix}/${slug}`;
+function resolvePath(record, locale) {
+  // console.log("record", record);
+  const { slug, apiKey } = record;
+  const isDefautlLocale = locale === defaultLocale;
+  const localePrefix = isDefautlLocale ? "" : `/${locale}`;
+  let sl = slug;
+  if (typeof slug != "string") {
+    if (!slug[locale]) return null;
+    sl = slug[locale];
   }
-  return slug;
+  const info = models.find((r) => r.routeInfo.model === apiKey);
+  if (sl == "home") sl = "";
+
+  if (info?.path) {
+    let prefix = "";
+    if (info.level > 0) {
+      const arrayOfPath = info.path.split("/");
+      console.log("ARRAY PATH ----->", arrayOfPath);
+      prefix =
+        "/" +
+        arrayOfPath
+          .map((p) => t(p, locale))
+          .filter((p) => p)
+          .join("/");
+      console.log("PREFIX ----->", prefix);
+    }
+
+    return `${localePrefix}${prefix}/${sl}`;
+  }
+}
+
+function getSlug(record, locale) {
+  const { slug, apiKey } = record;
+  let url;
+  if (typeof slug == "string") {
+    url = resolvePath({ slug, apiKey }, locale);
+  } else {
+    if (!slug[locale]) return null;
+    url = resolvePath({ slug: slug[locale], apiKey }, locale);
+  }
+
+  // const alts = info.locales
+  //   .filter((l) => l !== locale)
+  //   .reduce((acc, l) => {
+  //     if (!l || !slug[l]) return acc;
+  //     const path = resolvePath(record, l);
+  //     return [...acc, { path, locale: l }];
+  //   }, []);
+  return url;
 }
 
 function getSlugs(records) {
-  try {
-    const homeRecord = { slug: "" }; //ADD HOME SLUG (EMPTY)
-    const slugs = [homeRecord, ...records].reduce((all, item) => {
-      const { slug, apiKey } = item;
-      const path = resolvePath(slug, apiKey);
-      return [...all, path];
-    }, []);
-    return slugs;
-  } catch (error) {
-    // console.error(error);
-  }
-  return [];
+  return records
+    .map((r) => {
+      return locales.reduce((acc, l) => {
+        const result = resolvePath(r, l);
+        return result ? [...acc, result] : acc;
+      }, []);
+    })
+    .flat();
 }
 
 function getRoute(path) {
   return `
   <url>
-    <loc>${HOST}/${path}</loc>
+    <loc>${HOST}${path}</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -130,9 +160,9 @@ async function generateSitemap() {
   const start = Date.now();
 
   // qui ci vanno i nomi delle api key relativi ai modelli delle pagine tipo "about_page,article";
-  const pageModels = routeInfo.map((r) => r.model).join(",");
+  const pageModels = models.map((r) => r.routeInfo.model).join(",");
   const records = await getRecords(pageModels);
-  console.log("got records", records.length);
+  // console.log("got records", records);
   const slugs = getSlugs(records);
   const sitemap = `
   <\?xml version="1.0" encoding="UTF-8"\?>

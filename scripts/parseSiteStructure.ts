@@ -161,12 +161,8 @@ function getTranslations(routes: any, defaultLocale: string) {
   function traverse(sibiling: any, level: number) {
     console.log("processing level:", level);
     for (let route of sibiling) {
-      if (!(route.isHome || route.isDynamic)) {
-        const slugs = getSlugs(route, defaultLocale);
-        const obj = format(slugs, defaultLocale);
-        if (obj) {
-          translations.push(obj);
-        }
+      if (!route.isHome) {
+        translations.push(format(route._allTitleLocales, defaultLocale));
       }
       if (route.children?.length > 0) {
         traverse(route.children, level + 1);
@@ -185,20 +181,30 @@ function camelize(str: string) {
       return index === 0 ? match.toLowerCase() : match.toUpperCase();
     });
 }
-function formatRoute(route: any, defaultLocale: string) {
-  // const english = "en";
-  // console.log("formatRoute");
-  const slugs = getSlugs(route, defaultLocale);
-  const slug = slugs?.find((i: any) => i.locale === defaultLocale)?.value;
-  let querySlug = slug ? slug : "";
-
-  const { isHome, isDynamic, associatedModel: model, parent } = route;
+function formatRoute(route: any, isDefaultLocale: boolean) {
+  const english = "en";
+  let enTitle = route._allTitleLocales.find(
+    (i: any) => i.locale === english
+  ).value;
+  let queryName = enTitle;
+  let titles;
+  const {
+    isHome,
+    isDynamic,
+    associatedModel: model,
+    parent,
+    _allTitleLocales,
+  } = route;
   if (isHome) {
     querySlug = "home";
   }
-  querySlug = querySlug ? camelize(querySlug) : querySlug;
-  if (!model || model === "none") {
-    querySlug = "";
+  if (!isDynamic) titles = _allTitleLocales || [];
+  if (isDynamic && parent) {
+    // console.log("parent", parent);
+    let parentEnTitle = parent._allTitleLocales.find(
+      (i: any) => i.locale === english
+    ).value;
+    queryName = parentEnTitle;
   }
 
   const isIndex = route?.reference?.isIndex || false;
@@ -206,12 +212,9 @@ function formatRoute(route: any, defaultLocale: string) {
   const isVirtual = !model || model === "none" ? true : false;
   const info = {
     model,
-    querySlug,
-    indexModel,
-    isHome,
-    isVirtual,
-    isDynamic,
-    isIndex,
+    titles,
+    // isDefaultLocale,
+    // locale: english,
   };
   if (!querySlug) {
     console.log("info", info);
@@ -224,7 +227,7 @@ function getPaths(routes: any, defaultLocale: string) {
   let models: {
     path: string;
     routeInfo: any;
-    slugs: object;
+    level: any;
   }[] = [];
   function traverse(sibiling: any, level: number, path: string) {
     console.log("processing level:", level, path);
@@ -250,13 +253,7 @@ function getPaths(routes: any, defaultLocale: string) {
       }
       if (route.associatedModel) {
         paths.push(newPath);
-        let slugs: any = {};
-        if (!routeInfo.isDynamic) {
-          slugs = names.reduce((obj: any, i: any) => {
-            return { ...obj, [i.locale]: i.value };
-          }, {});
-        }
-        models.push({ path: newPath, routeInfo, slugs });
+        models.push({ path: newPath, routeInfo, level });
       }
     }
   }
@@ -275,7 +272,7 @@ function getPaths(routes: any, defaultLocale: string) {
 
   const keys = routeNames.map((i: any) => Object.keys(i)[0]).sort();
   const keySet: any = new Set(keys);
-  const translations: any = [];
+  let translations: any = {};
   keySet.forEach((k: any) => {
     const found = routeNames.find((o: any) => {
       if (Object.keys(o)[0] === k) {
@@ -284,7 +281,10 @@ function getPaths(routes: any, defaultLocale: string) {
       return false;
     });
     // console.log(k, found);
-    translations.push(found);
+    translations = {
+      ...translations,
+      ...found,
+    };
   });
   //array to object
   const translationObj = translations.reduce((obj: any, i: any) => {
