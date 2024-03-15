@@ -12,10 +12,14 @@ const conf = JSON.parse(
 );
 
 const t = (section, locale) => {
-  if (!section || section.includes("slug")) return "";
+  if (!section) return;
   if (locale === conf.defaultLocale) return section;
   const key = conf.translations[section];
-  return key?.[locale] ?? section;
+  if (key?.[locale] && key?.[locale] != "") {
+    return key?.[locale];
+  } else {
+    return section;
+  }
 };
 
 const { models, locales, defaultLocale } = conf || {};
@@ -48,7 +52,7 @@ Sitemap: ${HOST}/sitemap.xml`;
 }
 
 async function getRecords(models) {
-  // console.log("MODELS", JSON.stringify(models, null, 2));
+  console.log("MODELS", JSON.stringify(models, null, 2));
 
   let options = { apiToken: API_KEY, logLevel: LogLevel.BASIC };
   if (ENV) {
@@ -56,7 +60,7 @@ async function getRecords(models) {
   }
 
   let client = await buildClient(options);
-
+  // console.log("CLIENT", client);
   const itemTypesMap = await (
     await client.itemTypes.list()
   ).reduce((itm, i) => {
@@ -101,15 +105,9 @@ function resolvePath(record, locale) {
   if (info?.path) {
     let prefix = "";
     if (info.level > 0) {
-      const arrayOfPath = info.path.split("/");
-      console.log("ARRAY PATH ----->", arrayOfPath);
-      prefix =
-        "/" +
-        arrayOfPath
-          .map((p) => t(p, locale))
-          .filter((p) => p)
-          .join("/");
-      console.log("PREFIX ----->", prefix);
+      const arrayOfPath = info.path.split("/").filter((p) => p && !p.includes("slug"));
+      // console.log("arrayOfPath ->", arrayOfPath);
+      prefix = "/" + arrayOfPath.map((p) => t(p, locale)).join("/");
     }
 
     return `${localePrefix}${prefix}/${sl}`;
@@ -160,7 +158,10 @@ async function generateSitemap() {
   const start = Date.now();
 
   // qui ci vanno i nomi delle api key relativi ai modelli delle pagine tipo "about_page,article";
-  const pageModels = models.map((r) => r.routeInfo.model).join(",");
+  const pageModels = models
+    .map((r) => r.routeInfo.model)
+    .filter((m) => m != "none")
+    .join(",");
   const records = await getRecords(pageModels);
   // console.log("got records", records);
   const slugs = getSlugs(records);

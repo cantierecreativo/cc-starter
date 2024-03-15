@@ -79,7 +79,7 @@ function formatRoute(route: any, isDefaultLocale: boolean) {
   if (isHome) {
     queryName = "home";
   }
-  if (!isDynamic) titles = _allTitleLocales || [];
+  // if (!isDynamic) titles = _allTitleLocales || [];
   if (isDynamic && parent) {
     // console.log("parent", parent);
     let parentEnTitle = parent._allTitleLocales.find(
