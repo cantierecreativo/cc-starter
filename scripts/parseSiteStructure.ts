@@ -50,7 +50,7 @@ function getTranslations(routes: any, defaultLocale: string) {
   function traverse(sibiling: any, level: number) {
     console.log("processing level:", level);
     for (let route of sibiling) {
-      if (!(route.isHome || route.isDynamic)) {
+      if (!route.isHome) {
         translations.push(format(route._allTitleLocales, defaultLocale));
       }
       if (route.children?.length > 0) {
@@ -72,15 +72,16 @@ function camelize(str: string) {
 }
 function formatRoute(route: any, isDefaultLocale: boolean) {
   const english = "en";
-  let enTitle = route._allTitleLocales.find(
-    (i: any) => i.locale === english
-  ).value;
+  let enTitle = route._allTitleLocales.find((i: any) => i.locale === english).value;
   let queryName = enTitle;
-  const { isHome, isDynamic, associatedModel: model, parent } = route;
+  let titles;
+  const { isHome, isDynamic, associatedModel: model, parent, _allTitleLocales } = route;
   if (isHome) {
     queryName = "home";
   }
+  if (!isDynamic) titles = _allTitleLocales || [];
   if (isDynamic && parent) {
+    // console.log("parent", parent);
     let parentEnTitle = parent._allTitleLocales.find(
       (i: any) => i.locale === english
     ).value;
@@ -92,6 +93,7 @@ function formatRoute(route: any, isDefaultLocale: boolean) {
     isHome,
     isDynamic,
     model,
+    titles,
     // isDefaultLocale,
     // locale: english,
   };
@@ -102,6 +104,7 @@ function getPaths(routes: any, defaultLocale: string) {
   let models: {
     path: string;
     routeInfo: any;
+    level: any;
   }[] = [];
   function traverse(sibiling: any, level: number, path: string) {
     console.log("processing level:", level, path);
@@ -124,7 +127,7 @@ function getPaths(routes: any, defaultLocale: string) {
         traverse(route.children, level + 1, newPath);
       } else {
         paths.push(newPath);
-        models.push({ path: newPath, routeInfo });
+        models.push({ path: newPath, routeInfo, level });
       }
     }
   }
@@ -141,7 +144,7 @@ function getPaths(routes: any, defaultLocale: string) {
   const routeNames = getTranslations(routes, defaultLocale);
   const keys = routeNames.map((i: any) => Object.keys(i)[0]).sort();
   const keySet: any = new Set(keys);
-  const translations: any = [];
+  let translations: any = {};
   keySet.forEach((k: any) => {
     const found = routeNames.find((o: any) => {
       if (Object.keys(o)[0] === k) {
@@ -150,7 +153,10 @@ function getPaths(routes: any, defaultLocale: string) {
       return false;
     });
     // console.log(k, found);
-    translations.push(found);
+    translations = {
+      ...translations,
+      ...found,
+    };
   });
 
   const { paths, models } = getPaths(routes, defaultLocale);
