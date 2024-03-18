@@ -6,37 +6,57 @@
   ],
   "translations": {
     "anfore": {
-      "en": "the-anfore"
+      "en": "the-anfore",
+      "it": "anfore"
+    },
+    "articolo-con-effetto-hover": {
+      "it": "articolo-con-effetto-hover"
     },
     "bio-integrale": {
-      "en": "bio"
+      "en": "bio",
+      "it": "bio-integrale"
     },
     "blog": {
-      "en": "articles"
+      "it": "blog"
     },
     "categorie": {
-      "en": "categories"
+      "en": "categories",
+      "it": "categorie"
     },
     "contatti": {
-      "en": "contacts"
+      "en": "contacts",
+      "it": "contatti"
     },
     "esperienze": {
-      "en": ""
+      "it": "esperienze"
+    },
+    "i-nostri-prodotti": {
+      "it": "i-nostri-prodotti"
     },
     "la-famiglia": {
-      "en": ""
+      "en": "the-family",
+      "it": "la-famiglia"
+    },
+    "norwegian": {
+      "it": "norwegian"
+    },
+    "personalizzate": {
+      "en": "custom",
+      "it": "personalizzate"
     },
     "prodotti": {
-      "en": ""
+      "en": "products",
+      "it": "prodotti"
     },
     "storia": {
-      "en": "story"
+      "en": "story",
+      "it": "storia"
     },
     "tenute": {
-      "en": ""
+      "it": "tenute"
     },
     "vini": {
-      "en": ""
+      "it": "vini"
     }
   },
   "paths": [
@@ -46,221 +66,335 @@
     "/la-famiglia/tenute",
     "/la-famiglia/vini",
     "/la-famiglia/esperienze",
-    "/la-famiglia/prodotti",
+    "/la-famiglia/i-nostri-prodotti",
     "/la-famiglia",
     "/bio-integrale",
+    "/blog/articolo-con-effetto-hover/norwegian/[slug]",
+    "/blog/articolo-con-effetto-hover/norwegian",
+    "/blog/articolo-con-effetto-hover",
     "/blog/[slug]",
     "/blog",
     "/contatti",
     "/prodotti/[slug]",
+    "/prodotti/categorie/personalizzate/[slug]",
+    "/prodotti/categorie/personalizzate",
     "/prodotti/categorie/[slug]",
-    "/prodotti/categorie"
+    "/prodotti/categorie",
+    "/prodotti"
   ],
   "models": [
     {
       "path": "/",
       "routeInfo": {
-        "queryName": "home",
-        "isHome": true,
-        "isDynamic": false,
         "model": "page",
-        "isIndex": false,
-        "indexModel": ""
+        "querySlug": "home",
+        "indexModel": "",
+        "isHome": true,
+        "isVirtual": false,
+        "isDynamic": false,
+        "isIndex": false
       },
       "slugs": {
-        "it": "home",
-        "en": "home"
+        "en": "home",
+        "it": "home"
       }
     },
     {
       "path": "/storia",
       "routeInfo": {
-        "queryName": "story",
-        "isHome": false,
-        "isDynamic": false,
         "model": "page",
-        "isIndex": false,
-        "indexModel": ""
+        "querySlug": "storia",
+        "indexModel": "",
+        "isHome": false,
+        "isVirtual": false,
+        "isDynamic": false,
+        "isIndex": false
       },
       "slugs": {
-        "it": "storia",
-        "en": "story"
+        "en": "story",
+        "it": "storia"
       }
     },
     {
       "path": "/la-famiglia/anfore",
       "routeInfo": {
-        "queryName": "theAnfore",
-        "isHome": false,
-        "isDynamic": false,
         "model": "page",
-        "isIndex": false,
-        "indexModel": ""
+        "querySlug": "anfore",
+        "indexModel": "",
+        "isHome": false,
+        "isVirtual": false,
+        "isDynamic": false,
+        "isIndex": false
       },
       "slugs": {
-        "it": "anfore",
-        "en": "the-anfore"
+        "en": "the-anfore",
+        "it": "anfore"
       }
     },
     {
       "path": "/la-famiglia/tenute",
       "routeInfo": {
-        "queryName": "",
-        "isHome": false,
-        "isDynamic": false,
         "model": "page",
-        "isIndex": null,
-        "indexModel": ""
+        "querySlug": "tenute",
+        "indexModel": "",
+        "isHome": false,
+        "isVirtual": false,
+        "isDynamic": false,
+        "isIndex": false
       },
       "slugs": {
-        "it": "tenute",
-        "en": ""
+        "it": "tenute"
       }
     },
     {
       "path": "/la-famiglia/vini",
       "routeInfo": {
-        "queryName": "",
-        "isHome": false,
-        "isDynamic": false,
         "model": "page",
-        "isIndex": null,
-        "indexModel": ""
+        "querySlug": "vini",
+        "indexModel": "",
+        "isHome": false,
+        "isVirtual": false,
+        "isDynamic": false,
+        "isIndex": false
       },
       "slugs": {
-        "it": "vini",
-        "en": ""
+        "it": "vini"
       }
     },
     {
       "path": "/la-famiglia/esperienze",
       "routeInfo": {
-        "queryName": "",
-        "isHome": false,
-        "isDynamic": false,
         "model": "page",
-        "isIndex": null,
-        "indexModel": ""
+        "querySlug": "esperienze",
+        "indexModel": "",
+        "isHome": false,
+        "isVirtual": false,
+        "isDynamic": false,
+        "isIndex": false
       },
       "slugs": {
-        "it": "esperienze",
-        "en": ""
+        "it": "esperienze"
       }
     },
     {
-      "path": "/la-famiglia/prodotti",
+      "path": "/la-famiglia/i-nostri-prodotti",
       "routeInfo": {
-        "queryName": "",
-        "isHome": false,
-        "isDynamic": false,
         "model": "page",
-        "isIndex": false,
-        "indexModel": "product"
+        "querySlug": "iNostriProdotti",
+        "indexModel": "product",
+        "isHome": false,
+        "isVirtual": false,
+        "isDynamic": false,
+        "isIndex": false
       },
       "slugs": {
-        "it": "prodotti",
-        "en": ""
+        "it": "i-nostri-prodotti"
       }
     },
     {
       "path": "/la-famiglia",
       "routeInfo": {
-        "queryName": "",
+        "model": "none",
+        "querySlug": "",
+        "indexModel": "",
         "isHome": false,
+        "isVirtual": true,
         "isDynamic": false,
-        "model": "none"
+        "isIndex": false
       },
       "slugs": {
-        "en": "",
+        "en": "the-family",
         "it": "la-famiglia"
       }
     },
     {
       "path": "/bio-integrale",
       "routeInfo": {
-        "queryName": "bio",
-        "isHome": false,
-        "isDynamic": false,
         "model": "page",
-        "isIndex": false,
-        "indexModel": ""
+        "querySlug": "bioIntegrale",
+        "indexModel": "",
+        "isHome": false,
+        "isVirtual": false,
+        "isDynamic": false,
+        "isIndex": false
       },
       "slugs": {
-        "it": "bio-integrale",
-        "en": "bio"
+        "en": "bio",
+        "it": "bio-integrale"
+      }
+    },
+    {
+      "path": "/blog/articolo-con-effetto-hover/norwegian/[slug]",
+      "routeInfo": {
+        "model": "page",
+        "querySlug": "slug",
+        "indexModel": "",
+        "isHome": false,
+        "isVirtual": false,
+        "isDynamic": true,
+        "isIndex": false
+      },
+      "slugs": {}
+    },
+    {
+      "path": "/blog/articolo-con-effetto-hover/norwegian",
+      "routeInfo": {
+        "model": "post",
+        "querySlug": "norwegian",
+        "indexModel": "",
+        "isHome": false,
+        "isVirtual": false,
+        "isDynamic": false,
+        "isIndex": false
+      },
+      "slugs": {
+        "it": "norwegian"
+      }
+    },
+    {
+      "path": "/blog/articolo-con-effetto-hover",
+      "routeInfo": {
+        "model": "post",
+        "querySlug": "articoloConEffettoHover",
+        "indexModel": "",
+        "isHome": false,
+        "isVirtual": false,
+        "isDynamic": false,
+        "isIndex": false
+      },
+      "slugs": {
+        "it": "articolo-con-effetto-hover"
       }
     },
     {
       "path": "/blog/[slug]",
       "routeInfo": {
-        "queryName": "",
+        "model": "post",
+        "querySlug": "slug",
+        "indexModel": "",
         "isHome": false,
+        "isVirtual": false,
         "isDynamic": true,
-        "model": "post"
+        "isIndex": false
       },
       "slugs": {}
     },
     {
       "path": "/blog",
       "routeInfo": {
-        "queryName": "articles",
-        "isHome": false,
-        "isDynamic": false,
         "model": "page",
-        "isIndex": true,
-        "indexModel": "post"
+        "querySlug": "blog",
+        "indexModel": "post",
+        "isHome": false,
+        "isVirtual": false,
+        "isDynamic": false,
+        "isIndex": true
       },
       "slugs": {
-        "it": "blog",
-        "en": "articles"
+        "it": "blog"
       }
     },
     {
       "path": "/contatti",
       "routeInfo": {
-        "queryName": "contacts",
-        "isHome": false,
-        "isDynamic": false,
         "model": "page",
-        "isIndex": null,
-        "indexModel": ""
+        "querySlug": "contatti",
+        "indexModel": "",
+        "isHome": false,
+        "isVirtual": false,
+        "isDynamic": false,
+        "isIndex": false
       },
       "slugs": {
-        "it": "contatti",
-        "en": "contacts"
+        "en": "contacts",
+        "it": "contatti"
       }
     },
     {
       "path": "/prodotti/[slug]",
       "routeInfo": {
-        "queryName": "",
+        "model": "page",
+        "querySlug": "slug",
+        "indexModel": "",
         "isHome": false,
+        "isVirtual": false,
         "isDynamic": true,
-        "model": "page"
+        "isIndex": false
       },
       "slugs": {}
     },
     {
+      "path": "/prodotti/categorie/personalizzate/[slug]",
+      "routeInfo": {
+        "model": "page",
+        "querySlug": "slug",
+        "indexModel": "",
+        "isHome": false,
+        "isVirtual": false,
+        "isDynamic": true,
+        "isIndex": false
+      },
+      "slugs": {}
+    },
+    {
+      "path": "/prodotti/categorie/personalizzate",
+      "routeInfo": {
+        "model": "none",
+        "querySlug": "",
+        "indexModel": "",
+        "isHome": false,
+        "isVirtual": true,
+        "isDynamic": false,
+        "isIndex": false
+      },
+      "slugs": {
+        "en": "custom",
+        "it": "personalizzate"
+      }
+    },
+    {
       "path": "/prodotti/categorie/[slug]",
       "routeInfo": {
-        "queryName": "",
+        "model": "page",
+        "querySlug": "slug",
+        "indexModel": "",
         "isHome": false,
+        "isVirtual": false,
         "isDynamic": true,
-        "model": "tag"
+        "isIndex": false
       },
       "slugs": {}
     },
     {
       "path": "/prodotti/categorie",
       "routeInfo": {
-        "queryName": "categories",
+        "model": "none",
+        "querySlug": "",
+        "indexModel": "",
         "isHome": false,
+        "isVirtual": true,
         "isDynamic": false,
-        "model": "page"
+        "isIndex": false
       },
       "slugs": {
         "en": "categories",
         "it": "categorie"
+      }
+    },
+    {
+      "path": "/prodotti",
+      "routeInfo": {
+        "model": "none",
+        "querySlug": "",
+        "indexModel": "",
+        "isHome": false,
+        "isVirtual": true,
+        "isDynamic": false,
+        "isIndex": false
+      },
+      "slugs": {
+        "en": "products",
+        "it": "prodotti"
       }
     }
   ]

@@ -6,18 +6,24 @@ import GenericPage from "@/components/Templates/GenericPage";
 import getSeoMeta from "@/lib/seoUtils";
 import config from "@/data/config";
 
-const locale = "it";
+type Params = {
+  params: {
+    slug: string;
+  };
+};
+
+const locale = "en";
 const siteLocale = locale as SiteLocale;
 const defaultLocale = config.defaultLocale as SiteLocale;
-const pageSlug = "categorie";
 
-export async function generateMetadata() {
+export async function generateMetadata({ params }: any) {
+  const { slug } = params;
   const data = await fetchDato(
     PageDocument,
     {
       locale: siteLocale,
       fallbackLocale: [defaultLocale],
-      slug: pageSlug,
+      slug,
     },
     false
   );
@@ -26,21 +32,18 @@ export async function generateMetadata() {
   return meta;
 }
 
-export default async function Page() {
+export default async function Page({ params: { slug } }: Params) {
   const { isEnabled } = draftMode();
-  // console.log("PAGE by slug", pageSlug, "locale", locale);
   const data = await fetchDato(
     PageDocument,
     {
       locale: siteLocale,
       fallbackLocale: [defaultLocale],
-      slug: pageSlug,
+      slug,
     },
     isEnabled
   );
-  if (!data?.page) {
-    console.log("PAGE not found", pageSlug, "locale", locale, data);
-    notFound();
-  }
+  if (!data?.page) notFound();
+  console.log(data, slug, locale);
   return <GenericPage data={data} locale={siteLocale} />;
 }

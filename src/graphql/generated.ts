@@ -1221,6 +1221,20 @@ export type FormBlockRecordTextFormArgs = {
   markdown?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+/** Specifies how to filter Multiple files/images field */
+export type GalleryFilter = {
+  /** Filter records that have all of the specified uploads. The specified values must be Upload IDs */
+  allIn?: InputMaybe<Array<InputMaybe<Scalars['UploadId']['input']>>>;
+  /** Filter records that have one of the specified uploads. The specified values must be Upload IDs */
+  anyIn?: InputMaybe<Array<InputMaybe<Scalars['UploadId']['input']>>>;
+  /** Search for records with an exact match. The specified values must be Upload IDs */
+  eq?: InputMaybe<Array<InputMaybe<Scalars['UploadId']['input']>>>;
+  /** Filter records with the specified field defined (i.e. with any value) or not */
+  exists?: InputMaybe<Scalars['BooleanType']['input']>;
+  /** Filter records that do not have any of the specified uploads. The specified values must be Upload IDs */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['UploadId']['input']>>>;
+};
+
 /** Block of type 🖼️ Galleria (gallery_section) */
 export type GallerySectionRecord = RecordInterface & {
   __typename?: 'GallerySectionRecord';
@@ -3001,10 +3015,26 @@ export type InverseRelationshipFieldFilterBetweenPostAndTag = {
   notIn?: InputMaybe<Array<PostModelFieldsReferencingTagModel>>;
 };
 
+/** Specifies how to filter by linking fields */
+export type InverseRelationshipFieldFilterBetweenRouteItemAndTag = {
+  /** Filter linking records that reference current record in at least one of the specified fields */
+  anyIn?: InputMaybe<Array<RouteItemModelFieldsReferencingTagModel>>;
+  /** Filter linking records that do not reference current record in any of the specified fields */
+  notIn?: InputMaybe<Array<RouteItemModelFieldsReferencingTagModel>>;
+};
+
 /** Specifies how to filter linking records */
 export type InverseRelationshipFilterBetweenPostAndTag = {
   /** Specifies how to filter by linking fields */
   fields?: InputMaybe<InverseRelationshipFieldFilterBetweenPostAndTag>;
+  /** Specifies how to filter by linking locales */
+  locales?: InputMaybe<LinkingLocalesFilter>;
+};
+
+/** Specifies how to filter linking records */
+export type InverseRelationshipFilterBetweenRouteItemAndTag = {
+  /** Specifies how to filter by linking fields */
+  fields?: InputMaybe<InverseRelationshipFieldFilterBetweenRouteItemAndTag>;
   /** Specifies how to filter by linking locales */
   locales?: InputMaybe<LinkingLocalesFilter>;
 };
@@ -3026,6 +3056,12 @@ export enum ItemStatus {
   Published = 'published',
   Updated = 'updated'
 }
+
+export type JsonFieldMultiLocaleField = {
+  __typename?: 'JsonFieldMultiLocaleField';
+  locale?: Maybe<SiteLocale>;
+  value?: Maybe<Scalars['JsonField']['output']>;
+};
 
 /** Specifies how to filter JSON fields */
 export type JsonFilter = {
@@ -4293,11 +4329,15 @@ export type ProductModelFilter = {
   abstract?: InputMaybe<TextFilter>;
   content?: InputMaybe<StructuredTextFilter>;
   id?: InputMaybe<ItemIdFilter>;
+  priceInCent?: InputMaybe<IntegerFilter>;
   productImage?: InputMaybe<FileFilter>;
   seoAnalysis?: InputMaybe<JsonFilter>;
   seoTags?: InputMaybe<SeoFilter>;
   slug?: InputMaybe<SlugFilter>;
+  stock?: InputMaybe<IntegerFilter>;
   title?: InputMaybe<StringFilter>;
+  variants?: InputMaybe<JsonFilter>;
+  variantsGallery?: InputMaybe<GalleryFilter>;
 };
 
 export enum ProductModelOrderBy {
@@ -4319,6 +4359,10 @@ export enum ProductModelOrderBy {
   _UpdatedAtDesc = '_updatedAt_DESC',
   IdAsc = 'id_ASC',
   IdDesc = 'id_DESC',
+  PriceInCentAsc = 'priceInCent_ASC',
+  PriceInCentDesc = 'priceInCent_DESC',
+  StockAsc = 'stock_ASC',
+  StockDesc = 'stock_DESC',
   TitleAsc = 'title_ASC',
   TitleDesc = 'title_DESC'
 }
@@ -4331,6 +4375,7 @@ export type ProductRecord = RecordInterface & {
   _allSeoTagsLocales?: Maybe<Array<SeoFieldMultiLocaleField>>;
   _allSlugLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
   _allTitleLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
+  _allVariantsLocales?: Maybe<Array<JsonFieldMultiLocaleField>>;
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
@@ -4348,11 +4393,15 @@ export type ProductRecord = RecordInterface & {
   abstract?: Maybe<Scalars['String']['output']>;
   content?: Maybe<ProductModelContentField>;
   id: Scalars['ItemId']['output'];
+  priceInCent?: Maybe<Scalars['IntType']['output']>;
   productImage: ImageAltTitleFileField;
   seoAnalysis?: Maybe<Scalars['JsonField']['output']>;
   seoTags?: Maybe<SeoField>;
   slug: Scalars['String']['output'];
+  stock?: Maybe<Scalars['IntType']['output']>;
   title: Scalars['String']['output'];
+  variants?: Maybe<Scalars['JsonField']['output']>;
+  variantsGallery: Array<FileField>;
 };
 
 
@@ -4382,6 +4431,12 @@ export type ProductRecord_AllSlugLocalesArgs = {
 
 /** Record of type Product (product) */
 export type ProductRecord_AllTitleLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type Product (product) */
+export type ProductRecord_AllVariantsLocalesArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
 };
 
@@ -4422,6 +4477,13 @@ export type ProductRecordSlugArgs = {
 
 /** Record of type Product (product) */
 export type ProductRecordTitleArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type Product (product) */
+export type ProductRecordVariantsArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
@@ -5100,6 +5162,11 @@ export type ReviewSectionRecordReviewSectionSubheaderArgs = {
   markdown?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+/** Linking fields */
+export enum RouteItemModelFieldsReferencingTagModel {
+  RouteItemReference = 'routeItem_reference'
+}
+
 export type RouteItemModelFilter = {
   AND?: InputMaybe<Array<InputMaybe<RouteItemModelFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<RouteItemModelFilter>>>;
@@ -5152,7 +5219,7 @@ export enum RouteItemModelOrderBy {
   TitleDesc = 'title_DESC'
 }
 
-export type RouteItemModelReferenceField = PageRecord | PostRecord;
+export type RouteItemModelReferenceField = PageRecord | PostRecord | ProductRecord | TagRecord;
 
 /** Record of type Route Item (route_item) */
 export type RouteItemRecord = RecordInterface & {
@@ -5593,6 +5660,10 @@ export type TagRecord = RecordInterface & {
   _allReferencingPosts: Array<PostRecord>;
   /** Returns meta information regarding a record collection */
   _allReferencingPostsMeta: CollectionMetadata;
+  _allReferencingRouteItems: Array<RouteItemRecord>;
+  /** Returns meta information regarding a record collection */
+  _allReferencingRouteItemsMeta: CollectionMetadata;
+  _allSlugLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
   _allTagLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
@@ -5634,6 +5705,32 @@ export type TagRecord_AllReferencingPostsMetaArgs = {
 
 
 /** Record of type Tag (tag) */
+export type TagRecord_AllReferencingRouteItemsArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  filter?: InputMaybe<RouteItemModelFilter>;
+  first?: InputMaybe<Scalars['IntType']['input']>;
+  locale?: InputMaybe<SiteLocale>;
+  orderBy?: InputMaybe<Array<InputMaybe<RouteItemModelOrderBy>>>;
+  skip?: InputMaybe<Scalars['IntType']['input']>;
+  through?: InputMaybe<InverseRelationshipFilterBetweenRouteItemAndTag>;
+};
+
+
+/** Record of type Tag (tag) */
+export type TagRecord_AllReferencingRouteItemsMetaArgs = {
+  filter?: InputMaybe<RouteItemModelFilter>;
+  locale?: InputMaybe<SiteLocale>;
+  through?: InputMaybe<InverseRelationshipFilterBetweenRouteItemAndTag>;
+};
+
+
+/** Record of type Tag (tag) */
+export type TagRecord_AllSlugLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type Tag (tag) */
 export type TagRecord_AllTagLocalesArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
 };
@@ -5641,6 +5738,13 @@ export type TagRecord_AllTagLocalesArgs = {
 
 /** Record of type Tag (tag) */
 export type TagRecord_SeoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type Tag (tag) */
+export type TagRecordSlugArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
 

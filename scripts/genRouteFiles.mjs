@@ -68,6 +68,7 @@ for (let f of folders) {
         source = "generic_post";
         break;
       case "tag":
+      case "product":
       default:
         source = "empty_page";
         break;
@@ -76,10 +77,9 @@ for (let f of folders) {
       source = `${source}_dynamic`;
     }
     if (r.isIndex) {
-      // && r.indexModel === "post"
-      source = `index_page`;
+      source = `empty_page`;
       if (r.indexModel === "post") {
-        source = `blog_index_page`;
+        source = `post_index_page`;
       } else if (r.indexModel === "product") {
         source = `product_index_page`;
       }

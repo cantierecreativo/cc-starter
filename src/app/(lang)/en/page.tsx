@@ -9,7 +9,7 @@ import config from "@/data/config";
 const locale = "en";
 const siteLocale = locale as SiteLocale;
 const defaultLocale = config.defaultLocale as SiteLocale;
-const pageSlug = "vini";
+const pageSlug = "home";
 
 export async function generateMetadata() {
   const data = await fetchDato(

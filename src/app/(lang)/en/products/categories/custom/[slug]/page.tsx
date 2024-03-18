@@ -12,7 +12,7 @@ type Params = {
   };
 };
 
-const locale = "it";
+const locale = "en";
 const siteLocale = locale as SiteLocale;
 const defaultLocale = config.defaultLocale as SiteLocale;
 

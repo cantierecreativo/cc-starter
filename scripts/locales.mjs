@@ -35,12 +35,14 @@ function getTranslation(source, lang) {
   const folders = chunks.slice(0, chunks.length - 1);
 
   const translatedPath = folders.reduce((str, name) => {
-    const translation = translations[name] ? translations[name][lang] : name;
+    const translation = translations?.[name]?.[lang]
+      ? translations[name][lang]
+      : name;
     return (str += translation + "/");
   }, "");
 
   const fileName = file.replace(".tsx", "");
-  const translatedFile = translations[fileName]
+  const translatedFile = translations?.[fileName]?.[lang]
     ? translations[fileName][lang]
     : fileName;
   return {
@@ -75,7 +77,7 @@ let allfiles = await glob([
   // "!not-found.tsx",
   // "!error.tsx",
 ]);
-console.info("allfiles", allfiles);
+// console.info("allfiles", allfiles);
 
 //MOVE TO LANG DIRECTORY
 

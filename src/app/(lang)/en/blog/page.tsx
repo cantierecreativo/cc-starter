@@ -2,12 +2,12 @@ import fetchDato from "@/lib/fetchDato";
 import { draftMode } from "next/headers";
 import { PageDocument, PostsDocument, SiteLocale } from "@/graphql/generated";
 import { notFound } from "next/navigation";
-import BlogIndexPage from "@/components/Templates/BlogIndexPage";
+import PostIndexPage from "@/components/Templates/PostIndexPage";
 import getSeoMeta from "@/lib/seoUtils";
 
 const locale = "en";
 const siteLocale = locale as SiteLocale;
-const slug = "articles";
+const slug = "blog";
 
 export async function generateMetadata() {
   const siteLocale = locale as SiteLocale;
@@ -57,5 +57,5 @@ export default async function Page() {
 
   if (!data) notFound();
 
-  return <BlogIndexPage data={data} list={list} locale={siteLocale} />;
+  return <PostIndexPage data={data} list={list} locale={siteLocale} />;
 }
