@@ -18,11 +18,13 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
       ...seoMetaFragment
     }
     hero {
-      buttons {
-        id
-        label
-        primary
-        url
+      link {
+        ... on InternalLinkRecord {
+          ...internalLink
+        }
+        ... on ExternalLinkRecord {
+          ...externalLink
+        }
       }
       _modelApiKey
       id
