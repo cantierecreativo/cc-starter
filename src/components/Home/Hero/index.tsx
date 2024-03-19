@@ -1,7 +1,6 @@
 "use client";
 
 import primaryColor from "@/data/primaryColor";
-import { ButtonRecord } from "@/graphql/generated";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { Maybe } from "graphql/jsutils/Maybe";
 import Link from "next/link";
@@ -10,7 +9,7 @@ import ReactMarkdown from "react-markdown";
 type Props = {
   heroTitle: string;
   heroSubtitle: Maybe<string>;
-  buttons: ButtonRecord[];
+  buttons: any[];
 };
 
 const Hero = ({ heroTitle, heroSubtitle, buttons }: Props) => {

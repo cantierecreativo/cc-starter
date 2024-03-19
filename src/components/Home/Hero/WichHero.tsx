@@ -1,7 +1,6 @@
 "use client";
 
-import Sections from "@/components/Sections";
-import { HeroSectionRecord, PageQuery, SiteLocale } from "@/graphql/generated";
+import { HeroSectionRecord } from "@/graphql/generated";
 
 import GradientHero from "./GradientHero";
 import RightImageHero from "./RightImageHero";
@@ -16,7 +15,7 @@ export default function WhichHero({ hero }) {
         <GradientHero
           heroTitle={heroSectionRecord.heroTitle}
           heroSubtitle={heroSectionRecord.heroSubtitle}
-          buttons={heroSectionRecord.buttons}
+          buttons={[]}
         />
       );
     case "right_image":
@@ -24,7 +23,7 @@ export default function WhichHero({ hero }) {
         <RightImageHero
           heroTitle={heroSectionRecord.heroTitle}
           heroSubtitle={heroSectionRecord.heroSubtitle}
-          buttons={heroSectionRecord.buttons}
+          buttons={[]}
           image={heroSectionRecord.heroImage}
         />
       );
@@ -33,7 +32,7 @@ export default function WhichHero({ hero }) {
         <BackgroundImageHero
           heroTitle={heroSectionRecord.heroTitle}
           heroSubtitle={heroSectionRecord.heroSubtitle}
-          buttons={heroSectionRecord.buttons}
+          buttons={[]}
           image={heroSectionRecord.heroImage}
         />
       );
@@ -42,7 +41,7 @@ export default function WhichHero({ hero }) {
         <SplitImage
           heroTitle={heroSectionRecord.heroTitle}
           heroSubtitle={heroSectionRecord.heroSubtitle}
-          buttons={heroSectionRecord.buttons}
+          buttons={[]}
           image={heroSectionRecord.heroImage}
         />
       );

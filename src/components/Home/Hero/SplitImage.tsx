@@ -1,4 +1,4 @@
-import { ButtonRecord, ImageAltTitleFileField } from "@/graphql/generated";
+import { ImageAltTitleFileField } from "@/graphql/generated";
 import { Maybe } from "graphql/jsutils/Maybe";
 import { Image as DatoImage } from "react-datocms";
 import ReactMarkdown from "react-markdown";
@@ -6,7 +6,7 @@ import ReactMarkdown from "react-markdown";
 type Props = {
   heroTitle: string;
   heroSubtitle: Maybe<string>;
-  buttons: ButtonRecord[];
+  buttons: any[];
   image: Maybe<ImageAltTitleFileField> | undefined;
 };
 

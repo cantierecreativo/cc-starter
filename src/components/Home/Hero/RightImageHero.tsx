@@ -1,16 +1,13 @@
 "use client";
 
-import { ButtonRecord, FileField } from "@/graphql/generated";
 import { Maybe } from "graphql/jsutils/Maybe";
-import Link from "next/link";
-import { delay, motion } from "framer-motion";
 import { Image as DatoImage } from "react-datocms";
 import ReactMarkdown from "react-markdown";
 
 type Props = {
   heroTitle: string;
   heroSubtitle: Maybe<string>;
-  buttons: ButtonRecord[];
+  buttons: any[];
   image: any;
 };
 

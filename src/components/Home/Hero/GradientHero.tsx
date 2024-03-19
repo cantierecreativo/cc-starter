@@ -1,6 +1,5 @@
 "use client";
 
-import { ButtonRecord } from "@/graphql/generated";
 import { Maybe } from "graphql/jsutils/Maybe";
 import Link from "next/link";
 import { delay, motion } from "framer-motion";
@@ -9,7 +8,7 @@ import ReactMarkdown from "react-markdown";
 type Props = {
   heroTitle: string;
   heroSubtitle: Maybe<string>;
-  buttons: ButtonRecord[];
+  buttons: any[];
 };
 
 const GradientHero = ({ heroTitle, heroSubtitle, buttons }: Props) => {

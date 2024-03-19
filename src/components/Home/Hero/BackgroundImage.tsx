@@ -1,4 +1,4 @@
-import { ButtonRecord, ImageAltTitleFileField } from "@/graphql/generated";
+import { ImageAltTitleFileField } from "@/graphql/generated";
 import { Maybe } from "graphql/jsutils/Maybe";
 import { Image as DatoImage } from "react-datocms";
 import { useScroll, useTransform, motion } from "framer-motion";
@@ -6,7 +6,7 @@ import { useScroll, useTransform, motion } from "framer-motion";
 type Props = {
   heroTitle: string;
   heroSubtitle: Maybe<string>;
-  buttons: ButtonRecord[];
+  buttons: any[];
   image: Maybe<ImageAltTitleFileField> | undefined;
 };
 
