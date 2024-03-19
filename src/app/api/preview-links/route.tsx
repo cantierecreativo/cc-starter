@@ -10,19 +10,18 @@ const headers = {
 
 function generatePreviewUrl({ item, itemType, locale }: any) {
   console.info("locale", locale);
+
   if (!item?.attributes) return null;
-  // console.info("JSON", JSON.stringify(item.attributes, null, 2));
   const _modelApiKey = itemType.attributes.api_key || null;
+
   console.info("_modelApiKey", _modelApiKey);
-
-  const section = item.attributes.section || null;
-
   const slug = item.attributes.slug || null;
-  const slugLocale = slug ? (locale ? slug[locale] : slug["it"]) : null;
-  let record: any = { slug: slugLocale, _modelApiKey, section };
+  let slugs = Object.keys(slug).map((locale) => {
+    return { locale, value: slug[locale] };
+  });
+  let record: any = { slugs, _modelApiKey };
+  const link = resolveLink({ ...record, locale });
 
-  const link =
-    _modelApiKey === "home" ? "/" : resolveLink({ ...record, locale });
   console.info("LINK", link);
   return link;
 }
