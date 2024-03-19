@@ -272,7 +272,7 @@ function getPaths(routes: any, defaultLocale: string) {
 
   const keys = routeNames.map((i: any) => Object.keys(i)[0]).sort();
   const keySet: any = new Set(keys);
-  let translations: any = {};
+  const translations: any = [];
   keySet.forEach((k: any) => {
     const found = routeNames.find((o: any) => {
       if (Object.keys(o)[0] === k) {
@@ -281,10 +281,7 @@ function getPaths(routes: any, defaultLocale: string) {
       return false;
     });
     // console.log(k, found);
-    translations = {
-      ...translations,
-      ...found,
-    };
+    translations.push(found);
   });
   //array to object
   const translationObj = translations.reduce((obj: any, i: any) => {
