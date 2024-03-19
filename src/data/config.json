@@ -2,32 +2,58 @@
   "defaultLocale": "it",
   "locales": ["it", "en"],
   "translations": {
-    "articoli": {
-      "en": "articles"
+    "anfore": {
+      "en": "the-anfore",
+      "it": "anfore"
+    },
+    "articolo-con-effetto-hover": {
+      "it": "articolo-con-effetto-hover"
+    },
+    "bio-integrale": {
+      "en": "bio",
+      "it": "bio-integrale"
     },
     "blog": {
-      "en": "blog"
+      "it": "blog"
     },
-    "chi-siamo": {
-      "en": "about"
+    "categorie": {
+      "en": "categories",
+      "it": "categorie"
     },
     "contatti": {
-      "en": "contacts"
+      "en": "contacts",
+      "it": "contatti"
     },
-    "il-team": {
-      "en": "the-team"
+    "esperienze": {
+      "it": "esperienze"
     },
-    "info": {
-      "en": "info"
+    "i-nostri-prodotti": {
+      "it": "i-nostri-prodotti"
     },
-    "privacy-policy": {
-      "en": "privacy-policy"
+    "la-famiglia": {
+      "en": "the-family",
+      "it": "la-famiglia"
+    },
+    "norwegian": {
+      "it": "norwegian"
+    },
+    "personalizzate": {
+      "en": "custom",
+      "it": "personalizzate"
     },
     "prodotti": {
-      "en": "products"
+      "en": "products",
+      "it": "prodotti"
     },
-    "slug": {
-      "en": "slug"
+    "storia": {
+      "en": "story",
+      "it": "storia"
+    },
+    "tenute": {
+      "it": "tenute"
+    },
+    "vini": {
+      "it": "vini"
     }
   },
   "paths": [
