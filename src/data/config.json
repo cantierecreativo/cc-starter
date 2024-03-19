@@ -4,7 +4,61 @@
     "it",
     "en"
   ],
-  "translations": {},
+  "translations": {
+    "anfore": {
+      "en": "the-anfore",
+      "it": "anfore"
+    },
+    "articolo-con-effetto-hover": {
+      "it": "articolo-con-effetto-hover"
+    },
+    "bio-integrale": {
+      "en": "bio",
+      "it": "bio-integrale"
+    },
+    "blog": {
+      "it": "blog"
+    },
+    "categorie": {
+      "en": "categories",
+      "it": "categorie"
+    },
+    "contatti": {
+      "en": "contacts",
+      "it": "contatti"
+    },
+    "esperienze": {
+      "it": "esperienze"
+    },
+    "i-nostri-prodotti": {
+      "it": "i-nostri-prodotti"
+    },
+    "la-famiglia": {
+      "en": "the-family",
+      "it": "la-famiglia"
+    },
+    "norwegian": {
+      "it": "norwegian"
+    },
+    "personalizzate": {
+      "en": "custom",
+      "it": "personalizzate"
+    },
+    "prodotti": {
+      "en": "products",
+      "it": "prodotti"
+    },
+    "storia": {
+      "en": "story",
+      "it": "storia"
+    },
+    "tenute": {
+      "it": "tenute"
+    },
+    "vini": {
+      "it": "vini"
+    }
+  },
   "paths": [
     "/",
     "/storia",
