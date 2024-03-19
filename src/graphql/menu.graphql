@@ -13,12 +13,18 @@ query Menu($locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
         _modelApiKey
         page {
           slug
+          slugs: _allSlugLocales {
+            locale
+            value
+          }
+          _modelApiKey
         }
       }
       ... on MenuDropdownRecord {
         id
         title
         _modelApiKey
+        dropdownType
         items {
           ... on MenuItemRecord {
             id
@@ -26,6 +32,33 @@ query Menu($locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
             _modelApiKey
             page {
               slug
+              slugs: _allSlugLocales {
+                locale
+                value
+              }
+              _modelApiKey
+            }
+          }
+        }
+        megaItems {
+          ... on MegaMenuItemRecord {
+            id
+            title
+            menuImage {
+              responsiveImage(
+                imgixParams: { auto: format, ar: "4:3", fit: crop, h: 300 }
+              ) {
+                ...rImage
+              }
+            }
+            _modelApiKey
+            page {
+              slug
+              slugs: _allSlugLocales {
+                locale
+                value
+              }
+              _modelApiKey
             }
           }
         }

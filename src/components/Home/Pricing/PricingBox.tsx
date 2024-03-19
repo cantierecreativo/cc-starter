@@ -25,7 +25,10 @@ const PricingBox = (props: {
           </h4>
         </div>
         <div className="mb-7 h-20 text-base text-body-color">
-          <StructuredText data={subtitle.value} renderNode={Highlighter} />
+          <StructuredText
+            data={subtitle.value as any}
+            renderNode={Highlighter}
+          />
         </div>
         <div className="mb-8 border-b border-body-color border-opacity-10 pb-8 dark:border-white dark:border-opacity-10">
           <button className="flex w-full items-center justify-center rounded-md bg-primary p-3 text-base font-semibold text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp">

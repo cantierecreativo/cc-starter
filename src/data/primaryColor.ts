@@ -1,1 +1,1 @@
-export default "#0000FF";
+export default "#00ff00";

@@ -19,14 +19,19 @@ export default async function fetchDato<
   if (hasEnv) headers["X-Environment"] = `${process.env.DATO_ENV || ""}`;
   if (isDraft) headers["X-Include-Drafts"] = "true";
 
+  const query = print(document);
+  // console.log("====================================");
+  // console.log(query);
+  // console.log(variables);
+  // console.log("====================================");
   const { data } = await (
     await fetch("https://graphql.datocms.com/", {
       // cache: "force-cache",
-      // next: { tags: ["datocms"] }, //revalidate: 0
+      // next: { tags: ["datocms"] },
       next: { revalidate: 0 },
       method: "POST",
       headers,
-      body: JSON.stringify({ query: print(document), variables }),
+      body: JSON.stringify({ query, variables }),
     })
   ).json();
 

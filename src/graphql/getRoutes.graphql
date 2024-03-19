@@ -16,10 +16,7 @@ query RoutesQuery {
 fragment routeItemFrag on RouteItemRecord {
   id
   _modelApiKey
-  _allTitleLocales {
-    locale
-    value
-  }
+  title
   isHome
   isDynamic
   associatedModel

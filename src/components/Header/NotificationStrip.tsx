@@ -1,9 +1,9 @@
-import { LayoutModelNotificationField, SiteLocale } from '@/graphql/generated';
-import { isLink } from 'datocms-structured-text-utils';
-import Link from 'next/link';
-import { SetStateAction } from 'react';
-import { StructuredText, renderNodeRule } from 'react-datocms/structured-text';
-import Highlighter from '../Common/Highlighter';
+import { LayoutModelNotificationField, SiteLocale } from "@/graphql/generated";
+import { isLink } from "datocms-structured-text-utils";
+import Link from "next/link";
+import { SetStateAction } from "react";
+import { StructuredText, renderNodeRule } from "react-datocms/structured-text";
+import Highlighter from "../Common/Highlighter";
 
 type Props = {
   notification: LayoutModelNotificationField;
@@ -20,13 +20,13 @@ const NotificationStrip = ({
     <div className="bg-primary px-4 py-3 text-white">
       <div className="text-center text-sm font-medium">
         <StructuredText
-          data={notification.value}
+          data={notification.value as any}
           renderNode={Highlighter}
           customNodeRules={[
             renderNodeRule(isLink, ({ node, children, key }) => {
               return (
                 <Link
-                  href={'/' + lng + node.url || '#'}
+                  href={"/" + lng + node.url || "#"}
                   className="inline-block underline"
                   key={key}
                 >

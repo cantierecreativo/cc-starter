@@ -17,14 +17,9 @@ type Props = {
 const Pricing = ({ header, subheader, plans }: Props) => {
   const [isMonthly, setIsMonthly] = useState(true);
   return (
-    <section id="pricing" className="relative z-10 py-16 md:py-20 lg:py-28">
+    <section id="pricing" className="relative z-10">
       <div className="container">
-        <SectionTitle
-          title={header}
-          paragraph={subheader}
-          center
-          width="665px"
-        />
+        <SectionTitle title={header} paragraph={subheader} center />
 
         <div className="w-full">
           <div className="mb-8 flex justify-center md:mb-12 lg:mb-16">
@@ -74,7 +69,9 @@ const Pricing = ({ header, subheader, plans }: Props) => {
               <PricingBox
                 key={plan.id}
                 packageName={plan.tierName}
-                price={isMonthly ? plan.monthlyPrice : plan.yearlyPrice}
+                price={
+                  isMonthly ? "" + plan.monthlyPrice : "" + plan.yearlyPrice
+                }
                 duration={isMonthly ? "mo" : "yr"}
                 subtitle={plan.tierDescription}
               >

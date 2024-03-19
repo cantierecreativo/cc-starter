@@ -1,0 +1,92 @@
+{
+  "locale": "English",
+  "layout": {
+    "open_new_window": "Open in new window",
+    "close": "Close",
+    "main_page": "Main page",
+    "search_label": "Search the website",
+    "search_placeholder": "Search for artworks, events or else"
+  },
+  "sending": "sending...",
+  "loading": "loading...",
+
+  "credits": {
+    "text": "Website design & development",
+    "url": "https://www.cantierecreativo.net",
+    "title": "Web agency & digital partner based in Florence"
+  },
+
+  "404": {
+    "title": "Page not found",
+    "text": "The address may be misspelled or may not exist.",
+    "button": "Go to the homepage"
+  },
+
+  "pagination": {
+    "start": "First",
+    "end": "Last",
+    "forward": "Forward",
+    "back": "Back"
+  },
+
+  "search-pagination": {
+    "firstPageItemText": "First page",
+    "previousPageItemText": "Previous page",
+    "nextPageItemText": "Next page",
+    "lastPageItemText": "Last page",
+    "firstPageItemAriaLabel": "Go to first page",
+    "previousPageItemAriaLabel": "Go to previous page",
+    "nextPageItemAriaLabel": "Go to next page",
+    "lastPageItemAriaLabel": "Go to last page",
+    "gotoPage": "Go to page",
+    "of": "of"
+  },
+
+  "formTitle": "Send us a message",
+  "events_from": "Events from",
+  "formFullName": "Name & Surname",
+  "formEmail": "Email",
+  "formPhoneNumber": "Phone number",
+  "formMessage": "Request",
+  "formPrivacyPolicy": "I agree to ",
+  "formPrivacyFieldsetLabel": "Data protection",
+  "formPrivacyPre": "I've read the ",
+  "formPrivacyAfter": " and accept the terms of UE 2016/679 (GDPR)",
+  "formSend": "Send request",
+  "formSandingTitle": "Sending...",
+  "formSuccessTitle": "The message has been successfully sent",
+  "formSuccessText": "We have received your message and you will be contacted as soon as possible.",
+  "formErrorTitle": "An error has occurred",
+  "formErrorText": "Your message could not be sent.",
+  "newsletter": {
+    "title:": "Newsletter",
+    "accept": "Accept communications",
+    "acceptEmail": "I agree to receive communications via email",
+    "privacyFieldsetLabel": "Data protection",
+    "policy": "the privacy policy",
+    "authorize": "and I authorize the processing of my personal data pursuant to Legislative Decree 196/2003 and GDPR 679/2016",
+    "unsubscribePre": "You can unsubscribe at any time by clicking the link in the footer of our emails. For information about our privacy practices,",
+    "cta": "Go to Mailchimp website",
+    "subscribe": "Subscribe"
+  },
+
+  "preferencePolicy": "Edit privacy preferences",
+  "cookiePolicyId": "",
+
+  "skipContent": "Go to main content",
+  "skipFooter": "Go to footer",
+
+  "splide": {
+    "homeTitle": "Highlighted elements",
+    "hypervisionsTitle": "Hypervisions elements",
+    "CarosulTitle": "Gallery of images",
+    "play": "Start autoplay",
+    "pause": "Pause autoplay",
+    "slideX": "Go to slide",
+    "slideLabel": "of"
+  },
+
+  "backTop": "Back to top",
+  "googleMaps": "Google Maps",
+  "read": "read"
+}

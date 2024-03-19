@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { TestimonialRecord } from '@/graphql/generated';
-import { Maybe } from 'graphql/jsutils/Maybe';
-import { StructuredText } from 'react-datocms/structured-text';
-import { Image as DatoImage } from 'react-datocms';
-import { useState } from 'react';
-import Highlighter from '@/components/Common/Highlighter';
+import { TestimonialRecord } from "@/graphql/generated";
+import { Maybe } from "graphql/jsutils/Maybe";
+import { StructuredText } from "react-datocms/structured-text";
+import { Image as DatoImage } from "react-datocms";
+import { useState } from "react";
+import Highlighter from "@/components/Common/Highlighter";
 
 type Props = {
   reviews: TestimonialRecord[];
@@ -52,7 +52,7 @@ const ModernCarrousel = ({ reviews, header, subheader }: Props) => {
             <div className="mt-8 lg:mt-0 lg:px-10">
               <div className="mt-6 max-w-lg text-gray-500 dark:text-gray-400">
                 <StructuredText
-                  data={currentReview.review.value}
+                  data={currentReview.review.value as any}
                   renderNode={Highlighter}
                 />
               </div>

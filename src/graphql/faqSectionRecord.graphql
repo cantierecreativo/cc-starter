@@ -1,0 +1,14 @@
+fragment faqSectionRecord on FaqSectionRecord {
+  _modelApiKey
+  displayOptions
+  id
+  title
+  subtitle
+  questions {
+    question
+    id
+    answer {
+      value
+    }
+  }
+}

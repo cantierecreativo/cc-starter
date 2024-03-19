@@ -1,0 +1,50 @@
+fragment wrapSectionBlocks on SectionWrapModelBlocksField {
+  ... on ElementsListRecord {
+    ...elementsListRecord
+  }
+  ... on ContactTextBlockRecord {
+    ...contactTextBlockRecord
+  }
+  ... on ProductDetailRecord {
+    ...productDetailRecord
+  }
+  ... on FeatureListSectionRecord {
+    ...featureListSectionRecord
+  }
+  ... on SlideshowRecord {
+    ...slideshowRecord
+  }
+  ... on MultipleCardRecord {
+    ...multipleCardRecord
+  }
+  ... on FeaturedPagesSectionRecord {
+    ...featuredPagesSectionRecord
+  }
+  ... on BannerCtaRecord {
+    ...bannerCtaRecord
+  }
+  ... on TextBlockRecord {
+    ...textBlockRecord
+  }
+  ... on ImageBlockRecord {
+    ...imageBlockRecord
+  }
+  ... on GallerySectionRecord {
+    ...gallerySectionRecord
+  }
+  ... on FormBlockRecord {
+    ...formBlockRecord
+  }
+  ... on FaqSectionRecord {
+    ...faqSectionRecord
+  }
+  ... on VideoSectionRecord {
+    ...videoSectionRecord
+  }
+  ... on AttachmentsBlockRecord {
+    ...attachmentsBlockRecord
+  }
+  ... on DetailSectionRecord {
+    ...detailSectionRecord
+  }
+}

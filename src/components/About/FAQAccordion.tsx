@@ -9,10 +9,10 @@ import ReactMarkdown from "react-markdown";
 import Highlighter from "../Common/Highlighter";
 
 const closeIcon = (
-  <span className="rounded-full bg-gray-200 text-gray-400">
+  <span>
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-6 w-6"
+      className="h-8 w-8 md:h-12 md:w-12"
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
@@ -20,7 +20,7 @@ const closeIcon = (
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="2"
+        strokeWidth=".8"
         d="M18 12H6"
       />
     </svg>
@@ -28,10 +28,10 @@ const closeIcon = (
 );
 
 const openIcon = (
-  <span className="rounded-full bg-blue-500 text-white">
+  <span>
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-6 w-6"
+      className="h-8 w-8 md:h-12 md:w-12"
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
@@ -39,7 +39,7 @@ const openIcon = (
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="2"
+        strokeWidth="0.8"
         d="M12 6v6m0 0v6m0-6h6m-6 0H6"
       />
     </svg>
@@ -66,59 +66,59 @@ const FAQAccordion = ({ title, subtitle, questions }: Props) => {
   }
 
   return (
-    <section className="bg-white dark:bg-gray-900">
-      <div className="container mx-auto px-6 py-12">
-        <h1 className="mb-4 text-center text-2xl font-semibold text-gray-800 dark:text-white lg:text-4xl">
-          {title}
-        </h1>
-        <div className=" text-center text-gray-500">
-          <ReactMarkdown>{subtitle || ""}</ReactMarkdown>
-        </div>
+    <div className="container mx-auto px-6 md:w-10/12">
+      <h2 className="text-md uppercase max-w-prose mx-auto font-serif mb-4 md:text-lg md:mb-8 lg:text-2xl xl:mb-12">
+        {title}
+      </h2>
+      <h3 className="block mb-3">
+        <ReactMarkdown>{subtitle || ""}</ReactMarkdown>
+      </h3>
 
-        <div className="mx-8 mt-8 grid gap-4 lg:mx-40">
-          {questions.map((question) => {
-            const isOpen = openQuestions.includes(question.id);
-            return (
-              <motion.div
-                layout="position"
-                key={question.id}
-                className={
-                  "rounded-lg bg-gray-100 p-8 hover:cursor-pointer dark:bg-gray-800"
-                }
-                onClick={() => {
-                  toggleQuestion(question.id);
-                }}
-              >
-                <button className="flex w-full items-center justify-between">
-                  <h1 className="font-semibold text-gray-700 dark:text-white">
+      <div className="mt-12 border-t border-primary-content/20">
+        {questions.map((question, n: number) => {
+          const isOpen = openQuestions.includes(question.id);
+          return (
+            <motion.div
+              layout="position"
+              key={question.id}
+              className={
+                "py-8 hover:cursor-pointer border-b border-primary-content/20"
+              }
+              onClick={() => {
+                toggleQuestion(question.id);
+              }}
+            >
+              <button className="flex w-full items-center justify-between">
+                <div className="flex items-center gap-3 md:gap-6">
+                  <div className="bg-base-100 rounded-full text-center w-[30px] h-[30px] md:w-10 md:h-10 flex items-center justify-center font-serif translate-y-1 md:text-md">
+                    {n + 1}
+                  </div>
+                  <div className="uppercase font-serif md:text-md">
                     {question.question}
-                  </h1>
-                  {isOpen ? closeIcon : openIcon}
-                </button>
+                  </div>
+                </div>
+                {isOpen ? closeIcon : openIcon}
+              </button>
 
-                <motion.div
-                  animate={isOpen ? "open" : "closed"}
-                  variants={{
-                    open: { opacity: 1 },
-                    closed: { opacity: 0 },
-                  }}
-                  transition={{ duration: 0.5 }}
-                  className={
-                    "mt-6 text-sm text-gray-500 dark:text-gray-300" +
-                    (isOpen ? "" : " hidden")
-                  }
-                >
-                  <StructuredText
-                    data={question.answer.value}
-                    renderNode={Highlighter}
-                  />
-                </motion.div>
+              <motion.div
+                animate={isOpen ? "open" : "closed"}
+                variants={{
+                  open: { opacity: 1 },
+                  closed: { opacity: 0 },
+                }}
+                transition={{ duration: 0.5 }}
+                className={"mt-6 text-sm pl-16" + (isOpen ? "" : " hidden")}
+              >
+                <StructuredText
+                  data={question.answer.value as any}
+                  renderNode={Highlighter}
+                />
               </motion.div>
-            );
-          })}
-        </div>
+            </motion.div>
+          );
+        })}
       </div>
-    </section>
+    </div>
   );
 };
 

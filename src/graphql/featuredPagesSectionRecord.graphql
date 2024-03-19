@@ -1,0 +1,28 @@
+fragment featuredPagesSectionRecord on FeaturedPagesSectionRecord {
+  _modelApiKey
+  id
+  featuredPagesHeader
+  featuredPagesSubheader
+  displayOptions
+  featuredPages {
+    _modelApiKey
+    _publishedAt
+    slug
+    id
+    slugs: _allSlugLocales {
+      locale
+      value
+    }
+    title: label
+    hero {
+      id
+      heroTitle
+      heroSubtitle
+      heroImage {
+        responsiveImage {
+          ...rImage
+        }
+      }
+    }
+  }
+}

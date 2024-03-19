@@ -1,19 +1,22 @@
 "use client";
+// import tw from "twin.macro";
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import LanguageSelector from "./LanguageSelector";
+import SubMenuItems from "./SubMenuItems";
 import {
-  LayoutModelNotificationField,
   MenuDropdownRecord,
   MenuItemRecord,
   MenuQuery,
   SiteLocale,
 } from "@/graphql/generated";
-import NotificationStrip from "./NotificationStrip";
 import { Menu } from "./HeaderRenderer";
 import { isEmptyDocument } from "datocms-structured-text-utils";
+import resolveLink from "@/lib/resolveLink";
+import { motion, useCycle } from "framer-motion";
+import CustomIcon from "../Common/CustomIcon";
 
 type Props = {
   lng: SiteLocale;
@@ -23,6 +26,21 @@ type Props = {
 const Header = ({ lng, data }: Props) => {
   const menuData: Menu[] = [];
 
+  // submenu handler
+  // const [openIndex, setOpenIndex] = useState(-1);
+  const [dropdownOpen, toggleOpen] = useCycle(false, true);
+  const containerRef = useRef(null);
+
+  const handleSubmenu = () => {
+    toggleOpen();
+  };
+  const handleClickAndClose = () => {
+    setNavbarOpen(false);
+    if (dropdownOpen) {
+      toggleOpen();
+    }
+  };
+
   // Navbar toggle
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [notificationStrip, setNotificationStrip] = useState(
@@ -30,7 +48,14 @@ const Header = ({ lng, data }: Props) => {
   );
 
   const navbarToggleHandler = () => {
-    setNavbarOpen(!navbarOpen);
+    if (!navbarOpen) {
+      setNavbarOpen(!navbarOpen);
+    } else {
+      setNavbarOpen(!navbarOpen);
+      if (dropdownOpen) {
+        toggleOpen();
+      }
+    }
   };
 
   // Sticky Navbar
@@ -46,42 +71,90 @@ const Header = ({ lng, data }: Props) => {
     window.addEventListener("scroll", handleStickyNavbar);
   });
 
-  // submenu handler
-  const [openIndex, setOpenIndex] = useState(-1);
-  const handleSubmenu = (index: number) => {
-    if (openIndex === index) {
-      setOpenIndex(-1);
-    } else {
-      setOpenIndex(index);
-    }
+  const dropdownVariants = {
+    open: {
+      gridTemplateRows: "1fr",
+      transition: {
+        ease: "easeOut",
+        duration: 0.5,
+      },
+    },
+    closed: {
+      gridTemplateRows: "0fr",
+      transition: {
+        ease: "easeOut",
+        duration: 0.35,
+      },
+    },
+  };
+  const colorVariants = {
+    open: {
+      // color: `${tw`text-primary-content`}`,
+      color: "#000",
+      transition: {
+        ease: "easeOut",
+        duration: 0.25,
+      },
+    },
+    closed: {
+      // color: `${tw`text-base-100`}`,
+      color: "#fff",
+      transition: {
+        ease: "easeOut",
+        duration: 0.25,
+      },
+    },
+  };
+  const invertVariants = {
+    open: {
+      filter: "invert(0)",
+      transition: {
+        ease: "easeOut",
+        duration: 0.25,
+      },
+    },
+    closed: {
+      filter: "invert(100%)",
+      transition: {
+        ease: "easeOut",
+        duration: 0.25,
+      },
+    },
   };
 
   if (!data) {
     return null;
   }
 
-  const defaultLocale = "it";
-  function resolveLink(path: string, locale: string) {
-    if (locale === defaultLocale) {
-      return path;
-    }
-    return `/${locale}${path}`;
-  }
-
   data?.layout?.menu?.map((item) => {
     if (item._modelApiKey === "menu_dropdown") {
       const dropdownItem = item as MenuDropdownRecord;
+      const subItems =
+        dropdownItem.dropdownType == "text_image"
+          ? dropdownItem.megaItems
+          : dropdownItem.items;
+
       menuData.push({
         id: "1",
         title: dropdownItem.title || "Other Items",
         newTab: false,
-        submenu: dropdownItem.items.map((item) => {
-          return {
-            id: item.id,
-            title: item.title,
-            path: `/${item.page.slug}`,
-            newTab: true,
-          };
+        submenu: subItems.map((item) => {
+          if (dropdownItem.dropdownType == "text_image") {
+            return {
+              id: item.id,
+              title: item.title,
+              menuImage: item.menuImage,
+              path: resolveLink({ ...item.page, locale: lng }),
+              newTab: true,
+            };
+          } else {
+            return {
+              id: item.id,
+              title: item.title,
+              path: resolveLink({ ...item.page, locale: lng }),
+              newTab: true,
+            };
+          }
         }),
       });
     } else {
@@ -89,143 +162,211 @@ const Header = ({ lng, data }: Props) => {
       menuData.push({
         id: menuItem.id,
         title: menuItem.title,
-        path: `/${menuItem.page.slug}`,
+        path: resolveLink({ ...menuItem.page, locale: lng }),
         newTab: false,
       });
     }
   });
+
   return (
-    <>
-      {notificationStrip && (
-        <NotificationStrip
-          notification={
-            data?.layout?.notification as LayoutModelNotificationField
-          }
-          lng={lng}
-          setNotificationStrip={setNotificationStrip}
-        />
-      )}
-      <header
-        className={`header left-0 z-40 flex w-full items-center bg-base-100 ${
-          sticky
-            ? "fixed top-0 z-50 bg-base-100 bg-opacity-80 shadow-sticky backdrop-blur-sm transition"
-            : `absolute ${notificationStrip ? "top-10" : "top-0"}`
+    <header
+      className={`header left-0 flex w-full items-center fixed top-0 z-10 after:absolute after:top-0 after:inset-x-0 after:shadow-[0_150px_100px_-100px_rgba(0,0,0,0.75)_inset] after:h-48 after:z-[-1] ${
+        sticky ? "after:opacity-0" : ""
+      }`}
+    >
+      <div
+        className={`relative z-[1] w-full px-6 ${
+          sticky || dropdownOpen
+            ? "bg-primary border-primary-content/20 motion-safe:duration-500"
+            : "motion-safe:duration-300"
         }`}
       >
-        <div className="container">
-          <div className="relative -mx-4 flex items-center justify-between">
-            <div className="w-60 max-w-full px-4 xl:mr-12">
-              <Link
-                href={resolveLink("/", lng)}
-                className={`header-logo block w-full ${
-                  sticky ? "py-5 lg:py-2" : "py-8"
-                } `}
+        <div className="">
+          <div className="container">
+            <div className="-mx-4 flex items-center justify-between">
+              <motion.div
+                className="w-60 max-w-full px-4 xl:mr-12 invert"
+                animate={
+                  sticky || dropdownOpen || navbarOpen ? "open" : "closed"
+                }
+                variants={invertVariants}
               >
-                {data?.layout?.logo.url && (
-                  <Image
-                    src={data.layout.logo.url}
-                    alt="logo"
-                    width={140}
-                    height={30}
-                    className="w-full"
+                <Link href={"/"} className={`header-logo block w-full py-8`}>
+                  {data?.layout?.logo.url && (
+                    <Image
+                      src={data.layout.logo.url}
+                      alt="logo"
+                      width={140}
+                      height={30}
+                      className={`w-full `}
+                      priority={true}
+                    />
+                  )}
+                </Link>
+              </motion.div>
+              <div className="flex w-full justify-end lg:justify-start lg:flex-row-reverse items-center gap-x-3 md:gap-x-8 px-4">
+                {/* <div className="hidden lg:flex items-center justify-end ">
+                  <LanguageSelector
+                    lng={lng}
+                    languages={data?._site?.locales || []}
+                    sticky={sticky}
+                    navbarOpen={navbarOpen}
+                    dropdownOpen={dropdownOpen}
                   />
-                )}
-              </Link>
-            </div>
-            <div className="flex w-full items-center justify-between px-4">
-              <div>
-                <button
-                  onClick={navbarToggleHandler}
-                  id="navbarToggler"
-                  aria-label="Mobile Menu"
-                  className="absolute right-4 top-1/2 block translate-y-[-50%] rounded-lg px-3 py-[6px] ring-primary focus:ring-2 lg:hidden"
-                >
-                  <span
-                    className={`relative my-1.5 block h-0.5 w-[30px] bg-base-100 transition-all duration-300 ${
-                      navbarOpen ? " top-[7px] rotate-45" : " "
+                </div> */}
+                <div>
+                  <button
+                    onClick={navbarToggleHandler}
+                    id="navbarToggler"
+                    aria-label="Mobile Menu"
+                    className=" block lg:hidden"
+                  >
+                    <span
+                      className={`relative my-1 block h-0.5 w-[20px] transition-all motion-safe:duration-300
+                      ${navbarOpen ? " top-[6px] rotate-45" : ""}
+                      ${
+                        sticky || navbarOpen
+                          ? " bg-primary-content"
+                          : " bg-base-100"
+                      }
+                      `}
+                    />
+                    <span
+                      className={`relative my-1 block h-0.5 w-[20px] transition-all motion-safe:duration-300
+                      ${navbarOpen ? " opacity-0" : ""}
+                      ${
+                        sticky || navbarOpen
+                          ? " bg-primary-content"
+                          : " bg-base-100"
+                      }
+                      `}
+                    />
+                    <span
+                      className={`relative my-1 block h-0.5 w-[20px] transition-all motion-safe:duration-300
+                      ${navbarOpen ? " top-[-6px] -rotate-45" : ""}
+                      ${
+                        sticky || navbarOpen
+                          ? "bg-primary-content"
+                          : "bg-base-100"
+                      }
+                      `}
+                    />
+                  </button>
+                  <motion.nav
+                    initial={false}
+                    animate={dropdownOpen ? "open" : "closed"}
+                    id="navbarCollapse"
+                    ref={containerRef}
+                    className={`absolute top-0 right-0 z-[-1] lg:z-30 w-full bg-primary motion-safe:duration-[.75s] bg-base-200 lg:visible lg:static lg:w-auto lg:border-none lg:!bg-transparent lg:p-0 after:motion-safe:duration-300 after:motion-safe:delay-300  after:fixed after:inset-x-0 after:h-[100px] after:-translate-y-full after:shadow-[0_200px_50px_-100px_transaprent_inset] after:z-[2] grid ${
+                      navbarOpen
+                        ? "h-screen lg:h-auto after:translate-y-0 after:shadow-primary"
+                        : " h-0 lg:h-auto"
                     }`}
-                  />
-                  <span
-                    className={`relative my-1.5 block h-0.5 w-[30px] bg-base-100 transition-all duration-300 ${
-                      navbarOpen ? "opacity-0 " : " "
-                    }`}
-                  />
-                  <span
-                    className={`relative my-1.5 block h-0.5 w-[30px] bg-base-100 transition-all duration-300 ${
-                      navbarOpen ? " top-[-8px] -rotate-45" : " "
-                    }`}
-                  />
-                </button>
-                <nav
-                  id="navbarCollapse"
-                  className={`navbar absolute right-0 z-30 w-[250px] rounded border-[.5px] border-body-color/50 bg-base-100 px-6 py-4 duration-300 dark:border-body-color/20 bg-base-200 lg:visible lg:static lg:w-auto lg:border-none lg:!bg-transparent lg:p-0 lg:opacity-100 ${
-                    navbarOpen
-                      ? "visibility top-full opacity-100"
-                      : "invisible top-[120%] opacity-0"
-                  }`}
-                >
-                  <ul className="block items-center lg:flex lg:space-x-12">
-                    {menuData.map((menuItem, index) => (
-                      <li key={menuItem.id} className="group relative">
-                        {menuItem.path ? (
-                          <Link
-                            href={resolveLink(menuItem.path, lng)}
-                            className={`flex py-2 text-base-content group-hover:opacity-70  lg:mr-0 lg:inline-flex lg:px-0 lg:py-6`}
-                          >
-                            {menuItem.title}
-                          </Link>
-                        ) : (
-                          <>
-                            <a
-                              onClick={() => handleSubmenu(index)}
-                              className="flex cursor-pointer items-center justify-between py-2 text-base-content group-hover:opacity-70   lg:mr-0 lg:inline-flex lg:px-0 lg:py-6"
-                            >
-                              {menuItem.title}
-                              <span className="pl-3">
-                                <svg width="15" height="14" viewBox="0 0 15 14">
-                                  <path
-                                    d="M7.81602 9.97495C7.68477 9.97495 7.57539 9.9312 7.46602 9.8437L2.43477 4.89995C2.23789 4.70308 2.23789 4.39683 2.43477 4.19995C2.63164 4.00308 2.93789 4.00308 3.13477 4.19995L7.81602 8.77183L12.4973 4.1562C12.6941 3.95933 13.0004 3.95933 13.1973 4.1562C13.3941 4.35308 13.3941 4.65933 13.1973 4.8562L8.16601 9.79995C8.05664 9.90933 7.94727 9.97495 7.81602 9.97495Z"
-                                    fill="text-base-content"
-                                  />
-                                </svg>
-                              </span>
-                            </a>
-                            <div
-                              className={`submenu relative left-0 top-full rounded-md bg-base-100 transition-[top] duration-300 group-hover:opacity-100 bg-base-200 lg:invisible lg:absolute lg:top-[110%] lg:block lg:w-[250px] lg:p-4 lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full ${
-                                openIndex === index ? "block" : "hidden"
+                  >
+                    <div className="overflow-auto lg:overflow-visible h-full px-6">
+                      <ul className="block items-center container mx-auto lg:max-w-auto pt-[100px] pb-4 lg:pb-0 lg:pt-0 lg:flex lg:gap-x-8 ">
+                        {menuData.map((menuItem, index) => {
+                          const isMega =
+                            menuItem.submenu?.filter((i) => i.menuImage)
+                              .length > 0;
+
+                          return (
+                            <li
+                              key={menuItem.id}
+                              className={`py-2 lg:py-6 ${
+                                isMega ? "" : "relative"
                               }`}
                             >
-                              {menuItem.submenu?.map((submenuItem) => (
-                                <Link
-                                  href={resolveLink(
-                                    submenuItem.path || "/",
-                                    lng
-                                  )}
-                                  key={submenuItem.id}
-                                  className="block rounded py-2.5 text-sm  hover:opacity-70 text-base-content lg:px-3"
+                              {menuItem.path ? (
+                                <motion.div
+                                  animate={
+                                    sticky || dropdownOpen || navbarOpen
+                                      ? "open"
+                                      : "closed"
+                                  }
+                                  variants={colorVariants}
+                                  className="text-white"
                                 >
-                                  {submenuItem.title}
-                                </Link>
-                              ))}
-                            </div>
-                          </>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                </nav>
-              </div>
-              <div className="flex items-center justify-end pr-16 lg:pr-0">
-                <LanguageSelector
-                  lng={lng}
-                  languages={data?._site?.locales || []}
-                />
+                                  <Link
+                                    href={menuItem.path}
+                                    className={`hover:opacity-70 hover:underline underline-offset-8 `}
+                                    onClick={() => handleClickAndClose()}
+                                  >
+                                    {menuItem.title}
+                                  </Link>
+                                </motion.div>
+                              ) : (
+                                <>
+                                  <motion.a
+                                    animate={
+                                      sticky || dropdownOpen || navbarOpen
+                                        ? "open"
+                                        : "closed"
+                                    }
+                                    variants={colorVariants}
+                                    onClick={() => handleSubmenu()}
+                                    className={` flex cursor-pointer items-center justify-start py-2 hover:opacity-70 lg:mr-0 lg:inline-flex lg:px-0 lg:py-0 hover:underline underline-offset-8 text-white`}
+                                  >
+                                    {menuItem.title}
+                                    <motion.span
+                                      animate={
+                                        sticky || dropdownOpen || navbarOpen
+                                          ? "open"
+                                          : "closed"
+                                      }
+                                      variants={invertVariants}
+                                      className="invert"
+                                    >
+                                      <CustomIcon
+                                        classes={`ml-1 w-5 h-5 bg-primary-content`}
+                                        fileName="chevron-down"
+                                      />
+                                    </motion.span>
+                                  </motion.a>
+
+                                  <motion.div
+                                    animate={dropdownOpen ? "open" : "closed"}
+                                    variants={dropdownVariants}
+                                    className={`submenu relative grid grid-rows-[0fr] ${
+                                      isMega
+                                        ? "top-0 lg:w-screen left-0"
+                                        : "lg:mt-4 w-full"
+                                    }  bg-primary lg:absolute lg:z-[-1]`}
+                                  >
+                                    <div className="overflow-hidden h-full">
+                                      {menuItem.submenu && (
+                                        <SubMenuItems
+                                          items={menuItem.submenu}
+                                          isMega={isMega}
+                                          handleClickAndClose={handleClickAndClose}
+                                        />
+                                      )}
+                                    </div>
+                                  </motion.div>
+                                </>
+                              )}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                      <div className="lg:hidden mt-10 mb-4">
+                        <LanguageSelector
+                          lng={lng}
+                          languages={data?._site?.locales || []}
+                          sticky={sticky}
+                          navbarOpen={navbarOpen}
+                          dropdownOpen={dropdownOpen}
+                        />
+                      </div>
+                    </div>
+                  </motion.nav>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </header>
-    </>
+      </div>
+    </header>
   );
 };
 

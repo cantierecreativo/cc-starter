@@ -2,7 +2,7 @@
 
 import {
   AboutIntroModelIntroductionTextField,
-  ImageFileField,
+  ImageAltTitleFileField,
 } from "@/graphql/generated";
 import { isHeading, isParagraph } from "datocms-structured-text-utils";
 import { Maybe } from "graphql/jsutils/Maybe";
@@ -14,13 +14,13 @@ import {
 } from "react-datocms";
 import { motion, useScroll, useTransform } from "framer-motion";
 import ReactMarkdown from "react-markdown";
-import React from "react";
+
 import Highlighter from "../Common/Highlighter";
 
 type Props = {
   header: string;
   subheader: Maybe<string>;
-  images: ImageFileField[];
+  images: ImageAltTitleFileField[];
   introduction: Maybe<AboutIntroModelIntroductionTextField>;
   preHeader: Maybe<string>;
 };
@@ -134,7 +134,7 @@ const AboutIntro = ({
         >
           {introduction && (
             <StructuredText
-              data={introduction.value}
+              data={introduction.value as any}
               customNodeRules={[
                 renderNodeRule(isHeading, ({ children, key }) => {
                   return (

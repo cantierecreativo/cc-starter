@@ -5,31 +5,30 @@ query Post($slug: String, $locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
     fallbackLocales: $fallbackLocale
   ) {
     _publishedAt
+    _modelApiKey
     title
-    author {
-      name
-      bio
-      slug
-      picture {
-        responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
-          srcSet
-          webpSrcSet
-          sizes
-          src
-          width
-          height
-          aspectRatio
-          alt
-          title
-          bgColor
-          base64
-        }
+    abstract
+    blogImage {
+      responsiveImage(
+        sizes: "(min-width:768px) 80vw, 100vw, 1200px"
+        imgixParams: { auto: [format, compress], fit: crop, ar: "2:1" }
+      ) {
+        ...rImage
       }
     }
     tags {
       id
       tag
       slug
+      _modelApiKey
+      slugs: _allTagLocales {
+        locale
+        value
+      }
+    }
+    slugs: _allSlugLocales {
+      locale
+      value
     }
     content {
       value
@@ -60,82 +59,19 @@ query Post($slug: String, $locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
             }
           }
         }
-        author {
-          name
-          bio
-          picture {
-            responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
-              srcSet
-              webpSrcSet
-              sizes
-              src
-              width
-              height
-              aspectRatio
-              alt
-              title
-              bgColor
-              base64
-            }
-          }
-        }
       }
       blocks {
         ... on ImageBlockRecord {
-          id
-          __typename
-          image {
-            id
-            responsiveImage {
-              srcSet
-              webpSrcSet
-              sizes
-              src
-              width
-              height
-              aspectRatio
-              alt
-              title
-              base64
-            }
-          }
+          ...imageBlockRecord
         }
-        ... on AppCtaRecord {
-          id
-          __typename
-          text
-          title
-          googlePlayUrl
-          appstoreUrl
+        ... on AttachmentsBlockRecord {
+          ...attachmentsBlockRecord
         }
-        ... on NewsletterSubscriptionRecord {
-          id
-          __typename
-          buttonLabel
-          subtitle
-          title
+        ... on VideoSectionRecord {
+          ...videoSectionRecord
         }
-        ... on CtaButtonWithImageRecord {
-          id
-          __typename
-          title
-          subtitle
-          image {
-            id
-            responsiveImage {
-              srcSet
-              webpSrcSet
-              sizes
-              src
-              width
-              height
-              aspectRatio
-              alt
-              title
-              base64
-            }
-          }
-          buttonLabel
+        ... on GallerySectionRecord {
+          ...gallerySectionRecord
         }
       }
     }

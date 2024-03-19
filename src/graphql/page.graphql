@@ -4,301 +4,50 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
     locale: $locale
     fallbackLocales: $fallbackLocale
   ) {
-    sections {
-      ... on SlideshowRecord {
-        id
-        _modelApiKey
-        slides {
-          id
-          title
-          text
-          image {
-            responsiveImage(
-              imgixParams: { auto: format, ar: "4:3", fit: crop, h: 720 }
-            ) {
-              ...rImage
-            }
-          }
-        }
-      }
-      ... on AboutIntroRecord {
-        id
-        _modelApiKey
-        preHeader
-        header
-        subheader
-        introductionText {
-          value
-        }
-        images {
-          id
-          responsiveImage {
-            ...rImage
-          }
-        }
-      }
-      ... on ChangelogSectionRecord {
-        id
-        _modelApiKey
-        subtitle
-        title
-        featuredVersions {
-          timeOfRelease
-          versionName
-          slug
-          id
-          _modelApiKey
-        }
-      }
-      ... on StatsSectionRecord {
-        _modelApiKey
-        id
-        title
-        subtitle
-        statistic {
-          id
-          label
-          quantity
-          icon {
-            url
-          }
-        }
-      }
-      ... on TeamSectionRecord {
-        _modelApiKey
-        id
-        displayOptions
-        title
-        subtitle
-        showcasedMembers {
-          name
-          id
-          slug
-          bio
-          description
-          picture {
-            responsiveImage {
-              ...rImage
-            }
-          }
-        }
-      }
-      ... on FaqSectionRecord {
-        _modelApiKey
-        displayOptions
-        id
-        title
-        subtitle
-        questions {
-          question
-          id
-          answer {
-            value
-          }
-        }
-      }
-      ... on HeroSectionRecord {
-        buttons {
-          id
-          label
-          primary
-          url
-        }
-        _modelApiKey
-        id
-        heroSubtitle
-        heroTitle
-        displayOptions
-        heroImage {
-          responsiveImage {
-            ...rImage
-          }
-        }
-      }
-      ... on VideoSectionRecord {
-        _modelApiKey
-        id
-        videoHeader
-        videoSubheader
-        video {
-          providerUid
-          provider
-          thumbnailUrl
-        }
-        videoThumbnail {
-          responsiveImage {
-            ...rImage
-          }
-        }
-      }
-      ... on DetailSectionRecord {
-        _modelApiKey
-        id
-        details {
-          value
-        }
-        imagePosition
-        image {
-          responsiveImage {
-            ...rImage
-          }
-        }
-      }
-      ... on ReviewSectionRecord {
-        _modelApiKey
-        id
-        reviewSectionHeader
-        reviewSectionSubheader
-        displayOptions
-        reviews {
-          id
-          rating
-          review {
-            value
-            links
-            blocks
-          }
-          reviewerName
-          reviewerPicture {
-            responsiveImage {
-              ...rImage
-            }
-          }
-          reviewerTitle
-        }
-      }
-      ... on PricingSectionRecord {
-        _modelApiKey
-        id
-        pricingSectionHeader
-        pricingSectionSubheader
-        displayOption
-        plans {
-          id
-          yearlyPrice
-          monthlyPrice
-          tierName
-          tierDescription {
-            value
-          }
-          slug
-          planFeatures
-        }
-      }
-      ... on BrandSectionRecord {
-        _modelApiKey
-        id
-        displayOptions
-        brand {
-          _modelApiKey
-          brandName
-          brandUrl
-          id
-          brandLogo {
-            url
-          }
-        }
-      }
-      ... on FeaturedPostsSectionRecord {
-        _modelApiKey
-        id
-        featuredPostsHeader
-        featuredPostsSubheader
-        displayOptions
-        featuredPosts {
-          _publishedAt
-          slug
-          id
-          title
-          tags {
-            tag
-          }
-          seoTags {
-            description
-            image {
-              responsiveImage {
-                ...rImage
-              }
-            }
-          }
-          author {
-            name
-            bio
-            slug
-            picture {
-              responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
-                ...rImage
-              }
-            }
-          }
-        }
-      }
-      ... on FeatureListSectionRecord {
-        _modelApiKey
-        id
-        featuresHeader
-        featuresSubheader
-        displayOption
-        feature {
-          _modelApiKey
-          id
-          featureTitle
-          featureDescription
-          featureIcon {
-            responsiveImage {
-              ...rImage
-            }
-          }
-        }
-      }
-      ... on AllPostsSectionRecord {
-        id
-        _modelApiKey
-      }
-      ... on RedirectSectionRecord {
-        id
-        _modelApiKey
-        slugToRedirectTo
-      }
-    }
     id
     label
+    abstract
     _modelApiKey
-  }
-  allPosts(
-    filter: { title: { isBlank: "false" } }
-    orderBy: _createdAt_DESC
-    first: "9"
-    locale: $locale
-    fallbackLocales: $fallbackLocale
-  ) {
-    _publishedAt
-    slug
-    id
-    title
-    tags {
-      tag
+    slugs: _allSlugLocales {
+      locale
+      value
     }
-    seoTags {
-      description
-      image {
+    isIndex
+    isHome
+    seo: _seoMetaTags {
+      ...seoMetaFragment
+    }
+    hero {
+      link {
+        ... on InternalLinkRecord {
+          ...internalLink
+        }
+        ... on ExternalLinkRecord {
+          ...externalLink
+        }
+      }
+      _modelApiKey
+      id
+      heroSubtitle
+      heroTitle
+      displayOptions
+      heroImage {
         responsiveImage {
           ...rImage
         }
       }
     }
-    author {
-      name
-      slug
-      bio
-      picture {
-        responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
-          ...rImage
+    sections {
+      ... on SectionWrapRecord {
+        id
+        label
+        _modelApiKey
+        title
+        style
+        blocks {
+          ...wrapSectionBlocks
         }
       }
     }
-  }
-  _allPostsMeta(locale: $locale, filter: { title: { isBlank: "false" } }) {
-    count
   }
 }

@@ -9,7 +9,7 @@ type Props = {
 };
 
 const SingleBlog = ({ blog, locale }: Props) => {
-  const { title, seoTags, author, tags, _publishedAt, slug } = blog;
+  const { title, seoTags, tags, _publishedAt, slug } = blog;
 
   return (
     <>
@@ -18,7 +18,7 @@ const SingleBlog = ({ blog, locale }: Props) => {
           href={"/" + locale + "/posts/" + slug}
           className="relative block w-full overflow-hidden h-[230px]"
         >
-          <span className="absolute right-6 top-6 z-20 inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-semibold capitalize text-white">
+          <span className="absolute right-6 top-6 z-20 inline-flex items-center justify-center rounded-full bg-primary  px-4 py-2 text-sm font-semibold capitalize text-primary-content">
             {tags[0].tag}
           </span>
           <div className="relative h-full w-full overflow-hidden">
@@ -35,41 +35,12 @@ const SingleBlog = ({ blog, locale }: Props) => {
           <h3>
             <Link
               href={"/" + locale + "/posts/" + slug}
-              className="mb-4 block h-16 text-xl text-black hover:text-primary dark:text-white dark:hover:text-primary"
+              className="mb-4 block h-16 text-xl text-black hover:text-primary≤"
             >
               {title}
             </Link>
           </h3>
-          <div className="mb-6 border-b border-body-color border-opacity-10 pb-6 text-base font-medium text-body-color dark:border-white dark:border-opacity-10" />
-          <div className="flex h-full items-center justify-between">
-            <Link
-              href={`/${locale}/posts/author/${author.slug}`}
-              className="mr-5 flex items-center border-r border-body-color border-opacity-10 pr-5 dark:border-white dark:border-opacity-10 xl:mr-3 xl:pr-3 2xl:mr-5 2xl:pr-5"
-            >
-              <div className="mr-4">
-                <div className="relative h-12 w-12 overflow-hidden rounded-full object-contain">
-                  <DatoImage
-                    className="h-full w-full object-cover"
-                    layout="fill"
-                    objectFit="cover"
-                    objectPosition="50% 50%"
-                    data={author.picture.responsiveImage}
-                  />
-                </div>
-              </div>
-              <div className="w-full">
-                <h4 className="mb-1 text-sm font-medium text-dark dark:text-white">
-                  {author.name}
-                </h4>
-                <div className="text-xs text-body-color">{author.bio}</div>
-              </div>
-            </Link>
-            <div className="inline-block">
-              <div className="text-xs text-body-color">
-                {transformDate(_publishedAt)}
-              </div>
-            </div>
-          </div>
+          <div className="mb-6 border-b border-body-color border-opacity-10 pb-6 text-base font-medium text-body-color " />
         </div>
       </div>
     </>

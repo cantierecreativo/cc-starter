@@ -1,7 +1,5 @@
-import Blog from "../Blog";
 import Brands from "../Home/Brands";
 import Features from "../Home/Features";
-import Hero from "../Home/Hero";
 import Pricing from "../Home/Pricing";
 import Testimonials from "../Home/Testimonials";
 import Video from "../Home/Video";
@@ -14,17 +12,19 @@ import StatsSection from "../About/StatsSection";
 import AboutIntro from "../About/AboutIntro";
 import {
   AboutIntroRecord,
-  AllPostsSectionRecord,
+  AttachmentsBlockRecord,
+  BannerCtaRecord,
+  BlogListRecord,
   BrandSectionRecord,
   ChangelogSectionRecord,
-  CollectionMetadata,
   DetailSectionRecord,
+  ElementsListRecord,
   FaqSectionRecord,
   FeatureListSectionRecord,
-  FeaturedPostsSectionRecord,
-  HeroSectionRecord,
-  PageModelSectionsField,
-  PostRecord,
+  FeaturedPagesSectionRecord,
+  GallerySectionRecord,
+  ImageBlockRecord,
+  MultipleCardRecord,
   PricingSectionRecord,
   RedirectSectionRecord,
   ReviewSectionRecord,
@@ -32,412 +32,352 @@ import {
   SlideshowRecord,
   StatsSectionRecord,
   TeamSectionRecord,
+  TextBlockRecord,
   VideoSectionRecord,
 } from "@/graphql/generated";
-import GradientHero from "../Home/Hero/GradientHero";
-import FeatureCards from "../Home/Features/FeatureCards";
-import PostGridRenderer from "../Blog/PostGridRenderer";
 import { redirect } from "next/navigation";
-import RightImageHero from "../Home/Hero/RightImageHero";
-import BackgroundImageHero from "../Home/Hero/BackgroundImage";
-import SplitImage from "../Home/Hero/SplitImage";
-import GradientCards from "../Home/Pricing/GradientCards";
-import Minimal from "../Home/Pricing/Minimal";
-import FeatureListSelector from "../Home/Pricing/FeatureListSelector";
-import SmallCards from "../Home/Pricing/SmallCards";
-import Carrousel from "../Home/Testimonials/Carrousel";
-import ModernCarrousel from "../Home/Testimonials/ModernCarrousel";
-import MinimalCarrousel from "../Home/Testimonials/MinimalCarrousel";
-import MinimalReviewCards from "../Home/Testimonials/MinimalReviewCards";
-import BrandCards from "../Home/Brands/BrandCards";
-import ModernPostCards from "../Home/Featured Posts/ModernPostCards";
-import CarrouselFeaturedPosts from "../Home/Featured Posts/CarrouselFeaturedPosts";
-import MinimalistFeaturedPostsGrid from "../Home/Featured Posts/MinimalistFeaturedPostsGrid";
-import FullImageFeaturedPosts from "../Home/Featured Posts/FullImageFeaturedPosts";
-import MinimalCardsFeature from "../Home/Features/MinimalCardsFeature";
-import BigImageHorizontalFeatures from "../Home/Features/BigImageHorizontalFeatures";
-import BigImageVerticalFeatures from "../Home/Features/BigImageVerticalFeatures";
-import Changelog from "../Changelog";
-import Carousel from "../Common/Carousel";
+import GradientCards from "@/components/Home/Pricing/GradientCards";
+import Minimal from "@/components/Home/Pricing/Minimal";
+import FeatureListSelector from "@/components/Home/Pricing/FeatureListSelector";
+import SmallCards from "@/components/Home/Pricing/SmallCards";
+import Carrousel from "@/components/Home/Testimonials/Carrousel";
+import ModernCarrousel from "@/components/Home/Testimonials/ModernCarrousel";
+import MinimalCarrousel from "@/components/Home/Testimonials/MinimalCarrousel";
+import MinimalReviewCards from "@/components/Home/Testimonials/MinimalReviewCards";
+import BrandCards from "@/components/Home/Brands/BrandCards";
+import Changelog from "@/components/Changelog";
+import Carousel from "@/components/Common/Carousel";
+import ImageBlock from "@/components/Common/ImageBlock";
+import GalleryBlock from "@/components/Common/GalleryBlock";
+import BannerCtaBlock from "@/components/Common/BannerCtaBlock";
+import TextBlock from "@/components/Common/TextBlock";
+import MultipleCardBlock from "@/components/Common/MultipleCardBlock";
+import BlogListBlock from "@/components/Common/BlogListBlock";
+import StandardFeaturedPages from "@/components/Home/FeaturedPages/StandardFeaturedPages";
+import ProductDetailsBlock from "@/components/Common/ProductDetailsBlock";
+import FormBlock from "@/components/Common/FormBlock";
+import ContactTextBlock from "@/components/Common/ContactTextBlock";
+import ElementListBlock from "@/components/Common/ElementListBlock";
+import AttachmentsBlock from "@/components/Blog/AttachmentsBlock";
 
 type Props = {
-  sections: Array<PageModelSectionsField>;
+  section: any;
   locale: SiteLocale;
-  posts: PostRecord[];
-  postMeta: CollectionMetadata;
 };
 
-export default function Section({ sections, locale, posts, postMeta }: Props) {
-  return (
-    <>
-      {sections?.map((section) => {
-        console.log("APIKEY", section._modelApiKey);
-        switch (section._modelApiKey) {
-          case "slideshow": {
-            const carouselSection = section as SlideshowRecord;
-            return <Carousel slides={carouselSection.slides} locale={locale} />;
-          }
-          case "changelog_section":
-            const changeLogSection = section as ChangelogSectionRecord;
-            return (
-              <Changelog
-                title={changeLogSection.title}
-                subtitle={changeLogSection.subtitle}
-                featuredChangeLogs={changeLogSection.featuredVersions}
-                locale={locale}
-              />
-            );
-          case "hero_section":
-            const heroSectionRecord = section as HeroSectionRecord;
-            switch (heroSectionRecord.displayOptions) {
-              case "gradient":
-                return (
-                  <GradientHero
-                    heroTitle={heroSectionRecord.heroTitle}
-                    heroSubtitle={heroSectionRecord.heroSubtitle}
-                    buttons={heroSectionRecord.buttons}
-                  />
-                );
-              case "right_image":
-                return (
-                  <RightImageHero
-                    heroTitle={heroSectionRecord.heroTitle}
-                    heroSubtitle={heroSectionRecord.heroSubtitle}
-                    buttons={heroSectionRecord.buttons}
-                    image={heroSectionRecord.heroImage}
-                  />
-                );
-              case "background_image":
-                return (
-                  <BackgroundImageHero
-                    heroTitle={heroSectionRecord.heroTitle}
-                    heroSubtitle={heroSectionRecord.heroSubtitle}
-                    buttons={heroSectionRecord.buttons}
-                    image={heroSectionRecord.heroImage}
-                  />
-                );
-              case "split_image":
-                return (
-                  <SplitImage
-                    heroTitle={heroSectionRecord.heroTitle}
-                    heroSubtitle={heroSectionRecord.heroSubtitle}
-                    buttons={heroSectionRecord.buttons}
-                    image={heroSectionRecord.heroImage}
-                  />
-                );
-              default:
-                return (
-                  <Hero
-                    heroTitle={heroSectionRecord.heroTitle}
-                    heroSubtitle={heroSectionRecord.heroSubtitle}
-                    buttons={heroSectionRecord.buttons}
-                  />
-                );
-            }
+export default function Sections({ section, locale }: Props) {
+  return section?.blocks?.map((b: any) => {
+    switch (b._modelApiKey) {
+      case "elements_list": {
+        const elementsListRecord = b as ElementsListRecord;
+        return (
+          <ElementListBlock
+            key={b.id}
+            data={elementsListRecord}
+            locale={locale}
+          />
+        );
+      }
+      case "attachments_block": {
+        const attachmentsRecord = b as AttachmentsBlockRecord;
+        return (
+          <AttachmentsBlock
+            key={b.id}
+            style={section.style}
+            data={attachmentsRecord}
+            locale={locale}
+          />
+        );
+      }
+      case "contact_text_block": {
+        return <ContactTextBlock key={b.id} data={b} locale={locale} />;
+      }
+      case "form_block": {
+        return <FormBlock key={b.id} data={b} locale={locale} />;
+      }
+      case "product_detail": {
+        return <ProductDetailsBlock key={b.id} data={b} locale={locale} />;
+      }
+      case "feature_list_section": {
+        const featureListSectionRecord = b as FeatureListSectionRecord;
+        return (
+          <Features
+            key={b.id}
+            features={featureListSectionRecord.feature}
+            featuresHeader={featureListSectionRecord.featuresHeader}
+            featuresSubheader={featureListSectionRecord.featuresSubheader}
+          />
+        );
+      }
+      case "multiple_card": {
+        const multipleCardSection = b as MultipleCardRecord;
+        return (
+          <MultipleCardBlock
+            key={b.id}
+            data={multipleCardSection}
+            locale={locale}
+          />
+        );
+      }
+      case "blog_list": {
+        const blogListSection = b as BlogListRecord;
+        return (
+          <BlogListBlock key={b.id} data={blogListSection} locale={locale} />
+        );
+      }
+      case "gallery_section": {
+        const gallerySection = b as GallerySectionRecord;
+        return (
+          <GalleryBlock key={b.id} data={gallerySection} locale={locale} />
+        );
+      }
+      case "image_block": {
+        const imageBlock = b as ImageBlockRecord;
+        return <ImageBlock key={b.id} data={imageBlock} locale={locale} />;
+      }
+      case "banner_cta": {
+        const bannerCtaSection = b as BannerCtaRecord;
+        return (
+          <BannerCtaBlock key={b.id} data={bannerCtaSection} locale={locale} />
+        );
+      }
+      case "text_block": {
+        const textBlockSection = b as TextBlockRecord;
+        return <TextBlock key={b.id} data={textBlockSection} locale={locale} />;
+      }
+      case "slideshow": {
+        const carouselSection = b as SlideshowRecord;
+        return (
+          <Carousel
+            key={b.id}
+            slides={carouselSection.slides}
+            locale={locale}
+          />
+        );
+      }
+      case "changelog_section":
+        const changeLogSection = b as ChangelogSectionRecord;
+        return (
+          <Changelog
+            key={b.id}
+            title={changeLogSection.title}
+            subtitle={changeLogSection.subtitle}
+            featuredChangeLogs={changeLogSection.featuredVersions}
+            locale={locale}
+          />
+        );
 
-          case "feature_list_section":
-            const featureListSectionRecord =
-              section as FeatureListSectionRecord;
-            switch (featureListSectionRecord.displayOption) {
-              case "card_minimal":
-                return (
-                  <MinimalCardsFeature
-                    features={featureListSectionRecord.feature}
-                    featuresHeader={featureListSectionRecord.featuresHeader}
-                    featuresSubheader={
-                      featureListSectionRecord.featuresSubheader
-                    }
-                  />
-                );
-              case "grid":
-                return (
-                  <Features
-                    features={featureListSectionRecord.feature}
-                    featuresHeader={featureListSectionRecord.featuresHeader}
-                    featuresSubheader={
-                      featureListSectionRecord.featuresSubheader
-                    }
-                  />
-                );
-              case "big_image_horizontal":
-                return (
-                  <BigImageHorizontalFeatures
-                    features={featureListSectionRecord.feature}
-                    featuresHeader={featureListSectionRecord.featuresHeader}
-                    featuresSubheader={
-                      featureListSectionRecord.featuresSubheader
-                    }
-                  />
-                );
-              case "big_image_vertical":
-                return (
-                  <BigImageVerticalFeatures
-                    features={featureListSectionRecord.feature}
-                    featuresHeader={featureListSectionRecord.featuresHeader}
-                    featuresSubheader={
-                      featureListSectionRecord.featuresSubheader
-                    }
-                  />
-                );
-              default:
-                return (
-                  <FeatureCards
-                    features={featureListSectionRecord.feature}
-                    featuresHeader={featureListSectionRecord.featuresHeader}
-                    featuresSubheader={
-                      featureListSectionRecord.featuresSubheader
-                    }
-                  />
-                );
-            }
-
-          case "video_section":
-            const videoSectionRecord = section as VideoSectionRecord;
+      case "video_section":
+        const videoSectionRecord = b as VideoSectionRecord;
+        return (
+          <Video
+            key={b.id}
+            videoHeader={videoSectionRecord.videoHeader}
+            videoSubheader={videoSectionRecord.videoSubheader}
+            externalVideo={videoSectionRecord.externalVideo}
+            internalVideo={videoSectionRecord.internalVideo}
+          />
+        );
+      case "brand_section":
+        const brandSectionRecord = b as BrandSectionRecord;
+        switch (brandSectionRecord.displayOptions) {
+          case "brand_cards":
             return (
-              <Video
-                videoHeader={videoSectionRecord.videoHeader}
-                videoSubheader={videoSectionRecord.videoSubheader}
-                videoUid={videoSectionRecord.video?.providerUid}
-                videoThumbnail={videoSectionRecord.videoThumbnail}
-                videoProvider={videoSectionRecord.video?.provider}
-              />
+              <BrandCards key={b.id} brandShowcase={brandSectionRecord.brand} />
             );
-          case "brand_section":
-            const brandSectionRecord = section as BrandSectionRecord;
-            switch (brandSectionRecord.displayOptions) {
-              case "brand_cards":
-                return <BrandCards brandShowcase={brandSectionRecord.brand} />;
-              default:
-                return <Brands brandShowcase={brandSectionRecord.brand} />;
-            }
-          case "detail_section":
-            const detailSectionRecord = section as DetailSectionRecord;
-            return (
-              <DetailSection
-                imagePosition={detailSectionRecord.imagePosition as boolean}
-                image={detailSectionRecord.image}
-                details={detailSectionRecord.details}
-              />
-            );
-          case "review_section":
-            const reviewSectionRecord = section as ReviewSectionRecord;
-            switch (reviewSectionRecord.displayOptions) {
-              case "card_carrousel":
-                return (
-                  <Carrousel
-                    header={reviewSectionRecord.reviewSectionHeader}
-                    subheader={reviewSectionRecord.reviewSectionSubheader}
-                    reviews={reviewSectionRecord.reviews}
-                  />
-                );
-              case "modern_carrousel":
-                return (
-                  <ModernCarrousel
-                    header={reviewSectionRecord.reviewSectionHeader}
-                    subheader={reviewSectionRecord.reviewSectionSubheader}
-                    reviews={reviewSectionRecord.reviews}
-                  />
-                );
-              case "minimal_carrousel":
-                return (
-                  <MinimalCarrousel
-                    header={reviewSectionRecord.reviewSectionHeader}
-                    subheader={reviewSectionRecord.reviewSectionSubheader}
-                    reviews={reviewSectionRecord.reviews}
-                  />
-                );
-              case "minimal_cards":
-                return (
-                  <MinimalReviewCards
-                    header={reviewSectionRecord.reviewSectionHeader}
-                    subheader={reviewSectionRecord.reviewSectionSubheader}
-                    reviews={reviewSectionRecord.reviews}
-                  />
-                );
-              default:
-                return (
-                  <Testimonials
-                    header={reviewSectionRecord.reviewSectionHeader}
-                    subheader={reviewSectionRecord.reviewSectionSubheader}
-                    reviews={reviewSectionRecord.reviews}
-                  />
-                );
-            }
-
-          case "pricing_section":
-            const pricingSectionRecord = section as PricingSectionRecord;
-            switch (pricingSectionRecord.displayOption) {
-              case "cards_gradient":
-                return (
-                  <GradientCards
-                    header={pricingSectionRecord.pricingSectionHeader}
-                    subheader={pricingSectionRecord.pricingSectionSubheader}
-                    plans={pricingSectionRecord.plans}
-                  />
-                );
-              case "minimal":
-                return (
-                  <Minimal
-                    header={pricingSectionRecord.pricingSectionHeader}
-                    subheader={pricingSectionRecord.pricingSectionSubheader}
-                    plans={pricingSectionRecord.plans}
-                  />
-                );
-              case "feature_list":
-                return (
-                  <FeatureListSelector
-                    header={pricingSectionRecord.pricingSectionHeader}
-                    subheader={pricingSectionRecord.pricingSectionSubheader}
-                    plans={pricingSectionRecord.plans}
-                  />
-                );
-              case "mini_cards":
-                return (
-                  <SmallCards
-                    header={pricingSectionRecord.pricingSectionHeader}
-                    subheader={pricingSectionRecord.pricingSectionSubheader}
-                    plans={pricingSectionRecord.plans}
-                  />
-                );
-              default:
-                return (
-                  <Pricing
-                    header={pricingSectionRecord.pricingSectionHeader}
-                    subheader={pricingSectionRecord.pricingSectionSubheader}
-                    plans={pricingSectionRecord.plans}
-                  />
-                );
-            }
-
-          case "featured_posts_section":
-            const featuredPostsSectionRecord =
-              section as FeaturedPostsSectionRecord;
-            switch (featuredPostsSectionRecord.displayOptions) {
-              case "modern_cards":
-                return (
-                  <ModernPostCards
-                    locale={locale}
-                    blogData={featuredPostsSectionRecord.featuredPosts}
-                    blogHeader={featuredPostsSectionRecord.featuredPostsHeader}
-                    blogSubheader={
-                      featuredPostsSectionRecord.featuredPostsSubheader
-                    }
-                  />
-                );
-              case "carrousel":
-                return (
-                  <CarrouselFeaturedPosts
-                    locale={locale}
-                    blogData={featuredPostsSectionRecord.featuredPosts}
-                    blogHeader={featuredPostsSectionRecord.featuredPostsHeader}
-                    blogSubheader={
-                      featuredPostsSectionRecord.featuredPostsSubheader
-                    }
-                  />
-                );
-              case "minimalist_grid":
-                return (
-                  <MinimalistFeaturedPostsGrid
-                    locale={locale}
-                    blogData={featuredPostsSectionRecord.featuredPosts}
-                    blogHeader={featuredPostsSectionRecord.featuredPostsHeader}
-                    blogSubheader={
-                      featuredPostsSectionRecord.featuredPostsSubheader
-                    }
-                  />
-                );
-              case "full_image_card":
-                return (
-                  <FullImageFeaturedPosts
-                    locale={locale}
-                    blogData={featuredPostsSectionRecord.featuredPosts}
-                    blogHeader={featuredPostsSectionRecord.featuredPostsHeader}
-                    blogSubheader={
-                      featuredPostsSectionRecord.featuredPostsSubheader
-                    }
-                  />
-                );
-              default:
-                return (
-                  <Blog
-                    locale={locale}
-                    blogData={featuredPostsSectionRecord.featuredPosts}
-                    blogHeader={featuredPostsSectionRecord.featuredPostsHeader}
-                    blogSubheader={
-                      featuredPostsSectionRecord.featuredPostsSubheader
-                    }
-                  />
-                );
-            }
-
-          case "team_section":
-            const teamSectionRecord = section as TeamSectionRecord;
-            if (teamSectionRecord.displayOptions === "compact")
-              return (
-                <CompactTeam
-                  header={teamSectionRecord.title}
-                  subheader={teamSectionRecord.subtitle}
-                  members={teamSectionRecord.showcasedMembers}
-                  lng={locale}
-                />
-              );
-            return (
-              <ExpandedTeam
-                header={teamSectionRecord.title}
-                subheader={teamSectionRecord.subtitle}
-                members={teamSectionRecord.showcasedMembers}
-                lng={locale}
-              />
-            );
-          case "faq_section":
-            const faqSectionRecord = section as FaqSectionRecord;
-            if (faqSectionRecord.displayOptions === "accordion")
-              return (
-                <FAQAccordion
-                  title={faqSectionRecord.title}
-                  subtitle={faqSectionRecord.subtitle}
-                  questions={faqSectionRecord.questions}
-                />
-              );
-            return (
-              <FAQGrid
-                title={faqSectionRecord.title}
-                subtitle={faqSectionRecord.subtitle}
-                questions={faqSectionRecord.questions}
-              />
-            );
-          case "stats_section":
-            const statsSectionRecord = section as StatsSectionRecord;
-            return (
-              <StatsSection
-                title={statsSectionRecord.title}
-                subtitle={statsSectionRecord.subtitle}
-                statistic={statsSectionRecord.statistic}
-              />
-            );
-          case "about_intro":
-            const aboutIntroSectionRecord = section as AboutIntroRecord;
-            return (
-              <AboutIntro
-                header={aboutIntroSectionRecord.header}
-                subheader={aboutIntroSectionRecord.subheader}
-                introduction={aboutIntroSectionRecord.introductionText}
-                images={aboutIntroSectionRecord.images}
-                preHeader={aboutIntroSectionRecord.preHeader}
-              />
-            );
-          case "all_posts_section":
-            const allPostsSectionRecord = section as AllPostsSectionRecord;
-            return (
-              <PostGridRenderer data={posts} lng={locale} postMeta={postMeta} />
-            );
-          case "redirect_section":
-            const redirectSectionRecord = section as RedirectSectionRecord;
-            redirect(`/${locale}/${redirectSectionRecord.slugToRedirectTo}`);
           default:
-            return <></>;
+            return (
+              <Brands key={b.id} brandShowcase={brandSectionRecord.brand} />
+            );
         }
-      })}
-    </>
-  );
+      case "detail_section":
+        const detailSectionRecord = b as DetailSectionRecord;
+        return (
+          <DetailSection
+            key={b.id}
+            imagePosition={detailSectionRecord.imagePosition as boolean}
+            image={detailSectionRecord.image}
+            details={detailSectionRecord.details}
+          />
+        );
+      case "review_section":
+        const reviewSectionRecord = b as ReviewSectionRecord;
+        switch (reviewSectionRecord.displayOptions) {
+          case "card_carrousel":
+            return (
+              <Carrousel
+                key={b.id}
+                header={reviewSectionRecord.reviewSectionHeader}
+                subheader={reviewSectionRecord.reviewSectionSubheader}
+                reviews={reviewSectionRecord.reviews}
+              />
+            );
+          case "modern_carrousel":
+            return (
+              <ModernCarrousel
+                key={b.id}
+                header={reviewSectionRecord.reviewSectionHeader}
+                subheader={reviewSectionRecord.reviewSectionSubheader}
+                reviews={reviewSectionRecord.reviews}
+              />
+            );
+          case "minimal_carrousel":
+            return (
+              <MinimalCarrousel
+                key={b.id}
+                header={reviewSectionRecord.reviewSectionHeader}
+                subheader={reviewSectionRecord.reviewSectionSubheader}
+                reviews={reviewSectionRecord.reviews}
+              />
+            );
+          case "minimal_cards":
+            return (
+              <MinimalReviewCards
+                key={b.id}
+                header={reviewSectionRecord.reviewSectionHeader}
+                subheader={reviewSectionRecord.reviewSectionSubheader}
+                reviews={reviewSectionRecord.reviews}
+              />
+            );
+          default:
+            return (
+              <Testimonials
+                key={b.id}
+                header={reviewSectionRecord.reviewSectionHeader}
+                subheader={reviewSectionRecord.reviewSectionSubheader}
+                reviews={reviewSectionRecord.reviews}
+              />
+            );
+        }
+
+      case "pricing_section":
+        const pricingSectionRecord = section as PricingSectionRecord;
+        switch (pricingSectionRecord.displayOption) {
+          case "cards_gradient":
+            return (
+              <GradientCards
+                key={b.id}
+                header={pricingSectionRecord.pricingSectionHeader}
+                subheader={pricingSectionRecord.pricingSectionSubheader}
+                plans={pricingSectionRecord.plans}
+              />
+            );
+          case "minimal":
+            return (
+              <Minimal
+                key={b.id}
+                header={pricingSectionRecord.pricingSectionHeader}
+                subheader={pricingSectionRecord.pricingSectionSubheader}
+                plans={pricingSectionRecord.plans}
+              />
+            );
+          case "feature_list":
+            return (
+              <FeatureListSelector
+                key={b.id}
+                header={pricingSectionRecord.pricingSectionHeader}
+                subheader={pricingSectionRecord.pricingSectionSubheader}
+                plans={pricingSectionRecord.plans}
+              />
+            );
+          case "mini_cards":
+            return (
+              <SmallCards
+                key={b.id}
+                header={pricingSectionRecord.pricingSectionHeader}
+                subheader={pricingSectionRecord.pricingSectionSubheader}
+                plans={pricingSectionRecord.plans}
+              />
+            );
+          default:
+            return (
+              <Pricing
+                key={b.id}
+                header={pricingSectionRecord.pricingSectionHeader}
+                subheader={pricingSectionRecord.pricingSectionSubheader}
+                plans={pricingSectionRecord.plans}
+              />
+            );
+        }
+
+      case "featured_pages_section":
+        const featuredPagesSectionRecord =
+          section as FeaturedPagesSectionRecord;
+        return (
+          <StandardFeaturedPages
+            locale={locale}
+            key={b.id}
+            pages={featuredPagesSectionRecord.featuredPages}
+            header={featuredPagesSectionRecord.featuredPagesHeader}
+            subheader={featuredPagesSectionRecord.featuredPagesSubheader}
+          />
+        );
+
+      case "team_section":
+        const teamSectionRecord = section as TeamSectionRecord;
+        if (teamSectionRecord.displayOptions === "compact")
+          return (
+            <CompactTeam
+              key={b.id}
+              header={teamSectionRecord.title}
+              subheader={teamSectionRecord.subtitle}
+              lng={locale}
+            />
+          );
+        return (
+          <ExpandedTeam
+            key={b.id}
+            header={teamSectionRecord.title}
+            subheader={teamSectionRecord.subtitle}
+            lng={locale}
+          />
+        );
+      case "faq_section":
+        const faqSectionRecord = section as FaqSectionRecord;
+        if (faqSectionRecord.displayOptions === "accordion")
+          return (
+            <FAQAccordion
+              key={b.id}
+              title={faqSectionRecord.title}
+              subtitle={faqSectionRecord.subtitle}
+              questions={faqSectionRecord.questions}
+            />
+          );
+        return (
+          <FAQGrid
+            key={b.id}
+            title={faqSectionRecord.title}
+            subtitle={faqSectionRecord.subtitle}
+            questions={faqSectionRecord.questions}
+          />
+        );
+      case "stats_section":
+        const statsSectionRecord = section as StatsSectionRecord;
+        return (
+          <StatsSection
+            key={b.id}
+            title={statsSectionRecord.title}
+            subtitle={statsSectionRecord.subtitle}
+            statistic={statsSectionRecord.statistic}
+          />
+        );
+      case "about_intro":
+        const aboutIntroSectionRecord = section as AboutIntroRecord;
+        return (
+          <AboutIntro
+            key={b.id}
+            header={aboutIntroSectionRecord.header}
+            subheader={aboutIntroSectionRecord.subheader}
+            introduction={aboutIntroSectionRecord.introductionText}
+            images={aboutIntroSectionRecord.images}
+            preHeader={aboutIntroSectionRecord.preHeader}
+          />
+        );
+      case "redirect_section":
+        const redirectSectionRecord = section as RedirectSectionRecord;
+        redirect(`/${locale}/${redirectSectionRecord.slugToRedirectTo}`);
+      default:
+        return <></>;
+    }
+  });
 }
