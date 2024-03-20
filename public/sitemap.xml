@@ -2,152 +2,146 @@
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://localhost:3000/</loc>
-    <lastmod>2024-03-20T13:08:45.931Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/anfore</loc>
-    <lastmod>2024-03-20T13:08:45.931Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/articolo-con-effetto-hover</loc>
-    <lastmod>2024-03-20T13:08:45.931Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
     <loc>http://localhost:3000/bio-integrale</loc>
-    <lastmod>2024-03-20T13:08:45.931Z</lastmod>
+    <lastmod>2024-03-20T15:32:33.243Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://localhost:3000/blog</loc>
-    <lastmod>2024-03-20T13:08:45.931Z</lastmod>
+    <lastmod>2024-03-20T15:32:33.244Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>http://localhost:3000/blog/articolo-con-effetto-hover</loc>
+    <lastmod>2024-03-20T15:32:33.244Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>http://localhost:3000/blog/articolo-con-effetto-hover/norwegian</loc>
+    <lastmod>2024-03-20T15:32:33.244Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>http://localhost:3000/blog/norwegian-forest</loc>
+    <lastmod>2024-03-20T15:32:33.244Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>http://localhost:3000/blog/norwegian-forest-sphynx-munchkin</loc>
+    <lastmod>2024-03-20T15:32:33.244Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>http://localhost:3000/blog/norwegian-forest-sphynx-munchkinasdffdsa</loc>
+    <lastmod>2024-03-20T15:32:33.244Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>http://localhost:3000/blog/persian-munchkin</loc>
+    <lastmod>2024-03-20T15:32:33.244Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>http://localhost:3000/blog/persian-munchkin-afds</loc>
+    <lastmod>2024-03-20T15:32:33.244Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>http://localhost:3000/blog/persian-munchkin-tsg</loc>
+    <lastmod>2024-03-20T15:32:33.244Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>http://localhost:3000/blog/persian-munchkina</loc>
+    <lastmod>2024-03-20T15:32:33.244Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>http://localhost:3000/blog/persian-munchkina-asdfsafd</loc>
+    <lastmod>2024-03-20T15:32:33.244Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://localhost:3000/contatti</loc>
-    <lastmod>2024-03-20T13:08:45.931Z</lastmod>
+    <lastmod>2024-03-20T15:32:33.244Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/en/</loc>
-    <lastmod>2024-03-20T13:08:45.931Z</lastmod>
+    <loc>http://localhost:3000/en</loc>
+    <lastmod>2024-03-20T15:32:33.244Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/en/bio</loc>
-    <lastmod>2024-03-20T13:08:45.931Z</lastmod>
+    <loc>http://localhost:3000/en//-integrale/bio</loc>
+    <lastmod>2024-03-20T15:32:33.244Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/en/contacts</loc>
-    <lastmod>2024-03-20T13:08:45.931Z</lastmod>
+    <loc>http://localhost:3000/en//contacts/contacts</loc>
+    <lastmod>2024-03-20T15:32:33.244Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/en/story</loc>
-    <lastmod>2024-03-20T13:08:45.931Z</lastmod>
+    <loc>http://localhost:3000/en//story/story</loc>
+    <lastmod>2024-03-20T15:32:33.244Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/en/the-anfore</loc>
-    <lastmod>2024-03-20T13:08:45.931Z</lastmod>
+    <loc>http://localhost:3000/en//the-family/the-anfore/the-anfore</loc>
+    <lastmod>2024-03-20T15:32:33.244Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/esperienze</loc>
-    <lastmod>2024-03-20T13:08:45.931Z</lastmod>
+    <loc>http://localhost:3000/la-famiglia/anfore</loc>
+    <lastmod>2024-03-20T15:32:33.244Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/i-nostri-prodotti</loc>
-    <lastmod>2024-03-20T13:08:45.931Z</lastmod>
+    <loc>http://localhost:3000/la-famiglia/esperienze</loc>
+    <lastmod>2024-03-20T15:32:33.244Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/norwegian</loc>
-    <lastmod>2024-03-20T13:08:45.931Z</lastmod>
+    <loc>http://localhost:3000/la-famiglia/i-nostri-prodotti</loc>
+    <lastmod>2024-03-20T15:32:33.244Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/norwegian-forest</loc>
-    <lastmod>2024-03-20T13:08:45.931Z</lastmod>
+    <loc>http://localhost:3000/la-famiglia/tenute</loc>
+    <lastmod>2024-03-20T15:32:33.244Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/norwegian-forest-sphynx-munchkin</loc>
-    <lastmod>2024-03-20T13:08:45.931Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/norwegian-forest-sphynx-munchkinasdffdsa</loc>
-    <lastmod>2024-03-20T13:08:45.931Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/persian-munchkin</loc>
-    <lastmod>2024-03-20T13:08:45.931Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/persian-munchkin-afds</loc>
-    <lastmod>2024-03-20T13:08:45.931Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/persian-munchkin-tsg</loc>
-    <lastmod>2024-03-20T13:08:45.931Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/persian-munchkina</loc>
-    <lastmod>2024-03-20T13:08:45.931Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/persian-munchkina-asdfsafd</loc>
-    <lastmod>2024-03-20T13:08:45.931Z</lastmod>
+    <loc>http://localhost:3000/la-famiglia/vini</loc>
+    <lastmod>2024-03-20T15:32:33.244Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://localhost:3000/storia</loc>
-    <lastmod>2024-03-20T13:08:45.931Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/tenute</loc>
-    <lastmod>2024-03-20T13:08:45.931Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/vini</loc>
-    <lastmod>2024-03-20T13:08:45.931Z</lastmod>
+    <lastmod>2024-03-20T15:32:33.244Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
