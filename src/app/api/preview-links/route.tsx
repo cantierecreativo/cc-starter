@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
     });
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_HOST;
+  const baseUrl = process.env.HOST;
   const previewLinks = [];
 
   previewLinks.push({
