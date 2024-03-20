@@ -152,7 +152,7 @@ function getRoute(path) {
   <url>
     <loc>${HOST}${path}</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>`;
 }
