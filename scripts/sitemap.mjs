@@ -38,7 +38,6 @@ function matchCustomRoute({ slugs, _modelApiKey, locale }) {
   const defaultPathChunks = matchingRoute.path.split("/"); //.slice(-1);
 
   let prefix = defaultPathChunks.map((i) => t(i, locale)).join("/");
-  console.log("-", slug, "prefix", prefix);
   return `${prefix}`;
   // return slug;
 }

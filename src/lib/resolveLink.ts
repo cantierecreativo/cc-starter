@@ -55,7 +55,6 @@ export default function resolveLink({
       return `${lang}${customRoute}`;
     }
   }
-  console.log("resolve default route  : ", slug, _modelApiKey);
   //default routing
   switch (_modelApiKey) {
     case "page":
