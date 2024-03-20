@@ -12,7 +12,7 @@ function generatePreviewUrl({ item, itemType, locale }: any) {
   console.info("locale", locale);
 
   if (!item?.attributes) return null;
-  const _modelApiKey = itemType.attributes.api_key || null;
+  const _modelApiKey = itemType.attributes.api_key || "";
 
   console.info("_modelApiKey", _modelApiKey);
   const slug = item.attributes.slug || null;
@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
     });
   }
 
-  const baseUrl = process.env.HOST;
+  const baseUrl = process.env.HOST || "";
   const previewLinks = [];
 
   previewLinks.push({
