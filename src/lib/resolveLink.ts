@@ -33,7 +33,7 @@ function matchCustomRoute({ slugs, _modelApiKey, locale }: RouteProps) {
   if (locale === config.defaultLocale) return matchingRoute.path;
   const defaultPathChunks = matchingRoute.path.replace(slug, "").split("/");
   let prefix = defaultPathChunks.map((i) => t(i, locale)).join("/");
-  return `/${prefix}/${slug}`;
+  return `${prefix}/${slug}`;
 }
 
 export default function resolveLink({

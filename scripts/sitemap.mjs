@@ -1,10 +1,9 @@
-import * as dotenv from "dotenv"; // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+import * as dotenv from "dotenv";
 import path from "path";
 import { promises as fs } from "fs";
 import { buildClient, LogLevel } from "@datocms/cma-client-node";
 
-dotenv.config({ path: ".env.local" }); //SE USATE direnv non serve specificare il path
-// dotenv.config();
+dotenv.config({ path: ".env.local" });
 
 //contiene le rotte e loro prefissi
 const config = JSON.parse(
@@ -23,7 +22,7 @@ const t = (section, locale) => {
 };
 
 function matchCustomRoute({ slugs, _modelApiKey, locale }) {
-  const slug = slugs[locale]; //slugs?.find((i) => i.locale === locale)?.value;
+  const slug = slugs[locale];
   if (!slug) return null;
 
   const matchingRoute = config.models.find(
@@ -36,15 +35,18 @@ function matchCustomRoute({ slugs, _modelApiKey, locale }) {
 
   if (!matchingRoute) return null;
   if (locale === config.defaultLocale) return matchingRoute.path;
-  const defaultPathChunks = matchingRoute.path.replace(slug, "").split("/");
+  const defaultPathChunks = matchingRoute.path.split("/"); //.slice(-1);
+
   let prefix = defaultPathChunks.map((i) => t(i, locale)).join("/");
-  return `/${prefix}/${slug}`;
+  console.log("-", slug, "prefix", prefix);
+  return `${prefix}`;
+  // return slug;
 }
 
 function resolveLink({ slugs, _modelApiKey, locale }) {
   //language prefix
   const lang = locale === config.defaultLocale ? "" : `/${locale}`;
-  const slug = slugs[locale]; //slugs?.find((i) => i.locale === locale)?.value;
+  const slug = slugs[locale];
   if (slug === "home") {
     return lang;
   }
@@ -56,7 +58,7 @@ function resolveLink({ slugs, _modelApiKey, locale }) {
       return `${lang}${customRoute}`;
     }
   }
-  console.log("resolve default route  : ", slug, _modelApiKey);
+  // console.log("resolve default route  : ", slug, _modelApiKey);
   //default routing
   switch (_modelApiKey) {
     case "page":
@@ -134,8 +136,7 @@ async function getRecords(modelList) {
 }
 
 function resolvePath({ slug, apiKey }, locale) {
-  const link = resolveLink({ slugs: slug, _modelApiKey: apiKey, locale });
-  return link;
+  return resolveLink({ slugs: slug, _modelApiKey: apiKey, locale });
 }
 
 function getSlugs(records) {
