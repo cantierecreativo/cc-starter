@@ -1,5 +1,4 @@
-// import SharePost from "@/components/Blog/Post/SharePost";
-// import TagButton from "@/components/Blog/TagButton";
+"use client";
 import QuoteBlock from "@/components/Blog/Post/StructuredTextBlocks/QuoteBlock";
 import {
   isBlockquote,
