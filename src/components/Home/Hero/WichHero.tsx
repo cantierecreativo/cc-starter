@@ -1,58 +1,46 @@
 "use client";
 
-import Sections from "@/components/Sections";
-import { HeroSectionRecord, PageQuery, SiteLocale } from "@/graphql/generated";
+import { HeroSectionRecord, SiteLocale } from "@/graphql/generated";
 
-import GradientHero from "./GradientHero";
 import RightImageHero from "./RightImageHero";
 import BackgroundImageHero from "./BackgroundImage";
-import SplitImage from "./SplitImage";
 
-export default function WhichHero({ hero }) {
-  const heroSectionRecord = hero as HeroSectionRecord;
-  switch (heroSectionRecord.displayOptions) {
-    case "gradient":
-      return (
-        <GradientHero
-          heroTitle={heroSectionRecord.heroTitle}
-          heroSubtitle={heroSectionRecord.heroSubtitle}
-          buttons={heroSectionRecord.buttons}
-        />
-      );
-    case "right_image":
-      return (
-        <RightImageHero
-          heroTitle={heroSectionRecord.heroTitle}
-          heroSubtitle={heroSectionRecord.heroSubtitle}
-          buttons={heroSectionRecord.buttons}
-          image={heroSectionRecord.heroImage}
-        />
-      );
-    case "background_image":
+type PropsWhichHero = {
+  hero: HeroSectionRecord;
+  locale: SiteLocale;
+};
+
+export default function WhichHero({ hero, locale }: PropsWhichHero) {
+  switch (hero.displayOptions) {
+    case "heroBg":
       return (
         <BackgroundImageHero
-          heroTitle={heroSectionRecord.heroTitle}
-          heroSubtitle={heroSectionRecord.heroSubtitle}
-          buttons={heroSectionRecord.buttons}
-          image={heroSectionRecord.heroImage}
+          heroTitle={hero.heroTitle}
+          heroSubtitle={hero.heroSubtitle}
+          image={hero.heroImage}
+          link={hero.link}
+          locale={locale}
         />
       );
-    case "split_image":
+    case "heroImageTxt":
       return (
-        <SplitImage
-          heroTitle={heroSectionRecord.heroTitle}
-          heroSubtitle={heroSectionRecord.heroSubtitle}
-          buttons={heroSectionRecord.buttons}
-          image={heroSectionRecord.heroImage}
+        <RightImageHero
+          heroTitle={hero.heroTitle}
+          heroSubtitle={hero.heroSubtitle}
+          image={hero.heroImage}
+          link={hero.link}
+          locale={locale}
         />
       );
-    // default:
-    //   return (
-    //     <Hero
-    //       heroTitle={heroSectionRecord.heroTitle}
-    //       heroSubtitle={heroSectionRecord.heroSubtitle}
-    //       buttons={heroSectionRecord.buttons}
-    //     />
-    //   );
+    case "heroSlider":
+      return (
+        <RightImageHero
+          heroTitle={hero.heroTitle}
+          heroSubtitle={hero.heroSubtitle}
+          image={hero.heroImage}
+          link={hero.link}
+          locale={locale}
+        />
+      );
   }
 }

@@ -25,20 +25,20 @@ export default function GenericPage({ data, locale }: GenericPageProps) {
 
   return (
     <div>
-      {page.hero && <WhichHero hero={page.hero} />}
+      {page?.hero && <WhichHero hero={page?.hero as any} locale={locale} />}
       {navItems.length > 0 && <MenuInternal navItems={navItems} />}
       {sections?.map((section) => {
-        const sectionSpacing =
-          section.style !== "base-100 text-base-content" ||
-          "bg-base-200 text-base-content"
-            ? "xl:mx-5"
-            : "";
         return (
           <section
             key={section.id}
-            className={`${section.style} ${sectionSpacing} scroll-mt-24 overflow-hidden lg:scroll-mt-30`}
+            className={`${section.style} py-1 scroll-mt-24`}
             id={section.label ? convertToSlug(section.label) : null}
           >
+            {section.title && (
+              <h2 className="title text-center standard-vertical-m">
+                {section.title}
+              </h2>
+            )}
             {section.blocks && <Sections section={section} locale={locale} />}
           </section>
         );

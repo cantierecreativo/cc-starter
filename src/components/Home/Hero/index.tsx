@@ -1,7 +1,6 @@
 "use client";
 
 import primaryColor from "@/data/primaryColor";
-import { ButtonRecord } from "@/graphql/generated";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { Maybe } from "graphql/jsutils/Maybe";
 import Link from "next/link";
@@ -10,10 +9,9 @@ import ReactMarkdown from "react-markdown";
 type Props = {
   heroTitle: string;
   heroSubtitle: Maybe<string>;
-  buttons: ButtonRecord[];
 };
 
-const Hero = ({ heroTitle, heroSubtitle, buttons }: Props) => {
+const Hero = ({ heroTitle, heroSubtitle }: Props) => {
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "500%"]);
 
@@ -35,7 +33,7 @@ const Hero = ({ heroTitle, heroSubtitle, buttons }: Props) => {
                   <h1 className="mb-5 text-3xl font-bold leading-tight text-base-content  sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
                     {heroTitle}
                   </h1>
-                  <div className="mb-12 text-base-content font-medium !leading-relaxed text-base-content  sm:text-lg md:text-xl">
+                  <div className="mb-12 text-base-content font-medium !leading-relaxed sm:text-lg md:text-xl">
                     <ReactMarkdown>{heroSubtitle || ""}</ReactMarkdown>
                   </div>
                 </motion.div>
@@ -44,28 +42,7 @@ const Hero = ({ heroTitle, heroSubtitle, buttons }: Props) => {
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.6, delay: 0.8 }}
                   className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0"
-                >
-                  {buttons.map((button) => {
-                    const primary = "btn btn-primary text-primary-content";
-                    const secondary = "btn btn-outline";
-                    return (
-                      <Link
-                        key={button.id}
-                        href={button.url || "#"}
-                        style={{
-                          backgroundColor: button.primary ? primary : secondary,
-                        }}
-                        className={
-                          "rounded-md px-8 py-4 text-base-content font-semibold duration-300 ease-in-out " +
-                          (button.primary ? primary : secondary)
-                        }
-                        id={button.id}
-                      >
-                        {button.label}
-                      </Link>
-                    );
-                  })}
-                </motion.div>
+                ></motion.div>
               </div>
             </div>
           </div>

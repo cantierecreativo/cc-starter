@@ -1,6 +1,6 @@
 "use client";
 
-import { ButtonRecord } from "@/graphql/generated";
+import { LinkBlockRecord } from "@/graphql/generated";
 import { Maybe } from "graphql/jsutils/Maybe";
 import Link from "next/link";
 import { delay, motion } from "framer-motion";
@@ -9,10 +9,9 @@ import ReactMarkdown from "react-markdown";
 type Props = {
   heroTitle: string;
   heroSubtitle: Maybe<string>;
-  buttons: ButtonRecord[];
 };
 
-const GradientHero = ({ heroTitle, heroSubtitle, buttons }: Props) => {
+const GradientHero = ({ heroTitle, heroSubtitle }: Props) => {
   const heroTitleWords = heroTitle.split(/\s+/);
   const lastWord = heroTitleWords.pop();
 
@@ -83,7 +82,7 @@ const GradientHero = ({ heroTitle, heroSubtitle, buttons }: Props) => {
                 data-aos="zoom-y-out"
                 data-aos-delay="300"
               >
-                {buttons.map((button) => {
+                {/* {buttons.map((button) => {
                   const primary =
                     "mb-4 w-full cursor-pointer rounded-lg bg-gradient-to-r from-primary to-teal-400 p-4 text-xl font-bold text-white transition-all hover:opacity-80 sm:mb-0 sm:w-auto";
                   const secondary =
@@ -99,7 +98,7 @@ const GradientHero = ({ heroTitle, heroSubtitle, buttons }: Props) => {
                       {button.label}
                     </Link>
                   );
-                })}
+                })} */}
               </div>
             </div>
           </div>

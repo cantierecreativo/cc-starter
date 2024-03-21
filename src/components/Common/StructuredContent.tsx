@@ -17,17 +17,17 @@ export default function StructuredContent({
   const getTextSizeForHeading = (nodeLevel: number) => {
     switch (nodeLevel) {
       case 1:
-        return "font-bold mb-3";
+        return "font-bold text-lg font-serif my-4";
       case 2:
-        return "font-bold mb-3";
+        return "font-bold text-lg font-serif my-4";
       case 3:
-        return "font-bold mb-3";
+        return "font-bold text-lg font-serif my-4";
       case 4:
-        return "font-bold mb-3";
+        return "font-bold text-lg font-serif my-4";
       case 5:
-        return "font-bold mb-3";
+        return "font-bold text-lg font-serif my-4";
       case 6:
-        return "font-bold mb-3";
+        return "font-bold text-lg font-serif my-4";
       default:
         "";
     }

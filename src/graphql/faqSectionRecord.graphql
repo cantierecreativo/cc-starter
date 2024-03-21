@@ -1,6 +1,5 @@
 fragment faqSectionRecord on FaqSectionRecord {
   _modelApiKey
-  displayOptions
   id
   title
   subtitle

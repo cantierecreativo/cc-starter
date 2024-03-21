@@ -3,11 +3,9 @@ import Features from "../Home/Features";
 import Pricing from "../Home/Pricing";
 import Testimonials from "../Home/Testimonials";
 import Video from "../Home/Video";
-import DetailSection from "../Home/Detail/DetailSection";
 import CompactTeam from "../About/CompactTeam";
 import ExpandedTeam from "../About/ExpandedTeam";
 import FAQAccordion from "../About/FAQAccordion";
-import FAQGrid from "../About/FAQGrid";
 import StatsSection from "../About/StatsSection";
 import AboutIntro from "../About/AboutIntro";
 import {
@@ -17,7 +15,6 @@ import {
   BlogListRecord,
   BrandSectionRecord,
   ChangelogSectionRecord,
-  DetailSectionRecord,
   ElementsListRecord,
   FaqSectionRecord,
   FeatureListSectionRecord,
@@ -190,16 +187,6 @@ export default function Sections({ section, locale }: Props) {
               <Brands key={b.id} brandShowcase={brandSectionRecord.brand} />
             );
         }
-      case "detail_section":
-        const detailSectionRecord = b as DetailSectionRecord;
-        return (
-          <DetailSection
-            key={b.id}
-            imagePosition={detailSectionRecord.imagePosition as boolean}
-            image={detailSectionRecord.image}
-            details={detailSectionRecord.details}
-          />
-        );
       case "review_section":
         const reviewSectionRecord = b as ReviewSectionRecord;
         switch (reviewSectionRecord.displayOptions) {
@@ -333,19 +320,10 @@ export default function Sections({ section, locale }: Props) {
           />
         );
       case "faq_section":
-        const faqSectionRecord = section as FaqSectionRecord;
-        if (faqSectionRecord.displayOptions === "accordion")
-          return (
-            <FAQAccordion
-              key={b.id}
-              title={faqSectionRecord.title}
-              subtitle={faqSectionRecord.subtitle}
-              questions={faqSectionRecord.questions}
-            />
-          );
+        const faqSectionRecord = b as FaqSectionRecord;
         return (
-          <FAQGrid
-            key={b.id}
+          <FAQAccordion
+            key={faqSectionRecord.id}
             title={faqSectionRecord.title}
             subtitle={faqSectionRecord.subtitle}
             questions={faqSectionRecord.questions}

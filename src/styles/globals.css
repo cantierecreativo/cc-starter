@@ -20,6 +20,18 @@
 }
 
 @layer components {
+  .standard-vertical-m {
+    @apply my-32;
+  }
+  .title {
+    @apply text-2xl xl:text-5xl font-bold font-serif max-w-prose;
+  }
+  .prefix {
+    @apply text-sm uppercase font-bold inline-block max-w-prose;
+  }
+  .text {
+    @apply max-w-prose;
+  }
   .formatted p {
     @apply text-sm text-neutral/80 xl:text-base;
   }
@@ -65,5 +77,28 @@
   }
   .custom-arrow svg {
     @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-[0.5];
+  }
+
+  .formatted ol {
+    counter-reset: my-awesome-counter;
+  }
+
+  .formatted ul,
+  .formatted ol {
+    @apply ml-4;
+  }
+
+  .formatted ul li {
+    @apply relative py-[3px] after:absolute after:top-[11px] after:-left-4 after:h-[7px] after:w-[7px] after:xl:top-[18px] xl:after:xl:top-[10px] after:rounded-full after:bg-accent;
+  }
+
+  .formatted ol li {
+    @apply relative py-[3px] pl-2;
+    counter-increment: my-awesome-counter;
+  }
+
+  .formatted ol li:after {
+    @apply absolute top-[2px] -left-4 h-[7px] w-[7px] text-inherit font-bold xl:text-base text-accent;
+    content: counter(my-awesome-counter) ". ";
   }
 }

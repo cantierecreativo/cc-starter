@@ -44,7 +44,4 @@ fragment wrapSectionBlocks on SectionWrapModelBlocksField {
   ... on AttachmentsBlockRecord {
     ...attachmentsBlockRecord
   }
-  ... on DetailSectionRecord {
-    ...detailSectionRecord
-  }
 }

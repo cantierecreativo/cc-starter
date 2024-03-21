@@ -1,65 +1,74 @@
 "use client";
 
-import { ButtonRecord, FileField } from "@/graphql/generated";
+import { HeroSectionModelLinkField, SiteLocale } from "@/graphql/generated";
 import { Maybe } from "graphql/jsutils/Maybe";
-import Link from "next/link";
-import { delay, motion } from "framer-motion";
 import { Image as DatoImage } from "react-datocms";
 import ReactMarkdown from "react-markdown";
+import { motion } from "framer-motion";
+import DynamicLink from "@/components/Links/DynamicLink";
 
 type Props = {
   heroTitle: string;
   heroSubtitle: Maybe<string>;
-  buttons: ButtonRecord[];
   image: any;
+  link: Maybe<HeroSectionModelLinkField> | undefined;
+  locale: SiteLocale;
 };
 
-const RightImageHero = ({ heroTitle, heroSubtitle, buttons, image }: Props) => {
+const RightImageHero = ({
+  heroTitle,
+  heroSubtitle,
+  image,
+  link,
+  locale,
+}: Props) => {
   return (
-    <div className="mt-40  pb-6 sm:pb-8 lg:pb-12">
-      <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
-        <section className="flex flex-col justify-between gap-6 sm:gap-10 md:gap-16 lg:flex-row">
-          <div className="flex flex-col items-start sm:text-center lg:py-12 lg:text-left xl:w-10/12 xl:py-24 ">
-            <h1 className="mb-8 text-4xl font-bold text-black sm:text-5xl md:mb-12 md:text-6xl">
-              {heroTitle}
-            </h1>
-
-            <div className="mb-8 leading-relaxed text-gray-500 md:mb-12 lg:w-4/5 xl:text-lg">
-              <ReactMarkdown>{heroSubtitle || ""}</ReactMarkdown>
-            </div>
-
-            <div className="flex w-full flex-row items-center justify-center gap-2.5 sm:justify-center lg:justify-start">
-              {buttons.map((button) => {
-                const primary =
-                  "inline-block rounded-lg bg-primary/90 px-8 py-3 text-center text-sm font-semibold text-primary-content outline-none  transition duration-100  hover:bg-primary/70 focus-visible:ring  md:text-base";
-                const secondary =
-                  "inline-block rounded-lg bg-secondary px-8 py-3 text-center text-sm font-semibold text-secondary-content outline-none  transition duration-100 hover:bg-secondary/90 focus-visible:ring   md:text-base";
-                return (
-                  <a
-                    key={button.id}
-                    href={button.url || "#"}
-                    className={button.primary ? primary : secondary}
+    <motion.div
+      initial={{ height: "100vh" }}
+      animate={{ height: "90vh" }}
+      transition={{ duration: 0.75, delay: 0.5 }}
+      className="w-full relative object-cover object-bottom"
+    >
+      <div className="relative bg-secondary pt-[120px] md:pt-[150px] lg:pt-[180px]">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-wrap items-center">
+            <div className="w-full lg:w-5/12">
+              <div className="mb-14 lg:mb-0">
+                {heroTitle && (
+                  <h1 className="mb-3 text-4xl font-bold text-secondary-content md:text-5xl lg:text-[40px] xl:text-5xl">
+                    {heroTitle}
+                  </h1>
+                )}
+                {heroSubtitle && (
+                  <div
+                    dangerouslySetInnerHTML={{ __html: heroSubtitle }}
+                    className="mb-9 max-w-[460px] text-base font-medium text-gray-3"
+                  />
+                )}
+                {link && (
+                  <DynamicLink
+                    className={`inline-flex items-center justify-center py-3 text-base font-medium text-center text-white border border-transparent rounded-md bg-primary px-7 hover:bg-blue-dark`}
+                    link={link}
+                    locale={locale}
                   >
-                    {button.label}
-                  </a>
-                );
-              })}
+                    {link.label}
+                  </DynamicLink>
+                )}
+              </div>
+            </div>
+            <div className="w-full h-[400px] px-4 lg:w-7/12 relative">
+              {image && image.responsiveImage && (
+                <DatoImage
+                  data={image.responsiveImage}
+                  layout="fill"
+                  objectFit="cover"
+                />
+              )}
             </div>
           </div>
-
-          {image && image.responsiveImage && (
-            <div className="relative w-3/5 overflow-hidden rounded-lg bg-base-100 shadow-lg lg:h-auto">
-              <DatoImage
-                data={image.responsiveImage}
-                layout="fill"
-                objectFit="cover"
-                objectPosition="50% 50%"
-              />
-            </div>
-          )}
-        </section>
+        </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

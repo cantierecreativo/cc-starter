@@ -5,7 +5,6 @@ import { StructuredText } from "react-datocms/structured-text";
 import { motion } from "framer-motion";
 import { QuestionRecord } from "@/graphql/generated";
 import { Maybe } from "graphql/jsutils/Maybe";
-import ReactMarkdown from "react-markdown";
 import Highlighter from "../Common/Highlighter";
 
 const closeIcon = (
@@ -66,14 +65,11 @@ const FAQAccordion = ({ title, subtitle, questions }: Props) => {
   }
 
   return (
-    <div className="container mx-auto px-6 md:w-10/12">
-      <h2 className="text-md uppercase max-w-prose mx-auto font-serif mb-4 md:text-lg md:mb-8 lg:text-2xl xl:mb-12">
-        {title}
-      </h2>
-      <h3 className="block mb-3">
-        <ReactMarkdown>{subtitle || ""}</ReactMarkdown>
-      </h3>
-
+    <div className="container mx-auto standard-vertical-m grid gap-6">
+      {title && <h2 className="title">{title}</h2>}
+      {subtitle && (
+        <h3 className="text" dangerouslySetInnerHTML={{ __html: subtitle }} />
+      )}
       <div className="mt-12 border-t border-primary-content/20">
         {questions.map((question, n: number) => {
           const isOpen = openQuestions.includes(question.id);
@@ -89,13 +85,8 @@ const FAQAccordion = ({ title, subtitle, questions }: Props) => {
               }}
             >
               <button className="flex w-full items-center justify-between">
-                <div className="flex items-center gap-3 md:gap-6">
-                  <div className="bg-base-100 rounded-full text-center w-[30px] h-[30px] md:w-10 md:h-10 flex items-center justify-center font-serif translate-y-1 md:text-md">
-                    {n + 1}
-                  </div>
-                  <div className="uppercase font-serif md:text-md">
-                    {question.question}
-                  </div>
+                <div className="uppercase font-serif md:text-md">
+                  {question.question}
                 </div>
                 {isOpen ? closeIcon : openIcon}
               </button>
@@ -107,7 +98,7 @@ const FAQAccordion = ({ title, subtitle, questions }: Props) => {
                   closed: { opacity: 0 },
                 }}
                 transition={{ duration: 0.5 }}
-                className={"mt-6 text-sm pl-16" + (isOpen ? "" : " hidden")}
+                className={"mt-6 text-sm" + (isOpen ? "" : " hidden")}
               >
                 <StructuredText
                   data={question.answer.value as any}

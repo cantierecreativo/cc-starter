@@ -5,9 +5,9 @@ import { notFound } from "next/navigation";
 import PostIndexPage from "@/components/Templates/PostIndexPage";
 import getSeoMeta from "@/lib/seoUtils";
 
-const locale = "en";
+const locale = "it";
 const siteLocale = locale as SiteLocale;
-const slug = "blog";
+const slug = "articoli";
 
 export async function generateMetadata() {
   const siteLocale = locale as SiteLocale;

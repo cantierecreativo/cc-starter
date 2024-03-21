@@ -16,9 +16,12 @@ export default function ProductsIndexPage({
   list,
   locale,
 }: GenericPageProps) {
+  const page = data?.page;
+  if (!page) return null;
+
   return (
     <div>
-      {data.page?.hero && <WhichHero hero={data.page?.hero} />}
+      {page?.hero && <WhichHero hero={page?.hero as any} locale={locale} />}
       {data.page?.sections?.map((section) => {
         const sectionSpacing =
           section.style !== "base-100 text-base-content" ||

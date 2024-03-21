@@ -50,8 +50,7 @@ export default function BanneCtaBlock({ data, locale }) {
     },
   };
 
-  const containerClass =
-    "group container px-6 mx-auto grid items-stretch xl:min-h-[780px]";
+  const containerClass = "group container grid items-start";
 
   function RenderContent({
     title,
@@ -64,38 +63,30 @@ export default function BanneCtaBlock({ data, locale }) {
       <div
         className={`${
           displayOptions === "text-right" ? "lg:flex-row-reverse" : ""
-        } bg-base-100 h-full lg:flex xl:items-stretch`}
+        } bg-base-100 h-full lg:flex xl:items-stretch standard-vertical-m`}
       >
         <motion.div
           initial="offscreen"
           whileInView="onscreen"
           variants={textVariants}
           viewport={{ once: true, amount: 0.75 }}
-          className="lg:w-1/3 grid gap-6 px-6 py-10 md:px-12 md:py-16"
+          className="lg:w-1/2 grid gap-6 py-10 md:px-12 md:py-16"
         >
-          <div className="xl:items-start xl:grid xl:gap-4">
-            {label && (
-              <div className="pr-12 uppercase text-xs font-bold tracking-widest pb-2.5 border-b border-primary inline-block">
-                {label}
-              </div>
-            )}
-            <h2 className="text-lg font-serif uppercase text-neutral md:text-xl xl:text-2xl pt-6">
-              {title}
-            </h2>
-          </div>
-          <div className="xl:items-end xl:grid xl:gap-0">
-            <div className="text-sm opacity-80 md:text-base">
+          <div className="grid gap-4">
+            {label && <div className="label">{label}</div>}
+            <h2 className="title">{title}</h2>
+            <div className="text">
               <StructuredContent data={text} locale={locale} />
             </div>
             {link && (
               <div className="inline-block">
-                <ButtonBlock label={link.label} type="underline" uppercase />
+                <ButtonBlock label={"Vai"} />
               </div>
             )}
           </div>
         </motion.div>
         {bannerCtaImage && (
-          <div className="lg:w-2/3 relative aspect-square md:aspect-[2/1] lg:aspect-auto overflow-hidden">
+          <div className="lg:w-1/2 relative aspect-square md:aspect-[2/1] lg:aspect-auto overflow-hidden">
             <motion.div
               initial="offscreen"
               whileInView="onscreen"
@@ -119,37 +110,30 @@ export default function BanneCtaBlock({ data, locale }) {
   function RenderContentBanner({ title, label, text, coverImage }) {
     return (
       <div>
-        <div className="items-center py-16 text-base-100 px-6 relative z-10 lg:py-28">
-          {label && (
-            <div className="px-6 uppercase text-xs font-bold tracking-widest pb-2.5 border-b border-base-100 inline-block text-center">
-              {label}
-            </div>
-          )}
-          <h2 className="text-lg px-12 font-serif uppercase md:text-xl py-16 max-w-[900px] mx-auto">
-            {title}
-          </h2>
-          {text && (
-            <h3 className="max-w-prose mx-auto px-6">
-              <StructuredContent data={text} locale={locale} />
-            </h3>
-          )}
-          {data.link && (
-            <ButtonBlock
-              label={link.label}
-              type="underline"
-              uppercase
-              color="light"
-            />
-          )}
-        </div>
-        <div className="absolute inset-x-6 inset-y-0 z-[-1] bg-black group-hover:inset-0 group-hover:scale-110 duration-700 overflow-hidden">
+        <div className="relative z-10 py-20 lg:py-[100px] xl:py-[120px]">
+          <span className="absolute left-0 top-0 -z-10 h-full w-full bg-black/80"></span>
           <DatoImage
             data={coverImage.responsiveImage}
             layout="fill"
             objectFit="cover"
-            objectPosition="50% 50%"
-            className="opacity-50 group-hover:scale-110 duration-700 "
+            className=""
           />
+          <div className="container relative z-20">
+            <div className="mx-auto max-w-[575px] text-center grid gap-8 text-base-100">
+              {label && <div className="label mx-auto">{label}</div>}
+              <h2 className="title">{title}</h2>
+              {text && (
+                <h3 className="text">
+                  <StructuredContent data={text} locale={locale} />
+                </h3>
+              )}
+              {data.link && (
+                <div className="inline-block">
+                  <ButtonBlock label={"Vai"} />
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -158,10 +142,10 @@ export default function BanneCtaBlock({ data, locale }) {
   switch (displayOptions) {
     case "text-center":
       return (
-        <div className="py-6">
+        <div className="">
           {link ? (
             <div
-              className={`group duration-700  py-10 xl:py-48 relative z-0 text-center`}
+              className={`group duration-700 my-10 relative z-0 text-center`}
             >
               <DynamicLink className={``} link={link} locale={locale}>
                 <RenderContentBanner
@@ -187,38 +171,9 @@ export default function BanneCtaBlock({ data, locale }) {
         </div>
       );
 
-    case "text-left":
+    default:
       return (
-        <div className="py-8">
-          {link ? (
-            <div className={containerClass}>
-              <DynamicLink link={link} locale={locale} className={``}>
-                <RenderContent
-                  title={title}
-                  label={label}
-                  text={text}
-                  bannerCtaImage={bannerCtaImage}
-                  displayOptions={displayOptions}
-                />
-              </DynamicLink>
-            </div>
-          ) : (
-            <div className={containerClass}>
-              <RenderContent
-                title={title}
-                label={label}
-                text={text}
-                bannerCtaImage={bannerCtaImage}
-                displayOptions={displayOptions}
-              />
-            </div>
-          )}
-        </div>
-      );
-
-    case "text-right":
-      return (
-        <div className="py-8">
+        <div className="">
           {link ? (
             <div className={containerClass}>
               <DynamicLink link={link} locale={locale} className={``}>
