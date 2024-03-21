@@ -181,12 +181,12 @@ function camelize(str: string) {
       return index === 0 ? match.toLowerCase() : match.toUpperCase();
     });
 }
-function formatRoute(route: any, isDefaultLocale: boolean) {
+function formatRoute(route: any, isDefaultLocale: boolean = true) {
   const english = "en";
   let enTitle = route._allTitleLocales.find(
     (i: any) => i.locale === english
   ).value;
-  let queryName = enTitle;
+  let querySlug = enTitle;
   let titles;
   const {
     isHome,
@@ -204,7 +204,7 @@ function formatRoute(route: any, isDefaultLocale: boolean) {
     let parentEnTitle = parent._allTitleLocales.find(
       (i: any) => i.locale === english
     ).value;
-    queryName = parentEnTitle;
+    querySlug = parentEnTitle;
   }
 
   const isIndex = route?.reference?.isIndex || false;
@@ -245,7 +245,7 @@ function getPaths(routes: any, defaultLocale: string) {
         defautSlug = `[${defautSlug}]`;
       }
       const newPath = `${path}/${defautSlug}`;
-      const routeInfo = formatRoute(route, defaultLocale);
+      const routeInfo = formatRoute(route);
 
       if (route.children?.length > 0) {
         //recurse
