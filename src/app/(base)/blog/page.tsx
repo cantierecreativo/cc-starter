@@ -7,7 +7,7 @@ import getSeoMeta from "@/lib/seoUtils";
 
 const locale = "it";
 const siteLocale = locale as SiteLocale;
-const slug = "articoli";
+const slug = "blog";
 
 export async function generateMetadata() {
   const siteLocale = locale as SiteLocale;
