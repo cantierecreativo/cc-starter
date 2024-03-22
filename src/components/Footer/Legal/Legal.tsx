@@ -1,4 +1,4 @@
-import Highlighter from "@/components/Common/Highlighter";
+import Highlighter from "@/components/Blocks/Highlighter";
 import {
   LegalPageModelContentField,
   LegalQuery,

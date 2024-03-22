@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import SectionTitle from "../../Common/SectionTitle";
+import SectionTitle from "../../Blocks/SectionTitle";
 import OfferList from "./OfferList";
 import PricingBox from "./PricingBox";
 import { Maybe } from "graphql/jsutils/Maybe";

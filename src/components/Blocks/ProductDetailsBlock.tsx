@@ -1,6 +1,6 @@
 import { ProductDetailRecord, SiteLocale } from "@/graphql/generated";
 import Image from "next/image";
-import CustomIcon from "@/components/Common/CustomIcon";
+import CustomIcon from "@/components/Blocks/CustomIcon";
 import { Image as DatoImage, ResponsiveImageType } from "react-datocms";
 import DynamicLink from "../Links/DynamicLink";
 import ButtonBlock from "./ButtonBlock";

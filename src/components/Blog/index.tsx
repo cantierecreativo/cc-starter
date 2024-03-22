@@ -1,5 +1,5 @@
 import { PostRecord, SiteLocale } from "@/graphql/generated";
-import SectionTitle from "../Common/SectionTitle";
+import SectionTitle from "../Blocks/SectionTitle";
 import SingleBlog from "./SingleBlog";
 import { Maybe } from "graphql/jsutils/Maybe";
 

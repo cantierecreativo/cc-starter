@@ -1,8 +1,8 @@
 "use client";
 
-import SectionTitle from "../../Common/SectionTitle";
-import VideoEmbedded from "@/components/Common/VideoEmbedded";
-import VideoInternal from "@/components/Common/VideoInternal";
+import SectionTitle from "../../Blocks/SectionTitle";
+import VideoEmbedded from "@/components/Blocks/VideoEmbedded";
+import VideoInternal from "@/components/Blocks/VideoInternal";
 import { VideoField, VideoFileField } from "@/graphql/generated";
 
 import React from "react";

@@ -1,4 +1,4 @@
-import CustomIcon from "@/components/Common/CustomIcon";
+import CustomIcon from "@/components/Blocks/CustomIcon";
 import {
   AttachmentRecord,
   AttachmentsBlockRecord,

@@ -1,5 +1,5 @@
 import { SiteLocale } from "@/graphql/generated";
-import SectionTitle from "@/components/Common/SectionTitle";
+import SectionTitle from "@/components/Blocks/SectionTitle";
 import SinglePage from "@/components/Page/SinglePage";
 import { Maybe } from "graphql/jsutils/Maybe";
 

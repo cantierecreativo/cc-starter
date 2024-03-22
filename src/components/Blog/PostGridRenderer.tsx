@@ -4,8 +4,8 @@ import {
   PostRecord,
   SiteLocale,
 } from "@/graphql/generated";
-import CardBlogBlock from "../Common/CardBlogBlock";
-import Pagination from "../Common/Pagination";
+import CardBlogBlock from "../Blocks/CardBlogBlock";
+import Pagination from "../Blocks/Pagination";
 import { useState } from "react";
 
 type Props = {

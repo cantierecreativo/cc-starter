@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import translate from "@/labels";
-import CustomIcon from "../Common/CustomIcon";
+import CustomIcon from "../Blocks/CustomIcon";
 
 type Props = {
   lng: SiteLocale;

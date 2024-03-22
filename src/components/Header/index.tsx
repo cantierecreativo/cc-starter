@@ -16,7 +16,7 @@ import { Menu } from "./HeaderRenderer";
 import { isEmptyDocument } from "datocms-structured-text-utils";
 import resolveLink from "@/lib/resolveLink";
 import { motion, useCycle } from "framer-motion";
-import CustomIcon from "../Common/CustomIcon";
+import CustomIcon from "../Blocks/CustomIcon";
 
 type Props = {
   lng: SiteLocale;
@@ -338,7 +338,9 @@ const Header = ({ lng, data }: Props) => {
                                         <SubMenuItems
                                           items={menuItem.submenu}
                                           isMega={isMega}
-                                          handleClickAndClose={handleClickAndClose}
+                                          handleClickAndClose={
+                                            handleClickAndClose
+                                          }
                                         />
                                       )}
                                     </div>

@@ -1,4 +1,4 @@
-import Highlighter from "@/components/Common/Highlighter";
+import Highlighter from "@/components/Blocks/Highlighter";
 import { PricingTierRecord } from "@/graphql/generated";
 import { Maybe } from "graphql/jsutils/Maybe";
 import { StructuredText } from "react-datocms/structured-text";

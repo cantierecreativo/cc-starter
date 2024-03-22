@@ -5,7 +5,7 @@ import { Maybe } from "graphql/jsutils/Maybe";
 import { StructuredText } from "react-datocms/structured-text";
 import { Image as DatoImage } from "react-datocms";
 import { useState } from "react";
-import Highlighter from "@/components/Common/Highlighter";
+import Highlighter from "@/components/Blocks/Highlighter";
 
 type Props = {
   reviews: TestimonialRecord[];

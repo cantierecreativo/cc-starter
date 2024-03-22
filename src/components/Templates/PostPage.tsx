@@ -23,10 +23,10 @@ import {
 } from "@/graphql/generated";
 import { notFound } from "next/navigation";
 
-import Highlighter from "@/components/Common/Highlighter";
+import Highlighter from "@/components/Blocks/Highlighter";
 import AttachmentsBlock from "@/components/Blog/AttachmentsBlock";
 import Video from "@/components/Home/Video";
-import GalleryBlock from "@/components/Common/GalleryBlock";
+import GalleryBlock from "@/components/Blocks/GalleryBlock";
 
 type Props = {
   data: PostQuery;

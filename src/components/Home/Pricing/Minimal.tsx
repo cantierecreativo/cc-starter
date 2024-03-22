@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import SectionTitle from "../../Common/SectionTitle";
+import SectionTitle from "../../Blocks/SectionTitle";
 import OfferList from "./OfferList";
 import PricingBox from "./PricingBox";
 import { Maybe } from "graphql/jsutils/Maybe";
@@ -9,7 +9,7 @@ import primaryColor from "@/data/primaryColor";
 import { StructuredText } from "react-datocms/structured-text";
 import ReactMarkdown from "react-markdown";
 import { PricingTierRecord } from "@/graphql/generated";
-import Highlighter from "@/components/Common/Highlighter";
+import Highlighter from "@/components/Blocks/Highlighter";
 
 type Props = {
   header: string;

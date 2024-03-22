@@ -1,7 +1,7 @@
 import { SiteLocale } from "@/graphql/generated";
 import { Image as DatoImage } from "react-datocms";
 import InternalLink from "../Links/InternalLink";
-import CustomIcon from "../Common/CustomIcon";
+import CustomIcon from "../Blocks/CustomIcon";
 
 type Props = {
   page: any;

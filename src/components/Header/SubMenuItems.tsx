@@ -3,7 +3,7 @@
 import { Image as DatoImage } from "react-datocms";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import CustomIcon from "../Common/CustomIcon";
+import CustomIcon from "../Blocks/CustomIcon";
 
 export const MenuItem = ({ submenuItem, handleClickAndClose, isMega }) => {
   const imageVariants = {
@@ -82,7 +82,11 @@ export const MenuItem = ({ submenuItem, handleClickAndClose, isMega }) => {
   );
 };
 
-export default function SubMenuItems({ items, isMega, handleClickAndClose }: any) {
+export default function SubMenuItems({
+  items,
+  isMega,
+  handleClickAndClose,
+}: any) {
   const variants = {
     open: {
       transition: {

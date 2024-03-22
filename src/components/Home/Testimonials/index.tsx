@@ -1,5 +1,5 @@
 import { TestimonialRecord } from "@/graphql/generated";
-import SectionTitle from "@/components/Common/SectionTitle";
+import SectionTitle from "@/components/Blocks/SectionTitle";
 import SingleTestimonial from "./SingleTestimonial";
 import { Maybe } from "graphql/jsutils/Maybe";
 import primaryColor from "@/data/primaryColor";

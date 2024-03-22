@@ -1,5 +1,5 @@
 import primaryColor from "@/data/primaryColor";
-import Highlighter from "@/components/Common/Highlighter";
+import Highlighter from "@/components/Blocks/Highlighter";
 import { PricingTierModelTierDescriptionField } from "@/graphql/generated";
 import { StructuredText } from "react-datocms/structured-text";
 

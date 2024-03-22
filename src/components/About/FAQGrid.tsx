@@ -2,7 +2,7 @@ import { QuestionRecord } from "@/graphql/generated";
 import { Maybe } from "graphql/jsutils/Maybe";
 import { StructuredText } from "react-datocms/structured-text";
 import ReactMarkdown from "react-markdown";
-import Highlighter from "../Common/Highlighter";
+import Highlighter from "../Blocks/Highlighter";
 
 type Props = {
   title: Maybe<string>;

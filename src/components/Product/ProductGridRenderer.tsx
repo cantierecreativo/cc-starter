@@ -5,8 +5,8 @@ import {
   ProductRecord,
   SiteLocale,
 } from "@/graphql/generated";
-import CardProductBlock from "../Common/CardProductBlock";
-import Pagination from "../Common/Pagination";
+import CardProductBlock from "../Blocks/CardProductBlock";
+import Pagination from "../Blocks/Pagination";
 import { useState } from "react";
 
 type Props = {

@@ -3,7 +3,7 @@ import InternalLink from "../Links/InternalLink";
 import Newsletter from "@/components/Footer/Newsletter";
 import ExternalLink from "../Links/ExternalLink";
 import translate from "@/labels";
-import CustomIcon from "../Common/CustomIcon";
+import CustomIcon from "../Blocks/CustomIcon";
 import Socials from "./Socials";
 import Iubenda from "./ExternalServices/Iubenda";
 import GoogleAnalytics from "./ExternalServices/GoogleAnalytics";
