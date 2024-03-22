@@ -11,6 +11,12 @@ fragment elementsListRecord on ElementsListRecord {
       slug
       abstract
       title
+      tags {
+        id
+        tag
+        slug
+        _modelApiKey
+      }
       blogImage {
         responsiveImage(
           sizes: "(min-width:768px) 50vw, (min-width:1024px) 33vw, 100vw, 500px"

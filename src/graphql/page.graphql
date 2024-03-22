@@ -36,6 +36,18 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
           ...rImage
         }
       }
+      sliders {
+        id
+        title
+        text
+        image {
+          responsiveImage(
+            imgixParams: { auto: format, ar: "4:3", fit: crop, h: 720 }
+          ) {
+            ...rImage
+          }
+        }
+      }
     }
     sections {
       ... on SectionWrapRecord {

@@ -11,9 +11,6 @@ fragment wrapSectionBlocks on SectionWrapModelBlocksField {
   ... on FeatureListSectionRecord {
     ...featureListSectionRecord
   }
-  ... on SlideshowRecord {
-    ...slideshowRecord
-  }
   ... on MultipleCardRecord {
     ...multipleCardRecord
   }

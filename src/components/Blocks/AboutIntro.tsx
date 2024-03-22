@@ -15,7 +15,7 @@ import {
 import { motion, useScroll, useTransform } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 
-import Highlighter from "../Blocks/Highlighter";
+import Highlighter from "./Highlighter";
 
 type Props = {
   header: string;

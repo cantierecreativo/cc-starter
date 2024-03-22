@@ -5,7 +5,7 @@ import { StructuredText } from "react-datocms/structured-text";
 import { motion, Variants } from "framer-motion";
 import { QuestionRecord } from "@/graphql/generated";
 import { Maybe } from "graphql/jsutils/Maybe";
-import Highlighter from "../Blocks/Highlighter";
+import Highlighter from "./Highlighter";
 
 const closeIcon = (
   <span>

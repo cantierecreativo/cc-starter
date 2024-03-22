@@ -4,6 +4,7 @@ import { HeroSectionRecord, SiteLocale } from "@/graphql/generated";
 
 import RightImageHero from "./RightImageHero";
 import BackgroundImageHero from "./BackgroundImage";
+import Carousel from "@/components/Blocks/Carousel";
 
 type PropsWhichHero = {
   hero: HeroSectionRecord;
@@ -33,14 +34,6 @@ export default function WhichHero({ hero, locale }: PropsWhichHero) {
         />
       );
     case "heroSlider":
-      return (
-        <RightImageHero
-          heroTitle={hero.heroTitle}
-          heroSubtitle={hero.heroSubtitle}
-          image={hero.heroImage}
-          link={hero.link}
-          locale={locale}
-        />
-      );
+      return <Carousel slides={hero.sliders} locale={locale} />;
   }
 }

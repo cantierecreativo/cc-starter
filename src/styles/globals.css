@@ -26,6 +26,9 @@
   .title {
     @apply text-2xl xl:text-5xl font-bold font-serif max-w-prose;
   }
+  .title-small {
+    @apply text-xl font-bold font-serif max-w-prose;
+  }
   .prefix {
     @apply text-sm uppercase font-bold inline-block max-w-prose;
   }
@@ -39,7 +42,7 @@
     @apply text-base text-neutral xl:text-md;
   }
 
-  .gallery .swiper-wrapper {
+  /* .gallery .swiper-wrapper {
     @apply items-center;
   }
   .gallery .swiper-button-prev,
@@ -61,6 +64,13 @@
   }
   .gallery .swiper-pagination {
     @apply hidden;
+  }
+  .gallery .swiper-slide {
+    @apply flex;
+  } */
+
+  .slider-auto-width .swiper-slide {
+    width: auto;
   }
 
   .checkbox-custom {

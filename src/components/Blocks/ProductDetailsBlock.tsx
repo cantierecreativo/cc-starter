@@ -4,6 +4,7 @@ import CustomIcon from "@/components/Blocks/CustomIcon";
 import { Image as DatoImage, ResponsiveImageType } from "react-datocms";
 import DynamicLink from "../Links/DynamicLink";
 import ButtonBlock from "./ButtonBlock";
+import { motion, Variants } from "framer-motion";
 
 type PropsProductDetailsBlock = {
   data: ProductDetailRecord;
@@ -23,6 +24,19 @@ function RenderValue(value: any) {
     return value.value;
   }
 }
+const variants: Variants = {
+  offscreen: {
+    opacity: 0,
+    y: 100,
+  },
+  onscreen: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.75,
+    },
+  },
+};
 
 const ProductDetailsBlock = ({ data, locale }: PropsProductDetailsBlock) => {
   const {
@@ -37,82 +51,86 @@ const ProductDetailsBlock = ({ data, locale }: PropsProductDetailsBlock) => {
   } = data;
   return (
     <>
-      <div className="p-6 py-10 md:py-24 container">
-        <div className="md:w-10/12 md:mx-auto border border-primary-content/40 bg-base-100 px-4 py-8 pb-12 md:px-12 md:py-16">
-          <h2 className="xl:pb-6 xl:text-3xl pb-2 uppercase font-serif text-lg border-b border-inherit md:text-xl md:pb-4">
-            {title}
-          </h2>
-          <div className="md:grid md:grid-cols-2 xl:grid-cols-3 gap-20 xl:mt-8">
-            <div className="">
-              {logo && (
-                <div className="w-[180px] h-[56px] relative mt-8">
-                  <Image
-                    src={logo.url}
-                    layout="fill"
-                    objectFit="contain"
-                    objectPosition="left"
-                    alt={`Logo ${title}`}
-                    title={`Logo ${title}`}
-                  />
-                </div>
-              )}
-              {values.length > 0 && (
-                <div className="pt-8">
-                  {values?.map((v: any) => (
-                    <div
-                      className="flex justify-between border-b border-primary-content/40 py-2.5 items-center"
-                      key={v.id}
-                    >
-                      <div className="uppercase text-sm">{v.key}</div>
-                      <div className="text-sm flex">{RenderValue(v)}</div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-            {productDetailImage && (
+      <motion.div
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={variants}
+      >
+        <div className="container standard-vertical-m">
+          <div className="bg-base-100 px-4 py-8 pb-12 md:px-12 md:py-16">
+            <h2 className="title">{title}</h2>
+            <div className="md:grid md:grid-cols-2 xl:grid-cols-3 gap-20 xl:mt-8 items-start">
               <div className="">
-                <div className="rounded-full bg-primary mt-20 aspect-[5/7] relative md:mt-10">
-                  <div className="w-[70%] h-[70%] absolute inset-1/2 -translate-x-1/2 -translate-y-1/2">
-                    <DatoImage
-                      data={
-                        productDetailImage.responsiveImage as ResponsiveImageType
-                      }
-                      objectFit="contain"
+                {logo && (
+                  <div className="w-[180px] h-[56px] relative mt-8">
+                    <Image
+                      src={logo.url}
                       layout="fill"
+                      objectFit="contain"
+                      objectPosition="left"
+                      alt={`Logo ${title}`}
+                      title={`Logo ${title}`}
                     />
                   </div>
-                </div>
-                {imageDescription && (
-                  <div
-                    className="text-sm text-primary-content/80 mt-4"
-                    dangerouslySetInnerHTML={{ __html: imageDescription }}
-                  />
+                )}
+                {values.length > 0 && (
+                  <div className="pt-8">
+                    {values?.map((v: any) => (
+                      <div
+                        className="flex justify-between border-b border-primary-content/40 py-2.5 items-center"
+                        key={v.id}
+                      >
+                        <div className="uppercase text-sm">{v.key}</div>
+                        <div className="text-sm flex">{RenderValue(v)}</div>
+                      </div>
+                    ))}
+                  </div>
                 )}
               </div>
-            )}
-            <div className="md:col-span-2 xl:col-span-1">
-              {title && (
-                <h3 className="mt-10 font-serif text-lg uppercase md:mt-16 xl:mt-10">
-                  {title}
-                </h3>
+              {productDetailImage && (
+                <div className="">
+                  <div className="rounded-full bg-primary mt-20 aspect-[5/7] relative md:mt-10">
+                    <div className="w-[70%] h-[70%] absolute inset-1/2 -translate-x-1/2 -translate-y-1/2">
+                      <DatoImage
+                        data={
+                          productDetailImage.responsiveImage as ResponsiveImageType
+                        }
+                        objectFit="contain"
+                        layout="fill"
+                      />
+                    </div>
+                  </div>
+                  {imageDescription && (
+                    <div
+                      className="text-sm text-primary-content/80 mt-4"
+                      dangerouslySetInnerHTML={{ __html: imageDescription }}
+                    />
+                  )}
+                </div>
               )}
-              {description && (
-                <div className="mt-8 text-base opacity-80">{description}</div>
-              )}
-              {link && (
-                <DynamicLink
-                  link={link}
-                  locale={locale}
-                  className={`block mt-10`}
-                >
-                  <ButtonBlock label={link.label} type="underline" uppercase />
-                </DynamicLink>
-              )}
+              <div className="md:col-span-2 xl:col-span-1 grid gap-6 items-start">
+                {title && <h3 className="title-small">{title}</h3>}
+                {description && (
+                  <div
+                    className="text"
+                    dangerouslySetInnerHTML={{ __html: description }}
+                  />
+                )}
+                {link && (
+                  <DynamicLink link={link} locale={locale} className={`block`}>
+                    <ButtonBlock
+                      label={link.label}
+                      type="underline"
+                      uppercase
+                    />
+                  </DynamicLink>
+                )}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

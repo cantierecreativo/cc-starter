@@ -37,26 +37,18 @@ const ElementListBlock = ({ data, locale }: PropsElementListBlock) => {
     >
       <div
         id="targetElement"
-        className="grid gap-6 md:grid-cols-2 md:gap-y-10 lg:grid-cols-3 xl:gap-10 px-6 xl:px-0 py-6 xl:py-24 xl:w-10/12 mx-auto container"
+        className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 standard-vertical-m container"
       >
-        <div className="md:col-span-2 lg:col-span-3 text-center mb-8">
-          {itemsPrefix && (
-            <div className="">
-              <div
-                className={`uppercase text-xs font-bold tracking-widest mb-8 pb-2.5 border-b inline-block border-primary-content/20`}
-              >
-                {itemsPrefix}
-              </div>
-            </div>
-          )}
+        <div className="grid gap-8 md:col-span-2 lg:col-span-3 mb-12">
+          {itemsPrefix && <div className="prefix mx-auto">{itemsPrefix}</div>}
           <h2
-            className="text-md uppercase max-w-prose mx-auto font-serif font-light mb-4 md:text-lg md:pb-2 md:pt-4 xl:py-8 lg:text-2xl md:col-span-10 md:col-start-2"
+            className="title mx-auto"
             dangerouslySetInnerHTML={{ __html: itemsTitle }}
           />
           {itemsText && (
             <h3
               dangerouslySetInnerHTML={{ __html: itemsText }}
-              className={`py-3 lg:text-md max-w-prose mx-auto`}
+              className={`text mx-auto`}
             />
           )}
         </div>

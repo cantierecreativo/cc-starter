@@ -18,11 +18,11 @@ const StandardFeaturedPages = ({
 }: PageProps) => {
   return (
     <section>
-      <div className="container px-6">
+      <div className="container standard-vertical-m">
         {(header || subheader) && (
           <SectionTitle title={header} paragraph={subheader} center />
         )}
-        <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 md:gap-x-6 lg:gap-x-8 xl:gap-x-24 max-w-[1100px] mx-auto">
+        <div className="grid grid-cols-1 items-start gap-x-8 gap-y-10 lg:grid-cols-3 md:gap-x-6 mt-12">
           {pages?.map((p: any) => (
             <div key={p.id} className="w-full">
               <SinglePage page={p} locale={locale} />

@@ -1,10 +1,9 @@
 import fetchDato from "@/lib/fetchDato";
 import { draftMode } from "next/headers";
-import { PageDocument, SiteLocale } from "@/graphql/generated";
+import { PostDocument, SiteLocale } from "@/graphql/generated";
 import { notFound } from "next/navigation";
-import GenericPage from "@/components/Templates/GenericPage";
+import PostPage from "@/components/Templates/PostPage";
 import getSeoMeta from "@/lib/seoUtils";
-import config from "@/data/config";
 
 type Params = {
   params: {
@@ -14,20 +13,15 @@ type Params = {
 
 const locale = "en";
 const siteLocale = locale as SiteLocale;
-const defaultLocale = config.defaultLocale as SiteLocale;
 
-export async function generateMetadata({ params }: any) {
+export async function generateMetadata({ params }: Params) {
   const { slug } = params;
   const data = await fetchDato(
-    PageDocument,
-    {
-      locale: siteLocale,
-      fallbackLocale: [defaultLocale],
-      slug,
-    },
+    PostDocument,
+    { locale: siteLocale, slug },
     false
   );
-  const page: any = data?.page || null;
+  const page: any = data?.post || null;
   const meta = getSeoMeta(page, locale);
   return meta;
 }
@@ -35,15 +29,15 @@ export async function generateMetadata({ params }: any) {
 export default async function Page({ params: { slug } }: Params) {
   const { isEnabled } = draftMode();
   const data = await fetchDato(
-    PageDocument,
+    PostDocument,
     {
       locale: siteLocale,
-      fallbackLocale: [defaultLocale],
+      fallbackLocale: [siteLocale],
       slug,
     },
     isEnabled
   );
-  if (!data?.page) notFound();
-  console.log(data, slug, locale);
-  return <GenericPage data={data} locale={siteLocale} />;
+  if (!data) notFound();
+
+  return <PostPage data={data} locale={siteLocale} />;
 }

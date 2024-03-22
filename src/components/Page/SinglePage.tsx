@@ -9,29 +9,24 @@ type Props = {
 };
 
 const SinglePage = ({ page, locale }: Props) => {
-  const { hero } = page;
+  const { abstract, title, previewImage } = page;
   return (
     <>
       <InternalLink record={page} className="group" locale={locale}>
-        <div className="relative h-full bg-base-100 p-3 pt-6 md:p-6 lg:pt-8 group-hover:-translate-y-4 duration-300">
-          {hero?.heroTitle && (
+        <div className="relative h-full bg-base-100 p-3 pt-6 md:p-6 lg:pt-8 group-hover:-translate-y-4 duration-300 gap-6 grid">
+          <div className={`prefix`}>pagine</div>
+          {title && <h2 className="title-small">{title}</h2>}
+          {abstract && (
             <div
-              className={`border-primary uppercase text-xs font-bold tracking-widest mb-6 pb-2.5 border-b block`}
-            >
-              {hero?.heroTitle}
-            </div>
-          )}
-          {hero?.heroSubtitle && (
-            <h2
-              dangerouslySetInnerHTML={{ __html: hero?.heroSubtitle }}
-              className="text-md uppercase max-w-prose mx-auto font-serif font-light mb-8 lg:text-lg text-neutral lg:pt-4 group-hover:underline group-hover:underline-offset-4"
+              dangerouslySetInnerHTML={{ __html: abstract }}
+              className="text"
             />
           )}
-          {hero?.heroImage && (
+          {previewImage && (
             <div className="overflow-hidden">
               <DatoImage
                 className="group-hover:scale-110 duration-500"
-                data={hero?.heroImage.responsiveImage}
+                data={previewImage.responsiveImage}
               />
             </div>
           )}

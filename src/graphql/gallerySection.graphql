@@ -2,6 +2,7 @@ fragment gallerySectionRecord on GallerySectionRecord {
   id
   __typename
   _modelApiKey
+  typeGallery
   galleryImages {
     id
     _modelApiKey
@@ -10,6 +11,15 @@ fragment gallerySectionRecord on GallerySectionRecord {
       responsiveImage(
         sizes: "(min-width:768px) 80vw, 100vw, 1200px"
         imgixParams: { auto: [format, compress], fit: max }
+      ) {
+        ...rImage
+      }
+      id
+    }
+    imageAssetCarousel: imageAsset {
+      responsiveImage(
+        sizes: "(min-width: 1024px) 50vw, 100vw"
+        imgixParams: { fit: clip, w: 1200, h: 600, auto: [format, compress] }
       ) {
         ...rImage
       }

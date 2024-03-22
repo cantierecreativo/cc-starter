@@ -3,11 +3,11 @@ import Features from "@/components/Blocks/FeaturesList";
 import Pricing from "../Home/Pricing";
 import Testimonials from "../Home/Testimonials";
 import Video from "../Home/Video";
-import CompactTeam from "../About/CompactTeam";
-import ExpandedTeam from "../About/ExpandedTeam";
-import FAQAccordion from "../About/FAQAccordion";
-import StatsSection from "../About/StatsSection";
-import AboutIntro from "../About/AboutIntro";
+import CompactTeam from "../Blocks/CompactTeam";
+import ExpandedTeam from "../Blocks/ExpandedTeam";
+import FAQAccordion from "../Blocks/FAQAccordion";
+import StatsSection from "../Blocks/StatsSection";
+import AboutIntro from "../Blocks/AboutIntro";
 import {
   AboutIntroRecord,
   AttachmentsBlockRecord,
@@ -26,7 +26,6 @@ import {
   RedirectSectionRecord,
   ReviewSectionRecord,
   SiteLocale,
-  SlideshowRecord,
   StatsSectionRecord,
   TeamSectionRecord,
   TextBlockRecord,
@@ -43,7 +42,6 @@ import MinimalCarrousel from "@/components/Home/Testimonials/MinimalCarrousel";
 import MinimalReviewCards from "@/components/Home/Testimonials/MinimalReviewCards";
 import BrandCards from "@/components/Home/Brands/BrandCards";
 import Changelog from "@/components/Changelog";
-import Carousel from "@/components/Blocks/Carousel";
 import ImageBlock from "@/components/Blocks/ImageBlock";
 import GalleryBlock from "@/components/Blocks/GalleryBlock";
 import BannerCtaBlock from "@/components/Blocks/BannerCtaBlock";
@@ -141,16 +139,6 @@ export default function Sections({ section, locale }: Props) {
       case "text_block": {
         const textBlockSection = b as TextBlockRecord;
         return <TextBlock key={b.id} data={textBlockSection} locale={locale} />;
-      }
-      case "slideshow": {
-        const carouselSection = b as SlideshowRecord;
-        return (
-          <Carousel
-            key={b.id}
-            slides={carouselSection.slides}
-            locale={locale}
-          />
-        );
       }
       case "changelog_section":
         const changeLogSection = b as ChangelogSectionRecord;
@@ -288,8 +276,7 @@ export default function Sections({ section, locale }: Props) {
         }
 
       case "featured_pages_section":
-        const featuredPagesSectionRecord =
-          section as FeaturedPagesSectionRecord;
+        const featuredPagesSectionRecord = b as FeaturedPagesSectionRecord;
         return (
           <StandardFeaturedPages
             locale={locale}
