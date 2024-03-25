@@ -1,13 +1,12 @@
-import Brands from "../Home/Brands";
+import Brands from "@/components/Brands";
 import Features from "@/components/Blocks/FeaturesList";
-import Pricing from "../Home/Pricing";
-import Testimonials from "../Home/Testimonials";
-import Video from "../Home/Video";
-import CompactTeam from "../Blocks/CompactTeam";
-import ExpandedTeam from "../Blocks/ExpandedTeam";
-import FAQAccordion from "../Blocks/FAQAccordion";
-import StatsSection from "../Blocks/StatsSection";
-import AboutIntro from "../Blocks/AboutIntro";
+import Testimonials from "@/components/Testimonials";
+import Video from "@/components/Video";
+import CompactTeam from "@/components/Blocks/CompactTeam";
+import ExpandedTeam from "@/components/Blocks/ExpandedTeam";
+import FAQAccordion from "@/components/Blocks/FAQAccordion";
+import StatsSection from "@/components/Blocks/StatsSection";
+import AboutIntro from "@/components/Blocks/AboutIntro";
 import {
   AboutIntroRecord,
   AttachmentsBlockRecord,
@@ -32,15 +31,11 @@ import {
   VideoSectionRecord,
 } from "@/graphql/generated";
 import { redirect } from "next/navigation";
-import GradientCards from "@/components/Home/Pricing/GradientCards";
-import Minimal from "@/components/Home/Pricing/Minimal";
-import FeatureListSelector from "@/components/Home/Pricing/FeatureListSelector";
-import SmallCards from "@/components/Home/Pricing/SmallCards";
-import Carrousel from "@/components/Home/Testimonials/Carrousel";
-import ModernCarrousel from "@/components/Home/Testimonials/ModernCarrousel";
-import MinimalCarrousel from "@/components/Home/Testimonials/MinimalCarrousel";
-import MinimalReviewCards from "@/components/Home/Testimonials/MinimalReviewCards";
-import BrandCards from "@/components/Home/Brands/BrandCards";
+import Carrousel from "@/components/Testimonials/Carrousel";
+import ModernCarrousel from "@/components/Testimonials/ModernCarrousel";
+import MinimalCarrousel from "@/components/Testimonials/MinimalCarrousel";
+import MinimalReviewCards from "@/components/Testimonials/MinimalReviewCards";
+import BrandCards from "@/components/Brands/BrandCards";
 import Changelog from "@/components/Changelog";
 import ImageBlock from "@/components/Blocks/ImageBlock";
 import GalleryBlock from "@/components/Blocks/GalleryBlock";
@@ -48,12 +43,12 @@ import BannerCtaBlock from "@/components/Blocks/BannerCtaBlock";
 import TextBlock from "@/components/Blocks/TextBlock";
 import MultipleCardBlock from "@/components/Blocks/MultipleCardBlock";
 import BlogListBlock from "@/components/Blocks/BlogListBlock";
-import StandardFeaturedPages from "@/components/Home/FeaturedPages/StandardFeaturedPages";
+import StandardFeaturedPages from "@/components/FeaturedPages/StandardFeaturedPages";
 import ProductDetailsBlock from "@/components/Blocks/ProductDetailsBlock";
 import FormBlock from "@/components/Blocks/FormBlock";
 import ContactTextBlock from "@/components/Blocks/ContactTextBlock";
 import ElementListBlock from "@/components/Blocks/ElementListBlock";
-import AttachmentsBlock from "@/components/Blog/AttachmentsBlock";
+import AttachmentsBlock from "@/components/Blocks/AttachmentsBlock";
 
 type Props = {
   section: any;
@@ -221,56 +216,6 @@ export default function Sections({ section, locale }: Props) {
                 header={reviewSectionRecord.reviewSectionHeader}
                 subheader={reviewSectionRecord.reviewSectionSubheader}
                 reviews={reviewSectionRecord.reviews}
-              />
-            );
-        }
-
-      case "pricing_section":
-        const pricingSectionRecord = section as PricingSectionRecord;
-        switch (pricingSectionRecord.displayOption) {
-          case "cards_gradient":
-            return (
-              <GradientCards
-                key={b.id}
-                header={pricingSectionRecord.pricingSectionHeader}
-                subheader={pricingSectionRecord.pricingSectionSubheader}
-                plans={pricingSectionRecord.plans}
-              />
-            );
-          case "minimal":
-            return (
-              <Minimal
-                key={b.id}
-                header={pricingSectionRecord.pricingSectionHeader}
-                subheader={pricingSectionRecord.pricingSectionSubheader}
-                plans={pricingSectionRecord.plans}
-              />
-            );
-          case "feature_list":
-            return (
-              <FeatureListSelector
-                key={b.id}
-                header={pricingSectionRecord.pricingSectionHeader}
-                subheader={pricingSectionRecord.pricingSectionSubheader}
-                plans={pricingSectionRecord.plans}
-              />
-            );
-          case "mini_cards":
-            return (
-              <SmallCards
-                key={b.id}
-                header={pricingSectionRecord.pricingSectionHeader}
-                subheader={pricingSectionRecord.pricingSectionSubheader}
-                plans={pricingSectionRecord.plans}
-              />
-            );
-          default:
-            return (
-              <Pricing
-                key={b.id}
-                header={pricingSectionRecord.pricingSectionHeader}
-                subheader={pricingSectionRecord.pricingSectionSubheader}
-                plans={pricingSectionRecord.plans}
               />
             );
         }

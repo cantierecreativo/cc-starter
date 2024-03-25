@@ -205,7 +205,7 @@ const Header = ({ lng, data }: Props) => {
                 </Link>
               </motion.div>
               <div className="flex w-full justify-end lg:justify-start lg:flex-row-reverse items-center gap-x-3 md:gap-x-8 px-4">
-                {/* <div className="hidden lg:flex items-center justify-end ">
+                <div className="hidden lg:flex items-center justify-end ">
                   <LanguageSelector
                     lng={lng}
                     languages={data?._site?.locales || []}
@@ -213,7 +213,7 @@ const Header = ({ lng, data }: Props) => {
                     navbarOpen={navbarOpen}
                     dropdownOpen={dropdownOpen}
                   />
-                </div> */}
+                </div>
                 <div>
                   <button
                     onClick={navbarToggleHandler}

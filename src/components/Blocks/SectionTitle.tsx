@@ -17,9 +17,10 @@ const SectionTitle = ({
       >
         {title && <h2 className="title">{title}</h2>}
         {paragraph && (
-          <div className="text mx-auto">
-            <ReactMarkdown>{paragraph || ""}</ReactMarkdown>
-          </div>
+          <div
+            className="text mx-auto"
+            dangerouslySetInnerHTML={{ __html: paragraph }}
+          />
         )}
       </div>
     </>

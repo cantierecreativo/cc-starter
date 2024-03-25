@@ -1,8 +1,8 @@
 "use client";
 import Sections from "@/components/Sections";
 import { PageQuery, PostRecord, SiteLocale } from "@/graphql/generated";
-import PostGridRenderer from "../Blog/PostGridRenderer";
-import WhichHero from "../Home/Hero/WichHero";
+import PostGridRenderer from "@/components/Blog/PostGridRenderer";
+import WhichHero from "@/components/Hero/WichHero";
 import { convertToSlug } from "@/lib/convertToSlug";
 
 type GenericPageProps = {

@@ -2,7 +2,7 @@
 import Sections from "@/components/Sections";
 import { PageQuery, ProductRecord, SiteLocale } from "@/graphql/generated";
 import ProductGridRenderer from "@/components/Product/ProductGridRenderer";
-import WhichHero from "../Home/Hero/WichHero";
+import WhichHero from "@/components/Hero/WichHero";
 import { convertToSlug } from "@/lib/convertToSlug";
 
 type GenericPageProps = {

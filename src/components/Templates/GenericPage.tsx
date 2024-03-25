@@ -3,7 +3,7 @@
 import Sections from "@/components/Sections";
 import { PageQuery, SiteLocale } from "@/graphql/generated";
 import { convertToSlug } from "@/lib/convertToSlug";
-import WhichHero from "@/components/Home/Hero/WichHero";
+import WhichHero from "@/components/Hero/WichHero";
 import MenuInternal from "@/components/Page/MenuInternal";
 
 type GenericPageProps = {
