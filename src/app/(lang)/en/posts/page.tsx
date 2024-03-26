@@ -57,5 +57,5 @@ export default async function Page() {
 
   if (!data) notFound();
 
-  return <PostIndexPage data={data} list={list} locale={siteLocale} />;
+  return <PostIndexPage data={data.page} list={list} locale={siteLocale} />;
 }
