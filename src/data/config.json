@@ -8,13 +8,23 @@
     "articoli": {
       "en": "posts",
       "it": "articoli"
+    },
+    "drop": {
+      "en": "slug",
+      "it": "drop"
+    },
+    "pagina-con-hero-gallery": {
+      "en": "page-con-hero-gallery",
+      "it": "pagina-con-hero-gallery"
     }
   },
   "paths": [
     "/",
     "/articoli/[slug]",
     "/articoli",
-    "/[slug]"
+    "/[slug]",
+    "/drop/pagina-con-hero-gallery",
+    "/drop"
   ],
   "models": [
     {
@@ -74,6 +84,38 @@
         "isIndex": false
       },
       "slugs": {}
+    },
+    {
+      "path": "/drop/pagina-con-hero-gallery",
+      "routeInfo": {
+        "model": "page",
+        "querySlug": "paginaConHeroGallery",
+        "indexModel": "",
+        "isHome": false,
+        "isVirtual": false,
+        "isDynamic": false,
+        "isIndex": false
+      },
+      "slugs": {
+        "en": "page-con-hero-gallery",
+        "it": "pagina-con-hero-gallery"
+      }
+    },
+    {
+      "path": "/drop",
+      "routeInfo": {
+        "model": "none",
+        "querySlug": "",
+        "indexModel": "",
+        "isHome": false,
+        "isVirtual": true,
+        "isDynamic": false,
+        "isIndex": false
+      },
+      "slugs": {
+        "en": "slug",
+        "it": "drop"
+      }
     }
   ]
 }
