@@ -34,31 +34,7 @@ export default async function Page() {
     isEnabled
   );
 
-  console.log("Data:", data);
-
-  const list = data?.posts || [];
-  // let allPosts = [];
-  // let exitCondition = true;
-  // let page = 0;
-  // while (exitCondition) {
-  //   const results = await fetchDato(
-  //     PostsDocument,
-  //     {
-  //       locale: siteLocale,
-  //       skip: page * 100,
-  //     },
-  //     isEnabled
-  //   );
-  //   if (results?.allPosts?.length > 0) {
-  //     allPosts = [...allPosts, ...results.allPosts];
-  //     page++;
-  //   } else {
-  //     exitCondition = false;
-  //   }
-  // }
-  // list = allPosts;
-
+  const list = data?.tag?.posts || [];
   if (!data) notFound();
-
   return <PostIndexPage data={data} list={list} locale={siteLocale} />;
 }

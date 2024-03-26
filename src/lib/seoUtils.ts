@@ -24,7 +24,6 @@ export default function getSeoMeta(page: PageSeoProps, currentLocale: string) {
   const nextTags = toNextMetadata(tags || []);
   const dl = config.defaultLocale;
 
-  console.log("ALTS", alts);
   const alternates = alts?.reduce((obj: any, alt: any) => {
     const path = resolveLink(alt);
     const url = `${HOST}${path}`;

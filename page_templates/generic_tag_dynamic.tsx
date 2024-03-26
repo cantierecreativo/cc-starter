@@ -28,9 +28,7 @@ export async function generateMetadata({ params }: Params) {
 
 export default async function Page({ params: { slug } }: Params) {
   const { isEnabled } = draftMode();
-
-  console.log("SLUG", slug);
-  const data = await fetchDato(
+  const data: any = await fetchDato(
     TagDocument,
     {
       locale: siteLocale,
@@ -39,18 +37,7 @@ export default async function Page({ params: { slug } }: Params) {
     },
     isEnabled
   );
-
-  console.log("DATA", data);
-
-  const list = data.tag.posts || [];
-  console.log("LIST", list);
-
+  const list = data?.tag?.posts || [];
   if (!data) notFound();
-  return (
-    <PostIndexPage
-      data={data?.tag as any}
-      list={list as any}
-      locale={siteLocale}
-    />
-  );
+  return <PostIndexPage data={data} list={list} locale={siteLocale} />;
 }

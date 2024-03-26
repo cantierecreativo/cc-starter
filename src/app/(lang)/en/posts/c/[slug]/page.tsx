@@ -1,17 +1,21 @@
 import fetchDato from "@/lib/fetchDato";
 import { draftMode } from "next/headers";
-// import { PageDocument, PostsDocument, SiteLocale } from "@/graphql/generated";
-import { TagDocument, PostsDocument, SiteLocale } from "@/graphql/generated";
+import { TagDocument, SiteLocale } from "@/graphql/generated";
 import { notFound } from "next/navigation";
-import PostIndexPage from "@/components/Templates/PostIndexPage";
 import getSeoMeta from "@/lib/seoUtils";
+import PostIndexPage from "@/components/Templates/PostIndexPage";
+
+type Params = {
+  params: {
+    slug: string;
+  };
+};
 
 const locale = "en";
 const siteLocale = locale as SiteLocale;
-const slug = "##";
 
-export async function generateMetadata() {
-  const siteLocale = locale as SiteLocale;
+export async function generateMetadata({ params }: Params) {
+  const { slug } = params;
   const data = await fetchDato(
     TagDocument,
     { locale: siteLocale, slug },
@@ -22,7 +26,7 @@ export async function generateMetadata() {
   return meta;
 }
 
-export default async function Page() {
+export default async function Page({ params: { slug } }: Params) {
   const { isEnabled } = draftMode();
   const data: any = await fetchDato(
     TagDocument,
@@ -33,32 +37,7 @@ export default async function Page() {
     },
     isEnabled
   );
-
-  console.log("Data:", data);
-
   const list = data?.posts || [];
-  // let allPosts = [];
-  // let exitCondition = true;
-  // let page = 0;
-  // while (exitCondition) {
-  //   const results = await fetchDato(
-  //     PostsDocument,
-  //     {
-  //       locale: siteLocale,
-  //       skip: page * 100,
-  //     },
-  //     isEnabled
-  //   );
-  //   if (results?.allPosts?.length > 0) {
-  //     allPosts = [...allPosts, ...results.allPosts];
-  //     page++;
-  //   } else {
-  //     exitCondition = false;
-  //   }
-  // }
-  // list = allPosts;
-
   if (!data) notFound();
-
   return <PostIndexPage data={data} list={list} locale={siteLocale} />;
 }
