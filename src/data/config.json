@@ -10,7 +10,7 @@
       "it": "articoli"
     },
     "drop": {
-      "en": "slug",
+      "en": "drop",
       "it": "drop"
     },
     "pagina-con-hero-gallery": {
@@ -113,7 +113,7 @@
         "isIndex": false
       },
       "slugs": {
-        "en": "slug",
+        "en": "drop",
         "it": "drop"
       }
     }
