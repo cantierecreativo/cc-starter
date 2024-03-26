@@ -68,6 +68,8 @@ for (let f of folders) {
         source = "generic_post";
         break;
       case "tag":
+        source = "tag_index_page";
+        break;
       case "product":
       default:
         source = "empty_page";

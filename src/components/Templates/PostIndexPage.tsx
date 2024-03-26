@@ -18,9 +18,9 @@ export default function BlogIndexPage({
 }: GenericPageProps) {
   const page = data?.page;
   if (!page) return null;
-
   return (
     <div>
+      CIAO!!!!!!!!!!!!!!!!!!!!
       {page?.hero && <WhichHero hero={page?.hero as any} locale={locale} />}
       {data.page?.sections?.map((section) => {
         const sectionSpacing =
