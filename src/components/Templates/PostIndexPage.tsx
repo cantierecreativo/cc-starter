@@ -7,7 +7,7 @@ import { convertToSlug } from "@/lib/convertToSlug";
 
 type GenericPageProps = {
   locale: SiteLocale;
-  data: PageQuery;
+  data: any;
   list: PostRecord[];
 };
 
@@ -16,13 +16,12 @@ export default function BlogIndexPage({
   list,
   locale,
 }: GenericPageProps) {
-  const page = data?.page;
+  const page = data;
   if (!page) return null;
   return (
     <div>
-      CIAO!!!!!!!!!!!!!!!!!!!!
       {page?.hero && <WhichHero hero={page?.hero as any} locale={locale} />}
-      {data.page?.sections?.map((section) => {
+      {page?.sections?.map((section) => {
         const sectionSpacing =
           section.style !== "base-100 text-base-content" ||
           "bg-base-200 text-base-content"

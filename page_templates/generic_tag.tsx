@@ -36,5 +36,5 @@ export default async function Page() {
 
   const list = data?.tag?.posts || [];
   if (!data) notFound();
-  return <PostIndexPage data={data} list={list} locale={siteLocale} />;
+  return <PostIndexPage data={data.tag} list={list} locale={siteLocale} />;
 }
