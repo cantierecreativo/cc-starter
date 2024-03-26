@@ -1,19 +1,20 @@
-import * as dotenv from "dotenv";
+import * as dotenv from "dotenv"; // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
 import path from "path";
 import { promises as fs } from "fs";
 import { buildClient, LogLevel } from "@datocms/cma-client-node";
 
-dotenv.config({ path: ".env.local" });
+dotenv.config({ path: ".env.local" }); //SE USATE direnv non serve specificare il path
+// dotenv.config();
 
 //contiene le rotte e loro prefissi
-const config = JSON.parse(
+const conf = JSON.parse(
   await fs.readFile(new URL("../src/data/config.json", import.meta.url))
 );
 
 const t = (section, locale) => {
   if (!section) return;
-  if (locale === config.defaultLocale) return section;
-  const key = config.translations[section];
+  if (locale === conf.defaultLocale) return section;
+  const key = conf.translations[section];
   if (key?.[locale] && key?.[locale] != "") {
     return key?.[locale];
   } else {
@@ -21,55 +22,7 @@ const t = (section, locale) => {
   }
 };
 
-function matchCustomRoute({ slugs, _modelApiKey, locale }) {
-  const slug = slugs[locale];
-  if (!slug) return null;
-
-  const matchingRoute = config.models.find(
-    (i) =>
-      !i.routeInfo.isDynamic &&
-      !i.routeInfo.isHome &&
-      i.routeInfo.model === _modelApiKey &&
-      i.slugs?.[locale] === slug
-  );
-
-  if (!matchingRoute) return null;
-  if (locale === config.defaultLocale) return matchingRoute.path;
-  const defaultPathChunks = matchingRoute.path.split("/"); //.slice(-1);
-
-  let prefix = defaultPathChunks.map((i) => t(i, locale)).join("/");
-  return `${prefix}`;
-  // return slug;
-}
-
-function resolveLink({ slugs, _modelApiKey, locale }) {
-  //language prefix
-  const lang = locale === config.defaultLocale ? "" : `/${locale}`;
-  const slug = slugs[locale];
-  if (slug === "home") {
-    return lang;
-  }
-  //custom routing
-  if (slug) {
-    const customRoute = matchCustomRoute({ slugs, _modelApiKey, locale });
-    if (customRoute) {
-      // console.log("custom route found: ", slug, customRoute);
-      return `${lang}${customRoute}`;
-    }
-  }
-  // console.log("resolve default route  : ", slug, _modelApiKey);
-  //default routing
-  switch (_modelApiKey) {
-    case "page":
-      return `${lang}/${slug}`;
-    case "post":
-      return `${lang}/${t(`blog`, locale)}/${slug}`;
-    case "legal_page":
-      return `${lang}/${t(`legal`, locale)}/${slug}`;
-    default:
-      return `${lang}/${slug ? slug : ""}`;
-  }
-}
+const { models, locales, defaultLocale } = conf || {};
 
 const API_KEY = process.env.DATO_API_KEY; //use your read api key variable name here
 const ENV = process.env.DATO_ENV ?? "";
@@ -98,8 +51,8 @@ Sitemap: ${HOST}/sitemap.xml`;
   console.log("DONE GENERATE ROBOTS in", elapsed);
 }
 
-async function getRecords(modelList) {
-  console.log("MODELS", JSON.stringify(modelList, null, 2));
+async function getRecords(models) {
+  console.log("MODELS", JSON.stringify(models, null, 2));
 
   let options = { apiToken: API_KEY, logLevel: LogLevel.BASIC };
   if (ENV) {
@@ -115,12 +68,13 @@ async function getRecords(modelList) {
     itm[id] = api_key;
     return itm;
   }, {});
+  // console.log("itemTypesMap", JSON.stringify(itemTypesMap, null, 2));
 
   let records = [];
   // TO GET ALL RECORDS INSTEAD OF SOME
   for await (const record of client.items.listPagedIterator({
     filter: {
-      type: modelList,
+      type: models,
       slugField: { exists: true },
     },
   })) {
@@ -131,18 +85,76 @@ async function getRecords(modelList) {
       records.push(item);
     }
   }
+
   return records;
 }
 
-function resolvePath({ slug, apiKey }, locale) {
-  return resolveLink({ slugs: slug, _modelApiKey: apiKey, locale });
+function getPrefix(path, slug, locale) {
+  let prefix = "";
+  if (path.split("/").length > 1) {
+    const arrayOfPath = path
+      .split("/")
+      .filter((p) => p && !p.includes("slug") && p != slug);
+
+    if (arrayOfPath.length > 0) {
+      prefix = "/" + arrayOfPath.map((p) => t(p, locale)).join("/");
+    }
+  }
+  return prefix;
 }
+
+function resolvePath(record, locale) {
+  // console.log("record", record);
+  const { slug, apiKey } = record;
+  const isDefautlLocale = locale === defaultLocale;
+  const localePrefix = isDefautlLocale ? "" : `/${locale}`;
+  let sl = slug;
+  if (typeof slug != "string") {
+    if (!slug[locale]) return null;
+    sl = slug[locale];
+  }
+
+  let info = models.find(
+    ({ routeInfo }) => routeInfo.model === apiKey && routeInfo.querySlug == sl
+  );
+
+  if (!info) {
+    info = models.find(({ routeInfo }) => routeInfo.model === apiKey);
+  }
+  // console.log("info", info, sl);
+  if (sl == "home") sl = "";
+
+  if (info?.path) {
+    const prefix = getPrefix(info.path, sl, locale);
+    return `${localePrefix}${prefix}/${sl}`;
+  }
+}
+
+// function getSlug(record, locale) {
+//   const { slug, apiKey } = record;
+//   let url;
+//   if (typeof slug == "string") {
+//     url = resolvePath({ slug, apiKey }, locale);
+//   } else {
+//     if (!slug[locale]) return null;
+//     url = resolvePath({ slug: slug[locale], apiKey }, locale);
+//   }
+
+//   // const alts = info.locales
+//   //   .filter((l) => l !== locale)
+//   //   .reduce((acc, l) => {
+//   //     if (!l || !slug[l]) return acc;
+//   //     const path = resolvePath(record, l);
+//   //     return [...acc, { path, locale: l }];
+//   //   }, []);
+//   return url;
+// }
 
 function getSlugs(records) {
   return records
     .map((r) => {
-      return config.locales.reduce((acc, l) => {
-        const result = r?.slug[l] ? resolvePath(r, l) : null;
+      return locales.reduce((acc, l) => {
+        const result = resolvePath(r, l);
         return result ? [...acc, result] : acc;
       }, []);
     })
@@ -154,7 +166,7 @@ function getRoute(path) {
   <url>
     <loc>${HOST}${path}</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>`;
 }
@@ -162,7 +174,7 @@ async function generateSitemap() {
   const start = Date.now();
 
   // qui ci vanno i nomi delle api key relativi ai modelli delle pagine tipo "about_page,article";
-  const pageModels = config.models
+  const pageModels = models
     .map((r) => r.routeInfo.model)
     .filter((m) => m != "none")
     .join(",");
