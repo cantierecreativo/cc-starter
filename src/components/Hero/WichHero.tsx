@@ -13,7 +13,7 @@ type PropsWhichHero = {
 
 export default function WhichHero({ hero, locale }: PropsWhichHero) {
   switch (hero.displayOptions) {
-    case "heroBg":
+    case "hero_bg":
       return (
         <BackgroundImageHero
           heroTitle={hero.heroTitle}
@@ -23,7 +23,7 @@ export default function WhichHero({ hero, locale }: PropsWhichHero) {
           locale={locale}
         />
       );
-    case "heroImageTxt":
+    case "hero_image_txt":
       return (
         <RightImageHero
           heroTitle={hero.heroTitle}
@@ -33,7 +33,7 @@ export default function WhichHero({ hero, locale }: PropsWhichHero) {
           locale={locale}
         />
       );
-    case "heroSlider":
+    case "hero_slider":
       return <Carousel slides={hero.sliders} locale={locale} />;
   }
 }
