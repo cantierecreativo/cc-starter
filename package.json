@@ -12,6 +12,7 @@
     "locales": "zx ./scripts/locales.mjs",
     "sitemap": "zx ./scripts/sitemap.mjs",
     "parse": "ts-node ./scripts/parseSiteStructure.ts",
+    "theme": "ts-node ./scripts/theme.ts",
     "routes": "zx ./scripts/genRouteFiles.mjs",
     "codegen": "graphql-codegen --config codegen.ts && bun run fix",
     "macina": "bun run parse && bun run routes && bun run locales && bun run codegen"

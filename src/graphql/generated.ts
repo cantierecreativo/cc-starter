@@ -6435,6 +6435,7 @@ export type VideoSectionRecord = RecordInterface & {
   internalVideo?: Maybe<VideoFileField>;
   videoHeader: Scalars['String']['output'];
   videoSubheader?: Maybe<Scalars['String']['output']>;
+  videoType?: Maybe<Scalars['String']['output']>;
 };
 
 
