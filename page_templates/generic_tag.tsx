@@ -1,21 +1,17 @@
 import fetchDato from "@/lib/fetchDato";
 import { draftMode } from "next/headers";
-import { TagDocument, SiteLocale } from "@/graphql/generated";
+// import { PageDocument, PostsDocument, SiteLocale } from "@/graphql/generated";
+import { TagDocument, PostsDocument, SiteLocale } from "@/graphql/generated";
 import { notFound } from "next/navigation";
-import getSeoMeta from "@/lib/seoUtils";
 import PostIndexPage from "@/components/Templates/PostIndexPage";
+import getSeoMeta from "@/lib/seoUtils";
 
-type Params = {
-  params: {
-    slug: string;
-  };
-};
-
-const locale = "en";
+const locale = "it";
 const siteLocale = locale as SiteLocale;
+const slug = "##";
 
-export async function generateMetadata({ params }: Params) {
-  const { slug } = params;
+export async function generateMetadata() {
+  const siteLocale = locale as SiteLocale;
   const data = await fetchDato(
     TagDocument,
     { locale: siteLocale, slug },
@@ -26,7 +22,7 @@ export async function generateMetadata({ params }: Params) {
   return meta;
 }
 
-export default async function Page({ params: { slug } }: Params) {
+export default async function Page() {
   const { isEnabled } = draftMode();
   const data: any = await fetchDato(
     TagDocument,
@@ -37,6 +33,7 @@ export default async function Page({ params: { slug } }: Params) {
     },
     isEnabled
   );
+
   const list = data?.tag?.posts || [];
   if (!data) notFound();
   return <PostIndexPage data={data} list={list} locale={siteLocale} />;
