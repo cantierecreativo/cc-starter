@@ -1,18 +1,39 @@
-query Tag(
-  $slug: String
-  $locale: SiteLocale
-  $fallbackLocale: [SiteLocale!]
-  $skip: IntType = "0"
-) {
-  tag(filter: { slug: { eq: $slug } }, locale: $locale) {
+query Tag($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
+  tag(
+    filter: { slug: { eq: $slug } }
+    locale: $locale
+    fallbackLocales: $fallbackLocale
+  ) {
+    id
     tag
-    _allReferencingPosts(
+    _modelApiKey
+    slugs: _allSlugLocales {
+      locale
+      value
+    }
+    seo: _seoMetaTags {
+      ...seoMetaFragment
+    }
+    hero {
+      ...heroFragment
+    }
+    sections {
+      ... on SectionWrapRecord {
+        id
+        label
+        _modelApiKey
+        title
+        style
+        blocks {
+          ...wrapSectionBlocks
+        }
+      }
+    }
+    posts: _allReferencingPosts(
       filter: { title: { isBlank: "false" } }
       orderBy: _createdAt_DESC
       first: "100"
       locale: $locale
-      fallbackLocales: $fallbackLocale
-      skip: $skip
     ) {
       _publishedAt
       slug
@@ -21,22 +42,20 @@ query Tag(
       tags {
         tag
       }
-      seoTags {
-        description
-        image {
-          responsiveImage {
-            srcSet
-            webpSrcSet
-            sizes
-            src
-            width
-            height
-            aspectRatio
-            alt
-            title
-            bgColor
-            base64
-          }
+      blogImage {
+        responsiveImage(
+          sizes: "(min-width:768px) 50vw, (min-width:1024px) 33vw, 100vw, 500px"
+          imgixParams: { auto: [format, compress], fit: crop, ar: "7:8" }
+        ) {
+          ...rImage
+        }
+      }
+      blogImageHover {
+        responsiveImage(
+          sizes: "(min-width:768px) 50vw, (min-width:1024px) 33vw, 100vw, 500px"
+          imgixParams: { auto: [format, compress], fit: crop, ar: "7:8" }
+        ) {
+          ...rImage
         }
       }
     }

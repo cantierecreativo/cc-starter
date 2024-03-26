@@ -2,8 +2,19 @@ import type { Config } from "tailwindcss";
 
 // import themes from "./src/data/themes.json";
 import customTheme from "./src/data/customTheme.json";
+import themeConfig from "./src/data/themeConfig.json";
 import daisyui from "daisyui";
 import typography from "@tailwindcss/typography";
+
+let themes: any = [
+  {
+    custom: customTheme,
+  },
+];
+// if (themeConfig?.theme !== "custom") {
+//   themes.push(`${themeConfig.theme || ""}`);
+// }
+themes.push(`${themeConfig.theme}`);
 
 const config: Config = {
   content: [
@@ -12,11 +23,7 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   daisyui: {
-    themes: [
-      {
-        custom: customTheme,
-      },
-    ],
+    themes,
   },
   theme: {
     extend: {
