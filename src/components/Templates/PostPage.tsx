@@ -72,7 +72,7 @@ const PostPage = ({ data, locale }: Props) => {
             />
           </div>
         </div>
-        <div className="formatted container">
+        <div className="formatted container overflow-hidden">
           <StructuredText
             data={data.post.content as any}
             renderNode={Highlighter}

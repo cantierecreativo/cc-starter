@@ -11,7 +11,7 @@ fragment videoSectionRecord on VideoSectionRecord {
       width
       height
       blurUpThumb
-      src: mp4Url(res: medium)
+      mp4Url(res: medium)
       thumbnailUrl(format: jpg)
       muxAssetId
       framerate

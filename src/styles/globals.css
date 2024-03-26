@@ -85,7 +85,6 @@
     content: counter(my-awesome-counter) ". ";
   }
   .unwrapped {
-    margin-left: calc(-50vw + 50%);
-    margin-right: calc(-50vw + 50%);
+    @apply ml-[calc(-50vw+50%)] mr-[calc(-50vw+50%)];
   }
 }

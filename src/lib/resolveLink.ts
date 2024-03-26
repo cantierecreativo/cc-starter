@@ -60,7 +60,7 @@ export default function resolveLink({
     case "page":
       return `${lang}/${slug}`;
     case "post":
-      return `${lang}/${t(`blog`, locale)}/${slug}`;
+      return `${lang}/${t(`articoli`, locale)}/${slug}`;
     case "legal_page":
       return `${lang}/${t(`legal`, locale)}/${slug}`;
     default:
