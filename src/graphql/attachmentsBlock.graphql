@@ -6,6 +6,7 @@ fragment attachmentsBlockRecord on AttachmentsBlockRecord {
   attachmentTitle
   attachmentText
   attachments {
+    id
     file {
       id
       url

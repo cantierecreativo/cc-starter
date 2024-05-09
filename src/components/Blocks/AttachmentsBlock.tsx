@@ -6,6 +6,7 @@ import {
 } from "@/graphql/generated";
 import ExternalLink from "../Links/ExternalLink";
 import { motion, Variants } from "framer-motion";
+import { Fragment } from "react";
 
 type PropsAttachmentsBlock = {
   data: AttachmentsBlockRecord;
@@ -55,25 +56,27 @@ const AttachmentsBlock = ({ data, style, locale }: PropsAttachmentsBlock) => {
             />
           )}
           <div className="grid gap-3 pt-6 max-w-[460px] xl:mt-8 xl:gap-4">
-            {attachments.map((a: AttachmentRecord) => (
-              <ExternalLink
-                key={a.id}
-                url={a.file.url}
-                title={a.title}
-                locale={locale}
-                className="group cursor-pointer"
-              >
-                <div className="bg-base-100 flex items-center gap-4 rounded-md border-primary-content border p-3 duration-300 group-hover:bg-secondary group-hover:text-base-100">
-                  <CustomIcon
-                    classes="bg-base-content md:w-[40px] md:h-[40px] w-[23px] h-[25px] group-hover:ml-1 motion-safe:duration-300 md:scale-125 group-hover:bg-base-100"
-                    fileName="download"
-                  />
-                  <div className="opacity-70 text-sm md:text-base">
-                    {a.title}
-                  </div>
-                </div>
-              </ExternalLink>
-            ))}
+            {attachments.map((a: AttachmentRecord) => {
+              return (
+                  <ExternalLink
+                  key={a.id}
+                    url={a.file.url}
+                    title={a.title}
+                    locale={locale}
+                    className="group cursor-pointer"
+                  >
+                    <div className="bg-base-100 flex items-center gap-4 rounded-md border-primary-content border p-3 duration-300 group-hover:bg-secondary group-hover:text-base-100">
+                      <CustomIcon
+                        classes="bg-base-content md:w-[40px] md:h-[40px] w-[23px] h-[25px] group-hover:ml-1 motion-safe:duration-300 md:scale-125 group-hover:bg-base-100"
+                        fileName="download"
+                      />
+                      <div className="opacity-70 text-sm md:text-base">
+                        {a.title}
+                      </div>
+                    </div>
+                  </ExternalLink>
+              );
+            })}
           </div>
         </div>
       </div>
