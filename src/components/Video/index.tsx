@@ -48,7 +48,7 @@ const Video = ({
         ) : null}
 
         {externalVideo && (
-          <div className="w-full h-auto mt-12">
+          <div className="aspect-video mt-12">
             <VideoEmbedded video={externalVideo} />
           </div>
         )}

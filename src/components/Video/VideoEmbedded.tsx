@@ -11,22 +11,27 @@ import {
   defaultLayoutIcons,
   DefaultVideoLayout,
 } from "@vidstack/react/player/layouts/default";
+import { useEffect } from "react";
 
 const VideoEmbedded = ({ video }: { video: VideoField }) => {
+  let thumb: string;
+  useEffect(() => {
+    thumb = video.thumbnailUrl;
+  },[video]);
+
   return (
-    <MediaPlayer title={video.title} src={video.url}>
-      <MediaProvider>
-        <Poster
-          className="vds-poster"
-          src={video.thumbnailUrl}
-          alt={video.title}
-        />
-      </MediaProvider>
-      <DefaultVideoLayout
-        // thumbnails={video.thumbnailUrl}
-        icons={defaultLayoutIcons}
-      />
-    </MediaPlayer>
+    <div className=" h-[calc((100%/16)*9)]">
+      <MediaPlayer title={video.title} src={video.url}>
+        <MediaProvider>
+          <Poster
+            className="vds-poster"
+            src={thumb}
+            alt={video.title}
+          />
+        </MediaProvider>
+        <DefaultVideoLayout icons={defaultLayoutIcons} />
+      </MediaPlayer>
+    </div>
   );
 };
 
