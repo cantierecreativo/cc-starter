@@ -48,7 +48,7 @@ export default function TextBlock({ data, locale }) {
           <div
             className={`${
               displayOptions === "right" ? "flex justify-end" : ""
-            } formatted`}
+            } `}
           >
             <div
               className={`${displayOptions === "center" ? "mx-auto" : ""} text`}

@@ -4,7 +4,7 @@ import { HeroSectionRecord, SiteLocale } from "@/graphql/generated";
 
 import RightImageHero from "./RightImageHero";
 import BackgroundImageHero from "./BackgroundImage";
-import Carousel from "@/components/Blocks/Carousel";
+import Carousel from "@/components/Hero/Carousel";
 
 type PropsWhichHero = {
   hero: HeroSectionRecord;
