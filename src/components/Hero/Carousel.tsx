@@ -9,7 +9,7 @@ import {
 } from "swiper/modules";
 
 import "swiper/css/bundle";
-import ExternalLink from "../Links/ExternalLink";
+import DynamicLink from "../Links/DynamicLink";
 import ButtonBlock from "../Blocks/ButtonBlock";
 
 export default function Carousel({
@@ -36,6 +36,8 @@ export default function Carousel({
         {slides.map((slide: any, i: number) => {
           const { id, image, title, text, link } = slide;
 
+          // return console.log("slide:", slide);
+
           return (
             <div className="h-full w-full m-t-[100px]" key={i}>
               <SwiperSlide key={i}>
@@ -57,13 +59,9 @@ export default function Carousel({
                       </h3>
                     )}
                     {link && (
-                      <ExternalLink
-                        url={link.url}
-                        locale={locale}
-                        title={link.label}
-                      >
+                      <DynamicLink link={link} locale={locale}>
                         <ButtonBlock label={link.cta ? link.cta : "vai"} />
-                      </ExternalLink>
+                      </DynamicLink>
                     )}
                   </div>
                 </div>

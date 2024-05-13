@@ -13,7 +13,10 @@ fragment heroFragment on HeroSectionRecord {
   heroTitle
   displayOptions
   heroImage {
-    responsiveImage {
+    responsiveImage(
+      sizes: "100vw"
+      imgixParams: { auto: [format, compress], h: 750, w: 1600, fit: crop }
+    ) {
       ...rImage
     }
   }
@@ -23,9 +26,18 @@ fragment heroFragment on HeroSectionRecord {
     text
     image {
       responsiveImage(
-        imgixParams: { auto: format, ar: "4:3", fit: crop, h: 720 }
+        sizes: "100vw"
+        imgixParams: { auto: [format, compress], h: 750, w: 1600, fit: crop }
       ) {
         ...rImage
+      }
+    }
+    link {
+      ... on InternalLinkRecord {
+        ...internalLink
+      }
+      ... on ExternalLinkRecord {
+        ...externalLink
       }
     }
   }
