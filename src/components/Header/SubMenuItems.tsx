@@ -5,7 +5,13 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import CustomIcon from "../Blocks/CustomIcon";
 
-export const MenuItem = ({ submenuItem, handleClickAndClose, isMega }) => {
+export const MenuItem = ({
+  submenuItem,
+  // handleSubmenu,
+  handleClickAndClose,
+  isMega,
+  dropdownOpen
+}) => {
   const imageVariants = {
     open: {
       bottom: 0,
@@ -41,8 +47,9 @@ export const MenuItem = ({ submenuItem, handleClickAndClose, isMega }) => {
   return (
     <li>
       <Link
+        tabIndex={dropdownOpen ? 0 : -1}
         href={submenuItem.path}
-        className="group "
+        className="group"
         onClick={() => handleClickAndClose()}
       >
         {submenuItem.menuImage && isMega && (
@@ -61,10 +68,10 @@ export const MenuItem = ({ submenuItem, handleClickAndClose, isMega }) => {
             </motion.div>
           </div>
         )}
-        <div className="flex items-center mt-4">
+        <div className="flex items-center my-4">
           <motion.div
             variants={titleVariants}
-            className={`text-primary-content text-base lg:text-md ${
+            className={`text-accent-content text-base lg:uppercase lg:font-bold lg:text-xs lg:tracking-wider xl:font-normal font-serif xl:text-base ${
               isMega ? "" : "py-1 hover:underline hover:underline-offset-8"
             }`}
           >
@@ -86,6 +93,7 @@ export default function SubMenuItems({
   items,
   isMega,
   handleClickAndClose,
+  handleSubmenu,
 }: any) {
   const variants = {
     open: {
@@ -118,16 +126,17 @@ export default function SubMenuItems({
           ? "mx-0 lg:ml-auto lg:mt-[105px] lg:container pt-6 pb-8 grid justify-center gap-5" +
             " " +
             colClass[items.length]
-          : "lg:p-4"
+          : "lg:px-4 lg:py-2"
       }`}
     >
-      {items?.map((submenuItem: any) => {
+      {items?.map((submenuItem: any,dropdownOpen:boolean) => {
         return (
           <MenuItem
             key={submenuItem.id}
             submenuItem={submenuItem}
-            handleClickAndClose={handleClickAndClose}
             isMega={isMega}
+            handleClickAndClose={handleClickAndClose}
+            dropdownOpen={dropdownOpen}
           />
         );
       })}

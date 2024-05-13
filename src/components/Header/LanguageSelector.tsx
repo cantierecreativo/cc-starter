@@ -12,7 +12,7 @@ type Props = {
   languages: SiteLocale[];
   sticky: Boolean;
   navbarOpen: Boolean;
-  dropdownOpen: Boolean;
+  isDropdownOpen: Boolean;
 };
 
 const LanguageSelector = ({
@@ -20,7 +20,7 @@ const LanguageSelector = ({
   languages,
   sticky,
   navbarOpen,
-  dropdownOpen,
+  isDropdownOpen,
 }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
