@@ -44,21 +44,25 @@ export default function resolveLink({
   //language prefix
   const lang = locale === config.defaultLocale ? "" : `/${locale}`;
   const slug = slugs?.find((i) => i.locale === locale)?.value;
-  if (slug === "home") {
-    return lang;
-  }
-  //custom routing
+  // if (slug === "home") {
+  //   return lang;
+  // }
+  // custom routing
   if (slug) {
     const customRoute = matchCustomRoute({ slugs, _modelApiKey, locale });
     if (customRoute) {
-      // console.log("custom route found: ", slug, customRoute);
+      console.log("custom route found: ", slug, customRoute);
       return `${lang}${customRoute}`;
     }
   }
-  //default routing
+  // default routing
   switch (_modelApiKey) {
     case "page":
-      return `${lang}/${slug}`;
+      if (slug === "home") {
+        return `${lang}/`;
+      } else {
+        return `${lang}/${slug}`;
+      }
     case "post":
       return `${lang}/${t(`articoli`, locale)}/${slug}`;
     case "legal_page":
