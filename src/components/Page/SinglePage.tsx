@@ -13,7 +13,7 @@ const SinglePage = ({ page, locale }: Props) => {
   return (
     <>
       <InternalLink record={page} className="group" locale={locale}>
-        <div className="relative h-full bg-base-100 p-3 pt-6 md:p-6 lg:pt-8 group-hover:-translate-y-4 duration-300 gap-6 grid">
+        <div className="relative h-full bg-base-100 p-3 pt-6 md:p-6 lg:pt-8 group-hover:-translate-y-4 duration-300 gap-6 grid text-base-content">
           <div className={`prefix`}>pagine</div>
           {title && <h2 className="title-small">{title}</h2>}
           {abstract && (

@@ -58,7 +58,7 @@ const ProductDetailsBlock = ({ data, locale }: PropsProductDetailsBlock) => {
         variants={variants}
       >
         <div className="container standard-vertical-m">
-          <div className="bg-base-100 px-4 py-8 pb-12 md:px-12 md:py-16">
+          <div className="bg-base-100 px-4 py-8 pb-12 md:px-12 md:py-16 text-base-content">
             <h2 className="title">{title}</h2>
             <div className="md:grid md:grid-cols-2 xl:grid-cols-3 gap-20 xl:mt-8 items-start">
               <div className="">
