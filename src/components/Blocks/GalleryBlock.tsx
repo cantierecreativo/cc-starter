@@ -82,8 +82,8 @@ export default function GalleryBlock({
             navigation={true}
             keyboard={true}
             modules={[Autoplay, Pagination, Navigation, A11y, Parallax]}
-            onSlideChange={(info) => console.log("slide change", info)}
-            onSwiper={(swiper) => console.log(swiper)}
+            // onSlideChange={(info) => console.log("slide change", info)}
+            // onSwiper={(swiper) => console.log(swiper)}
           >
             {data.galleryImages.map((img: any) => {
               return (

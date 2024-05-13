@@ -1,15 +1,15 @@
 import { FooterQuery, SiteLocale } from "@/graphql/generated";
-import InternalLink from "../Links/InternalLink";
 import Newsletter from "@/components/Footer/Newsletter";
-import ExternalLink from "../Links/ExternalLink";
+import ExternalLink from "@/components/Links/ExternalLink";
 import translate from "@/labels";
-import CustomIcon from "../Blocks/CustomIcon";
-import Socials from "./Socials";
-import Iubenda from "./ExternalServices/Iubenda";
-import GoogleAnalytics from "./ExternalServices/GoogleAnalytics";
+import CustomIcon from "@/components/Blocks/CustomIcon";
+import Socials from "@/components/Footer/Socials";
+import Iubenda from "@/components/Footer/ExternalServices/Iubenda";
+import GoogleAnalytics from "@/components/Footer/ExternalServices/GoogleAnalytics";
+import MenuFooter from "@/components/Footer/MenuFooter";
 
 type Props = {
-  data: FooterQuery;
+  data: any;
   lng: SiteLocale;
 };
 
@@ -18,15 +18,18 @@ const year = new Date().getFullYear();
 const ENV = process.env.DATO_ENV;
 
 const Footer = ({ data, lng }: Props) => {
+  console.log("data.layout:", data?.layout);
   if (!data?.layout) return null;
   const {
     rea,
     address,
     googleMaps,
     phone,
+    footerMenu,
     email,
     iva,
     urlNewsletter,
+    footerLogo,
     socialMediaLinks,
     titleNewsletter,
     textNewsletter,
@@ -41,17 +44,11 @@ const Footer = ({ data, lng }: Props) => {
         <div className="bg-base-300">
           <div className="container mx-auto px-6 py-12">
             <div className="flex border-y border-secondary flex-wrap gap-6 py-8 gap-y-8 md:justify-center md:gap-x-12 md:px-12 xl:py-12">
-              {data?.layout.footerLinks.map((link: any) => (
-                <InternalLink
-                  record={link}
-                  locale={lng}
-                  title={link.label}
-                  key={link.id}
-                  className="hover:underline hover:underline-offset-8 duration-500"
-                >
-                  {link.label}
-                </InternalLink>
-              ))}
+              <MenuFooter
+                data={footerMenu as any}
+                logo={footerLogo.url as string}
+                locale={lng}
+              />
             </div>
             <div className="md:grid gap-6 md:grid-cols-2 pb-6 items-start md:gap-x-12 xl:grid-cols-12 lg:gap-x-24">
               {urlNewsletter && (
@@ -104,7 +101,7 @@ const Footer = ({ data, lng }: Props) => {
             </div>
           </div>
         </div>
-        <div className="bg-neutral-content">
+        <div className="bg-neutral text-neutral-content">
           <div className="container px-6 mx-auto py-6">
             <div className="grid gap-2 md:flex md:justify-between xl:items-center ">
               <div className="text-xs text-gray-light xl:flex xl:justify-between xl:gap-2">

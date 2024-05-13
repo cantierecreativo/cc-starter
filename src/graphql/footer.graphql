@@ -34,15 +34,18 @@ query Footer($locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
         width
       }
     }
-    footerLinks {
-      _modelApiKey
+    footerMenu {
       id
-      slug
-      slugs: _allSlugLocales {
-        locale
-        value
-      }
       label
+      page {
+        label
+        slug
+        slugs: _allSlugLocales {
+          locale
+          value
+        }
+        _modelApiKey
+      }
     }
   }
 }
