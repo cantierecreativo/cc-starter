@@ -1,13 +1,8 @@
-/* @import "root.css"; */
-
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 @layer base {
   html {
-    /* @apply font-sans !scroll-smooth; */
+    @apply font-sans !scroll-smooth;
   }
   @media (prefers-reduced-motion) {
     html {
@@ -15,9 +10,13 @@
     }
   }
   body {
-    @apply bg-base-200;
+    @apply bg-base-100 text-secondary-content;
   }
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer components {
   .standard-vertical-m {

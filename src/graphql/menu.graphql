@@ -64,9 +64,6 @@ query Menu($locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
         }
       }
     }
-    notification {
-      value
-    }
   }
   _site {
     locales

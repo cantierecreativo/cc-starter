@@ -32,16 +32,12 @@ export default function DropdownMenu({
   };
   const colorVariants = {
     open: {
-      // color: `${tw`text-primary-content`}`,
-      color: "#000",
       transition: {
         ease: "easeOut",
         duration: 0.25,
       },
     },
     closed: {
-      // color: `${tw`text-base-100`}`,
-      color: "#fff",
       transition: {
         ease: "easeOut",
         duration: 0.25,
@@ -88,7 +84,6 @@ export default function DropdownMenu({
       }
       if (isDropdownOpen) {
         setIsDropdownOpen(!isDropdownOpen);
-
       }
     }
     useEffect(() => {
@@ -112,16 +107,16 @@ export default function DropdownMenu({
       >
         <span
           ref={wrapperRef}
-          className={`bg-[#DFF3EB] lg:bg-transparent xl:text-base xl:font-normal  lg:text-xs whitespace-nowrap px-6 py-5 tracking-wider font-bold font-serif flex lg:gap-x-2 cursor-pointer items-center justify-between lg:mr-0 lg:inline-flex lg:px-0 lg:py-0 hover:underline underline-offset-8`}
+          className={`lg:text-base whitespace-nowrap tracking-wider flex lg:gap-x-2 cursor-pointer items-center justify-between lg:mr-0 lg:inline-flex hover:underline underline-offset-8 px-8 lg:px-0`}
         >
           {menuItem.title}
           <motion.span
-            animate={sticky || dropdownOpen || navbarOpen ? "open" : "closed"}
+            animate={sticky || navbarOpen ? "open" : "closed"}
             variants={invertVariants}
             className="invert"
           >
             <CustomIcon
-              classes={`w-5 h-5 lg:w-3 lg:h-3 lg:-translate-y-[2px] bg-primary-content`}
+              classes={`w-3 h-3 bg-primary-content`}
               fileName="chevron-down"
             />
           </motion.span>
@@ -135,9 +130,9 @@ export default function DropdownMenu({
           isMega
             ? "top-0 lg:w-screen left-0"
             : `${
-                sticky ? "xl:mt-[28px] drop-shadow-md" : "xl:mt-[52px]"
-              } lg:-ml-6 min-w-[260px] lg:mt-6`
-        } px-6 lg:px-2 lg:absolute lg:z-[-1] bg-base-100`}
+                sticky ? "xl:mt-[37px] drop-shadow-md" : "xl:mt-[40px]"
+              } lg:-ml-6 min-w-[260px] lg:mt-[38px]`
+        } px-8 lg:px-2 lg:absolute lg:z-[-1] bg-base-100`}
       >
         <div className="overflow-hidden h-full">
           {menuItem.submenu && (
@@ -151,13 +146,6 @@ export default function DropdownMenu({
           )}
         </div>
       </motion.div>
-      <div
-        className={`${
-          dropdownOpen ? "lg:fixed" : "hidden"
-        } bg-black/60 duration-300 fixed top-[73px] ${
-          sticky && dropdownOpen ? "xl:top-[81px]" : "xl:top-[129px]"
-        } xl:top-[129px] inset-0 -z-10`}
-      />
     </>
   );
 }

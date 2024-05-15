@@ -12,7 +12,6 @@ import HeaderRenderer from "@/components/Header/HeaderRenderer";
 import Footer from "@/components/Footer";
 import fetchDato from "@/lib/fetchDato";
 import myFont from "@/lib/loadCustomFont";
-import themeConfig from "@/data/themeConfig.json";
 
 const locale = "en";
 const siteLocale = locale as SiteLocale;
@@ -62,7 +61,7 @@ export default async function RootLayout({
   );
 
   return (
-    <html lang={locale} data-theme={themeConfig.theme || "custom"}>
+    <html lang={locale} data-theme="custom">
       <body>
         <HeaderRenderer
           data={menuData}

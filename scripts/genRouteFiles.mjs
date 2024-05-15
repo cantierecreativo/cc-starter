@@ -44,6 +44,8 @@ console.info(chalk.green("folders", folders));
 
 //move layout
 await $`cp ${sourceFolder}layout.${ext} ./layout.${ext}`;
+//move 404
+await $`cp ${sourceFolder}not-found.${ext} ./not-found.${ext}`;
 //move home
 await $`cp ${sourceFolder}generic_page.${ext} ./page.${ext}`;
 await replaceInFile(`./page.${ext}`, `##`, "home");

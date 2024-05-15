@@ -155,8 +155,8 @@ const Header = ({ lng, data }: Props) => {
     <header className="header left-0 flex w-full items-center fixed top-0 z-10 after:absolute after:top-0 after:inset-x-0">
       <div
         className={`relative z-[1] w-full px-6 ${
-          sticky || isDropdownOpen
-            ? "bg-primary border-primary-content/20 motion-safe:duration-500"
+          sticky
+            ? "bg-primary text-primary-content border-primary-content/20"
             : "motion-safe:duration-300"
         }`}
       >
@@ -164,13 +164,11 @@ const Header = ({ lng, data }: Props) => {
           <div className="container">
             <div className="-mx-4 flex items-center justify-between">
               <motion.div
-                className="w-60 max-w-full px-4 xl:mr-12 invert"
-                animate={
-                  sticky || isDropdownOpen || navbarOpen ? "open" : "closed"
-                }
+                className="w-60 max-w-full xl:mr-12 invert"
+                animate={sticky || navbarOpen ? "open" : "closed"}
                 variants={invertVariants}
               >
-                <Link href={"/"} className={`header-logo block w-full py-8`}>
+                <Link href={"/"} className={`header-logo block w-full py-7`}>
                   {data?.layout?.logo.url && (
                     <Image
                       src={data.layout.logo.url}
@@ -198,35 +196,33 @@ const Header = ({ lng, data }: Props) => {
                     onClick={navbarToggleHandler}
                     id="navbarToggler"
                     aria-label="Mobile Menu"
-                    className=" block lg:hidden"
+                    className="block lg:hidden"
                   >
                     <span
-                      className={`relative my-1 block h-0.5 w-[20px] transition-all motion-safe:duration-300
-                      ${navbarOpen ? " top-[6px] rotate-45" : ""}
-                      ${
-                        sticky || navbarOpen
-                          ? " bg-primary-content"
-                          : " bg-base-100"
-                      }
-                      `}
-                    />
-                    <span
-                      className={`relative my-1 block h-0.5 w-[20px] transition-all motion-safe:duration-300
-                      ${navbarOpen ? " opacity-0" : ""}
-                      ${
-                        sticky || navbarOpen
-                          ? " bg-primary-content"
-                          : " bg-base-100"
-                      }
-                      `}
-                    />
-                    <span
-                      className={`relative my-1 block h-0.5 w-[20px] transition-all motion-safe:duration-300
-                      ${navbarOpen ? " top-[-6px] -rotate-45" : ""}
-                      ${
+                      className={`relative my-1 block h-0.5 w-[20px] transition-all motion-safe:duration-300 ${
+                        navbarOpen ? "top-[6px] rotate-45" : ""
+                      } ${
                         sticky || navbarOpen
                           ? "bg-primary-content"
-                          : "bg-base-100"
+                          : "bg-primary"
+                      }
+                      `}
+                    />
+                    <span
+                      className={`relative my-1 block h-0.5 w-[20px] transition-all motion-safe:duration-300
+                      ${navbarOpen ? "opacity-0" : ""} ${
+                        sticky || navbarOpen
+                          ? " bg-primary-content"
+                          : " bg-primary"
+                      }
+                      `}
+                    />
+                    <span
+                      className={`relative my-1 block h-0.5 w-[20px] transition-all motion-safe:duration-300
+                      ${navbarOpen ? "top-[-6px] -rotate-45" : ""} ${
+                        sticky || navbarOpen
+                          ? "bg-primary-content"
+                          : "bg-primary"
                       }
                       `}
                     />
@@ -236,14 +232,20 @@ const Header = ({ lng, data }: Props) => {
                     animate={isDropdownOpen ? "open" : "closed"}
                     id="navbarCollapse"
                     ref={containerRef}
-                    className={`absolute top-0 right-0 z-[-1] lg:z-30 w-full bg-primary motion-safe:duration-[.75s] bg-base-200 lg:visible lg:static lg:w-auto lg:border-none lg:!bg-transparent lg:p-0 after:motion-safe:duration-300 after:motion-safe:delay-300  after:fixed after:inset-x-0 after:h-[100px] after:-translate-y-full after:shadow-[0_200px_50px_-100px_transaprent_inset] after:z-[2] grid ${
+                    className={`absolute top-0 right-0 z-[-1] lg:z-30 w-full bg-primary motion-safe:duration-[.75s] lg:visible lg:static lg:w-auto lg:border-none lg:!bg-transparent after:motion-safe:duration-300 after:motion-safe:delay-300 after:fixed after:inset-x-0 after:h-[100px] after:-translate-y-full after:shadow-[0_200px_50px_-100px_transaprent_inset] after:z-[2] grid ${
                       navbarOpen
                         ? "h-screen lg:h-auto after:translate-y-0 after:shadow-primary"
-                        : " h-0 lg:h-auto"
+                        : "h-0 lg:h-auto"
                     }`}
                   >
-                    <div className="overflow-auto lg:overflow-visible h-full px-6">
-                      <ul className="block items-center container mx-auto lg:max-w-auto pt-[100px] pb-4 lg:pb-0 lg:pt-0 lg:flex lg:gap-x-8 ">
+                    <div className="overflow-auto lg:overflow-visible h-full">
+                      <ul
+                        className={`${
+                          sticky
+                            ? "lg:text-primary-content"
+                            : "lg:text-base-content"
+                        } block text-primary-content items-center xl:container mx-auto lg:max-w-auto pb-4 lg:pb-0 lg:flex lg:gap-x-8`}
+                      >
                         {menuData.map((menuItem, index) => {
                           const isMega =
                             menuItem.submenu?.filter((i) => i.menuImage)
@@ -264,11 +266,10 @@ const Header = ({ lng, data }: Props) => {
                                       : "closed"
                                   }
                                   variants={colorVariants}
-                                  className="text-white"
                                 >
                                   <Link
                                     href={menuItem.path}
-                                    className={`hover:opacity-70 hover:underline underline-offset-8 `}
+                                    className={`hover:opacity-70 hover:underline underline-offset-8 px-8 lg:px-0`}
                                     onClick={() => handleClickAndClose()}
                                   >
                                     {menuItem.title}

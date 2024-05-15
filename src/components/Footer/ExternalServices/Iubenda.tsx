@@ -1,6 +1,6 @@
 import { SiteLocale } from "@/graphql/generated";
 import Script from "next/script";
-import customTheme from "@/data/customTheme.json";
+import colorsTheme from "@/data/colorsTheme.json";
 
 type PropsIubenda = {
   siteId: string;
@@ -45,41 +45,41 @@ export default function Iubenda({
               "position":"bottom",
               "acceptButtonColor":"${
                 colorRev
-                  ? customTheme["accent-content"]
-                  : customTheme["accent-content"]
+                  ? colorsTheme["accent-content"]
+                  : colorsTheme["accent-content"]
               }",
               "acceptButtonCaptionColor":"${
                 colorRev
-                  ? customTheme["primary-content"]
-                  : customTheme["primary-content"]
+                  ? colorsTheme["primary-content"]
+                  : colorsTheme["primary-content"]
               }",
               "customizeButtonColor":"${
                 colorRev
-                  ? customTheme["accent-content"]
-                  : customTheme["accent-content"]
+                  ? colorsTheme["accent-content"]
+                  : colorsTheme["accent-content"]
               }",
               "customizeButtonCaptionColor":"${
                 colorRev
-                  ? customTheme["primary-content"]
-                  : customTheme["primary-content"]
+                  ? colorsTheme["primary-content"]
+                  : colorsTheme["primary-content"]
               }",
               "rejectButtonColor":"${
                 colorRev
-                  ? customTheme["accent-content"]
-                  : customTheme["accent-content"]
+                  ? colorsTheme["accent-content"]
+                  : colorsTheme["accent-content"]
               }",
               "rejectButtonCaptionColor":"${
                 colorRev
-                  ? customTheme["primary-content"]
-                  : customTheme["primary-content"]
+                  ? colorsTheme["primary-content"]
+                  : colorsTheme["primary-content"]
               }",
               "textColor":"${
                 colorRev
-                  ? customTheme["secondary-content"]
-                  : customTheme["secondary-content"]
+                  ? colorsTheme["secondary-content"]
+                  : colorsTheme["secondary-content"]
               }",
               "backgroundColor":"${
-                colorRev ? customTheme["secondary"] : customTheme.primary
+                colorRev ? colorsTheme["secondary"] : colorsTheme.primary
               }",
               "rejectButtonDisplay":true,
               "closeButtonRejects":true

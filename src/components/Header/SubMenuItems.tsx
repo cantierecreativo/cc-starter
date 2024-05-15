@@ -10,7 +10,7 @@ export const MenuItem = ({
   // handleSubmenu,
   handleClickAndClose,
   isMega,
-  dropdownOpen
+  dropdownOpen,
 }) => {
   const imageVariants = {
     open: {
@@ -68,11 +68,11 @@ export const MenuItem = ({
             </motion.div>
           </div>
         )}
-        <div className="flex items-center my-4">
+        <div className="flex items-center my-2">
           <motion.div
             variants={titleVariants}
             className={`text-accent-content text-base lg:uppercase lg:font-bold lg:text-xs lg:tracking-wider xl:font-normal font-serif xl:text-base ${
-              isMega ? "" : "py-1 hover:underline hover:underline-offset-8"
+              isMega ? "" : "hover:underline hover:underline-offset-8"
             }`}
           >
             {submenuItem.title}
@@ -129,7 +129,7 @@ export default function SubMenuItems({
           : "lg:px-4 lg:py-2"
       }`}
     >
-      {items?.map((submenuItem: any,dropdownOpen:boolean) => {
+      {items?.map((submenuItem: any, dropdownOpen: boolean) => {
         return (
           <MenuItem
             key={submenuItem.id}
