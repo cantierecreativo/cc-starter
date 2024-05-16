@@ -1,11 +1,9 @@
 import Brands from "@/components/Brands";
 import Features from "@/components/Blocks/FeaturesList";
-import Testimonials from "@/components/Testimonials";
 import Video from "@/components/Video";
 import CompactTeam from "@/components/Blocks/CompactTeam";
 import ExpandedTeam from "@/components/Blocks/ExpandedTeam";
 import FAQAccordion from "@/components/Blocks/FAQAccordion";
-import StatsSection from "@/components/Blocks/StatsSection";
 import AboutIntro from "@/components/Blocks/AboutIntro";
 import {
   AboutIntroRecord,
@@ -13,7 +11,6 @@ import {
   BannerCtaRecord,
   BlogListRecord,
   BrandSectionRecord,
-  ChangelogSectionRecord,
   ElementsListRecord,
   FaqSectionRecord,
   FeatureListSectionRecord,
@@ -21,9 +18,7 @@ import {
   GallerySectionRecord,
   ImageBlockRecord,
   MultipleCardRecord,
-  PricingSectionRecord,
   RedirectSectionRecord,
-  ReviewSectionRecord,
   SiteLocale,
   StatsSectionRecord,
   TeamSectionRecord,
@@ -31,12 +26,7 @@ import {
   VideoSectionRecord,
 } from "@/graphql/generated";
 import { redirect } from "next/navigation";
-import Carrousel from "@/components/Testimonials/Carrousel";
-import ModernCarrousel from "@/components/Testimonials/ModernCarrousel";
-import MinimalCarrousel from "@/components/Testimonials/MinimalCarrousel";
-import MinimalReviewCards from "@/components/Testimonials/MinimalReviewCards";
 import BrandCards from "@/components/Brands/BrandCards";
-import Changelog from "@/components/Changelog";
 import ImageBlock from "@/components/Blocks/ImageBlock";
 import GalleryBlock from "@/components/Blocks/GalleryBlock";
 import BannerCtaBlock from "@/components/Blocks/BannerCtaBlock";
@@ -135,18 +125,6 @@ export default function Sections({ section, locale }: Props) {
         const textBlockSection = b as TextBlockRecord;
         return <TextBlock key={b.id} data={textBlockSection} locale={locale} />;
       }
-      case "changelog_section":
-        const changeLogSection = b as ChangelogSectionRecord;
-        return (
-          <Changelog
-            key={b.id}
-            title={changeLogSection.title}
-            subtitle={changeLogSection.subtitle}
-            featuredChangeLogs={changeLogSection.featuredVersions}
-            locale={locale}
-          />
-        );
-
       case "video_section":
         const videoSectionRecord = b as VideoSectionRecord;
         return (
@@ -168,55 +146,6 @@ export default function Sections({ section, locale }: Props) {
           default:
             return (
               <Brands key={b.id} brandShowcase={brandSectionRecord.brand} />
-            );
-        }
-      case "review_section":
-        const reviewSectionRecord = b as ReviewSectionRecord;
-        switch (reviewSectionRecord.displayOptions) {
-          case "card_carrousel":
-            return (
-              <Carrousel
-                key={b.id}
-                header={reviewSectionRecord.reviewSectionHeader}
-                subheader={reviewSectionRecord.reviewSectionSubheader}
-                reviews={reviewSectionRecord.reviews}
-              />
-            );
-          case "modern_carrousel":
-            return (
-              <ModernCarrousel
-                key={b.id}
-                header={reviewSectionRecord.reviewSectionHeader}
-                subheader={reviewSectionRecord.reviewSectionSubheader}
-                reviews={reviewSectionRecord.reviews}
-              />
-            );
-          case "minimal_carrousel":
-            return (
-              <MinimalCarrousel
-                key={b.id}
-                header={reviewSectionRecord.reviewSectionHeader}
-                subheader={reviewSectionRecord.reviewSectionSubheader}
-                reviews={reviewSectionRecord.reviews}
-              />
-            );
-          case "minimal_cards":
-            return (
-              <MinimalReviewCards
-                key={b.id}
-                header={reviewSectionRecord.reviewSectionHeader}
-                subheader={reviewSectionRecord.reviewSectionSubheader}
-                reviews={reviewSectionRecord.reviews}
-              />
-            );
-          default:
-            return (
-              <Testimonials
-                key={b.id}
-                header={reviewSectionRecord.reviewSectionHeader}
-                subheader={reviewSectionRecord.reviewSectionSubheader}
-                reviews={reviewSectionRecord.reviews}
-              />
             );
         }
 
@@ -261,16 +190,7 @@ export default function Sections({ section, locale }: Props) {
             questions={faqSectionRecord.questions}
           />
         );
-      case "stats_section":
-        const statsSectionRecord = section as StatsSectionRecord;
-        return (
-          <StatsSection
-            key={b.id}
-            title={statsSectionRecord.title}
-            subtitle={statsSectionRecord.subtitle}
-            statistic={statsSectionRecord.statistic}
-          />
-        );
+
       case "about_intro":
         const aboutIntroSectionRecord = section as AboutIntroRecord;
         return (
