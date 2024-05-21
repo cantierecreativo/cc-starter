@@ -14,12 +14,10 @@ import {
   ImageBlockRecord,
   MultipleCardRecord,
   PostRecord,
-  RedirectSectionRecord,
   SiteLocale,
   TextBlockRecord,
   VideoSectionRecord,
 } from "@/graphql/generated";
-import { redirect } from "next/navigation";
 import BrandCards from "@/components/Brands/BrandCards";
 import ImageBlock from "@/components/Blocks/ImageBlock";
 import GalleryBlock from "@/components/Blocks/GalleryBlock";
@@ -63,7 +61,7 @@ export default function Sections({
         const attachmentsRecord = b as AttachmentsBlockRecord;
         return (
           <AttachmentsBlock
-            key={b.id}
+            key={attachmentsRecord.id}
             style={section.style}
             data={attachmentsRecord}
             locale={locale}
@@ -83,7 +81,7 @@ export default function Sections({
         const featureListSectionRecord = b as FeatureListSectionRecord;
         return (
           <Features
-            key={b.id}
+            key={featureListSectionRecord.id}
             features={featureListSectionRecord.feature}
             featuresHeader={featureListSectionRecord.featuresHeader}
             featuresSubheader={featureListSectionRecord.featuresSubheader}
@@ -94,7 +92,7 @@ export default function Sections({
         const multipleCardSection = b as MultipleCardRecord;
         return (
           <MultipleCardBlock
-            key={b.id}
+            key={multipleCardSection.id}
             data={multipleCardSection}
             locale={locale}
           />
@@ -103,28 +101,44 @@ export default function Sections({
       case "gallery_section": {
         const gallerySection = b as GallerySectionRecord;
         return (
-          <GalleryBlock key={b.id} data={gallerySection} locale={locale} />
+          <GalleryBlock
+            key={gallerySection.id}
+            data={gallerySection}
+            locale={locale}
+          />
         );
       }
       case "image_block": {
         const imageBlock = b as ImageBlockRecord;
-        return <ImageBlock key={b.id} data={imageBlock} locale={locale} />;
+        return (
+          <ImageBlock key={imageBlock.id} data={imageBlock} locale={locale} />
+        );
       }
       case "banner_cta": {
         const bannerCtaSection = b as BannerCtaRecord;
         return (
-          <BannerCtaBlock key={b.id} data={bannerCtaSection} locale={locale} />
+          <BannerCtaBlock
+            key={bannerCtaSection.id}
+            data={bannerCtaSection}
+            locale={locale}
+          />
         );
       }
       case "text_block": {
         const textBlockSection = b as TextBlockRecord;
-        return <TextBlock key={b.id} data={textBlockSection} locale={locale} />;
+        return (
+          <TextBlock
+            key={textBlockSection.id}
+            data={textBlockSection}
+            locale={locale}
+          />
+        );
       }
       case "video_section":
         const videoSectionRecord = b as VideoSectionRecord;
         return (
           <Video
-            key={b.id}
+            key={videoSectionRecord.id}
             videoHeader={videoSectionRecord.videoHeader}
             videoSubheader={videoSectionRecord.videoSubheader}
             externalVideo={videoSectionRecord.externalVideo}
@@ -136,11 +150,17 @@ export default function Sections({
         switch (brandSectionRecord.displayOptions) {
           case "brand_cards":
             return (
-              <BrandCards key={b.id} brandShowcase={brandSectionRecord.brand} />
+              <BrandCards
+                key={brandSectionRecord.id}
+                brandShowcase={brandSectionRecord.brand}
+              />
             );
           default:
             return (
-              <Brands key={b.id} brandShowcase={brandSectionRecord.brand} />
+              <Brands
+                key={brandSectionRecord.id}
+                brandShowcase={brandSectionRecord.brand}
+              />
             );
         }
 
@@ -154,12 +174,6 @@ export default function Sections({
             questions={faqSectionRecord.questions}
           />
         );
-
-      case "redirect_section":
-        const redirectSectionRecord = section as RedirectSectionRecord;
-        redirect(`/${locale}/${redirectSectionRecord.slugToRedirectTo}`);
-      default:
-        return <></>;
     }
   });
 }

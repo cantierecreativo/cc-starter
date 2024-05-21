@@ -25,7 +25,7 @@ export default function Socials({ socials, locale }: PropsSocials) {
                 width={25}
                 height={25}
                 alt="Picture of the author"
-                className="absolute inset-1/2 -translate-x-1/2 -translate-y-1/2"
+                className="absolute inset-1/2 -translate-x-1/2 -translate-y-1/2 w-auto h-auto"
               />
             </div>
           </ExternalLink>

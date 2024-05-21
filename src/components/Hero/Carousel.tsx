@@ -20,9 +20,7 @@ export default function Carousel({
   locale: string;
 }) {
   return (
-    <header
-      className={`relative hero-carousel mt-[89px] md:mt-[95px] xl:mt-[101px]`}
-    >
+    <header className={`relative hero-carousel mt-14 md:mt-24 lg:mt-28`}>
       <Swiper
         // autoplay={{
         //   delay: 2500,

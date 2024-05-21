@@ -46,14 +46,12 @@ export default function DropdownMenu({
   };
   const invertVariants = {
     open: {
-      filter: "invert(0)",
       transition: {
         ease: "easeOut",
         duration: 0.25,
       },
     },
     closed: {
-      filter: "invert(100%)",
       transition: {
         ease: "easeOut",
         duration: 0.25,
@@ -113,7 +111,6 @@ export default function DropdownMenu({
           <motion.span
             animate={sticky || navbarOpen ? "open" : "closed"}
             variants={invertVariants}
-            // className="invert"
           >
             <CustomIcon
               classes={`w-3 h-3 bg-primary-content`}

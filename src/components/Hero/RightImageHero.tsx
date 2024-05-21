@@ -2,8 +2,7 @@
 
 import { HeroSectionModelLinkField, SiteLocale } from "@/graphql/generated";
 import { Maybe } from "graphql/jsutils/Maybe";
-import { Image as DatoImage } from "react-datocms";
-import ReactMarkdown from "react-markdown";
+import { SRCImage } from "react-datocms";
 import { motion } from "framer-motion";
 import DynamicLink from "@/components/Links/DynamicLink";
 
@@ -27,7 +26,7 @@ const RightImageHero = ({
       initial={{ height: "100vh" }}
       animate={{ height: "90vh" }}
       transition={{ duration: 0.75, delay: 0.5 }}
-      className="w-full relative object-cover object-bottom"
+      className="w-full relative object-cover object-bottom mt-14 md:mt-24 lg:mt-28"
     >
       <div className="relative bg-secondary pt-[120px] md:pt-[150px] lg:pt-[180px]">
         <div className="container mx-auto px-4">
@@ -58,10 +57,9 @@ const RightImageHero = ({
             </div>
             <div className="w-full h-[400px] px-4 lg:w-7/12 relative">
               {image && image.responsiveImage && (
-                <DatoImage
+                <SRCImage
+                  className="absolute w-full h-full object-cover inset-0"
                   data={image.responsiveImage}
-                  layout="fill"
-                  objectFit="cover"
                 />
               )}
             </div>

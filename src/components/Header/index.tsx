@@ -20,14 +20,12 @@ type Props = {
 };
 const invertVariants = {
   open: {
-    filter: "invert(0)",
     transition: {
       ease: "easeOut",
       duration: 0.25,
     },
   },
   closed: {
-    filter: "invert(100%)",
     transition: {
       ease: "easeOut",
       duration: 0.25,
@@ -99,7 +97,7 @@ const Header = ({ lng, data }: Props) => {
           : dropdownItem.items;
 
       menuData.push({
-        id: "1",
+        id: item.id,
         title: dropdownItem.title || "Other Items",
         newTab: false,
         submenu: subItems.map((item: any) => {
@@ -147,7 +145,7 @@ const Header = ({ lng, data }: Props) => {
   return (
     <header className="header left-0 flex w-full items-center fixed top-0 z-10 after:absolute after:top-0 after:inset-x-0">
       <div
-        className={`relative z-[1] w-full px-6 ${
+        className={`relative z-[1] w-full md:py-4 px-6 ${
           sticky
             ? "bg-primary text-primary-content border-primary-content/20"
             : "motion-safe:duration-300"
@@ -157,19 +155,24 @@ const Header = ({ lng, data }: Props) => {
           <div className="container">
             <div className="-mx-4 flex items-center justify-between">
               <motion.div
-                className="w-60 max-w-full xl:mr-12 invert"
+                className="w-60 max-w-full xl:mr-12"
                 animate={sticky || navbarOpen ? "open" : "closed"}
                 variants={invertVariants}
               >
-                <Link href={"/"} className={`header-logo block w-full py-7`}>
+                <Link
+                  href={"/"}
+                  className={`header-logo block w-full py-7 relative`}
+                >
                   {data?.layout?.logo.url && (
                     <Image
-                      src={data.layout.logo.url}
+                      src={
+                        sticky ? data.layout.logo.url : data.layout.logoAlt.url
+                      }
                       alt="logo"
-                      width={140}
-                      height={30}
-                      className={`w-full `}
+                      className={`w-full h-full absolute inset-0 object-left object-contain`}
                       priority={true}
+                      width={100}
+                      height={100}
                     />
                   )}
                 </Link>
@@ -237,7 +240,7 @@ const Header = ({ lng, data }: Props) => {
                           sticky
                             ? "lg:text-primary-content"
                             : "lg:text-base-content"
-                        } block text-primary-content items-center xl:container mx-auto lg:max-w-auto pb-4 lg:pb-0 lg:flex lg:gap-x-8`}
+                        } block text-primary-content items-center xl:container mx-auto lg:max-w-auto pt-28 lg:pt-0 pb-4 lg:pb-0 lg:flex lg:gap-x-8`}
                       >
                         {menuData.map((menuItem, index) => {
                           const isMega =

@@ -1,5 +1,5 @@
 "use client";
-import { Image as DatoImage } from "react-datocms";
+import { SRCImage } from "react-datocms";
 import { motion } from "framer-motion";
 import { useRef } from "react";
 
@@ -71,11 +71,9 @@ export default function GalleryBlock({ data, locale }) {
                     n % 2 === 0 ? "" : "col-start-2 "
                   } col-span-5 md:col-span-1 md:col-start-0`}
                 >
-                  <DatoImage
+                  <SRCImage
                     data={img.imageAsset.responsiveImage}
-                    layout="fill"
-                    objectFit="cover"
-                    objectPosition="50% 0"
+                    className="object-cover absolute inset-0 w-full h-full"
                   />
                 </motion.div>
               </div>

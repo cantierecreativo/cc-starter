@@ -66,11 +66,11 @@ const ProductDetailsBlock = ({ data, locale }: PropsProductDetailsBlock) => {
                   <div className="w-[180px] h-[56px] relative mt-8">
                     <Image
                       src={logo.url}
-                      layout="fill"
-                      objectFit="contain"
-                      objectPosition="left"
+                      className="object-contain absolute inset-0 w-full h-full object-left"
                       alt={`Logo ${title}`}
                       title={`Logo ${title}`}
+                      width={100}
+                      height={100}
                     />
                   </div>
                 )}

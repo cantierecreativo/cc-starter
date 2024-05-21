@@ -1,5 +1,5 @@
 import StructuredContent from "./StructuredContent";
-import { Image as DatoImage, SRCImage } from "react-datocms";
+import { SRCImage } from "react-datocms";
 import ButtonBlock from "./ButtonBlock";
 import DynamicLink from "../Links/DynamicLink";
 import { motion } from "framer-motion";
@@ -94,11 +94,9 @@ export default function BanneCtaBlock({ data, locale }) {
               viewport={{ once: true, amount: 0.75 }}
               className={`absolute top-0 overflow-hidden w-full`}
             >
-              <DatoImage
+              <SRCImage
                 data={bannerCtaImage.responsiveImage}
-                objectFit="cover"
-                layout="fill"
-                className="group-hover:scale-110 duration-700"
+                className="group-hover:scale-110 duration-700 object-cover absolute inset-0 w-full h-full"
               />
             </motion.div>
           </div>

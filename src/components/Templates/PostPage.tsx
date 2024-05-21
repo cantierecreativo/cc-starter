@@ -1,5 +1,5 @@
 "use client";
-import { Image as DatoImage } from "react-datocms";
+import { SRCImage } from "react-datocms";
 import { PostQuery, SiteLocale } from "@/graphql/generated";
 import { notFound } from "next/navigation";
 import { Fragment } from "react";
@@ -42,11 +42,9 @@ const PostPage = ({ data, locale }: Props) => {
             />
           )}
           <div className="aspect-square mt-8 xl:col-start-2 xl:col-span-10 relative md:aspect-[2/1] md:mt-20">
-            <DatoImage
-              className=""
+            <SRCImage
+              className="absolute w-full h-full object-cover inset-0"
               data={blogImage.responsiveImage}
-              layout="fill"
-              objectFit="cover"
             />
           </div>
         </div>

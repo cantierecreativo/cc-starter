@@ -32,13 +32,10 @@ const BackgroundImageHero = ({
     >
       <DatoImage
         data={image?.responsiveImage}
-        layout="fill"
-        objectFit="cover"
-        objectPosition="50% 50%"
-        className="opacity-80"
+        className="opacity-80 object-cover object-center absolute inset-0 w-full h-full"
         priority={true}
       />
-      <div className="relative z-0 flex items-center h-full">
+      <div className="relative z-0 flex items-center h-full mt-14 md:mt-24 lg:mt-28">
         <div className="container mx-auto">
           <div className="flex flex-wrap justify-center">
             <div className="w-full px-4">

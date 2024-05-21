@@ -10,7 +10,6 @@ import {
 import { convertToSlug } from "@/lib/convertToSlug";
 import WhichHero from "@/components/Hero/WichHero";
 import MenuInternal from "@/components/Page/MenuInternal";
-import { EventType } from "react-hook-form";
 
 type GenericPageProps = {
   locale: SiteLocale;
@@ -31,8 +30,8 @@ export default function GenericPage({ data, locale }: GenericPageProps) {
 
   return (
     <div>
-      {page?.hero && <WhichHero hero={page?.hero as any} locale={locale} />}
-      {navItems.length > 0 && <MenuInternal navItems={navItems} />}
+      {/* {page?.hero && <WhichHero hero={page?.hero as any} locale={locale} />} */}
+      {/* {navItems.length > 0 && <MenuInternal navItems={navItems} />} */}
       {sections?.map((section) => {
         return (
           <section

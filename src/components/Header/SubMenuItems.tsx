@@ -1,6 +1,6 @@
 "use client";
 
-import { Image as DatoImage } from "react-datocms";
+import { SRCImage } from "react-datocms";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import CustomIcon from "../Blocks/CustomIcon";
@@ -59,11 +59,9 @@ export const MenuItem = ({
               className="absolute top-0 overflow-hidden w-full"
               whileHover={{ scale: 1.1 }}
             >
-              <DatoImage
+              <SRCImage
                 data={submenuItem.menuImage.responsiveImage}
-                layout="fill"
-                objectFit="cover"
-                objectPosition="50% 0"
+                className="absolute w-full h-full object-cover inset-0"
               />
             </motion.div>
           </div>

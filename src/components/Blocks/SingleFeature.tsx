@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { FeatureRecord } from "@/graphql/generated";
-import ReactMarkdown from "react-markdown";
 
 type Props = {
   feature: FeatureRecord;
@@ -14,9 +13,9 @@ const SingleFeature = ({ feature }: Props) => {
       <div className="relative mb-10 flex h-[70px] w-full">
         <Image
           src={featureIcon.url}
-          layout="fill"
-          objectFit="contain"
-          objectPosition="center"
+          className="object-contain absolute inset-0 w-full h-full"
+          width={50}
+          height={50}
           alt={featureTitle}
           title={featureTitle}
           aria-hidden={true}

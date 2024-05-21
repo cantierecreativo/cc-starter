@@ -2,9 +2,9 @@ query Menu($locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
   layout(locale: $locale, fallbackLocales: $fallbackLocale) {
     logo {
       url
-      responsiveImage {
-        ...DatoImage_responsiveImage
-      }
+    }
+    logoAlt {
+      url
     }
     menu {
       ... on MenuItemRecord {
