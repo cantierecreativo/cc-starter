@@ -113,7 +113,7 @@ export default function DropdownMenu({
           <motion.span
             animate={sticky || navbarOpen ? "open" : "closed"}
             variants={invertVariants}
-            className="invert"
+            // className="invert"
           >
             <CustomIcon
               classes={`w-3 h-3 bg-primary-content`}

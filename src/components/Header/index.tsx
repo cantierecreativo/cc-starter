@@ -39,7 +39,7 @@ const Header = ({ lng, data }: Props) => {
   const menuData: Menu[] = [];
   const [navbarOpen, setNavbarOpen] = useState(false);
 
-  const [dropdownOpen, toggleOpen] = useCycle(false, true);
+  // const [dropdownOpen, toggleOpen] = useCycle(false, true);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const containerRef = useRef(null);
 
