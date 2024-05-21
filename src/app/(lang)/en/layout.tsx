@@ -62,13 +62,13 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} data-theme="custom">
-      <body>
+      <body className={`md:min-h-screen ${myFont.variable}`}>
         <HeaderRenderer
           data={menuData}
           locale={siteLocale}
           isDraft={isEnabled}
         />
-        <main className={`md:min-h-screen ${myFont.variable}`}>{children}</main>
+        <main>{children}</main>
         <Footer data={footerData} locale={siteLocale} />
       </body>
     </html>

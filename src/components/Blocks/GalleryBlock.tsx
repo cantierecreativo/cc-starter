@@ -1,7 +1,7 @@
 "use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Image as DatoImage } from "react-datocms";
+import { SRCImage } from "react-datocms";
 import Image from "next/image";
 
 import {
@@ -75,10 +75,10 @@ export default function GalleryBlock({
           <Swiper
             speed={1000}
             spaceBetween={30}
-            autoplay={{
-              delay: 2500,
-              disableOnInteraction: false,
-            }}
+            // autoplay={{
+            //   delay: 2500,
+            //   disableOnInteraction: false,
+            // }}
             navigation={true}
             keyboard={true}
             modules={[Autoplay, Pagination, Navigation, A11y, Parallax]}
@@ -88,11 +88,10 @@ export default function GalleryBlock({
             {data.galleryImages.map((img: any) => {
               return (
                 <SwiperSlide key={img.id}>
-                  <div className="bg-primary-content/10 relative py-4 aspect-[4/3] lg:aspect-[7/4] xl:aspect-[2/1] flex items-center justify-center">
-                    <DatoImage
+                  <div className="relative py-4 aspect-[4/3] lg:aspect-[7/4] xl:aspect-[2/1] flex items-center justify-center">
+                    <SRCImage
                       data={img.imageAsset.responsiveImage}
-                      objectFit={data.typeGallery}
-                      layout="fill"
+                      className={`object-${data.typeGallery} absolute !w-full !h-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2`}
                     />
                   </div>
                   {img.imageDescription && (

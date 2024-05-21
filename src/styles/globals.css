@@ -61,13 +61,20 @@
     @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-[0.5];
   }
 
+  .formatted > ul,
+  .formatted > ol,
+  .formatted > p,
+  .formatted > h3,
+  .formatted > hr {
+    @apply my-6 max-w-prose;
+  }
+
   .formatted ol {
     counter-reset: my-awesome-counter;
   }
-
   .formatted ul,
   .formatted ol {
-    @apply ml-4;
+    @apply ml-4 mb-4;
   }
 
   .formatted ul li {

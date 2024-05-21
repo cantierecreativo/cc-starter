@@ -1,5 +1,5 @@
 import StructuredContent from "./StructuredContent";
-import { Image as DatoImage } from "react-datocms";
+import { Image as DatoImage, SRCImage } from "react-datocms";
 import ButtonBlock from "./ButtonBlock";
 import DynamicLink from "../Links/DynamicLink";
 import { motion } from "framer-motion";
@@ -110,13 +110,11 @@ export default function BanneCtaBlock({ data, locale }) {
   function RenderContentBanner({ title, label, text, coverImage }) {
     return (
       <div>
-        <div className="relative z-10 py-20 lg:py-[100px] xl:py-[120px]">
+        <div className="relative z-10 py-20 lg:py-[100px] xl:py-[120px] overflow-hidden">
           <span className="absolute left-0 top-0 -z-10 h-full w-full bg-black/80"></span>
-          <DatoImage
+          <SRCImage
             data={coverImage.responsiveImage}
-            layout="fill"
-            objectFit="cover"
-            className=""
+            className="object-cover w-full h-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
           <div className="container relative z-20">
             <div className="mx-auto max-w-[575px] text-center grid gap-8 text-base-100">

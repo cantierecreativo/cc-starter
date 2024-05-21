@@ -1,9 +1,14 @@
 import fetchDato from "@/lib/fetchDato";
 import { draftMode } from "next/headers";
-import { PageDocument, PostsDocument, SiteLocale } from "@/graphql/generated";
+import {
+  PageDocument,
+  SiteLocale,
+  PostsDocument,
+  TagRecord,
+} from "@/graphql/generated";
 import { notFound } from "next/navigation";
-import PostIndexPage from "@/components/Templates/PostIndexPage";
 import getSeoMeta from "@/lib/seoUtils";
+import PostsIndexPage from "@/components/Templates/PostsIndexPage";
 
 const locale = "en";
 const siteLocale = locale as SiteLocale;
@@ -57,5 +62,5 @@ export default async function Page() {
 
   if (!data) notFound();
 
-  return <PostIndexPage data={data.page} list={list} locale={siteLocale} />;
+  return <PostsIndexPage data={data} list={list} locale={siteLocale} />;
 }

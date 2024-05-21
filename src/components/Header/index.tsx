@@ -1,10 +1,8 @@
 "use client";
-import SubMenuItems from "./SubMenuItems";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
 import LanguageSelector from "./LanguageSelector";
-import CustomIcon from "@/components/Blocks/CustomIcon";
 import {
   MenuDropdownRecord,
   MenuItemRecord,
@@ -45,9 +43,6 @@ const Header = ({ lng, data }: Props) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const containerRef = useRef(null);
 
-  // const handleSubmenu = () => {
-  //   toggleOpen();
-  // };
   const handleClickAndClose = () => {
     setNavbarOpen(false);
     console.log("isDropdownOpen", isDropdownOpen);
@@ -61,9 +56,6 @@ const Header = ({ lng, data }: Props) => {
       setNavbarOpen(!navbarOpen);
     } else {
       setNavbarOpen(!navbarOpen);
-      // if (dropdownOpen) {
-      //   toggleOpen();
-      // }
     }
   };
 
@@ -145,6 +137,7 @@ const Header = ({ lng, data }: Props) => {
         path: resolveLink({
           ...menuItem.page,
           locale: lng,
+          modelRelated: null,
         }),
         newTab: false,
       });

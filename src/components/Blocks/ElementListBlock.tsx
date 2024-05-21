@@ -1,20 +1,30 @@
 import {
   ElementsListRecord,
+  EventRecord,
   PostRecord,
-  ProductRecord,
   SiteLocale,
 } from "@/graphql/generated";
 import { motion, Variants } from "framer-motion";
-import CardProductBlock from "./CardProductBlock";
-import CardBlogBlock from "./CardBlogBlock";
+import InternalLink from "../Links/InternalLink";
+import ButtonBlock from "./ButtonBlock";
+import CardEventBlock from "../Event/CardEventBlock";
+import CardBlogBlock from "../Blog/CardBlogBlock";
 
 type PropsElementListBlock = {
   data: ElementsListRecord;
   locale: SiteLocale;
+  lastPosts: PostRecord[];
+  lastEvents: EventRecord[];
 };
 
-const ElementListBlock = ({ data, locale }: PropsElementListBlock) => {
-  const { itemsPrefix, itemsTitle, itemsText, elements } = data;
+const ElementListBlock = ({
+  data,
+  locale,
+  lastPosts,
+  lastEvents,
+}: PropsElementListBlock) => {
+  const { itemsPrefix, itemsTitle, itemsButton, elements, automatic, model } =
+    data;
   const variants: Variants = {
     offscreen: {
       opacity: 0,
@@ -28,6 +38,13 @@ const ElementListBlock = ({ data, locale }: PropsElementListBlock) => {
       },
     },
   };
+
+  let results = automatic
+    ? model === "post"
+      ? [lastPosts]
+      : [lastEvents]
+    : [elements];
+
   return (
     <motion.div
       initial="offscreen"
@@ -37,37 +54,53 @@ const ElementListBlock = ({ data, locale }: PropsElementListBlock) => {
     >
       <div
         id="targetElement"
-        className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 standard-vertical-m container"
+        className="grid gap-6 standard-vertical-m container md:grid-cols-2 lg:grid-cols-3"
       >
-        <div className="grid gap-8 md:col-span-2 lg:col-span-3 mb-12">
-          {itemsPrefix && <div className="prefix mx-auto">{itemsPrefix}</div>}
+        <div className="grid gap-6 lg:mb-20 mb-12 lg:grid-cols-12 md:col-span-2 lg:col-span-3">
+          {itemsPrefix && (
+            <div className="prefix lg:col-span-12">{itemsPrefix}</div>
+          )}
           <h2
-            className="title mx-auto"
+            className="title lg:col-span-12"
             dangerouslySetInnerHTML={{ __html: itemsTitle }}
           />
-          {itemsText && (
-            <h3
-              dangerouslySetInnerHTML={{ __html: itemsText }}
-              className={`text mx-auto`}
-            />
+          {itemsButton && (
+            <InternalLink
+              record={itemsButton?.page}
+              locale={locale}
+              className={"lg:col-span-12"}
+            >
+              <ButtonBlock label={itemsButton?.label} color="dark" />
+            </InternalLink>
           )}
         </div>
 
-        {elements.map((item, i: number) =>
-          item._modelApiKey === "product" ? (
-            <CardProductBlock
+        {results.flat().map((item, i: number) =>
+          item._modelApiKey === "event" ? (
+            <motion.div
+              initial="offscreen"
+              whileInView="onscreen"
+              viewport={{ once: true, amount: 0.1 * i }}
+              variants={variants}
               key={item.id}
-              data={item as ProductRecord}
-              locale={locale}
-              i={i}
-            />
+            >
+              <CardEventBlock
+                key={item.id}
+                data={item as any}
+                locale={locale}
+                i={i}
+              />
+            </motion.div>
           ) : (
-            <CardBlogBlock
+            <motion.div
+              initial="offscreen"
+              whileInView="onscreen"
+              viewport={{ once: true, amount: 0.1 * i }}
+              variants={variants}
               key={item.id}
-              data={item as PostRecord}
-              locale={locale}
-              i={i}
-            />
+            >
+              <CardBlogBlock data={item as PostRecord} locale={locale} i={i} />
+            </motion.div>
           )
         )}
       </div>

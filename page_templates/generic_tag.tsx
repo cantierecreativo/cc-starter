@@ -3,7 +3,7 @@ import { draftMode } from "next/headers";
 // import { PageDocument, PostsDocument, SiteLocale } from "@/graphql/generated";
 import { TagDocument, PostsDocument, SiteLocale } from "@/graphql/generated";
 import { notFound } from "next/navigation";
-import PostIndexPage from "@/components/Templates/PostIndexPage";
+import PostIndexPage from "@/components/Templates/PostsIndexPage";
 import getSeoMeta from "@/lib/seoUtils";
 
 const locale = "it";

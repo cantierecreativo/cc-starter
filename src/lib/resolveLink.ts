@@ -9,6 +9,7 @@ type RouteProps = {
       value: string;
     }
   ];
+  modelRelated: string | null;
 };
 
 export function t(section: string, locale: string) {
@@ -40,6 +41,7 @@ export default function resolveLink({
   slugs,
   _modelApiKey,
   locale,
+  modelRelated = null,
 }: RouteProps): string {
   //language prefix
   const lang = locale === config.defaultLocale ? "" : `/${locale}`;
@@ -49,9 +51,14 @@ export default function resolveLink({
   // }
   // custom routing
   if (slug) {
-    const customRoute = matchCustomRoute({ slugs, _modelApiKey, locale });
+    const customRoute = matchCustomRoute({
+      slugs,
+      _modelApiKey,
+      locale,
+      modelRelated,
+    });
     if (customRoute) {
-      console.log("custom route found: ", slug, customRoute);
+      // console.log("custom route found: ", slug, customRoute);
       return `${lang}${customRoute}`;
     }
   }
@@ -63,10 +70,21 @@ export default function resolveLink({
       } else {
         return `${lang}/${slug}`;
       }
+    case "event":
+      return `${lang}/${t(`eventi`, locale)}/${slug}`;
     case "post":
       return `${lang}/${t(`articoli`, locale)}/${slug}`;
     case "legal_page":
       return `${lang}/${t(`legal`, locale)}/${slug}`;
+    case "tag":
+      switch (modelRelated) {
+        case "posts":
+          return `${lang}/${t(`articoli`, locale)}/c/${slug.toLowerCase()}`;
+        case "events":
+          return `${lang}/${t(`eventi`, locale)}/c/${slug.toLowerCase()}`;
+        default:
+          return `${lang}/${t(`ispirazioni`, locale)}/c/${slug.toLowerCase()}`;
+      }
     default:
       return `${lang}/${slug ? slug : ""}`;
   }

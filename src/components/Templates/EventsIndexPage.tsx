@@ -1,27 +1,27 @@
 "use client";
 import Sections from "@/components/Sections";
-import { PageQuery, PostRecord, SiteLocale } from "@/graphql/generated";
-import PostGridRenderer from "@/components/Blog/PostGridRenderer";
+import { EventRecord, PostRecord, SiteLocale } from "@/graphql/generated";
 import WhichHero from "@/components/Hero/WichHero";
 import { convertToSlug } from "@/lib/convertToSlug";
+import EventsGridRenderer from "../Event/EventsGridRenderer";
 
 type GenericPageProps = {
   locale: SiteLocale;
   data: any;
-  list: PostRecord[];
+  list: EventRecord[];
 };
 
-export default function BlogIndexPage({
+export default function EventsIndexPage({
   data,
   list,
   locale,
 }: GenericPageProps) {
-  const page = data;
+  const page = data.page || data;
   if (!page) return null;
   return (
     <div>
       {page?.hero && <WhichHero hero={page?.hero as any} locale={locale} />}
-      {page?.sections?.map((section) => {
+      {page?.page?.sections?.map((section) => {
         const sectionSpacing =
           section.style !== "base-100 text-base-content" ||
           "bg-base-200 text-base-content"
@@ -33,11 +33,18 @@ export default function BlogIndexPage({
             className={`${section.style} ${sectionSpacing} py-4 lg:py-8 scroll-mt-24 lg:scroll-mt-30`}
             id={section.label ? convertToSlug(section.label) : null}
           >
-            {section.blocks && <Sections section={section} locale={locale} />}
+            {section.blocks && (
+              <Sections
+                section={section}
+                locale={locale}
+                lastPosts={data.allPosts as PostRecord[]}
+                lastEvents={data.allEvents as EventRecord[]}
+              />
+            )}
           </section>
         );
       })}
-      <PostGridRenderer data={list} lng={locale} />
+      <EventsGridRenderer data={list as EventRecord[]} lng={locale} />
     </div>
   );
 }

@@ -1,10 +1,16 @@
 "use client";
 
 import Sections from "@/components/Sections";
-import { PageQuery, SiteLocale } from "@/graphql/generated";
+import {
+  EventRecord,
+  PageQuery,
+  PostRecord,
+  SiteLocale,
+} from "@/graphql/generated";
 import { convertToSlug } from "@/lib/convertToSlug";
 import WhichHero from "@/components/Hero/WichHero";
 import MenuInternal from "@/components/Page/MenuInternal";
+import { EventType } from "react-hook-form";
 
 type GenericPageProps = {
   locale: SiteLocale;
@@ -39,7 +45,14 @@ export default function GenericPage({ data, locale }: GenericPageProps) {
                 {section.title}
               </h2>
             )}
-            {section.blocks && <Sections section={section} locale={locale} />}
+            {section.blocks && (
+              <Sections
+                section={section}
+                locale={locale}
+                lastPosts={data.allPosts as PostRecord[]}
+                lastEvents={data.allEvents as EventRecord[]}
+              />
+            )}
           </section>
         );
       })}

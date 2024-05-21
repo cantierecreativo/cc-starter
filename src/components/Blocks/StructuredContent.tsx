@@ -1,7 +1,6 @@
 import { StructuredText, renderNodeRule } from "react-datocms";
 import { isHeading, isParagraph, isLink } from "datocms-structured-text-utils";
-import Link from "next/link";
-import resolveLink from "@/lib/resolveLink";
+import React from "react";
 
 type StructuredContentProps = {
   locale: string;
@@ -17,17 +16,17 @@ export default function StructuredContent({
   const getTextSizeForHeading = (nodeLevel: number) => {
     switch (nodeLevel) {
       case 1:
-        return "font-bold text-lg font-serif my-4";
+        return "text-lg my-4";
       case 2:
-        return "font-bold text-lg font-serif my-4";
+        return "text-lg my-4";
       case 3:
-        return "font-bold text-lg font-serif my-4";
+        return "text-lg my-4";
       case 4:
-        return "font-bold text-lg font-serif my-4";
+        return "text-lg my-4";
       case 5:
-        return "font-bold text-lg font-serif my-4";
+        return "text-lg my-4";
       case 6:
-        return "font-bold text-lg font-serif my-4";
+        return "text-lg my-4";
       default:
         "";
     }
@@ -47,12 +46,15 @@ export default function StructuredContent({
               </Tag>
             );
           }),
-          renderNodeRule(isParagraph, ({ node, children, key, ancestors }) => {
-            return (
-              <p className={`block mb-3`} key={key}>
-                {children}
-              </p>
-            );
+          renderNodeRule(isParagraph, ({ children, key, ancestors }) => {
+            if (
+              ancestors[0].type === "listItem" &&
+              ancestors[0].children.length === 1
+            ) {
+              return <React.Fragment key={key}>{children}</React.Fragment>;
+            }
+
+            return <p key={key}>{children}</p>;
           }),
           renderNodeRule(isLink, ({ node, children, key }) => {
             return (
@@ -70,36 +72,6 @@ export default function StructuredContent({
             );
           }),
         ]}
-        // renderLinkToRecord={({ record, children }: any) => {
-        //   switch (record.__typename) {
-        //     case "InternalLinkRecord":
-        //       return (
-        //         <Link
-        //           className="underline font-bold"
-        //           href={resolveLink(record.item, locale)}
-        //         >
-        //           {children}
-        //         </Link>
-        //       );
-        //     default:
-        //       return null;
-        //   }
-        // }}
-        // renderInlineRecord={({ record }: any) => {
-        //   switch (record.__typename) {
-        //     case "InternalLinkRecord":
-        //       return (
-        //         <Link
-        //           className="underline font-bold"
-        //           href={resolveLink(record.item, locale)}
-        //         >
-        //           {record.item.title}
-        //         </Link>
-        //       );
-        //     default:
-        //       return null;
-        //   }
-        // }}
         renderBlock={({ record }) => {
           if (!record) return null;
           const frame: any = record;

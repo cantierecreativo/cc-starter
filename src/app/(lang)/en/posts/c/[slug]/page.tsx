@@ -3,7 +3,7 @@ import { draftMode } from "next/headers";
 import { TagDocument, SiteLocale } from "@/graphql/generated";
 import { notFound } from "next/navigation";
 import getSeoMeta from "@/lib/seoUtils";
-import PostIndexPage from "@/components/Templates/PostIndexPage";
+import PostsIndexPage from "@/components/Templates/PostsIndexPage";
 
 type Params = {
   params: {
@@ -39,5 +39,5 @@ export default async function Page({ params: { slug } }: Params) {
   );
   const list = data?.tag?.posts || [];
   if (!data) notFound();
-  return <PostIndexPage data={data.tag} list={list} locale={siteLocale} />;
+  return <PostsIndexPage data={data} list={list} locale={siteLocale} />;
 }

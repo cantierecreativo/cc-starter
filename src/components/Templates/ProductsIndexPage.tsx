@@ -1,6 +1,12 @@
 "use client";
 import Sections from "@/components/Sections";
-import { PageQuery, ProductRecord, SiteLocale } from "@/graphql/generated";
+import {
+  EventRecord,
+  PageQuery,
+  PostRecord,
+  ProductRecord,
+  SiteLocale,
+} from "@/graphql/generated";
 import ProductGridRenderer from "@/components/Product/ProductGridRenderer";
 import WhichHero from "@/components/Hero/WichHero";
 import { convertToSlug } from "@/lib/convertToSlug";
@@ -34,7 +40,14 @@ export default function ProductsIndexPage({
             className={`${section.style} ${sectionSpacing} py-4 lg:py-8 scroll-mt-24 lg:scroll-mt-30`}
             id={section.label ? convertToSlug(section.label) : null}
           >
-            {section.blocks && <Sections section={section} locale={locale} />}
+            {section.blocks && (
+              <Sections
+                section={section}
+                locale={locale}
+                lastPosts={data.allPosts as PostRecord[]}
+                lastEvents={data.allEvents as EventRecord[]}
+              />
+            )}
           </section>
         );
       })}

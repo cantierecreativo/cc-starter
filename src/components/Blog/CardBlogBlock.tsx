@@ -1,9 +1,9 @@
 "use client";
-import { Image as DatoImage } from "react-datocms";
-import ButtonBlock from "./ButtonBlock";
+import { SRCImage } from "react-datocms";
 import translate from "@/labels";
 import InternalLink from "../Links/InternalLink";
 import { PostRecord, SiteLocale } from "@/graphql/generated";
+import ButtonBlock from "../Blocks/ButtonBlock";
 
 type PropsCardBlog = {
   locale: SiteLocale;
@@ -12,17 +12,12 @@ type PropsCardBlog = {
 };
 
 const CardBlogBlock = ({ data, locale, i }: PropsCardBlog) => {
-  const { blogImage, title, tags, blogImageHover } = data;
+  const { blogImage, title, tags } = data;
 
   return (
     <InternalLink className="group" record={data} locale={locale} title={title}>
       <div className="p-6 pb-2 bg-base-300 text-content duration-300 relative">
-        <DatoImage data={blogImage.responsiveImage} />
-        {blogImageHover && (
-          <div className="absolute shadow-lg top-6 left-6 right-6 group-hover:opacity-100 opacity-0 duration-300">
-            <DatoImage data={blogImageHover.responsiveImage} />
-          </div>
-        )}
+        <SRCImage data={blogImage.responsiveImage} />
         <div className="text-center py-6 xl:py-10 grid gap-6 xl:gap-8">
           {tags?.length > 0 && <div className="prefix">{tags[0].tag}</div>}
           <h2 className="title-small">{title}</h2>

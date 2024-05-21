@@ -63,14 +63,17 @@ for (let f of folders) {
       case "page":
         source = "generic_page";
         break;
-      case "legal_page":
-        source = "legal_page";
+      case "event":
+        source = "generic_event";
         break;
       case "post":
         source = "generic_post";
         break;
-      case "tag":
-        source = "generic_tag";
+      case "tag-events":
+        source = "generic_tag_events";
+        break;
+      case "tag-posts":
+        source = "generic_tag_posts";
         break;
       case "product":
       default:
@@ -81,11 +84,18 @@ for (let f of folders) {
       source = `${source}_dynamic`;
     }
     if (r.isIndex) {
-      source = `empty_page`;
-      if (r.indexModel === "post") {
-        source = `post_index_page`;
-      } else if (r.indexModel === "product") {
-        source = `product_index_page`;
+      switch (r.indexModel) {
+        case "post":
+          source = `posts_index_page`;
+          break;
+        case "event":
+          source = `events_index_page`;
+          break;
+        case "product":
+          source = `product_index_page`;
+          break;
+        default:
+          source = `empty_page`;
       }
     }
 

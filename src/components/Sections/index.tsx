@@ -1,27 +1,21 @@
 import Brands from "@/components/Brands";
 import Features from "@/components/Blocks/FeaturesList";
 import Video from "@/components/Video";
-import CompactTeam from "@/components/Blocks/CompactTeam";
-import ExpandedTeam from "@/components/Blocks/ExpandedTeam";
 import FAQAccordion from "@/components/Blocks/FAQAccordion";
-import AboutIntro from "@/components/Blocks/AboutIntro";
 import {
-  AboutIntroRecord,
   AttachmentsBlockRecord,
   BannerCtaRecord,
-  BlogListRecord,
   BrandSectionRecord,
   ElementsListRecord,
+  EventRecord,
   FaqSectionRecord,
   FeatureListSectionRecord,
-  FeaturedPagesSectionRecord,
   GallerySectionRecord,
   ImageBlockRecord,
   MultipleCardRecord,
+  PostRecord,
   RedirectSectionRecord,
   SiteLocale,
-  StatsSectionRecord,
-  TeamSectionRecord,
   TextBlockRecord,
   VideoSectionRecord,
 } from "@/graphql/generated";
@@ -32,8 +26,6 @@ import GalleryBlock from "@/components/Blocks/GalleryBlock";
 import BannerCtaBlock from "@/components/Blocks/BannerCtaBlock";
 import TextBlock from "@/components/Blocks/TextBlock";
 import MultipleCardBlock from "@/components/Blocks/MultipleCardBlock";
-import BlogListBlock from "@/components/Blocks/BlogListBlock";
-import StandardFeaturedPages from "@/components/FeaturedPages/StandardFeaturedPages";
 import ProductDetailsBlock from "@/components/Blocks/ProductDetailsBlock";
 import FormBlock from "@/components/Blocks/FormBlock";
 import ContactTextBlock from "@/components/Blocks/ContactTextBlock";
@@ -43,9 +35,16 @@ import AttachmentsBlock from "@/components/Blocks/AttachmentsBlock";
 type Props = {
   section: any;
   locale: SiteLocale;
+  lastPosts: PostRecord[];
+  lastEvents: EventRecord[];
 };
 
-export default function Sections({ section, locale }: Props) {
+export default function Sections({
+  section,
+  locale,
+  lastPosts,
+  lastEvents,
+}: Props) {
   return section?.blocks?.map((b: any) => {
     switch (b._modelApiKey) {
       case "elements_list": {
@@ -55,6 +54,8 @@ export default function Sections({ section, locale }: Props) {
             key={b.id}
             data={elementsListRecord}
             locale={locale}
+            lastPosts={lastPosts}
+            lastEvents={lastEvents}
           />
         );
       }
@@ -97,12 +98,6 @@ export default function Sections({ section, locale }: Props) {
             data={multipleCardSection}
             locale={locale}
           />
-        );
-      }
-      case "blog_list": {
-        const blogListSection = b as BlogListRecord;
-        return (
-          <BlogListBlock key={b.id} data={blogListSection} locale={locale} />
         );
       }
       case "gallery_section": {
@@ -149,37 +144,6 @@ export default function Sections({ section, locale }: Props) {
             );
         }
 
-      case "featured_pages_section":
-        const featuredPagesSectionRecord = b as FeaturedPagesSectionRecord;
-        return (
-          <StandardFeaturedPages
-            locale={locale}
-            key={b.id}
-            pages={featuredPagesSectionRecord.featuredPages}
-            header={featuredPagesSectionRecord.featuredPagesHeader}
-            subheader={featuredPagesSectionRecord.featuredPagesSubheader}
-          />
-        );
-
-      case "team_section":
-        const teamSectionRecord = section as TeamSectionRecord;
-        if (teamSectionRecord.displayOptions === "compact")
-          return (
-            <CompactTeam
-              key={b.id}
-              header={teamSectionRecord.title}
-              subheader={teamSectionRecord.subtitle}
-              lng={locale}
-            />
-          );
-        return (
-          <ExpandedTeam
-            key={b.id}
-            header={teamSectionRecord.title}
-            subheader={teamSectionRecord.subtitle}
-            lng={locale}
-          />
-        );
       case "faq_section":
         const faqSectionRecord = b as FaqSectionRecord;
         return (
@@ -191,18 +155,6 @@ export default function Sections({ section, locale }: Props) {
           />
         );
 
-      case "about_intro":
-        const aboutIntroSectionRecord = section as AboutIntroRecord;
-        return (
-          <AboutIntro
-            key={b.id}
-            header={aboutIntroSectionRecord.header}
-            subheader={aboutIntroSectionRecord.subheader}
-            introduction={aboutIntroSectionRecord.introductionText}
-            images={aboutIntroSectionRecord.images}
-            preHeader={aboutIntroSectionRecord.preHeader}
-          />
-        );
       case "redirect_section":
         const redirectSectionRecord = section as RedirectSectionRecord;
         redirect(`/${locale}/${redirectSectionRecord.slugToRedirectTo}`);

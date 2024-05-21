@@ -1,44 +1,20 @@
 fragment elementsListRecord on ElementsListRecord {
   id
   _modelApiKey
+  __typename
   itemsPrefix
   itemsTitle
-  itemsText
+  itemsButton {
+    ...internalLink
+  }
+  automatic
+  model
   elements {
     ... on PostRecord {
-      id
-      _modelApiKey
-      slug
-      abstract
-      title
-      tags {
-        id
-        tag
-        slug
-        _modelApiKey
-      }
-      blogImage {
-        responsiveImage(
-          sizes: "(min-width:768px) 50vw, (min-width:1024px) 33vw, 100vw, 500px"
-          imgixParams: { auto: [format, compress], fit: crop, ar: "7:8" }
-        ) {
-          ...rImage
-        }
-      }
+      ...postPreviewFragment
     }
-    ... on ProductRecord {
-      id
-      _modelApiKey
-      abstract
-      title
-      productImage {
-        responsiveImage(
-          sizes: "(min-width:768px) 50vw, (min-width:1024px) 33vw, 100vw, 500px"
-          imgixParams: { auto: [format, compress], fit: crop, ar: "7:8" }
-        ) {
-          ...rImage
-        }
-      }
+    ... on EventRecord {
+      ...eventPreviewFragment
     }
   }
 }

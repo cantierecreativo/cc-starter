@@ -27,41 +27,50 @@ export default function TextBlock({ data, locale }) {
       viewport={{ once: true, amount: 0.1 }}
       variants={variants}
     >
-      <div
-        className={`container grid gap-8 ${
-          displayOptions === "right" ? "justify-end" : ""
-        } standard-vertical-m text-${displayOptions}`}
-      >
-        {label && (
-          <div className={displayOptions === "right" ? "flex justify-end" : ""}>
+      <div className="flex justify-center">
+        <div
+          className={`container ${
+            displayOptions === "right" ? "justify-end" : ""
+          } standard-vertical-m inline-block w-auto text-${displayOptions}`}
+        >
+          {label && (
+            <div
+              className={displayOptions === "right" ? "flex justify-end" : ""}
+            >
+              <div
+                className={`${
+                  displayOptions === "center" ? "mx-auto" : ""
+                } prefix mb-8`}
+              >
+                {label}
+              </div>
+            </div>
+          )}
+          <h2
+            className="title inline-block w-full mb-8"
+            dangerouslySetInnerHTML={{ __html: mainTitle }}
+          />
+          {mainText && (
             <div
               className={`${
-                displayOptions === "center" ? "mx-auto" : ""
-              } prefix`}
+                displayOptions === "right" ? "flex justify-end" : ""
+              } inline-block w-auto mb-8`}
             >
-              {label}
+              <div
+                className={`${
+                  displayOptions === "center" ? "mx-auto" : ""
+                } text`}
+              >
+                <StructuredContent data={mainText} locale={locale} />
+              </div>
             </div>
-          </div>
-        )}
-        <h2 className="title" dangerouslySetInnerHTML={{ __html: mainTitle }} />
-        {mainText && (
-          <div
-            className={`${
-              displayOptions === "right" ? "flex justify-end" : ""
-            } `}
-          >
-            <div
-              className={`${displayOptions === "center" ? "mx-auto" : ""} text`}
-            >
-              <StructuredContent data={mainText} locale={locale} />
-            </div>
-          </div>
-        )}
-        {link && (
-          <DynamicLink link={link} locale={locale} className={`block group`}>
-            <ButtonBlock label={link.label} />
-          </DynamicLink>
-        )}
+          )}
+          {link && (
+            <DynamicLink link={link} locale={locale} className={`block group`}>
+              <ButtonBlock label={link.label} />
+            </DynamicLink>
+          )}
+        </div>
       </div>
     </motion.div>
   );

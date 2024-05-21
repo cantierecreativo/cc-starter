@@ -1,4 +1,4 @@
-import { Image as DatoImage } from "react-datocms";
+import { SRCImage } from "react-datocms";
 
 export default function ImageBlock({ data, locale }) {
   const { imageAsset, imageDescription } = data;
@@ -7,7 +7,7 @@ export default function ImageBlock({ data, locale }) {
     <div className={`standard-vertical-m`}>
       <div className="container">
         <div className="md:w-8/12 md:mx-auto relative">
-          <DatoImage
+          <SRCImage
             data={imageAsset.responsiveImage}
             className="w-full h-auto"
           />

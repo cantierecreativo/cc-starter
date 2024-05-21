@@ -1,7 +1,7 @@
 import { ProductDetailRecord, SiteLocale } from "@/graphql/generated";
 import Image from "next/image";
 import CustomIcon from "@/components/Blocks/CustomIcon";
-import { Image as DatoImage, ResponsiveImageType } from "react-datocms";
+import { SRCImage } from "react-datocms";
 import DynamicLink from "../Links/DynamicLink";
 import ButtonBlock from "./ButtonBlock";
 import { motion, Variants } from "framer-motion";
@@ -92,12 +92,9 @@ const ProductDetailsBlock = ({ data, locale }: PropsProductDetailsBlock) => {
                 <div className="">
                   <div className="rounded-full bg-primary mt-20 aspect-[5/7] relative md:mt-10">
                     <div className="w-[70%] h-[70%] absolute inset-1/2 -translate-x-1/2 -translate-y-1/2">
-                      <DatoImage
-                        data={
-                          productDetailImage.responsiveImage as ResponsiveImageType
-                        }
-                        objectFit="contain"
-                        layout="fill"
+                      <SRCImage
+                        data={productDetailImage.responsiveImage}
+                        className="object-contain"
                       />
                     </div>
                   </div>

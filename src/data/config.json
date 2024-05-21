@@ -17,6 +17,9 @@
       "en": "drop",
       "it": "drop"
     },
+    "eventi": {
+      "it": "eventi"
+    },
     "pagina-con-hero-gallery": {
       "en": "page-con-hero-gallery",
       "it": "pagina-con-hero-gallery"
@@ -30,7 +33,11 @@
     "/articoli",
     "/drop/pagina-con-hero-gallery",
     "/drop",
-    "/[slug]"
+    "/[slug]",
+    "/eventi/c/[slug]",
+    "/eventi/c",
+    "/eventi/[slug]",
+    "/eventi"
   ],
   "models": [
     {
@@ -52,7 +59,7 @@
     {
       "path": "/articoli/c/[slug]",
       "routeInfo": {
-        "model": "tag",
+        "model": "tag-posts",
         "querySlug": "slug",
         "indexModel": "",
         "isHome": false,
@@ -151,6 +158,63 @@
         "isIndex": false
       },
       "slugs": {}
+    },
+    {
+      "path": "/eventi/c/[slug]",
+      "routeInfo": {
+        "model": "tag-events",
+        "querySlug": "slug",
+        "indexModel": "",
+        "isHome": false,
+        "isVirtual": false,
+        "isDynamic": true,
+        "isIndex": false
+      },
+      "slugs": {}
+    },
+    {
+      "path": "/eventi/c",
+      "routeInfo": {
+        "model": "none",
+        "querySlug": "",
+        "indexModel": "",
+        "isHome": false,
+        "isVirtual": true,
+        "isDynamic": false,
+        "isIndex": false
+      },
+      "slugs": {
+        "en": "slug",
+        "it": "c"
+      }
+    },
+    {
+      "path": "/eventi/[slug]",
+      "routeInfo": {
+        "model": "event",
+        "querySlug": "slug",
+        "indexModel": "",
+        "isHome": false,
+        "isVirtual": false,
+        "isDynamic": true,
+        "isIndex": false
+      },
+      "slugs": {}
+    },
+    {
+      "path": "/eventi",
+      "routeInfo": {
+        "model": "page",
+        "querySlug": "eventi",
+        "indexModel": "event",
+        "isHome": false,
+        "isVirtual": false,
+        "isDynamic": false,
+        "isIndex": true
+      },
+      "slugs": {
+        "it": "eventi"
+      }
     }
   ]
 }

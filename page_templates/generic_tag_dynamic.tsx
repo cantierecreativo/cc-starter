@@ -3,7 +3,7 @@ import { draftMode } from "next/headers";
 import { TagDocument, SiteLocale } from "@/graphql/generated";
 import { notFound } from "next/navigation";
 import getSeoMeta from "@/lib/seoUtils";
-import PostIndexPage from "@/components/Templates/PostIndexPage";
+import PostIndexPage from "@/components/Templates/PostsIndexPage";
 
 type Params = {
   params: {

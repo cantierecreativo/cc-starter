@@ -33,4 +33,28 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
       }
     }
   }
+  allPosts(
+    filter: { title: { isBlank: "false" } }
+    orderBy: _createdAt_DESC
+    first: "3"
+    locale: $locale
+    fallbackLocales: $fallbackLocale
+  ) {
+    ...postPreviewFragment
+  }
+  allEvents(
+    filter: { title: { isBlank: "false" } }
+    orderBy: _createdAt_DESC
+    first: "3"
+    locale: $locale
+    fallbackLocales: $fallbackLocale
+  ) {
+    ...eventPreviewFragment
+  }
+  _allPostsMeta(locale: $locale, filter: { title: { isBlank: "false" } }) {
+    count
+  }
+  _allEventsMeta(locale: $locale, filter: { title: { isBlank: "false" } }) {
+    count
+  }
 }
