@@ -4,7 +4,7 @@ import {
   SiteLocale,
 } from "@/graphql/generated";
 import { Maybe } from "graphql/jsutils/Maybe";
-import { Image as DatoImage } from "react-datocms";
+import { SRCImage } from "react-datocms";
 import { motion } from "framer-motion";
 import DynamicLink from "@/components/Links/DynamicLink";
 
@@ -28,27 +28,27 @@ const BackgroundImageHero = ({
       initial={{ height: "100vh" }}
       animate={{ height: "90vh" }}
       transition={{ duration: 0.75, delay: 0.5 }}
-      className="w-full relative object-cover object-bottom bg-black"
+      className="w-full relative object-cover object-bottom h-[70vh] xl:h-[600px] 2xl:h-[700px] 3xl:h-[900px]"
     >
-      <DatoImage
+      <SRCImage
         data={image?.responsiveImage}
-        className="opacity-80 object-cover object-center absolute inset-0 w-full h-full"
+        className="object-cover object-center absolute inset-0 !w-full !h-full !max-w-none"
         priority={true}
       />
-      <div className="relative z-0 flex items-center h-full mt-14 md:mt-24 lg:mt-28">
+      <div className="relative z-0 flex items-center h-full mt-14 md:mt-24 lg:mt-24">
         <div className="container mx-auto">
           <div className="flex flex-wrap justify-center">
             <div className="w-full px-4">
-              <div className="mx-auto max-w-[666px] text-center">
+              <div className="mx-auto lg:mx-0 max-w-[570px] lg:p-12 lg:py-16 text-center md:text-left font-semibold bg-primary/80 p-8 rounded-3xl text-base-100 xl:pb-20">
                 {heroTitle && (
-                  <h1 className="mb-5 text-2xl font-bold capitalize text-base-100 xl:text-5xl">
+                  <h1 className="mb-3 lg:mb-6 text-base font-medium lg:text-md">
                     {heroTitle}
                   </h1>
                 )}
                 {heroSubtitle && (
-                  <div
+                  <h2
                     dangerouslySetInnerHTML={{ __html: heroSubtitle }}
-                    className="mb-9 text-base font-medium text-body-color dark:text-dark-6 md:text-lg text-base-100"
+                    className="text-2xl lg:text-4xl font-semibold md:text-lg text-base-100"
                   />
                 )}
                 {link && (

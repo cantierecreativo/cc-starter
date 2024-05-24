@@ -32,7 +32,7 @@ export default function PostsIndexPage({
         return (
           <section
             key={section.id}
-            className={`${section.style} ${sectionSpacing} py-4 lg:py-8 scroll-mt-24 lg:scroll-mt-30`}
+            className={`${section.style} ${sectionSpacing} standard-vertical-p scroll-mt-24 lg:scroll-mt-30`}
             id={section.label ? convertToSlug(section.label) : null}
           >
             {section.blocks && (

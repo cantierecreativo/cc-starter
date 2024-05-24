@@ -18,11 +18,9 @@ const AttachmentsBlock = ({ data, style, locale }: PropsAttachmentsBlock) => {
   const { attachments, attachmentPrefix, attachmentText, attachmentTitle } =
     data;
   const bg =
-    style === "bg-base-200 text-base-content"
-      ? "bg-base-300"
-      : style === ""
-      ? "bg-base-300"
-      : "bg-base-200";
+    style === "bg-secondary text-secondary-content"
+      ? "bg-primary text-primary-content"
+      : "bg-secondary text-secondary-content";
   const variants: Variants = {
     offscreen: {
       opacity: 0,
@@ -58,23 +56,23 @@ const AttachmentsBlock = ({ data, style, locale }: PropsAttachmentsBlock) => {
           <div className="grid gap-3 pt-6 max-w-[460px] xl:mt-8 xl:gap-4">
             {attachments.map((a: AttachmentRecord) => {
               return (
-                  <ExternalLink
+                <ExternalLink
                   key={a.id}
-                    url={a.file.url}
-                    title={a.title}
-                    locale={locale}
-                    className="group cursor-pointer"
-                  >
-                    <div className="bg-base-100 flex items-center gap-4 rounded-md border-primary-content border p-3 duration-300 group-hover:bg-secondary group-hover:text-base-100">
-                      <CustomIcon
-                        classes="bg-base-content md:w-[40px] md:h-[40px] w-[23px] h-[25px] group-hover:ml-1 motion-safe:duration-300 md:scale-125 group-hover:bg-base-100"
-                        fileName="download"
-                      />
-                      <div className="opacity-70 text-sm md:text-base">
-                        {a.title}
-                      </div>
+                  url={a.file.url}
+                  title={a.title}
+                  locale={locale}
+                  className="group cursor-pointer"
+                >
+                  <div className="bg-base-100 text-base-content flex items-center gap-4 rounded-md border-primary-content border p-3 duration-300 group-hover:bg-secondary group-hover:text-base-100">
+                    <CustomIcon
+                      classes="bg-base-content md:w-[40px] md:h-[40px] w-[23px] h-[25px] group-hover:ml-1 motion-safe:duration-300 md:scale-125 group-hover:bg-base-100"
+                      fileName="download"
+                    />
+                    <div className="opacity-70 text-sm md:text-base">
+                      {a.title}
                     </div>
-                  </ExternalLink>
+                  </div>
+                </ExternalLink>
               );
             })}
           </div>

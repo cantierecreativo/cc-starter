@@ -9,7 +9,7 @@ const SingleFeature = ({ feature }: Props) => {
   const { featureIcon, featureTitle, featureDescription } = feature;
 
   return (
-    <div className="w-full bg-base-100 rounded-md border border-base-content/30 p-6 xl:px-8 md:py-10 text-center">
+    <div className="w-full text-base-content bg-base-100 rounded-md border border-base-content/30 p-6 xl:px-8 md:py-10 text-center">
       <div className="relative mb-10 flex h-[70px] w-full">
         <Image
           src={featureIcon.url}

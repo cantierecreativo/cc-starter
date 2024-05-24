@@ -63,43 +63,41 @@ export default function BanneCtaBlock({ data, locale }) {
       <div
         className={`${
           displayOptions === "text-right" ? "lg:flex-row-reverse" : ""
-        } bg-base-100 h-full lg:flex xl:items-stretch standard-vertical-m`}
+        } h-full lg:flex xl:items-stretch standard-vertical-m`}
       >
         <motion.div
           initial="offscreen"
           whileInView="onscreen"
           variants={textVariants}
           viewport={{ once: true, amount: 0.75 }}
-          className="lg:w-1/2 grid gap-6 py-10 md:px-12 md:py-16"
+          className="lg:w-1/2 grid gap-6 lg:px-12 md:pb-16 lg:pb-0"
         >
-          <div className="grid gap-4">
-            {label && <div className="label">{label}</div>}
+          <div className="grid gap-4 pb-12 content-center">
+            {label && <div className="prefix text-primary">{label}</div>}
             <h2 className="title">{title}</h2>
             <div className="text">
               <StructuredContent data={text} locale={locale} />
             </div>
             {link && (
-              <div className="inline-block">
-                <ButtonBlock label={"Vai"} />
+              <div className="inline-block pt-4">
+                <ButtonBlock label={link.label} />
               </div>
             )}
           </div>
         </motion.div>
         {bannerCtaImage && (
-          <div className="lg:w-1/2 relative aspect-square md:aspect-[2/1] lg:aspect-auto overflow-hidden">
-            <motion.div
-              initial="offscreen"
-              whileInView="onscreen"
-              variants={imageVariants}
-              viewport={{ once: true, amount: 0.75 }}
-              className={`absolute top-0 overflow-hidden w-full`}
-            >
-              <SRCImage
-                data={bannerCtaImage.responsiveImage}
-                className="group-hover:scale-110 duration-700 object-cover absolute inset-0 w-full h-full"
-              />
-            </motion.div>
-          </div>
+          <motion.div
+            initial="offscreen"
+            whileInView="onscreen"
+            variants={imageVariants}
+            viewport={{ once: true, amount: 0.75 }}
+            className="lg:w-1/2 flex items-center justify-center"
+          >
+            <SRCImage
+              data={bannerCtaImage.responsiveImage}
+              className="mx-auto xl:mx-0 xl:!w-full"
+            />
+          </motion.div>
         )}
       </div>
     );
@@ -118,11 +116,7 @@ export default function BanneCtaBlock({ data, locale }) {
             <div className="mx-auto max-w-[575px] text-center grid gap-8 text-base-100">
               {label && <div className="label mx-auto">{label}</div>}
               <h2 className="title">{title}</h2>
-              {text && (
-                <h3 className="text">
-                  <StructuredContent data={text} locale={locale} />
-                </h3>
-              )}
+              {text && <StructuredContent data={text} locale={locale} />}
               {data.link && (
                 <div className="inline-block">
                   <ButtonBlock label={"Vai"} />

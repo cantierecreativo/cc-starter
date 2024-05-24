@@ -30,13 +30,13 @@ export default function GenericPage({ data, locale }: GenericPageProps) {
 
   return (
     <div>
-      {/* {page?.hero && <WhichHero hero={page?.hero as any} locale={locale} />} */}
-      {/* {navItems.length > 0 && <MenuInternal navItems={navItems} />} */}
+      {page?.hero && <WhichHero hero={page?.hero as any} locale={locale} />}
+      {navItems.length > 0 && <MenuInternal navItems={navItems} />}
       {sections?.map((section) => {
         return (
           <section
             key={section.id}
-            className={`${section.style} py-1 scroll-mt-24`}
+            className={`${section.style} standard-vertical-p scroll-mt-24 lg:scroll-mt-30`}
             id={section.label ? convertToSlug(section.label) : null}
           >
             {section.title && (

@@ -41,6 +41,9 @@ const config: Config = {
         "2xl": ["50px", "58px"],
         "3xl": ["67px", "75px"],
       },
+      screens: {
+        "3xl": "1920px",
+      },
     },
   },
   plugins: [daisyui],
