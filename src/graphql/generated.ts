@@ -104,41 +104,6 @@ export type AltTitleFileFieldUrlArgs = {
   imgixParams?: InputMaybe<ImgixParams>;
 };
 
-/** Block of type 📲 CTA App Download (app_cta) */
-export type AppCtaRecord = RecordInterface & {
-  __typename?: 'AppCtaRecord';
-  _createdAt: Scalars['DateTime']['output'];
-  /** Editing URL */
-  _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
-  _isValid: Scalars['BooleanType']['output'];
-  _modelApiKey: Scalars['String']['output'];
-  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
-  /** Generates SEO and Social card meta tags to be used in your frontend */
-  _seoMetaTags: Array<Tag>;
-  _status: ItemStatus;
-  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _updatedAt: Scalars['DateTime']['output'];
-  appstoreUrl?: Maybe<Scalars['String']['output']>;
-  googlePlayUrl?: Maybe<Scalars['String']['output']>;
-  id: Scalars['ItemId']['output'];
-  text?: Maybe<Scalars['String']['output']>;
-  title: Scalars['String']['output'];
-};
-
-
-/** Block of type 📲 CTA App Download (app_cta) */
-export type AppCtaRecord_SeoMetaTagsArgs = {
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Block of type 📲 CTA App Download (app_cta) */
-export type AppCtaRecordTextArgs = {
-  markdown?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
 /** Block of type 📎 Allegato (attachment) */
 export type AttachmentRecord = RecordInterface & {
   __typename?: 'AttachmentRecord';
@@ -210,7 +175,7 @@ export type BannerCtaModelTextField = {
   value: Scalars['JsonField']['output'];
 };
 
-/** Block of type 📕 Banner CTA (banner_cta) */
+/** Block of type 📕 Banner con link (banner_cta) */
 export type BannerCtaRecord = RecordInterface & {
   __typename?: 'BannerCtaRecord';
   _createdAt: Scalars['DateTime']['output'];
@@ -236,34 +201,8 @@ export type BannerCtaRecord = RecordInterface & {
 };
 
 
-/** Block of type 📕 Banner CTA (banner_cta) */
+/** Block of type 📕 Banner con link (banner_cta) */
 export type BannerCtaRecord_SeoMetaTagsArgs = {
-  locale?: InputMaybe<SiteLocale>;
-};
-
-/** Block of type 📓 Lista blog (blog_list) */
-export type BlogListRecord = RecordInterface & {
-  __typename?: 'BlogListRecord';
-  _createdAt: Scalars['DateTime']['output'];
-  /** Editing URL */
-  _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
-  _isValid: Scalars['BooleanType']['output'];
-  _modelApiKey: Scalars['String']['output'];
-  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
-  /** Generates SEO and Social card meta tags to be used in your frontend */
-  _seoMetaTags: Array<Tag>;
-  _status: ItemStatus;
-  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _updatedAt: Scalars['DateTime']['output'];
-  blogPost: Array<PostRecord>;
-  id: Scalars['ItemId']['output'];
-};
-
-
-/** Block of type 📓 Lista blog (blog_list) */
-export type BlogListRecord_SeoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
 
@@ -818,7 +757,7 @@ export type FeatureListSectionRecordFeaturesSubheaderArgs = {
   markdown?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
-/** Block of type ⭐ Feature (feature) */
+/** Block of type ⭐ In evidenza (feature) */
 export type FeatureRecord = RecordInterface & {
   __typename?: 'FeatureRecord';
   _createdAt: Scalars['DateTime']['output'];
@@ -841,13 +780,13 @@ export type FeatureRecord = RecordInterface & {
 };
 
 
-/** Block of type ⭐ Feature (feature) */
+/** Block of type ⭐ In evidenza (feature) */
 export type FeatureRecord_SeoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
 
 
-/** Block of type ⭐ Feature (feature) */
+/** Block of type ⭐ In evidenza (feature) */
 export type FeatureRecordFeatureDescriptionArgs = {
   markdown?: InputMaybe<Scalars['Boolean']['input']>;
 };
@@ -3474,7 +3413,7 @@ export type LegalPageRecordTitleArgs = {
 
 export type LinkBlockModelLinkField = ExternalLinkRecord | InternalLinkRecord;
 
-/** Block of type 🔗 Link Block (link_block) */
+/** Block of type 🔗 Blocco Link (link_block) */
 export type LinkBlockRecord = RecordInterface & {
   __typename?: 'LinkBlockRecord';
   _createdAt: Scalars['DateTime']['output'];
@@ -3495,7 +3434,7 @@ export type LinkBlockRecord = RecordInterface & {
 };
 
 
-/** Block of type 🔗 Link Block (link_block) */
+/** Block of type 🔗 Blocco Link (link_block) */
 export type LinkBlockRecord_SeoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
@@ -5178,7 +5117,7 @@ export type SimpleTextModelTextContentField = {
 
 export type SimpleTextModelTextContentLinksField = PageRecord | PostRecord;
 
-/** Block of type ✏️ Simple text block (simple_text) */
+/** Block of type ✏️ Blocco di testo (simple_text) */
 export type SimpleTextRecord = RecordInterface & {
   __typename?: 'SimpleTextRecord';
   _createdAt: Scalars['DateTime']['output'];
@@ -5199,7 +5138,7 @@ export type SimpleTextRecord = RecordInterface & {
 };
 
 
-/** Block of type ✏️ Simple text block (simple_text) */
+/** Block of type ✏️ Blocco di testo (simple_text) */
 export type SimpleTextRecord_SeoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
@@ -5231,7 +5170,7 @@ export enum SiteLocale {
 
 export type SlideModelLinkField = ExternalLinkRecord | InternalLinkRecord;
 
-/** Block of type 📸 Slide (slide) */
+/** Block of type 📸 Singola slide (slide) */
 export type SlideRecord = RecordInterface & {
   __typename?: 'SlideRecord';
   _createdAt: Scalars['DateTime']['output'];
@@ -5255,7 +5194,7 @@ export type SlideRecord = RecordInterface & {
 };
 
 
-/** Block of type 📸 Slide (slide) */
+/** Block of type 📸 Singola slide (slide) */
 export type SlideRecord_SeoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
@@ -5568,7 +5507,7 @@ export type TagRecordTagArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
 
-/** Block of type 👥 Team Section (team_section) */
+/** Block of type 👥 Team (team_section) */
 export type TeamSectionRecord = RecordInterface & {
   __typename?: 'TeamSectionRecord';
   _createdAt: Scalars['DateTime']['output'];
@@ -5592,13 +5531,13 @@ export type TeamSectionRecord = RecordInterface & {
 };
 
 
-/** Block of type 👥 Team Section (team_section) */
+/** Block of type 👥 Team (team_section) */
 export type TeamSectionRecord_SeoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
 
 
-/** Block of type 👥 Team Section (team_section) */
+/** Block of type 👥 Team (team_section) */
 export type TeamSectionRecordSubtitleArgs = {
   markdown?: InputMaybe<Scalars['Boolean']['input']>;
 };
