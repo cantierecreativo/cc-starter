@@ -35,9 +35,7 @@ function getTranslation(source, lang) {
   const folders = chunks.slice(0, chunks.length - 1);
 
   const translatedPath = folders.reduce((str, name) => {
-    const translation = translations?.[name]?.[lang]
-      ? translations[name][lang]
-      : name;
+    const translation = translations?.[name]?.[lang] ? translations[name][lang] : name;
     return (str += translation + "/");
   }, "");
 
@@ -85,69 +83,79 @@ await cd(`../${LANG_FOLDER}`);
 await $`pwd`;
 
 within(async () => {
-  for (let lang of langs) {
-    console.info(
-      chalk.blue("GENERATING ROUTES FOR "),
-      chalk.green(lang.toUpperCase())
-    );
+  // const langFolder = await fs.promises.readdir(`../(lang)`).then((files) => files);
+  // langFolder.length > 0;
 
-    console.info(chalk.blue("Removing previous " + lang + " folder..."));
+  if (langs.length == 0) {
+    console.info(chalk.blue("No langs detected. Removing any folders..."));
     try {
-      await $`rm -fr ${lang}`;
+      await $`rm -fr *`;
     } catch (error) {
       console.info(error);
     }
+  } else {
+    for (let lang of langs) {
+      console.info(chalk.blue("GENERATING ROUTES FOR "), chalk.green(lang.toUpperCase()));
 
-    const destinations = allfiles.map((f) => getTranslation(f, lang));
-    console.info("destinations", destinations);
-
-    try {
-      //CREATE LANG FOLDER
-      console.info(chalk.blue("Generating new " + lang + " folder..."));
+      console.info(chalk.blue("Removing previous " + lang + " folder..."));
       try {
-        await $`mkdir ${lang}`;
+        await $`rm -fr ${lang}`;
       } catch (error) {
-        //ignore
+        console.info(error);
       }
 
-      //CREATE TRANSLATED FOLDERS
-      console.info(chalk.blue("Creating translated folders..."));
-      const folderPromises = destinations.map(({ folder }) => {
-        return $`mkdir -p ${lang}/${folder}`;
-      });
-      await Promise.all(folderPromises);
+      const destinations = allfiles.map((f) => getTranslation(f, lang));
+      console.info("destinations", destinations);
 
-      //CREATE FILES
-      console.info(chalk.blue("Generating page files..."));
-      for (let destination of destinations) {
-        const { folder, file, source, sourceFolder } = destination;
-        const dest = `${lang}/${folder}/${file}`;
-
-        // await replaceInFile(
-        //   `../${BASE_FOLDER}/${source}`,
-        //   dest,
-        //   defaultLocale, //toreplace
-        //   lang //replacement
-        // );
-
-        let replacement = [{ from: defaultLocale, to: lang }];
-
-        const lastFolder = folder.split("/").filter(Boolean).slice(-1)[0];
-
-        if (sourceFolder?.[0] && lastFolder && lastFolder != sourceFolder[0]) {
-          replacement.push({ from: sourceFolder[0], to: lastFolder });
+      try {
+        //CREATE LANG FOLDER
+        console.info(chalk.blue("Generating new " + lang + " folder..."));
+        try {
+          await $`mkdir ${lang}`;
+        } catch (error) {
+          //ignore
         }
 
-        console.info(replacement);
-        await replaceInFile(`../${BASE_FOLDER}/${source}`, dest, replacement);
-        // await $`touch ${dest}`;
-        // await fs.copy(source, dest);
-        // return fs.writeFile(dest, templateStr);
+        //CREATE TRANSLATED FOLDERS
+        console.info(chalk.blue("Creating translated folders..."));
+        const folderPromises = destinations.map(({ folder }) => {
+          return $`mkdir -p ${lang}/${folder}`;
+        });
+        await Promise.all(folderPromises);
+
+        //CREATE FILES
+        console.info(chalk.blue("Generating page files..."));
+        for (let destination of destinations) {
+          const { folder, file, source, sourceFolder } = destination;
+          const dest = `${lang}/${folder}/${file}`;
+
+          // await replaceInFile(
+          //   `../${BASE_FOLDER}/${source}`,
+          //   dest,
+          //   defaultLocale, //toreplace
+          //   lang //replacement
+          // );
+
+          let replacement = [{ from: defaultLocale, to: lang }];
+
+          const lastFolder = folder.split("/").filter(Boolean).slice(-1)[0];
+
+          if (sourceFolder?.[0] && lastFolder && lastFolder != sourceFolder[0]) {
+            replacement.push({ from: sourceFolder[0], to: lastFolder });
+          }
+
+          console.info(replacement);
+          await replaceInFile(`../${BASE_FOLDER}/${source}`, dest, replacement);
+          // await $`touch ${dest}`;
+          // await fs.copy(source, dest);
+          // return fs.writeFile(dest, templateStr);
+        }
+      } catch (error) {
+        console.info(error);
       }
-    } catch (error) {
-      console.info(error);
+      console.info(chalk.blue("Done!"));
     }
-    console.info(chalk.blue("Done!"));
   }
+
   console.info(chalk.blue("The End."));
 });
