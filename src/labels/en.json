@@ -44,7 +44,8 @@
 
   "formTitle": "Send us a message",
   "events_from": "Events from",
-  "formFullName": "Name & Surname",
+  "formFullName": "Name",
+  "formLastName": "Last Name",
   "formEmail": "Email",
   "formPhoneNumber": "Phone number",
   "formMessage": "Request",

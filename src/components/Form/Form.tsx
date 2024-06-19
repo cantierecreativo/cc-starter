@@ -30,7 +30,7 @@ const ContactForm = ({ locale }: PropsContactForm) => {
     }
     setResult("sending");
     const formData = new FormData();
-    formData.append("From", "Famiglia Casadei Website");
+    formData.append("From", "---");
 
     for (const key in data) {
       formData.append(key, data[key]);
@@ -89,10 +89,26 @@ const ContactForm = ({ locale }: PropsContactForm) => {
               type="text"
               name="fullName"
               id="fullName"
+              autoComplete="given-name"
               placeholder={translate("formFullName", locale)}
               required={true}
               className={inputClass}
-              {...register("Nome & Cognome")}
+              {...register("Nome")}
+            />
+          </div>
+          <div>
+            <label htmlFor="lastName" className={labelClass}>
+              {translate("formLastName", locale)}
+            </label>
+            <input
+              type="text"
+              name="lastName"
+              id="lastName"
+              autoComplete="family-name"
+              placeholder={translate("formLastName", locale)}
+              required={true}
+              className={inputClass}
+              {...register("Cognome")}
             />
           </div>
           <div>
@@ -104,6 +120,7 @@ const ContactForm = ({ locale }: PropsContactForm) => {
               name="email"
               id="email"
               placeholder="Email"
+              autoComplete="email"
               required={true}
               className={inputClass}
               {...register("Email")}
@@ -117,6 +134,7 @@ const ContactForm = ({ locale }: PropsContactForm) => {
               type="number"
               name="phone"
               id="phone"
+              autoComplete="tel"
               placeholder={translate("formPhoneNumber", locale)}
               required={true}
               className={inputClass}

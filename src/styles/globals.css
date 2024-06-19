@@ -10,7 +10,7 @@
     }
   }
   body {
-    @apply bg-base-100 text-secondary-content;
+    @apply bg-base-100 text-base-content;
   }
 }
 

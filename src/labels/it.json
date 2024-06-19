@@ -48,7 +48,8 @@
   },
 
   "formTitle": "Scrivici",
-  "formFullName": "Nome e Cognome",
+  "formFullName": "Nome",
+  "formLastName": "Cognome",
   "formEmail": "Email",
   "formMessage": "Messaggio",
   "formPhoneNumber": "Telefono",
