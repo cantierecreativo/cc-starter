@@ -196,6 +196,15 @@ function formatRoute(route: any, defaultLocale: string) {
   if (isHome) {
     querySlug = "home";
   }
+
+  let m = model;
+  let tagRef = "";
+
+  if (model.indexOf("tag-") !== -1) {
+    m = "tag";
+    tagRef = model.split("-")[1];
+  }
+
   querySlug = querySlug ? camelize(querySlug) : querySlug;
   if (!model || model === "none") {
     querySlug = "";
@@ -205,7 +214,8 @@ function formatRoute(route: any, defaultLocale: string) {
   const indexModel = route?.reference?.indexModel || "";
   const isVirtual = !model || model === "none" ? true : false;
   const info = {
-    model,
+    model: m,
+    tagRef,
     querySlug,
     indexModel,
     isHome,
@@ -231,9 +241,7 @@ function getPaths(routes: any, defaultLocale: string) {
     for (let route of sibiling) {
       let names = getSlugs(route, defaultLocale);
 
-      let defautSlug = names?.find(
-        (i: any) => i.locale === defaultLocale
-      )?.value;
+      let defautSlug = names?.find((i: any) => i.locale === defaultLocale)?.value;
 
       if (defautSlug === "home") {
         defautSlug = "";

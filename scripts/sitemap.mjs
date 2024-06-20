@@ -78,14 +78,16 @@ async function getRecords(models) {
       slugField: { exists: true },
     },
   })) {
-    const { id, title, slug, item_type } = record;
+    // console.log("raw record", record.id);
+    const { id, title, slug, item_type, tags, tag } = record || {};
     const apiKey = itemTypesMap[item_type.id];
-    let item = { id, title, slug, apiKey };
+    let t = tags;
+    if (tag) t = [tag];
+    let item = { id, title, slug, apiKey, tags: t };
     if (slug) {
       records.push(item);
     }
   }
-
   return records;
 }
 
@@ -103,9 +105,10 @@ function getPrefix(path, slug, locale) {
   return prefix;
 }
 
-function resolvePath(record, locale) {
+function resolvePath(record, locale, allRecords) {
   // console.log("record", record);
-  const { slug, apiKey } = record;
+  console.log("models", models);
+  const { slug, apiKey, tagRef } = record;
   const isDefautlLocale = locale === defaultLocale;
   const localePrefix = isDefautlLocale ? "" : `/${locale}`;
   let sl = slug;
@@ -118,10 +121,14 @@ function resolvePath(record, locale) {
     ({ routeInfo }) => routeInfo.model === apiKey && routeInfo.querySlug == sl
   );
 
-  if (!info) {
+  if (!info && apiKey == "tag") {
+    info = models.find(
+      ({ routeInfo }) => routeInfo.model === apiKey && routeInfo.tagRef == tagRef
+    );
+  } else {
     info = models.find(({ routeInfo }) => routeInfo.model === apiKey);
   }
-  // console.log("info", info, sl);
+
   if (sl == "home") sl = "";
 
   if (info?.path) {
@@ -130,31 +137,11 @@ function resolvePath(record, locale) {
   }
 }
 
-// function getSlug(record, locale) {
-//   const { slug, apiKey } = record;
-//   let url;
-//   if (typeof slug == "string") {
-//     url = resolvePath({ slug, apiKey }, locale);
-//   } else {
-//     if (!slug[locale]) return null;
-//     url = resolvePath({ slug: slug[locale], apiKey }, locale);
-//   }
-
-//   // const alts = info.locales
-//   //   .filter((l) => l !== locale)
-//   //   .reduce((acc, l) => {
-//   //     if (!l || !slug[l]) return acc;
-//   //     const path = resolvePath(record, l);
-//   //     return [...acc, { path, locale: l }];
-//   //   }, []);
-//   return url;
-// }
-
 function getSlugs(records) {
   return records
     .map((r) => {
       return locales.reduce((acc, l) => {
-        const result = resolvePath(r, l);
+        const result = resolvePath(r, l, records);
         return result ? [...acc, result] : acc;
       }, []);
     })
@@ -170,17 +157,45 @@ function getRoute(path) {
     <priority>1.0</priority>
   </url>`;
 }
+
+function extractTags(records) {
+  const recordTags = records.filter((r) => r.apiKey == "tag");
+  const newRecords = records.filter((r) => r.apiKey != "tag");
+
+  for (const r of recordTags) {
+    let references = new Set();
+    records.forEach((elem) => {
+      if (r.id && elem.tags && elem.tags.includes(r.id)) {
+        references.add(elem.apiKey);
+      }
+    });
+    references.forEach((ref) =>
+      newRecords.push({
+        ...r,
+        tagRef: ref,
+      })
+    );
+  }
+  return newRecords;
+}
+
 async function generateSitemap() {
   const start = Date.now();
 
   // qui ci vanno i nomi delle api key relativi ai modelli delle pagine tipo "about_page,article";
-  const pageModels = models
-    .map((r) => r.routeInfo.model)
-    .filter((m) => m != "none")
-    .join(",");
+  const pageModels = [
+    ...models.reduce((acc, i) => {
+      const { model } = i.routeInfo || {};
+      if (model && model != "none") {
+        acc.add(model);
+      }
+      return acc;
+    }, new Set()),
+  ].join(",");
+
   const records = await getRecords(pageModels);
-  // console.log("got records", records);
-  const slugs = getSlugs(records);
+  const allRecords = extractTags(records);
+  const slugs = getSlugs(allRecords);
   const sitemap = `
   <\?xml version="1.0" encoding="UTF-8"\?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">

@@ -3,325 +3,133 @@
   
   <url>
     <loc>http://localhost:3000/</loc>
-    <lastmod>2024-03-26T07:45:09.015Z</lastmod>
+    <lastmod>2024-06-20T15:51:58.987Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/articoli/about-component-based-architecture</loc>
-    <lastmod>2024-03-26T07:45:09.016Z</lastmod>
+    <loc>http://localhost:3000/articoli</loc>
+    <lastmod>2024-06-20T15:51:58.996Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/articoli/boosting-website-performance-service-workers</loc>
-    <lastmod>2024-03-26T07:45:09.016Z</lastmod>
+    <loc>http://localhost:3000/articoli/articolo-che-parla-di-cani-e-gatti</loc>
+    <lastmod>2024-06-20T15:51:58.996Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/articoli/code-splitting-in-frontend-development-boosting-performance</loc>
-    <lastmod>2024-03-26T07:45:09.016Z</lastmod>
+    <loc>http://localhost:3000/articoli/blog-articolo</loc>
+    <lastmod>2024-06-20T15:51:58.996Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/articoli/designing-accessible-frontend-experiences-inclusivity-for-all-users</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
+    <loc>http://localhost:3000/articoli/blog-articolo-duplicate</loc>
+    <lastmod>2024-06-20T15:51:58.996Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/articoli/draft</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
+    <loc>http://localhost:3000/articoli/c/cani-e-gatti</loc>
+    <lastmod>2024-06-20T15:51:58.996Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/articoli/enhancing-user-engagement-leveraging-microinteractions</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/articoli/maximizing-user-retention-effective-ux-design</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/articoli/nextgen-image-formats-webp-and-avif</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/articoli/performance-optimization-faster-and-smoother-experience</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/articoli/responsive-web-design-adaptive-user-experiences</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/articoli/riduzione-del-blocco-del-rendering-prestazioni-frontend</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/articoli/single-page-applications-what-you-need-to-know</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/articoli/the-evolution-of-frontend-frameworks-from-jquery-to-modern-libraries</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/articoli/the-future-of-frontend-development-embracing-emerging-technologies</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/articoli/the-importance-of-crossbrowser-compatibility-ensuring-usability-for-everyone</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/articoli/the-power-of-progressive-web-apps-enhancing-frontend-experiences</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/augenerated-page</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/changelog</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/chi-siamo</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/documentation</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
+    <loc>http://localhost:3000/articoli/c/web</loc>
+    <lastmod>2024-06-20T15:51:58.996Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://localhost:3000/en/</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
+    <lastmod>2024-06-20T15:51:58.996Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/en/augenerated-page</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
+    <loc>http://localhost:3000/en/eventi/c/web</loc>
+    <lastmod>2024-06-20T15:51:58.996Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/en/changelog</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
+    <loc>http://localhost:3000/en/page-con-hero-gallery</loc>
+    <lastmod>2024-06-20T15:51:58.996Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/en/chi-siamo</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/en/documentation</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/en/home-variation-four</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/en/home-variation-one</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/en/home-variation-three</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/en/home-variation-two</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
+    <loc>http://localhost:3000/en/pagina-con-hero-alternativa</loc>
+    <lastmod>2024-06-20T15:51:58.996Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://localhost:3000/en/posts</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
+    <lastmod>2024-06-20T15:51:58.996Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/en/posts/about-component-based-architecture</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
+    <loc>http://localhost:3000/en/posts/articolo-che-parla-di-cani-e-gatti</loc>
+    <lastmod>2024-06-20T15:51:58.996Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/en/posts/boosting-website-performance-service-workers</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
+    <loc>http://localhost:3000/en/posts/blog-article</loc>
+    <lastmod>2024-06-20T15:51:58.996Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/en/posts/code-splitting-in-frontend-development-boosting-performance</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
+    <loc>http://localhost:3000/en/posts/blog-articolo-duplicate</loc>
+    <lastmod>2024-06-20T15:51:58.996Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/en/posts/designing-accessible-frontend-experiences-inclusivity-for-all-users</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
+    <loc>http://localhost:3000/en/posts/c/dogs-and-cats</loc>
+    <lastmod>2024-06-20T15:51:58.996Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/en/posts/draft</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
+    <loc>http://localhost:3000/en/posts/c/web</loc>
+    <lastmod>2024-06-20T15:51:58.996Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/en/posts/enhancing-user-engagement-leveraging-microinteractions</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
+    <loc>http://localhost:3000/eventi</loc>
+    <lastmod>2024-06-20T15:51:58.996Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/en/posts/maximizing-user-retention-effective-ux-design</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
+    <loc>http://localhost:3000/eventi/c/web</loc>
+    <lastmod>2024-06-20T15:51:58.996Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/en/posts/nextgen-image-formats-webp-and-avif</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
+    <loc>http://localhost:3000/eventi/evento-di-prova</loc>
+    <lastmod>2024-06-20T15:51:58.996Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/en/posts/performance-optimization-faster-and-smoother-experience</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
+    <loc>http://localhost:3000/pagina-con-hero-alternativa</loc>
+    <lastmod>2024-06-20T15:51:58.996Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/en/posts/responsive-web-design-adaptive-user-experiences</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/en/posts/riduzione-del-blocco-del-rendering-prestazioni-frontend</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/en/posts/single-page-applications-what-you-need-to-know</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/en/posts/the-evolution-of-frontend-frameworks-from-jquery-to-modern-libraries</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/en/posts/the-future-of-frontend-development-embracing-emerging-technologies</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/en/posts/the-importance-of-crossbrowser-compatibility-ensuring-usability-for-everyone</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/en/posts/the-power-of-progressive-web-apps-enhancing-frontend-experiences</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/en/pricing</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/home-variation-four</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/home-variation-one</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/home-variation-three</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/home-variation-two</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/posts</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/pricing</loc>
-    <lastmod>2024-03-26T07:45:09.017Z</lastmod>
+    <loc>http://localhost:3000/pagina-con-hero-gallery</loc>
+    <lastmod>2024-06-20T15:51:58.996Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>

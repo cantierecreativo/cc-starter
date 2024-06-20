@@ -69,11 +69,9 @@ for (let f of folders) {
       case "post":
         source = "generic_post";
         break;
-      case "tag-events":
-        source = "generic_tag_events";
-        break;
-      case "tag-posts":
-        source = "generic_tag_posts";
+      case "tag":
+        let tagRef = r.tagRef ? `_${r.tagRef}` : "";
+        source = `generic_tag${tagRef}`;
         break;
       case "product":
       default:

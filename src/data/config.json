@@ -44,6 +44,7 @@
       "path": "/",
       "routeInfo": {
         "model": "page",
+        "tagRef": "",
         "querySlug": "home",
         "indexModel": "",
         "isHome": true,
@@ -59,7 +60,8 @@
     {
       "path": "/articoli/c/[slug]",
       "routeInfo": {
-        "model": "tag-posts",
+        "model": "tag",
+        "tagRef": "post",
         "querySlug": "slug",
         "indexModel": "",
         "isHome": false,
@@ -73,6 +75,7 @@
       "path": "/articoli/c",
       "routeInfo": {
         "model": "none",
+        "tagRef": "",
         "querySlug": "",
         "indexModel": "",
         "isHome": false,
@@ -89,6 +92,7 @@
       "path": "/articoli/[slug]",
       "routeInfo": {
         "model": "post",
+        "tagRef": "",
         "querySlug": "slug",
         "indexModel": "",
         "isHome": false,
@@ -102,6 +106,7 @@
       "path": "/articoli",
       "routeInfo": {
         "model": "page",
+        "tagRef": "",
         "querySlug": "articoli",
         "indexModel": "post",
         "isHome": false,
@@ -118,6 +123,7 @@
       "path": "/drop/pagina-con-hero-gallery",
       "routeInfo": {
         "model": "page",
+        "tagRef": "",
         "querySlug": "paginaConHeroGallery",
         "indexModel": "",
         "isHome": false,
@@ -134,6 +140,7 @@
       "path": "/drop",
       "routeInfo": {
         "model": "none",
+        "tagRef": "",
         "querySlug": "",
         "indexModel": "",
         "isHome": false,
@@ -150,6 +157,7 @@
       "path": "/[slug]",
       "routeInfo": {
         "model": "page",
+        "tagRef": "",
         "querySlug": "slug",
         "indexModel": "",
         "isHome": false,
@@ -162,7 +170,8 @@
     {
       "path": "/eventi/c/[slug]",
       "routeInfo": {
-        "model": "tag-events",
+        "model": "tag",
+        "tagRef": "event",
         "querySlug": "slug",
         "indexModel": "",
         "isHome": false,
@@ -176,6 +185,7 @@
       "path": "/eventi/c",
       "routeInfo": {
         "model": "none",
+        "tagRef": "",
         "querySlug": "",
         "indexModel": "",
         "isHome": false,
@@ -192,6 +202,7 @@
       "path": "/eventi/[slug]",
       "routeInfo": {
         "model": "event",
+        "tagRef": "",
         "querySlug": "slug",
         "indexModel": "",
         "isHome": false,
@@ -205,6 +216,7 @@
       "path": "/eventi",
       "routeInfo": {
         "model": "page",
+        "tagRef": "",
         "querySlug": "eventi",
         "indexModel": "event",
         "isHome": false,

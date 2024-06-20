@@ -17,11 +17,7 @@ type recurseQueryProps = {
   done: boolean;
 };
 
-export async function getCollections(
-  q: string,
-  values: any,
-  propertyName: string
-) {
+export async function getCollections(q: string, values: any, propertyName: string) {
   return recurseQuery({
     q,
     values,
@@ -75,11 +71,7 @@ export async function recurseQuery({
   }
 }
 
-export const fetchData = async (
-  q: string,
-  v: any = null,
-  preview: boolean = false
-) => {
+export const fetchData = async (q: string, v: any = null, preview: boolean = false) => {
   // console.info("API_KEY", API_KEY);
   console.info("FETCHING DATO", DATO_ENV);
   if (!API_KEY) return null;
