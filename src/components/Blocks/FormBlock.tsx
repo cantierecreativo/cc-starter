@@ -25,13 +25,13 @@ const FormBlock = ({ data, locale }: PropsFormBlock) => {
   const { titleForm, textForm } = data;
   return (
     <>
-      <motion.div
-        initial="offscreen"
-        whileInView="onscreen"
-        viewport={{ once: true, amount: 0.1 }}
-        variants={variants}
-      >
-        <div className="container standard-vertical-m">
+      <div className="container standard-vertical-m">
+        <motion.div
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={variants}
+        >
           <div className="grid gap-6">
             {titleForm && <div className="title">{titleForm}</div>}
             {textForm && (
@@ -42,8 +42,8 @@ const FormBlock = ({ data, locale }: PropsFormBlock) => {
             )}
             <Form locale={locale} />
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </>
   );
 };

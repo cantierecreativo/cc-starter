@@ -1,4 +1,4 @@
-import StructuredContent from "./StructuredContent";
+import StructuredContent from "../Layout/StructuredContent";
 import { SRCImage } from "react-datocms";
 import ButtonBlock from "./ButtonBlock";
 import DynamicLink from "../Links/DynamicLink";
@@ -148,7 +148,7 @@ export default function BanneCtaBlock({ data, locale }) {
             </div>
           ) : (
             <div
-              className={`group duration-700 container mx-auto py-10 xl:py-48 relative z-0 text-center`}
+              className={`group duration-700 container py-10 xl:py-48 relative z-0 text-center`}
             >
               <RenderContentBanner
                 title={title}

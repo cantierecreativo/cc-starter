@@ -6,7 +6,7 @@ fragment imageBlockRecord on ImageBlockRecord {
   imageAsset {
     responsiveImage(
       sizes: "(min-width:768px) 80vw, 100vw, 1200px"
-      imgixParams: { auto: [format, compress], fit: crop, ar: "8:5" }
+      imgixParams: { auto: [format, compress], fit: max }
     ) {
       ...rImage
     }

@@ -29,7 +29,7 @@ const RightImageHero = ({
       className="w-full relative object-cover object-bottom mt-14 md:mt-24 lg:mt-28"
     >
       <div className="relative bg-secondary pt-[120px] md:pt-[150px] lg:pt-[180px]">
-        <div className="container mx-auto px-4">
+        <div className="container px-4">
           <div className="flex flex-wrap items-center">
             <div className="w-full lg:w-5/12">
               <div className="mb-14 lg:mb-0">

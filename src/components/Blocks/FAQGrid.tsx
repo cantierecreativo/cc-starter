@@ -12,7 +12,7 @@ type Props = {
 
 const FAQGrid = ({ title, subtitle, questions }: Props) => {
   return (
-    <div className="container mx-auto px-6 md:w-10/12">
+    <div className="container px-6 md:w-10/12">
       <h2 className="text-md uppercase max-w-prose mx-auto font-serif mb-4 md:text-lg md:mb-8 lg:text-2xl xl:mb-12">
         {title}
       </h2>

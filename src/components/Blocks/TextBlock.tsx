@@ -1,6 +1,6 @@
 "use client";
 import { motion, Variants } from "framer-motion";
-import StructuredContent from "./StructuredContent";
+import StructuredContent from "../Layout/StructuredContent";
 import ButtonBlock from "./ButtonBlock";
 import DynamicLink from "../Links/DynamicLink";
 
@@ -21,17 +21,17 @@ export default function TextBlock({ data, locale }) {
     },
   };
   return (
-    <motion.div
-      initial="offscreen"
-      whileInView="onscreen"
-      viewport={{ once: true, amount: 0.1 }}
-      variants={variants}
-    >
-      <div className="flex justify-center">
-        <div
-          className={`container ${
-            displayOptions === "right" ? "justify-end" : ""
-          } standard-vertical-m inline-block w-auto text-${displayOptions}`}
+    <div className="flex justify-center">
+      <div
+        className={`container ${
+          displayOptions === "right" ? "justify-end" : ""
+        } standard-vertical-m inline-block w-auto text-${displayOptions}`}
+      >
+        <motion.div
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={variants}
         >
           {label && (
             <div
@@ -70,8 +70,8 @@ export default function TextBlock({ data, locale }) {
               <ButtonBlock label={link.label} />
             </DynamicLink>
           )}
-        </div>
+        </motion.div>
       </div>
-    </motion.div>
+    </div>
   );
 }

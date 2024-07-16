@@ -1,7 +1,7 @@
 "use client";
 import { EventRecord, PostRecord, SiteLocale } from "@/graphql/generated";
 import CardEventBlock from "../Event/CardEventBlock";
-import Pagination from "../Blocks/Pagination";
+import Pagination from "../Layout/Pagination";
 import { useState } from "react";
 
 type Props = {

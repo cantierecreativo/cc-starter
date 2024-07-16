@@ -79,58 +79,63 @@ const FAQAccordion = ({ title, subtitle, questions }: Props) => {
   };
 
   return (
-    <motion.div
-      initial="offscreen"
-      whileInView="onscreen"
-      viewport={{ once: true, amount: 0.1 }}
-      variants={variants}
-    >
-      <div className="container mx-auto standard-vertical-m grid gap-6">
-        {title && <h2 className="title">{title}</h2>}
-        {subtitle && (
-          <h3 className="text" dangerouslySetInnerHTML={{ __html: subtitle }} />
-        )}
-        <div className="mt-12 border-t border-primary-content/20">
-          {questions.map((question, n: number) => {
-            const isOpen = openQuestions.includes(question.id);
-            return (
-              <motion.div
-                layout="position"
-                key={question.id}
-                className={
-                  "py-8 hover:cursor-pointer border-b border-primary-content/20"
-                }
-                onClick={() => {
-                  toggleQuestion(question.id);
-                }}
-              >
-                <button className="flex w-full items-center justify-between">
-                  <div className="uppercase font-serif md:text-md">
-                    {question.question}
-                  </div>
-                  {isOpen ? closeIcon : openIcon}
-                </button>
-
+    <div className="container standard-vertical-m">
+      <motion.div
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={variants}
+      >
+        <div className="grid gap-6">
+          {title && <h2 className="title">{title}</h2>}
+          {subtitle && (
+            <h3
+              className="text"
+              dangerouslySetInnerHTML={{ __html: subtitle }}
+            />
+          )}
+          <div className="mt-12 border-t border-primary-content/20">
+            {questions.map((question, n: number) => {
+              const isOpen = openQuestions.includes(question.id);
+              return (
                 <motion.div
-                  animate={isOpen ? "open" : "closed"}
-                  variants={{
-                    open: { opacity: 1 },
-                    closed: { opacity: 0 },
+                  layout="position"
+                  key={question.id}
+                  className={
+                    "py-8 hover:cursor-pointer border-b border-primary-content/20"
+                  }
+                  onClick={() => {
+                    toggleQuestion(question.id);
                   }}
-                  transition={{ duration: 0.5 }}
-                  className={"mt-6 text-sm" + (isOpen ? "" : " hidden")}
                 >
-                  <StructuredText
-                    data={question.answer.value as any}
-                    renderNode={Highlighter}
-                  />
+                  <button className="flex w-full items-center justify-between">
+                    <div className="uppercase font-serif md:text-md">
+                      {question.question}
+                    </div>
+                    {isOpen ? closeIcon : openIcon}
+                  </button>
+
+                  <motion.div
+                    animate={isOpen ? "open" : "closed"}
+                    variants={{
+                      open: { opacity: 1 },
+                      closed: { opacity: 0 },
+                    }}
+                    transition={{ duration: 0.5 }}
+                    className={"mt-6 text-sm" + (isOpen ? "" : " hidden")}
+                  >
+                    <StructuredText
+                      data={question.answer.value as any}
+                      renderNode={Highlighter}
+                    />
+                  </motion.div>
                 </motion.div>
-              </motion.div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 };
 

@@ -14,7 +14,7 @@ type PropsContactForm = {
 };
 
 const ContactForm = ({ locale }: PropsContactForm) => {
-  const zapierWebhook = process.env.NEXT_PUBLIC_ZAPIER;
+  const formWebhook = process.env.NEXT_PUBLIC_FORM;
   const labelClass = "text-sm block mb-1.5 font-bold";
   const inputClass =
     "w-full px-2 md:px-4 placeholder:text-gray-dark text-black bg-white placeholder:text-sm py-3 border border-primary-content rounded-md";
@@ -36,7 +36,7 @@ const ContactForm = ({ locale }: PropsContactForm) => {
       formData.append(key, data[key]);
     }
 
-    const res = await fetch(zapierWebhook, {
+    const res = await fetch(formWebhook, {
       method: "POST",
       body: formData,
     }).then((res) => res.json());

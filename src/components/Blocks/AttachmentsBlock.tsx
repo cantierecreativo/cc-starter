@@ -35,13 +35,13 @@ const AttachmentsBlock = ({ data, style, locale }: PropsAttachmentsBlock) => {
     },
   };
   return (
-    <motion.div
-      initial="offscreen"
-      whileInView="onscreen"
-      viewport={{ once: true, amount: 0.1 }}
-      variants={variants}
-    >
-      <div className="container standard-vertical-m">
+    <div className="container standard-vertical-m">
+      <motion.div
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={variants}
+      >
         <div
           className={`py-16 xl:py-24 grid items-start gap-8 px-8 xl:px-20 ${bg}`}
         >
@@ -77,8 +77,8 @@ const AttachmentsBlock = ({ data, style, locale }: PropsAttachmentsBlock) => {
             })}
           </div>
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 };
 

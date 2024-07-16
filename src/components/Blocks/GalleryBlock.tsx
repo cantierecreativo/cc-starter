@@ -44,34 +44,34 @@ export default function GalleryBlock({
   locale: string;
 }) {
   return (
-    <motion.div
-      initial="offscreen"
-      whileInView="onscreen"
-      viewport={{ once: true, amount: 0.1 }}
-      variants={variants}
-    >
-      {data.typeGallery === "carousel" ? (
-        <Swiper
-          keyboard={true}
-          modules={[A11y, Autoplay]}
-          slidesPerView={"auto"}
-          spaceBetween={30}
-          autoplay={true}
-          className="slider-auto-width"
-        >
-          {data.galleryImages &&
-            Object.values(data.galleryImages).map((img: any) => (
-              <SwiperSlide key={img.id}>
-                <Image
-                  src={img.imageAssetCarousel.responsiveImage}
-                  alt={img.imageAssetCarousel.responsiveImage.alt}
-                  title={img.imageAssetCarousel.responsiveImage.title}
-                />
-              </SwiperSlide>
-            ))}
-        </Swiper>
-      ) : (
-        <div className="container lg:w-8/12 standard-vertical-m relative gallery">
+    <div className="container lg:w-8/12 standard-vertical-m relative gallery">
+      <motion.div
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={variants}
+      >
+        {data.typeGallery === "carousel" ? (
+          <Swiper
+            keyboard={true}
+            modules={[A11y, Autoplay]}
+            slidesPerView={"auto"}
+            spaceBetween={30}
+            autoplay={true}
+            className="slider-auto-width"
+          >
+            {data.galleryImages &&
+              Object.values(data.galleryImages).map((img: any) => (
+                <SwiperSlide key={img.id}>
+                  <Image
+                    src={img.imageAssetCarousel.responsiveImage}
+                    alt={img.imageAssetCarousel.responsiveImage.alt}
+                    title={img.imageAssetCarousel.responsiveImage.title}
+                  />
+                </SwiperSlide>
+              ))}
+          </Swiper>
+        ) : (
           <Swiper
             speed={1000}
             spaceBetween={30}
@@ -104,8 +104,8 @@ export default function GalleryBlock({
               );
             })}
           </Swiper>
-        </div>
-      )}
-    </motion.div>
+        )}
+      </motion.div>
+    </div>
   );
 }

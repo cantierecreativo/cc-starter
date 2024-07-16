@@ -46,15 +46,15 @@ const ElementListBlock = ({
     : [elements];
 
   return (
-    <motion.div
-      initial="offscreen"
-      whileInView="onscreen"
-      viewport={{ once: true, amount: 0.1 }}
-      variants={variants}
+    <div
+      id="targetElement"
+      className="grid gap-6 standard-vertical-m container md:grid-cols-2 lg:grid-cols-3"
     >
-      <div
-        id="targetElement"
-        className="grid gap-6 standard-vertical-m container md:grid-cols-2 lg:grid-cols-3"
+      <motion.div
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={variants}
       >
         <div className="grid gap-6 lg:mb-20 mb-12 lg:grid-cols-12 md:col-span-2 lg:col-span-3">
           {itemsPrefix && (
@@ -103,8 +103,8 @@ const ElementListBlock = ({
             </motion.div>
           )
         )}
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 };
 

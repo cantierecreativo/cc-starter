@@ -22,14 +22,14 @@ const ContactTextBlock = ({ data, locale }: PropsContactTextBlock) => {
     },
   };
   return (
-    <motion.div
-      initial="offscreen"
-      whileInView="onscreen"
-      viewport={{ once: true, amount: 0.5 }}
-      variants={variants}
+    <div
+      className={`container px-6 xl:px-0 md:grid md:grid-cols-12 mx-auto md:py-20 xl:py-36 py-12`}
     >
-      <div
-        className={`container px-6 xl:px-0 md:grid md:grid-cols-12 mx-auto md:py-20 xl:py-36 py-12`}
+      <motion.div
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true, amount: 0.5 }}
+        variants={variants}
       >
         {prefix && (
           <div className="md:col-span-10 md:col-start-2 xl:col-span-3 xl:col-start-2">
@@ -65,8 +65,8 @@ const ContactTextBlock = ({ data, locale }: PropsContactTextBlock) => {
             ))}
           </div>
         )}
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 };
 

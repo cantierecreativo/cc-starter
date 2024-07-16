@@ -36,7 +36,7 @@ const BackgroundImageHero = ({
         priority={true}
       />
       <div className="relative z-0 flex items-center h-full mt-14 md:mt-24 lg:mt-24">
-        <div className="container mx-auto">
+        <div className="container">
           <div className="flex flex-wrap justify-center">
             <div className="w-full px-4">
               <div className="mx-auto lg:mx-0 max-w-[570px] lg:p-12 lg:py-16 text-center md:text-left font-semibold bg-primary/80 p-8 rounded-3xl text-base-100 xl:pb-20">

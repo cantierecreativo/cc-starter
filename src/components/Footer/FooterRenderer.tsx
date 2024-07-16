@@ -42,7 +42,7 @@ const Footer = ({ data, lng }: Props) => {
     <>
       <footer>
         <div className="bg-base-300">
-          <div className="container mx-auto px-6 py-12">
+          <div className="container px-6 py-12">
             <div className="flex border-y border-secondary flex-wrap gap-6 py-8 gap-y-8 md:justify-center md:gap-x-12 md:px-12 xl:py-12">
               <MenuFooter
                 data={footerMenu as any}

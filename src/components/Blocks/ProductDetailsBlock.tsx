@@ -44,20 +44,19 @@ const ProductDetailsBlock = ({ data, locale }: PropsProductDetailsBlock) => {
     description,
     productDetailImage,
     imageDescription,
-    label,
     link,
     logo,
     values,
   } = data;
   return (
     <>
-      <motion.div
-        initial="offscreen"
-        whileInView="onscreen"
-        viewport={{ once: true, amount: 0.1 }}
-        variants={variants}
-      >
-        <div className="container standard-vertical-m">
+      <div className="container standard-vertical-m">
+        <motion.div
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={variants}
+        >
           <div className="bg-base-100 px-4 py-8 pb-12 md:px-12 md:py-16 text-base-content">
             <h2 className="title">{title}</h2>
             <div className="md:grid md:grid-cols-2 xl:grid-cols-3 gap-20 xl:mt-8 items-start">
@@ -126,8 +125,8 @@ const ProductDetailsBlock = ({ data, locale }: PropsProductDetailsBlock) => {
               </div>
             </div>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </>
   );
 };

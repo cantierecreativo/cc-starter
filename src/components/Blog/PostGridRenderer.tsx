@@ -5,7 +5,7 @@ import {
   SiteLocale,
 } from "@/graphql/generated";
 import CardBlogBlock from "../Blog/CardBlogBlock";
-import Pagination from "../Blocks/Pagination";
+import Pagination from "../Layout/Pagination";
 import { useState } from "react";
 
 type Props = {

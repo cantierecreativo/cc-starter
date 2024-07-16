@@ -240,7 +240,7 @@ const Header = ({ lng, data }: Props) => {
                           sticky
                             ? "lg:text-primary-content"
                             : "lg:text-base-content"
-                        } block text-primary-content items-center xl:container mx-auto lg:max-w-auto pt-28 lg:pt-0 pb-4 lg:pb-0 lg:flex lg:gap-x-8`}
+                        } block text-primary-content items-center xl:container lg:max-w-auto pt-28 lg:pt-0 pb-4 lg:pb-0 lg:flex lg:gap-x-8`}
                       >
                         {menuData.map((menuItem, index) => {
                           const isMega =

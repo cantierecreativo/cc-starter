@@ -30,13 +30,13 @@ const FeaturesList = ({
   featuresSubheader,
 }: Props) => {
   return (
-    <motion.div
-      initial="offscreen"
-      whileInView="onscreen"
-      viewport={{ once: true, amount: 0.1 }}
-      variants={variants}
-    >
-      <div className="container standard-vertical-m">
+    <div className="container standard-vertical-m">
+      <motion.div
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={variants}
+      >
         <SectionTitle
           title={featuresHeader}
           paragraph={featuresSubheader}
@@ -48,8 +48,8 @@ const FeaturesList = ({
             <SingleFeature key={feature.id} feature={feature} />
           ))}
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 };
 
