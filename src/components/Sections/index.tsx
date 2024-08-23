@@ -9,12 +9,14 @@ import {
   ElementsListRecord,
   EventRecord,
   FaqSectionRecord,
+  FeaturedPagesSectionRecord,
   FeatureListSectionRecord,
   GallerySectionRecord,
   ImageBlockRecord,
   MultipleCardRecord,
   PostRecord,
   SiteLocale,
+  TeamBlockRecord,
   TextBlockRecord,
   VideoSectionRecord,
 } from "@/graphql/generated";
@@ -29,6 +31,8 @@ import FormBlock from "@/components/Blocks/FormBlock";
 import ContactTextBlock from "@/components/Blocks/ContactTextBlock";
 import ElementListBlock from "@/components/Blocks/ElementListBlock";
 import AttachmentsBlock from "@/components/Blocks/AttachmentsBlock";
+import FeaturedPages from "../Blocks/FeaturedPages";
+import TeamBlock from "../Blocks/TeamBlock";
 
 type Props = {
   section: any;
@@ -64,6 +68,17 @@ export default function Sections({
             key={attachmentsRecord.id}
             style={section.style}
             data={attachmentsRecord}
+            locale={locale}
+          />
+        );
+      }
+      case "featured_pages_section": {
+        const featuredPages = b as FeaturedPagesSectionRecord;
+        return (
+          <FeaturedPages
+            title={featuredPages.featuredPagesHeader}
+            subtitle={featuredPages.featuredPagesSubheader}
+            pages={featuredPages.featuredPages}
             locale={locale}
           />
         );
@@ -145,6 +160,16 @@ export default function Sections({
             internalVideo={videoSectionRecord.internalVideo}
           />
         );
+
+      case "team_block":
+        const teamBlock = b as TeamBlockRecord;
+        return (
+          <TeamBlock
+            content={teamBlock}
+            locale={locale}
+            colors={section.style}
+          />
+        );
       case "brand_section":
         const brandSectionRecord = b as BrandSectionRecord;
         switch (brandSectionRecord.displayOptions) {
@@ -173,6 +198,12 @@ export default function Sections({
             subtitle={faqSectionRecord.subtitle}
             questions={faqSectionRecord.questions}
           />
+        );
+      default:
+        return (
+          <div className="p-8 bg-red-500 text-white">
+            <div className="title">{`Manca questo blocco ${b._modelApiKey}`}</div>
+          </div>
         );
     }
   });

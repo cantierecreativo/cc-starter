@@ -48,61 +48,66 @@ const ElementListBlock = ({
   return (
     <div
       id="targetElement"
-      className="grid gap-6 standard-vertical-m container md:grid-cols-2 lg:grid-cols-3"
+      className="grid gap-6 standard-vertical-m container"
     >
+      <div className="grid gap-6">
+        {itemsPrefix && (
+          <div className="prefix lg:col-span-12">{itemsPrefix}</div>
+        )}
+        <h2
+          className="title lg:col-span-12"
+          dangerouslySetInnerHTML={{ __html: itemsTitle }}
+        />
+        {itemsButton && (
+          <InternalLink
+            record={itemsButton?.page}
+            locale={locale}
+            className={"lg:col-span-12"}
+          >
+            <ButtonBlock label={itemsButton?.label} color="dark" />
+          </InternalLink>
+        )}
+      </div>
       <motion.div
         initial="offscreen"
         whileInView="onscreen"
         viewport={{ once: true, amount: 0.1 }}
         variants={variants}
       >
-        <div className="grid gap-6 lg:mb-20 mb-12 lg:grid-cols-12 md:col-span-2 lg:col-span-3">
-          {itemsPrefix && (
-            <div className="prefix lg:col-span-12">{itemsPrefix}</div>
-          )}
-          <h2
-            className="title lg:col-span-12"
-            dangerouslySetInnerHTML={{ __html: itemsTitle }}
-          />
-          {itemsButton && (
-            <InternalLink
-              record={itemsButton?.page}
-              locale={locale}
-              className={"lg:col-span-12"}
-            >
-              <ButtonBlock label={itemsButton?.label} color="dark" />
-            </InternalLink>
+        <div className="md:grid-cols-2 lg:grid-cols-3 grid gap-4">
+          {results.flat().map((item, i: number) =>
+            item._modelApiKey === "event" ? (
+              <motion.div
+                initial="offscreen"
+                whileInView="onscreen"
+                viewport={{ once: true, amount: 0.1 * i }}
+                variants={variants}
+                key={item.id}
+              >
+                <CardEventBlock
+                  key={item.id}
+                  data={item as any}
+                  locale={locale}
+                  i={i}
+                />
+              </motion.div>
+            ) : (
+              <motion.div
+                initial="offscreen"
+                whileInView="onscreen"
+                viewport={{ once: true, amount: 0.1 * i }}
+                variants={variants}
+                key={item.id}
+              >
+                <CardBlogBlock
+                  data={item as PostRecord}
+                  locale={locale}
+                  i={i}
+                />
+              </motion.div>
+            )
           )}
         </div>
-
-        {results.flat().map((item, i: number) =>
-          item._modelApiKey === "event" ? (
-            <motion.div
-              initial="offscreen"
-              whileInView="onscreen"
-              viewport={{ once: true, amount: 0.1 * i }}
-              variants={variants}
-              key={item.id}
-            >
-              <CardEventBlock
-                key={item.id}
-                data={item as any}
-                locale={locale}
-                i={i}
-              />
-            </motion.div>
-          ) : (
-            <motion.div
-              initial="offscreen"
-              whileInView="onscreen"
-              viewport={{ once: true, amount: 0.1 * i }}
-              variants={variants}
-              key={item.id}
-            >
-              <CardBlogBlock data={item as PostRecord} locale={locale} i={i} />
-            </motion.div>
-          )
-        )}
       </motion.div>
     </div>
   );

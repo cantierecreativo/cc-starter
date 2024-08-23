@@ -94,9 +94,9 @@ const Header = ({ lng, data }: Props) => {
   });
 
   return (
-    <header className="header left-0 flex w-full items-center fixed top-0 z-10 after:absolute after:top-0 after:inset-x-0 border-b border-px border-base-300/20">
+    <header className="header left-0 flex w-full items-center fixed top-0 z-10 isolate after:absolute after:top-0 after:inset-x-0 border-b border-px border-base-300/20">
       <div
-        className={`relative z-[1] w-full md:py-4 ${
+        className={`w-full md:py-4 ${
           sticky
             ? "bg-primary text-primary-content border-primary-content/20"
             : "motion-safe:duration-300"
