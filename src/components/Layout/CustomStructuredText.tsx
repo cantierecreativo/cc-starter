@@ -100,23 +100,6 @@ export default function CustomStructuredText({ locale, record, data }: Props) {
               return null;
           }
         }}
-        renderInlineRecord={({ record }) => {
-          switch (record.__typename) {
-            case "PostRecord":
-              const PostRecord = record as PostRecord;
-              return (
-                <Link
-                  key={PostRecord.id}
-                  href={`/${locale}/posts/${record.slug}`}
-                  className="underline"
-                >
-                  {PostRecord.title}
-                </Link>
-              );
-            default:
-              return null;
-          }
-        }}
         customNodeRules={[
           renderNodeRule(isHeading, ({ node, children, key }) => {
             let Tag: any;
@@ -159,8 +142,8 @@ export default function CustomStructuredText({ locale, record, data }: Props) {
               </a>
             );
           }),
-          renderNodeRule(isBlockquote, ({ children, key }) => {
-            return <QuoteBlock text={children} />;
+          renderNodeRule(isBlockquote, ({ children, key, node }) => {
+            return <QuoteBlock text={children} author={node.attribution} />;
           }),
         ]}
       />

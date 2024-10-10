@@ -44,4 +44,7 @@ fragment wrapSectionBlocks on SectionWrapModelBlocksField {
   ... on TeamBlockRecord {
     ...teamBlockRecord
   }
+  ... on MapBlockRecord {
+    ...mapBlockRecord
+  }
 }

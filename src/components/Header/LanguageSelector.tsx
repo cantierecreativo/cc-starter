@@ -29,7 +29,7 @@ const LanguageSelector = ({
   const defaultLocale = "it";
   const pathString = pathArray.splice(2, pathArray.length).join("/");
   return (
-    <div className="flex gap-2 px-8">
+    <div className="flex gap-2">
       {languages.map((locale) => {
         if (locale !== lng)
           return (

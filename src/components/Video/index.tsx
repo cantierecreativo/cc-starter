@@ -42,7 +42,7 @@ const Video = ({
       viewport={{ once: true, amount: 0.1 }}
       variants={variants}
     >
-      <div className="container standard-vertical-m">
+      <div className="container">
         {videoHeader || videoSubheader ? (
           <SectionTitle title={videoHeader} paragraph={videoSubheader} center />
         ) : null}

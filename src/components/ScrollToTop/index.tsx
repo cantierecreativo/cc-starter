@@ -1,11 +1,10 @@
-'use client';
+"use client";
 
-import { SiteLocale } from '@/graphql/generated';
-import { AnimatePresence, motion } from 'framer-motion';
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import AuthenticationModal from '../Header/AuthenticationModal';
-import SuccessPopUp from '../Header/SuccessPopUp';
+import { SiteLocale } from "@/graphql/generated";
+import { AnimatePresence, motion } from "framer-motion";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import AuthenticationModal from "../Header/AuthenticationModal";
 
 type Props = {
   lng: SiteLocale;
@@ -20,7 +19,7 @@ export default function ScrollToTop({ lng, isDraft }: Props) {
 
   async function toggleDraft() {
     if (isDraft) {
-      await fetch('/api/draft/disable');
+      await fetch("/api/draft/disable");
       router.refresh();
     } else setModalOpen(true);
   }
@@ -41,9 +40,9 @@ export default function ScrollToTop({ lng, isDraft }: Props) {
       }
     };
 
-    window.addEventListener('scroll', toggleVisibility);
+    window.addEventListener("scroll", toggleVisibility);
 
-    return () => window.removeEventListener('scroll', toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
   return (
@@ -57,19 +56,6 @@ export default function ScrollToTop({ lng, isDraft }: Props) {
             transition={{ duration: 0.25 }}
             className="fixed bottom-8 right-8 z-[99]"
           >
-            <AnimatePresence>
-              {successToast && (
-                <motion.div
-                  className="absolute bottom-0 right-0 z-50 w-[500px]"
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 50 }}
-                  transition={{ duration: 0.15 }}
-                >
-                  <SuccessPopUp setSuccessToast={setSuccessToast} />
-                </motion.div>
-              )}
-            </AnimatePresence>
             <AnimatePresence>
               {modalOpen && (
                 <motion.div
@@ -91,7 +77,7 @@ export default function ScrollToTop({ lng, isDraft }: Props) {
               onClick={toggleDraft}
               className="flex cursor-pointer items-center justify-center rounded-md bg-primary p-4 font-bold text-white shadow-md transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp"
             >
-              {isDraft ? 'Enter Published Mode' : 'Enter Draft Mode'}
+              {isDraft ? "Enter Published Mode" : "Enter Draft Mode"}
             </div>
           </motion.div>
         )}

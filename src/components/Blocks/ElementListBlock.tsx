@@ -46,10 +46,7 @@ const ElementListBlock = ({
     : [elements];
 
   return (
-    <div
-      id="targetElement"
-      className="grid gap-6 standard-vertical-m container"
-    >
+    <div id="targetElement" className="grid gap-6 container">
       <div className="grid gap-6">
         {itemsPrefix && (
           <div className="prefix lg:col-span-12">{itemsPrefix}</div>

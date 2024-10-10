@@ -46,7 +46,7 @@ export const MenuItem = ({
   };
   return (
     <li>
-      <Link    
+      <Link
         tabIndex={dropdownOpen ? 0 : -1}
         href={submenuItem.path}
         className="group"
@@ -69,7 +69,7 @@ export const MenuItem = ({
         <div className="flex items-center my-2">
           <motion.div
             variants={titleVariants}
-            className={`text-accent-content text-base lg:uppercase lg:font-bold lg:text-xs lg:tracking-wider xl:font-normal font-serif xl:text-base ${
+            className={`text-accent-content text-base lg:uppercase lg:font-bold lg:text-xs xl:text-base ${
               isMega ? "" : "hover:underline hover:underline-offset-8"
             }`}
           >

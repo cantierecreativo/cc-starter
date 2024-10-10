@@ -105,7 +105,7 @@ export default function DropdownMenu({
       >
         <span
           ref={wrapperRef}
-          className={`lg:text-base whitespace-nowrap tracking-wider flex lg:gap-x-2 cursor-pointer items-center justify-between lg:mr-0 lg:inline-flex hover:underline underline-offset-8 px-8 lg:px-0`}
+          className={`lg:text-base whitespace-nowrap flex lg:gap-x-2 cursor-pointer items-center justify-between text-md lg:mr-0 lg:inline-flex hover:underline underline-offset-8 px-6 lg:px-0`}
         >
           {menuItem.title}
           <motion.span
@@ -129,7 +129,7 @@ export default function DropdownMenu({
             : `${
                 sticky ? "xl:mt-[37px] drop-shadow-md" : "xl:mt-[40px]"
               } lg:-ml-6 min-w-[260px] lg:mt-[38px]`
-        } px-8 lg:px-2 lg:absolute lg:z-[-1] bg-base-100`}
+        } px-6 lg:px-2 lg:absolute lg:z-[-1] bg-base-100`}
       >
         <div className="overflow-hidden h-full">
           {menuItem.submenu && (

@@ -44,7 +44,7 @@ export default function GalleryBlock({
   locale: string;
 }) {
   return (
-    <div className="container lg:w-8/12 standard-vertical-m relative gallery">
+    <div className="container lg:w-8/12 relative gallery">
       <motion.div
         initial="offscreen"
         whileInView="onscreen"

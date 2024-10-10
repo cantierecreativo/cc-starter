@@ -50,7 +50,7 @@ const ProductDetailsBlock = ({ data, locale }: PropsProductDetailsBlock) => {
   } = data;
   return (
     <>
-      <div className="container standard-vertical-m">
+      <div className="container">
         <motion.div
           initial="offscreen"
           whileInView="onscreen"

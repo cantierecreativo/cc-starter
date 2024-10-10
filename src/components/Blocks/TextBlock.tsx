@@ -25,7 +25,7 @@ export default function TextBlock({ data, locale }) {
       <div
         className={`container ${
           displayOptions === "right" ? "justify-end" : ""
-        } standard-vertical-m inline-block w-auto text-${displayOptions}`}
+        } inline-block w-auto text-${displayOptions}`}
       >
         <motion.div
           initial="offscreen"

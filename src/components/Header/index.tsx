@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
+import { usePathname } from "next/navigation"; // Importa il nuovo hook
 import LanguageSelector from "./LanguageSelector";
 import {
   MenuDropdownRecord,
@@ -20,6 +21,10 @@ type Props = {
   data: MenuQuery;
 };
 
+const activeClass = "text-accent underline";
+const itemClass =
+  "lg:px-0 hover:underline hover:text-accent whitespace-nowrap lg:text-base duration-200 underline-offset-8 text-md px-6";
+
 const invertVariants = {
   open: { transition: { ease: "easeOut", duration: 0.25 } },
   closed: { transition: { ease: "easeOut", duration: 0.25 } },
@@ -35,6 +40,7 @@ const Header = ({ lng, data }: Props) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
   const containerRef = useRef(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleStickyNavbar = () => setSticky(window.scrollY >= 80);
@@ -94,9 +100,9 @@ const Header = ({ lng, data }: Props) => {
   });
 
   return (
-    <header className="header left-0 flex w-full items-center fixed top-0 z-10 isolate after:absolute after:top-0 after:inset-x-0 border-b border-px border-base-300/20">
+    <header className="header left-0 flex w-full items-center fixed top-0 z-20 after:absolute after:top-0 after:inset-x-0 border-b border-px border-base-300/20">
       <div
-        className={`w-full md:py-4 ${
+        className={`relative isolate z-20 w-full md:py-4 ${
           sticky
             ? "bg-primary text-primary-content border-primary-content/20"
             : "motion-safe:duration-300"
@@ -105,14 +111,14 @@ const Header = ({ lng, data }: Props) => {
         <div className="container">
           <div className="flex items-center justify-between">
             <motion.div
-              className="w-28 max-w-full xl:mr-12"
+              className="w-28 xl:w-[150px] max-w-full xl:mr-12"
               animate={sticky || navbarOpen ? "open" : "closed"}
               variants={invertVariants}
             >
               <Link href="/" className="header-logo block w-full py-9 relative">
                 {data.layout.logo.url && (
                   <Image
-                    src={data.layout.logoAlt.url}
+                    src={data.layout.logo.url}
                     alt="logo"
                     className="w-full h-full absolute inset-0 object-left object-contain"
                     priority
@@ -122,7 +128,7 @@ const Header = ({ lng, data }: Props) => {
                 )}
               </Link>
             </motion.div>
-            <div className="flex w-full justify-end lg:justify-start lg:flex-row-reverse items-center gap-x-3 md:gap-x-8 pl-4">
+            <div className="flex w-full justify-end lg:justify-start lg:flex-row-reverse items-center gap-x-3 pl-4">
               <div className="hidden lg:flex items-center justify-end">
                 <LanguageSelector
                   lng={lng}
@@ -154,9 +160,9 @@ const Header = ({ lng, data }: Props) => {
                         sticky
                           ? "lg:text-primary-content"
                           : "lg:text-base-content"
-                      } block text-primary-content items-center xl:container lg:max-w-auto pt-28 lg:pt-0 pb-4 lg:pb-0 lg:flex lg:gap-x-8`}
+                      } block text-primary-content items-center xl:container lg:max-w-auto pt-28 lg:pt-0 pb-4 lg:pb-0 lg:flex xl:gap-x-8 lg:gap-x-4`}
                     >
-                      {menuData.map((menuItem) => {
+                      {menuData.map((menuItem, index) => {
                         const isMega = menuItem.submenu?.some(
                           (i) => i.menuImage
                         );
@@ -179,7 +185,11 @@ const Header = ({ lng, data }: Props) => {
                               >
                                 <Link
                                   href={menuItem.path}
-                                  className="hover:opacity-70 hover:underline whitespace-nowrap lg:text-xs font-serif uppercase underline-offset-8 text-md px-6 lg:px-0"
+                                  className={`${
+                                    pathname === menuItem.path
+                                      ? activeClass
+                                      : ""
+                                  } ${itemClass}`}
                                   onClick={handleClickAndClose}
                                 >
                                   {menuItem.title}

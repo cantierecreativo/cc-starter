@@ -13,6 +13,7 @@ import {
   FeatureListSectionRecord,
   GallerySectionRecord,
   ImageBlockRecord,
+  MapBlockRecord,
   MultipleCardRecord,
   PostRecord,
   SiteLocale,
@@ -33,12 +34,14 @@ import ElementListBlock from "@/components/Blocks/ElementListBlock";
 import AttachmentsBlock from "@/components/Blocks/AttachmentsBlock";
 import FeaturedPages from "../Blocks/FeaturedPages";
 import TeamBlock from "../Blocks/TeamBlock";
+import MapBlock from "../Map/MapBlock";
 
 type Props = {
   section: any;
   locale: SiteLocale;
-  lastPosts: PostRecord[];
-  lastEvents: EventRecord[];
+  lastPosts?: PostRecord[];
+  lastEvents?: EventRecord[];
+  numBlocks?: number;
 };
 
 export default function Sections({
@@ -46,12 +49,14 @@ export default function Sections({
   locale,
   lastPosts,
   lastEvents,
+  numBlocks,
 }: Props) {
   return section?.blocks?.map((b: any) => {
+    let content: any;
     switch (b._modelApiKey) {
       case "elements_list": {
         const elementsListRecord = b as ElementsListRecord;
-        return (
+        content = (
           <ElementListBlock
             key={b.id}
             data={elementsListRecord}
@@ -60,10 +65,11 @@ export default function Sections({
             lastEvents={lastEvents}
           />
         );
+        break;
       }
       case "attachments_block": {
         const attachmentsRecord = b as AttachmentsBlockRecord;
-        return (
+        content = (
           <AttachmentsBlock
             key={attachmentsRecord.id}
             style={section.style}
@@ -71,10 +77,11 @@ export default function Sections({
             locale={locale}
           />
         );
+        break;
       }
       case "featured_pages_section": {
         const featuredPages = b as FeaturedPagesSectionRecord;
-        return (
+        content = (
           <FeaturedPages
             title={featuredPages.featuredPagesHeader}
             subtitle={featuredPages.featuredPagesSubheader}
@@ -82,19 +89,23 @@ export default function Sections({
             locale={locale}
           />
         );
+        break;
       }
       case "contact_text_block": {
-        return <ContactTextBlock key={b.id} data={b} locale={locale} />;
+        content = <ContactTextBlock key={b.id} data={b} locale={locale} />;
+        break;
       }
       case "form_block": {
-        return <FormBlock key={b.id} data={b} locale={locale} />;
+        content = <FormBlock key={b.id} data={b} locale={locale} />;
+        break;
       }
       case "product_detail": {
-        return <ProductDetailsBlock key={b.id} data={b} locale={locale} />;
+        content = <ProductDetailsBlock key={b.id} data={b} locale={locale} />;
+        break;
       }
       case "feature_list_section": {
         const featureListSectionRecord = b as FeatureListSectionRecord;
-        return (
+        content = (
           <Features
             key={featureListSectionRecord.id}
             features={featureListSectionRecord.feature}
@@ -102,56 +113,62 @@ export default function Sections({
             featuresSubheader={featureListSectionRecord.featuresSubheader}
           />
         );
+        break;
       }
       case "multiple_card": {
         const multipleCardSection = b as MultipleCardRecord;
-        return (
+        content = (
           <MultipleCardBlock
             key={multipleCardSection.id}
             data={multipleCardSection}
             locale={locale}
           />
         );
+        break;
       }
       case "gallery_section": {
         const gallerySection = b as GallerySectionRecord;
-        return (
+        content = (
           <GalleryBlock
             key={gallerySection.id}
             data={gallerySection}
             locale={locale}
           />
         );
+        break;
       }
       case "image_block": {
         const imageBlock = b as ImageBlockRecord;
-        return (
+        content = (
           <ImageBlock key={imageBlock.id} data={imageBlock} locale={locale} />
         );
+        break;
       }
       case "banner_cta": {
         const bannerCtaSection = b as BannerCtaRecord;
-        return (
+        content = (
           <BannerCtaBlock
             key={bannerCtaSection.id}
             data={bannerCtaSection}
             locale={locale}
           />
         );
+        break;
       }
       case "text_block": {
         const textBlockSection = b as TextBlockRecord;
-        return (
+        content = (
           <TextBlock
             key={textBlockSection.id}
             data={textBlockSection}
             locale={locale}
           />
         );
+        break;
       }
       case "video_section":
         const videoSectionRecord = b as VideoSectionRecord;
-        return (
+        content = (
           <Video
             key={videoSectionRecord.id}
             videoHeader={videoSectionRecord.videoHeader}
@@ -160,38 +177,41 @@ export default function Sections({
             internalVideo={videoSectionRecord.internalVideo}
           />
         );
+        break;
 
       case "team_block":
         const teamBlock = b as TeamBlockRecord;
-        return (
+        content = (
           <TeamBlock
             content={teamBlock}
             locale={locale}
             colors={section.style}
           />
         );
+        break;
       case "brand_section":
         const brandSectionRecord = b as BrandSectionRecord;
         switch (brandSectionRecord.displayOptions) {
           case "brand_cards":
-            return (
+            content = (
               <BrandCards
                 key={brandSectionRecord.id}
                 brandShowcase={brandSectionRecord.brand}
               />
             );
+            break;
           default:
-            return (
+            content = (
               <Brands
                 key={brandSectionRecord.id}
                 brandShowcase={brandSectionRecord.brand}
               />
             );
+            break;
         }
-
       case "faq_section":
         const faqSectionRecord = b as FaqSectionRecord;
-        return (
+        content = (
           <FAQAccordion
             key={faqSectionRecord.id}
             title={faqSectionRecord.title}
@@ -199,12 +219,27 @@ export default function Sections({
             questions={faqSectionRecord.questions}
           />
         );
+        break;
+
+      case "map_block":
+        const mapBlock = b as MapBlockRecord;
+        content = <MapBlock content={mapBlock} locale={locale} />;
+        break;
       default:
-        return (
+        content = (
           <div className="p-8 bg-red-500 text-white">
             <div className="title">{`Manca questo blocco ${b._modelApiKey}`}</div>
           </div>
         );
+        break;
     }
+    return (
+      <div
+        key={b.id}
+        className={`${numBlocks > 1 ? "standard-vertical-m" : ""}`}
+      >
+        {content}
+      </div>
+    );
   });
 }

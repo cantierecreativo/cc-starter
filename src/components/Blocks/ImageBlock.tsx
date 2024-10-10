@@ -18,28 +18,24 @@ export default function ImageBlock({ data, locale }) {
   };
 
   return (
-    <div className={`standard-vertical-m`}>
-      <div className="container">
-        <motion.div
-          initial="offscreen"
-          whileInView="onscreen"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={variants}
-        >
-          <div className="md:w-8/12 md:mx-auto relative">
-            <SRCImage
-              data={imageAsset.responsiveImage}
-              className="w-full h-auto"
-            />
-            {imageDescription && (
-              <div
-                className="text-sm mt-6"
-                dangerouslySetInnerHTML={{ __html: imageDescription }}
-              />
-            )}
-          </div>
-        </motion.div>
-      </div>
+    <div className="container">
+      <motion.div
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={variants}
+      >
+        <SRCImage
+          data={imageAsset.responsiveImage}
+          className="w-full h-auto max-w-none"
+        />
+        {imageDescription && (
+          <div
+            className="text-sm mt-6"
+            dangerouslySetInnerHTML={{ __html: imageDescription }}
+          />
+        )}
+      </motion.div>
     </div>
   );
 }

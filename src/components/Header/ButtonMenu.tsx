@@ -13,7 +13,7 @@ const ButtonMenu = ({ navbarToggleHandler, navbarOpen }: Props) => {
       onClick={navbarToggleHandler}
       id="navbarToggler"
       aria-label="Mobile Menu"
-      className="flex text-xs items-center lg:hidden"
+      className="flex text-xs items-center lg:hidden text-primary-content justify-center"
     >
       <span className="uppercase font-serif pr-2">
         {navbarOpen ? "close" : "menu"}

@@ -26,7 +26,7 @@ const RightImageHero = ({
       initial={{ height: "100vh" }}
       animate={{ height: "90vh" }}
       transition={{ duration: 0.75, delay: 0.5 }}
-      className="w-full relative object-cover object-bottom mt-14 md:mt-24 lg:mt-28"
+      className="w-full relative object-cover object-bottom"
     >
       <div className="relative bg-secondary pt-[120px] md:pt-[150px] lg:pt-[180px]">
         <div className="container px-4">

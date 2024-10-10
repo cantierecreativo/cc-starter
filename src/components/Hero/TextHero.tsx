@@ -34,7 +34,7 @@ const TextHero = ({ heroTitle, heroSubtitle, link, locale }: Props) => {
       whileInView="onscreen"
       viewport={{ once: true, amount: 0.1 }}
       variants={variants}
-      className="mt-14 md:mt-24 lg:mt-28"
+      className=""
     >
       <div className="bg-secondary text-secondary-content py-40">
         <div className="container">

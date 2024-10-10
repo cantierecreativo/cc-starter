@@ -30,7 +30,7 @@ const FeaturesList = ({
   featuresSubheader,
 }: Props) => {
   return (
-    <div className="container standard-vertical-m">
+    <div className="container">
       <motion.div
         initial="offscreen"
         whileInView="onscreen"
