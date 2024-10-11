@@ -22,7 +22,7 @@ const CardEventBlock = ({
   const { eventImage, title, tags, dateEndEvent, dateStartEvent } = data || {};
   return (
     <InternalLink className="group" record={data} locale={locale} title={title}>
-      <div className="p-6 pb-2 bg-base-300 text-content duration-300 relative">
+      <div className="p-6 pb-2 bg-secondary text-secondary-content duration-300 relative">
         <SRCImage data={eventImage.responsiveImage} />
         <div className="text-center py-6 xl:py-10 grid gap-6 xl:gap-8">
           <div className="font-serif uppercase">

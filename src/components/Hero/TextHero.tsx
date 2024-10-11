@@ -36,7 +36,7 @@ const TextHero = ({ heroTitle, heroSubtitle, link, locale }: Props) => {
       variants={variants}
       className=""
     >
-      <div className="bg-secondary text-secondary-content py-40">
+      <div className="bg-secondary text-secondary-content py-40 mt-[72px] md:mt-[104px]">
         <div className="container">
           <div className="grid gap-8 lg:w-5/12">
             {heroTitle && <h1 className="title">{heroTitle}</h1>}

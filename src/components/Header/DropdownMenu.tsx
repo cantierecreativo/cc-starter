@@ -113,7 +113,7 @@ export default function DropdownMenu({
             variants={invertVariants}
           >
             <CustomIcon
-              classes={`w-3 h-3 bg-primary-content`}
+              classes={`w-3 h-3 bg-primary`}
               fileName="chevron-down"
             />
           </motion.span>

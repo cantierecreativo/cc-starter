@@ -41,7 +41,6 @@ type Props = {
   locale: SiteLocale;
   lastPosts?: PostRecord[];
   lastEvents?: EventRecord[];
-  numBlocks?: number;
 };
 
 export default function Sections({
@@ -49,8 +48,9 @@ export default function Sections({
   locale,
   lastPosts,
   lastEvents,
-  numBlocks,
 }: Props) {
+  const numBlocks = section.blocks.length;
+
   return section?.blocks?.map((b: any) => {
     let content: any;
     switch (b._modelApiKey) {
@@ -225,6 +225,7 @@ export default function Sections({
         const mapBlock = b as MapBlockRecord;
         content = <MapBlock content={mapBlock} locale={locale} />;
         break;
+
       default:
         content = (
           <div className="p-8 bg-red-500 text-white">
@@ -236,7 +237,7 @@ export default function Sections({
     return (
       <div
         key={b.id}
-        className={`${numBlocks > 1 ? "standard-vertical-m" : ""}`}
+        className={`${numBlocks > 1 ? "standard-vertical-m" : "no"}`}
       >
         {content}
       </div>

@@ -118,7 +118,8 @@ const Header = ({ lng, data }: Props) => {
               <Link href="/" className="header-logo block w-full py-9 relative">
                 {data.layout.logo.url && (
                   <Image
-                    src={data.layout.logo.url}
+                    // src={data.layout.logo.url}
+                    src={data.layout.logoAlt.url}
                     alt="logo"
                     className="w-full h-full absolute inset-0 object-left object-contain"
                     priority
@@ -170,7 +171,7 @@ const Header = ({ lng, data }: Props) => {
                         return (
                           <li
                             key={menuItem.id}
-                            className={`py-4 lg:py-2 lg:text-primary-content ${
+                            className={`py-4 lg:py-2 ${
                               isMega ? "" : "relative"
                             }`}
                           >

@@ -12,6 +12,7 @@ type PropsWhichHero = {
 };
 
 export default function WhichHero({ hero, locale }: PropsWhichHero) {
+  // return hero.displayOptions;
   switch (hero.displayOptions) {
     case "hero_bg":
       return (

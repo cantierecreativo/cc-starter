@@ -16,7 +16,7 @@ const CardBlogBlock = ({ data, locale, i }: PropsCardBlog) => {
 
   return (
     <InternalLink className="group" record={data} locale={locale} title={title}>
-      <div className="p-6 pb-2 bg-base-300 text-content duration-300 relative">
+      <div className="p-6 pb-2 bg-secondary text-secondary-content duration-300 relative">
         <SRCImage data={blogImage.responsiveImage} />
         <div className="text-center py-6 xl:py-10 grid gap-6 xl:gap-8">
           {tags?.length > 0 && <div className="prefix">{tags[0].tag}</div>}
