@@ -50,11 +50,7 @@ const PostPage = ({ data, locale }: Props) => {
         </div>
         <div className="flex items-center overflow-hidden">
           <div className="formatted standard-vertical-m container inline-block w-auto">
-            <CustomStructuredText
-              record={data.post.content}
-              data={data}
-              locale={locale}
-            />
+            <CustomStructuredText record={data.post.content} locale={locale} />
           </div>
         </div>
       </div>

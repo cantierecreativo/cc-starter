@@ -3,6 +3,7 @@ import { SRCImage } from "react-datocms";
 import ButtonBlock from "./ButtonBlock";
 import DynamicLink from "../Links/DynamicLink";
 import { motion } from "framer-motion";
+import CustomStructuredText from "../Layout/CustomStructuredText";
 
 export default function BanneCtaBlock({ data, locale }) {
   const {
@@ -76,7 +77,7 @@ export default function BanneCtaBlock({ data, locale }) {
             {label && <div className="prefix text-primary">{label}</div>}
             <h2 className="title">{title}</h2>
             <div className="text">
-              <StructuredContent data={text} locale={locale} />
+              <CustomStructuredText record={text} locale={locale} />
             </div>
             {link && (
               <div className="inline-block pt-4">
@@ -116,7 +117,7 @@ export default function BanneCtaBlock({ data, locale }) {
             <div className="mx-auto max-w-[575px] text-center grid gap-8 text-base-100">
               {label && <div className="label mx-auto">{label}</div>}
               <h2 className="title">{title}</h2>
-              {text && <StructuredContent data={text} locale={locale} />}
+              {text && <CustomStructuredText record={text} locale={locale} />}
               {data.link && (
                 <div className="inline-block">
                   <ButtonBlock label={"Vai"} />

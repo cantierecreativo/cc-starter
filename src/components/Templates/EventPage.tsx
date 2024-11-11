@@ -57,11 +57,7 @@ const EventPage = ({ data, locale }: Props) => {
         </div>
         <div className="flex items-center overflow-hidden">
           <div className="formatted standard-vertical-m container inline-block w-auto">
-            <CustomStructuredText
-              record={data.event.content}
-              data={data}
-              locale={locale}
-            />
+            <CustomStructuredText record={data.event.content} locale={locale} />
           </div>
         </div>
       </div>

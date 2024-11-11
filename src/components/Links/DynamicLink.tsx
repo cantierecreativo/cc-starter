@@ -1,16 +1,27 @@
 import InternalLink from "./InternalLink";
 import ExternalLink from "./ExternalLink";
+import { LinkBlockModelLinkField, SiteLocale } from "@/graphql/generated";
+
+type Props = {
+  children: any;
+  locale: SiteLocale;
+  link: LinkBlockModelLinkField;
+  className?: String;
+};
 
 export default function DynamicLink({
   link,
   className,
   children,
   locale,
-}: any) {
+}: Props) {
   if (!link) return null;
-  return link.__typename == "InternalLinkRecord" ? (
+
+  const linkClassName = className ? `group ${className}` : "group";
+
+  return link.__typename === "InternalLinkRecord" ? (
     <InternalLink
-      className={`group ${className}`}
+      className={linkClassName}
       record={link.page}
       title={link.label}
       locale={locale}
@@ -19,7 +30,7 @@ export default function DynamicLink({
     </InternalLink>
   ) : (
     <ExternalLink
-      className={`group ${className}`}
+      className={linkClassName}
       url={link.url}
       title={link.label}
       locale={locale}

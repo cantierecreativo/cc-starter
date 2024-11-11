@@ -3,6 +3,7 @@ import { motion, Variants } from "framer-motion";
 import StructuredContent from "../Layout/StructuredContent";
 import ButtonBlock from "./ButtonBlock";
 import DynamicLink from "../Links/DynamicLink";
+import CustomStructuredText from "../Layout/CustomStructuredText";
 
 export default function TextBlock({ data, locale }) {
   const { displayOptions, label, mainTitle, mainText, link } = data;
@@ -61,7 +62,7 @@ export default function TextBlock({ data, locale }) {
                   displayOptions === "center" ? "mx-auto" : ""
                 } text`}
               >
-                <StructuredContent data={mainText} locale={locale} />
+                <CustomStructuredText record={mainText} locale={locale} />
               </div>
             </div>
           )}

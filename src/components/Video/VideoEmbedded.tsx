@@ -1,6 +1,4 @@
 "use client";
-import dynamic from "next/dynamic";
-
 import { VideoField } from "@/graphql/generated";
 
 import "@vidstack/react/player/styles/base.css";
@@ -17,17 +15,13 @@ const VideoEmbedded = ({ video }: { video: VideoField }) => {
   let thumb: string;
   useEffect(() => {
     thumb = video.thumbnailUrl;
-  },[video]);
+  }, [video]);
 
   return (
     <div className=" h-[calc((100%/16)*9)]">
       <MediaPlayer title={video.title} src={video.url}>
         <MediaProvider>
-          <Poster
-            className="vds-poster"
-            src={thumb}
-            alt={video.title}
-          />
+          <Poster className="vds-poster" src={thumb} alt={video.title} />
         </MediaProvider>
         <DefaultVideoLayout icons={defaultLayoutIcons} />
       </MediaPlayer>

@@ -14,7 +14,6 @@ import {
   AttachmentsBlockRecord,
   GallerySectionRecord,
   ImageBlockRecord,
-  PostRecord,
   SiteLocale,
   VideoSectionRecord,
 } from "@/graphql/generated";
@@ -24,14 +23,14 @@ import Video from "@/components/Video";
 import GalleryBlock from "@/components/Blocks/GalleryBlock";
 import ImageBlock from "@/components/Blocks/ImageBlock";
 import React from "react";
+import InternalLink from "../Links/InternalLink";
 
 type Props = {
-  data: any;
   record: any;
   locale: SiteLocale;
 };
 
-export default function CustomStructuredText({ locale, record, data }: Props) {
+export default function CustomStructuredText({ locale, record }: Props) {
   return (
     <>
       <StructuredText
@@ -42,7 +41,7 @@ export default function CustomStructuredText({ locale, record, data }: Props) {
             case "ImageBlockRecord":
               const ImageBlockRecord = record as ImageBlockRecord;
               return (
-                <div key={record.id} className="unwrapped">
+                <div key={record.id} className="unwrapped standard-vertical-m">
                   <ImageBlock data={ImageBlockRecord} locale={locale} />
                 </div>
               );
@@ -50,7 +49,7 @@ export default function CustomStructuredText({ locale, record, data }: Props) {
             case "AttachmentsBlockRecord":
               const attachmentsBlock = record as AttachmentsBlockRecord;
               return (
-                <div key={record.id} className="unwrapped">
+                <div key={record.id} className="unwrapped standard-vertical-m">
                   <AttachmentsBlock
                     style=""
                     data={attachmentsBlock}
@@ -61,7 +60,7 @@ export default function CustomStructuredText({ locale, record, data }: Props) {
             case "VideoSectionRecord":
               const videoSectionRecord = record as VideoSectionRecord;
               return (
-                <div key={record.id} className="unwrapped">
+                <div key={record.id} className="unwrapped standard-vertical-m">
                   <Video
                     key={videoSectionRecord.id}
                     videoHeader={videoSectionRecord.videoHeader}
@@ -75,7 +74,7 @@ export default function CustomStructuredText({ locale, record, data }: Props) {
               const gallerySection = record as GallerySectionRecord;
 
               return (
-                <div key={record.id} className="unwrapped">
+                <div key={record.id} className="unwrapped standard-vertical-m">
                   <GalleryBlock data={gallerySection} locale={locale} />
                 </div>
               );
@@ -84,21 +83,29 @@ export default function CustomStructuredText({ locale, record, data }: Props) {
               return null;
           }
         }}
-        renderLinkToRecord={({ record, children, transformedMeta }) => {
-          switch (record.__typename) {
-            case "PostRecord":
-              return (
-                <Link
-                  {...transformedMeta}
-                  href={`/${locale}/posts/${record.slug}`}
-                  className="text-base font-medium leading-relaxed text-body-color underline sm:text-lg sm:leading-relaxed"
-                >
-                  {children}
-                </Link>
-              );
-            default:
-              return null;
-          }
+        renderLinkToRecord={({ record, children }: any) => {
+          return (
+            <InternalLink
+              record={record}
+              locale={locale}
+              title={record.title}
+              className="underline"
+            >
+              {children}
+            </InternalLink>
+          );
+        }}
+        renderInlineRecord={({ record, children }: any) => {
+          return (
+            <InternalLink
+              key={record.id}
+              record={record}
+              locale={locale}
+              className="underline"
+            >
+              {children}
+            </InternalLink>
+          );
         }}
         customNodeRules={[
           renderNodeRule(isHeading, ({ node, children, key }) => {

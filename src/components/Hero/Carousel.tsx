@@ -11,13 +11,14 @@ import {
 import "swiper/css/bundle";
 import DynamicLink from "../Links/DynamicLink";
 import ButtonBlock from "../Blocks/ButtonBlock";
+import { SiteLocale } from "@/graphql/generated";
 
 export default function Carousel({
   slides,
   locale,
 }: {
   slides: any;
-  locale: string;
+  locale: SiteLocale;
 }) {
   return (
     <header className={`relative hero-carousel mt-[72px] md:mt-[104px]`}>
@@ -35,8 +36,6 @@ export default function Carousel({
       >
         {slides.map((slide: any, i: number) => {
           const { id, image, title, text, link } = slide;
-
-          // return console.log("slide:", slide);
 
           return (
             <div className="h-full w-full m-t-[100px]" key={i}>
