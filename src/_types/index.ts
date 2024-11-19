@@ -1,5 +1,9 @@
 import { SeoMetaFragmentFragment, Site } from "@/graphql/generated";
 
+export type hrefsProp = {
+  [k: string]: string;
+};
+
 export type BasicIdPageProps = {
   params: {
     id: string;

@@ -1,12 +1,7 @@
 "use client";
 
 import Sections from "@/components/Sections";
-import {
-  EventRecord,
-  PageQuery,
-  PostRecord,
-  SiteLocale,
-} from "@/graphql/generated";
+import { EventRecord, PageQuery, PostRecord, SiteLocale } from "@/graphql/generated";
 import { convertToSlug } from "@/lib/convertToSlug";
 import WhichHero from "@/components/Hero/WichHero";
 import MenuInternal from "@/components/Page/MenuInternal";
@@ -14,10 +9,10 @@ import MenuInternal from "@/components/Page/MenuInternal";
 type GenericPageProps = {
   locale: SiteLocale;
   data: PageQuery;
+  page?: any;
 };
 
-export default function GenericPage({ data, locale }: GenericPageProps) {
-  const page = data?.page;
+export default function GenericPage({ data, page, locale }: GenericPageProps) {
   if (!page) return null;
   const navItems = [];
   const sections = page?.sections;
@@ -40,9 +35,7 @@ export default function GenericPage({ data, locale }: GenericPageProps) {
             id={section.label ? convertToSlug(section.label) : null}
           >
             {section.title && (
-              <h2 className="title text-center standard-vertical-m">
-                {section.title}
-              </h2>
+              <h2 className="title text-center standard-vertical-m">{section.title}</h2>
             )}
             {section.blocks && (
               <Sections

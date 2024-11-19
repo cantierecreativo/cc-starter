@@ -4,6 +4,9 @@ import { PageDocument, PostsDocument, SiteLocale } from "@/graphql/generated";
 import { notFound } from "next/navigation";
 import PostIndexPage from "@/components/Templates/PostsIndexPage";
 import getSeoMeta from "@/lib/seoUtils";
+import { pickHrefs } from "@/lib/pickPageData";
+import { hrefsProp } from "@/_types";
+import Wrapper from "@/components/Wrapper";
 
 const locale = "it";
 const siteLocale = locale as SiteLocale;
@@ -11,11 +14,7 @@ const slug = "##";
 
 export async function generateMetadata() {
   const siteLocale = locale as SiteLocale;
-  const data = await fetchDato(
-    PageDocument,
-    { locale: siteLocale, slug },
-    false
-  );
+  const data = await fetchDato(PageDocument, { locale: siteLocale, slug }, false);
   const page: any = data?.page || null;
   const meta = getSeoMeta(page, locale);
   return meta;
@@ -56,6 +55,11 @@ export default async function Page() {
   list = allPosts;
 
   if (!data) notFound();
+  const hrefs: hrefsProp = pickHrefs(data.page);
 
-  return <PostIndexPage data={data.page} list={list} locale={siteLocale} />;
+  return (
+    <Wrapper hrefs={hrefs} locale={locale}>
+      <PostIndexPage data={data.page} list={list} locale={siteLocale} />
+    </Wrapper>
+  );
 }

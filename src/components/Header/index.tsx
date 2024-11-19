@@ -19,6 +19,7 @@ import ButtonMenu from "./ButtonMenu";
 type Props = {
   lng: SiteLocale;
   data: MenuQuery;
+  hrefs?: any;
 };
 
 const activeClass = "text-accent underline";
@@ -35,7 +36,7 @@ const colorVariants = {
   closed: { transition: { ease: "easeOut", duration: 0.25 } },
 };
 
-const Header = ({ lng, data }: Props) => {
+const Header = ({ lng, hrefs, data }: Props) => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
@@ -73,9 +74,7 @@ const Header = ({ lng, data }: Props) => {
           id: subItem.id,
           title: subItem.title,
           menuImage:
-            dropdownItem.dropdownType === "text_image"
-              ? subItem.menuImage
-              : undefined,
+            dropdownItem.dropdownType === "text_image" ? subItem.menuImage : undefined,
           path: resolveLink({
             ...subItem.page,
             locale: lng,
@@ -133,6 +132,7 @@ const Header = ({ lng, data }: Props) => {
               <div className="hidden lg:flex items-center justify-end">
                 <LanguageSelector
                   lng={lng}
+                  hrefs={hrefs}
                   languages={data._site.locales || []}
                   sticky={sticky}
                   navbarOpen={navbarOpen}
@@ -158,22 +158,16 @@ const Header = ({ lng, data }: Props) => {
                   <div className="overflow-auto lg:overflow-visible h-full">
                     <ul
                       className={`${
-                        sticky
-                          ? "lg:text-primary-content"
-                          : "lg:text-base-content"
+                        sticky ? "lg:text-primary-content" : "lg:text-base-content"
                       } block text-primary-content items-center xl:container lg:max-w-auto pt-28 lg:pt-0 pb-4 lg:pb-0 lg:flex xl:gap-x-8 lg:gap-x-4`}
                     >
                       {menuData.map((menuItem, index) => {
-                        const isMega = menuItem.submenu?.some(
-                          (i) => i.menuImage
-                        );
+                        const isMega = menuItem.submenu?.some((i) => i.menuImage);
 
                         return (
                           <li
                             key={menuItem.id}
-                            className={`py-4 lg:py-2 ${
-                              isMega ? "" : "relative"
-                            }`}
+                            className={`py-4 lg:py-2 ${isMega ? "" : "relative"}`}
                           >
                             {menuItem.path ? (
                               <motion.div
@@ -187,9 +181,7 @@ const Header = ({ lng, data }: Props) => {
                                 <Link
                                   href={menuItem.path}
                                   className={`${
-                                    pathname === menuItem.path
-                                      ? activeClass
-                                      : ""
+                                    pathname === menuItem.path ? activeClass : ""
                                   } ${itemClass}`}
                                   onClick={handleClickAndClose}
                                 >
@@ -213,6 +205,7 @@ const Header = ({ lng, data }: Props) => {
                     </ul>
                     <div className="lg:hidden mt-10 mb-4 container">
                       <LanguageSelector
+                        hrefs={hrefs}
                         lng={lng}
                         languages={data._site.locales || []}
                         sticky={sticky}

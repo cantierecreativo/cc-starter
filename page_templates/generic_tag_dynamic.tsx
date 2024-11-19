@@ -4,6 +4,9 @@ import { TagDocument, SiteLocale } from "@/graphql/generated";
 import { notFound } from "next/navigation";
 import getSeoMeta from "@/lib/seoUtils";
 import PostIndexPage from "@/components/Templates/PostsIndexPage";
+import { pickHrefs } from "@/lib/pickPageData";
+import { hrefsProp } from "@/_types";
+import Wrapper from "@/components/Wrapper";
 
 type Params = {
   params: {
@@ -16,11 +19,7 @@ const siteLocale = locale as SiteLocale;
 
 export async function generateMetadata({ params }: Params) {
   const { slug } = params;
-  const data = await fetchDato(
-    TagDocument,
-    { locale: siteLocale, slug },
-    false
-  );
+  const data = await fetchDato(TagDocument, { locale: siteLocale, slug }, false);
   const page: any = data?.tag || null;
   const meta = getSeoMeta(page, locale);
   return meta;
@@ -39,5 +38,10 @@ export default async function Page({ params: { slug } }: Params) {
   );
   const list = data?.tag?.posts || [];
   if (!data) notFound();
-  return <PostIndexPage data={data.tag} list={list} locale={siteLocale} />;
+  const hrefs: hrefsProp = pickHrefs(data.tag);
+  return (
+    <Wrapper hrefs={hrefs} locale={locale}>
+      <PostIndexPage data={data} list={list} locale={siteLocale} />
+    </Wrapper>
+  );
 }

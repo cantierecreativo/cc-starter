@@ -3,6 +3,9 @@ import { draftMode } from "next/headers";
 import { LegalDocument, SiteLocale } from "@/graphql/generated";
 import { notFound } from "next/navigation";
 import Legal from "@/components/Footer/Legal/Legal";
+import { pickHrefs } from "@/lib/pickPageData";
+import { hrefsProp } from "@/_types";
+import Wrapper from "@/components/Wrapper";
 
 type Params = {
   params: {
@@ -26,5 +29,11 @@ export default async function LegalPage({ params: { slug } }: Params) {
   );
   if (!data) notFound();
 
-  return <Legal data={data} lng={siteLocale} />;
+  const hrefs: hrefsProp = pickHrefs(data.legalPage);
+
+  return (
+    <Wrapper hrefs={hrefs} locale={locale}>
+      <Legal data={data} lng={siteLocale} />
+    </Wrapper>
+  );
 }

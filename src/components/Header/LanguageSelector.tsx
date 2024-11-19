@@ -13,11 +13,13 @@ type Props = {
   sticky: Boolean;
   navbarOpen: Boolean;
   isDropdownOpen: Boolean;
+  hrefs?: any;
 };
 
 const LanguageSelector = ({
   lng,
   languages,
+  hrefs,
   sticky,
   navbarOpen,
   isDropdownOpen,
@@ -31,13 +33,12 @@ const LanguageSelector = ({
   return (
     <div className="flex gap-2">
       {languages.map((locale) => {
-        if (locale !== lng)
+        if (locale !== lng) {
+          const fallbackLocale: string = locale == "it" ? "/" : `/${locale}`;
           return (
             <div key={locale}>
               <Link
-                href={`${
-                  locale !== defaultLocale ? "/" + locale : ""
-                }/${pathString}`}
+                href={hrefs[locale] || fallbackLocale}
                 className="block px-3 py-2 text-xs font-bold tracking-widest bg-base-200 text-base-content"
                 role="menuitem"
               >
@@ -47,6 +48,7 @@ const LanguageSelector = ({
               </Link>
             </div>
           );
+        }
       })}
     </div>
   );

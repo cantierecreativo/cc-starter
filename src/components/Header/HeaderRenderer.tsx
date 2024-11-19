@@ -5,6 +5,7 @@ type Props = {
   locale: SiteLocale;
   isDraft: boolean;
   data: MenuQuery;
+  hrefs?: any;
 };
 
 export type Menu = {
@@ -23,8 +24,8 @@ export type NotificationStripType = {
   url: string | undefined | null;
 };
 
-const HeaderRenderer = async ({ data, locale, isDraft }: Props) => {
-  return <Header lng={locale} data={data} />;
+const HeaderRenderer = async ({ data, hrefs, locale, isDraft }: Props) => {
+  return <Header hrefs={hrefs} lng={locale} data={data} />;
 };
 
 export default HeaderRenderer;
