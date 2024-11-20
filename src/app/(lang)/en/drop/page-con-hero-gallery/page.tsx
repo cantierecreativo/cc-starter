@@ -5,6 +5,9 @@ import { notFound } from "next/navigation";
 import GenericPage from "@/components/Templates/GenericPage";
 import getSeoMeta from "@/lib/seoUtils";
 import config from "@/data/config";
+import { pickHrefs } from "@/lib/pickPageData";
+import { hrefsProp } from "@/_types";
+import Wrapper from "@/components/Wrapper";
 
 const locale = "en";
 const siteLocale = locale as SiteLocale;
@@ -42,5 +45,11 @@ export default async function Page() {
     console.log("PAGE not found", pageSlug, "locale", locale, data);
     notFound();
   }
-  return <GenericPage data={data} locale={siteLocale} />;
+  const hrefs: hrefsProp = pickHrefs(data.page);
+
+  return (
+    <Wrapper hrefs={hrefs} locale={locale}>
+      <GenericPage data={data} page={data.page} locale={siteLocale} />{" "}
+    </Wrapper>
+  );
 }

@@ -37,7 +37,7 @@ export default async function Page() {
   const hrefs: hrefsProp = pickHrefs(data.tag);
   return (
     <Wrapper hrefs={hrefs} locale={locale}>
-      <PostsIndexPage data={data.tag} list={list} locale={siteLocale} />
+      <PostsIndexPage data={data} list={list} locale={siteLocale} />
     </Wrapper>
   );
 }

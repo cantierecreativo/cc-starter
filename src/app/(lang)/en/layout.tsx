@@ -39,11 +39,7 @@ export async function generateMetadata() {
   return metaObject;
 }
 
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = draftMode();
 
   const footerData = await fetchDato(
@@ -63,11 +59,6 @@ export default async function RootLayout({
   return (
     <html lang={locale} data-theme="custom">
       <body className={`md:min-h-screen ${myFont.variable}`}>
-        <HeaderRenderer
-          data={menuData}
-          locale={siteLocale}
-          isDraft={isEnabled}
-        />
         <main>{children}</main>
         <Footer data={footerData} locale={siteLocale} />
       </body>

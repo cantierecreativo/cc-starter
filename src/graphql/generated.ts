@@ -5037,7 +5037,7 @@ export type RouteItemRecord = RecordInterface & {
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
   associatedModel?: Maybe<Scalars['String']['output']>;
-  children?: Maybe<Array<Maybe<RouteItemRecord>>>;
+  children: Array<RouteItemRecord>;
   id: Scalars['ItemId']['output'];
   isDynamic?: Maybe<Scalars['BooleanType']['output']>;
   isHome?: Maybe<Scalars['BooleanType']['output']>;
@@ -5133,7 +5133,7 @@ export type SimpleTextModelTextContentField = {
 
 export type SimpleTextModelTextContentLinksField = PageRecord | PostRecord;
 
-/** Block of type ✏️ Blocco di testo (simple_text) */
+/** Block of type ✏️ Blocco di testo (structured txt) (simple_text) */
 export type SimpleTextRecord = RecordInterface & {
   __typename?: 'SimpleTextRecord';
   _createdAt: Scalars['DateTime']['output'];
@@ -5154,7 +5154,7 @@ export type SimpleTextRecord = RecordInterface & {
 };
 
 
-/** Block of type ✏️ Blocco di testo (simple_text) */
+/** Block of type ✏️ Blocco di testo (structured txt) (simple_text) */
 export type SimpleTextRecord_SeoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
@@ -5596,7 +5596,7 @@ export type TextBlockModelTextField = {
   value: Scalars['JsonField']['output'];
 };
 
-/** Block of type 📝 Blocco testo (text_block) */
+/** Block of type 📝 Blocco di testo (text_block) */
 export type TextBlockRecord = RecordInterface & {
   __typename?: 'TextBlockRecord';
   _createdAt: Scalars['DateTime']['output'];
@@ -5621,13 +5621,13 @@ export type TextBlockRecord = RecordInterface & {
 };
 
 
-/** Block of type 📝 Blocco testo (text_block) */
+/** Block of type 📝 Blocco di testo (text_block) */
 export type TextBlockRecord_SeoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
 
 
-/** Block of type 📝 Blocco testo (text_block) */
+/** Block of type 📝 Blocco di testo (text_block) */
 export type TextBlockRecordTitleArgs = {
   markdown?: InputMaybe<Scalars['Boolean']['input']>;
 };
@@ -6254,7 +6254,7 @@ export type GallerySectionRecordFragment = { __typename: 'GallerySectionRecord',
 export type RoutesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type RoutesQueryQuery = { __typename?: 'Query', routes: Array<{ __typename?: 'RouteItemRecord', id: string, _modelApiKey: string, title?: string | null, isHome?: boolean | null, isDynamic?: boolean | null, associatedModel?: string | null, children?: Array<{ __typename?: 'RouteItemRecord', id: string, _modelApiKey: string, title?: string | null, isHome?: boolean | null, isDynamic?: boolean | null, associatedModel?: string | null, children?: Array<{ __typename?: 'RouteItemRecord', id: string, _modelApiKey: string, title?: string | null, isHome?: boolean | null, isDynamic?: boolean | null, associatedModel?: string | null, children?: Array<{ __typename?: 'RouteItemRecord', id: string, _modelApiKey: string, title?: string | null, isHome?: boolean | null, isDynamic?: boolean | null, associatedModel?: string | null } | null> | null } | null> | null } | null> | null }> };
+export type RoutesQueryQuery = { __typename?: 'Query', routes: Array<{ __typename?: 'RouteItemRecord', id: string, _modelApiKey: string, title?: string | null, isHome?: boolean | null, isDynamic?: boolean | null, associatedModel?: string | null, children: Array<{ __typename?: 'RouteItemRecord', id: string, _modelApiKey: string, title?: string | null, isHome?: boolean | null, isDynamic?: boolean | null, associatedModel?: string | null, children: Array<{ __typename?: 'RouteItemRecord', id: string, _modelApiKey: string, title?: string | null, isHome?: boolean | null, isDynamic?: boolean | null, associatedModel?: string | null, children: Array<{ __typename?: 'RouteItemRecord', id: string, _modelApiKey: string, title?: string | null, isHome?: boolean | null, isDynamic?: boolean | null, associatedModel?: string | null }> }> }> }> };
 
 export type RouteItemFragFragment = { __typename?: 'RouteItemRecord', id: string, _modelApiKey: string, title?: string | null, isHome?: boolean | null, isDynamic?: boolean | null, associatedModel?: string | null };
 

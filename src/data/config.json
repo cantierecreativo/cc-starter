@@ -18,6 +18,7 @@
       "it": "drop"
     },
     "eventi": {
+      "en": "events",
       "it": "eventi"
     },
     "pagina-con-hero-gallery": {
@@ -225,6 +226,7 @@
         "isIndex": true
       },
       "slugs": {
+        "en": "events",
         "it": "eventi"
       }
     }

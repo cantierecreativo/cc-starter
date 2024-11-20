@@ -5,6 +5,9 @@ import { notFound } from "next/navigation";
 import GenericPage from "@/components/Templates/GenericPage";
 import getSeoMeta from "@/lib/seoUtils";
 import config from "@/data/config";
+import { pickHrefs } from "@/lib/pickPageData";
+import { hrefsProp } from "@/_types";
+import Wrapper from "@/components/Wrapper";
 
 type Params = {
   params: {
@@ -44,6 +47,12 @@ export default async function Page({ params: { slug } }: Params) {
     isEnabled
   );
   if (!data?.page) notFound();
-  console.log(data, slug, locale);
-  return <GenericPage data={data} locale={siteLocale} />;
+
+  const hrefs: hrefsProp = pickHrefs(data.page);
+
+  return (
+    <Wrapper hrefs={hrefs} locale={locale}>
+      <GenericPage data={data} page={data.page} locale={siteLocale} />
+    </Wrapper>
+  );
 }
