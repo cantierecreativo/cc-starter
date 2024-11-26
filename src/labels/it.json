@@ -68,15 +68,12 @@
   "formErrorTitle": "Si è verificato un errore",
   "formErrorText": "Non è stato possibile inviare il tuo messaggio.",
   "formTitlePrivacyPolicy": "Informativa privacy",
+
   "newsletter": {
     "title:": "Newsletter",
-    "accept": "Ho preso visione e accetto",
-    "acceptEmail": "Accetto di ricevere comunicazioni via email",
-    "privacyFieldsetLabel": "Protezione e gestione dati personali",
-    "policy": "l'Informativa sulla privacy",
-    "authorize": "e autorizzo il trattamento dei miei dati personali ai sensi del D.Lgs. 196/2003 e del GDPR 679/2016",
-    "unsubscribePre": "Puoi annullare l'iscrizione in qualsiasi momento facendo clic sul collegamento a piè di pagina delle nostre e-mail. Per informazioni sulle nostre pratiche sulla privacy,",
-    "cta": "vai al sito di Mailchimp.",
+    "accept": "Inserendo il tuo indirizzo email, acconsenti a ricevere comunicazioni e aggiornamenti da parte nostra. I tuoi dati saranno trattati in conformità con la nostra",
+    "policy": "Informativa sulla privacy",
+    "authorize": "e non verranno ceduti a terzi. Potrai cancellarti in qualsiasi momento cliccando sul link di disiscrizione presente in ogni email.",
     "subscribe": "Iscriviti"
   },
 
