@@ -1,15 +1,5 @@
 import resolveLink from "./resolveLink";
 
-type pageDataProps = {
-  _modelApiKey: string;
-  slugs: [
-    {
-      locale: string;
-      value: string;
-    }
-  ];
-};
-
 export function pickHrefs(data: any) {
   const arr: string[] = ["slugs", "_modelApiKey"];
   const pageData: any = Object.fromEntries(

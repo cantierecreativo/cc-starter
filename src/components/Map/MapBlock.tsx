@@ -1,5 +1,6 @@
 import { useInView } from "react-intersection-observer";
 import dynamic from "next/dynamic";
+import { motion, Variants } from "framer-motion";
 
 const DynamicLazyMap = dynamic(() => import("@/components/Map/MyMap"), {
   loading: () => (
@@ -27,40 +28,64 @@ const DynamicLazyMap = dynamic(() => import("@/components/Map/MyMap"), {
   ssr: false,
 });
 
+const variants: Variants = {
+  offscreen: {
+    opacity: 0,
+    y: 100,
+  },
+  onscreen: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.75,
+    },
+  },
+};
+
 export default function MapBlock({ locale, content }) {
   const { ref, inView, entry } = useInView({
     threshold: 0.3,
     triggerOnce: true,
   });
-  const { titleMap, text, map, tokenMap, urlStyleMapbox, zoom } = content;
-  const inViewClass = inView ? "fade-down-on" : "fade-down-off";
+  const { titleMap, textMap, map, tokenMap, urlStyleMapbox, zoom } = content;
+  const titleClass = "title-small";
 
   return (
-    <section ref={ref} className={`${inViewClass} fade-down relative`}>
-      <div className="container my-8 lg:my-20 xl:my-28">
-        <div className="z-10 relative bg-back text-center mx-auto">
-          {titleMap && (
-            <h2 className="uppercase font-heading font-medium text-accent text-lg md:text-xl mb-6 xl:text-2xl xl:mb-12">
-              {titleMap}
-            </h2>
-          )}
-          {text && (
-            <h2
-              className="text-sm md:text-base mb-6 xl:mb-12"
-              dangerouslySetInnerHTML={{ __html: text }}
-            />
-          )}
-          <div className="relative aspect-square lg:aspect-[3/1]">
-            <DynamicLazyMap
-              latitude={map.latitude}
-              longitude={map.longitude}
-              token={tokenMap}
-              style={urlStyleMapbox}
-              zoom={zoom}
-            />
-          </div>
+    <section ref={ref} className={`grid gap-6 container`}>
+      <motion.div
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={variants}
+        className="grid gap-6"
+      >
+        {titleMap && (
+          <h2
+            className={titleClass}
+            dangerouslySetInnerHTML={{ __html: titleMap }}
+          />
+        )}
+        {textMap && (
+          <div className="" dangerouslySetInnerHTML={{ __html: textMap }} />
+        )}
+      </motion.div>
+      <motion.div
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={variants}
+        className="grid gap-6"
+      >
+        <div className="relative aspect-square lg:aspect-[3/1]">
+          <DynamicLazyMap
+            latitude={map.latitude}
+            longitude={map.longitude}
+            token={tokenMap}
+            style={urlStyleMapbox}
+            zoom={zoom}
+          />
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

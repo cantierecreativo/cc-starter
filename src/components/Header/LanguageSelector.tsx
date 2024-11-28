@@ -2,10 +2,8 @@
 
 import { SiteLocale } from "@/graphql/generated";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import React, { useState } from "react";
+import React from "react";
 import translate from "@/labels";
-import CustomIcon from "../Blocks/CustomIcon";
 
 type Props = {
   lng: SiteLocale;
@@ -16,20 +14,7 @@ type Props = {
   hrefs?: any;
 };
 
-const LanguageSelector = ({
-  lng,
-  languages,
-  hrefs,
-  sticky,
-  navbarOpen,
-  isDropdownOpen,
-}: Props) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname();
-  const pathArray = pathname.split("/");
-  const currentLocale = pathArray[1] as SiteLocale; //will be a SiteLocale because of the middleware redirect rules
-  const defaultLocale = "it";
-  const pathString = pathArray.splice(2, pathArray.length).join("/");
+const LanguageSelector = ({ lng, languages, hrefs }: Props) => {
   return (
     <div className="flex gap-2">
       {languages.map((locale) => {

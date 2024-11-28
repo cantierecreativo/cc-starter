@@ -3,10 +3,22 @@ import { motion, Variants } from "framer-motion";
 import StructuredContent from "../Layout/StructuredContent";
 import ButtonBlock from "./ButtonBlock";
 import DynamicLink from "../Links/DynamicLink";
-import CustomStructuredText from "../Layout/CustomStructuredText";
+import { TextBlockRecord, SiteLocale } from "../../graphql/generated";
 
-export default function TextBlock({ data, locale }) {
-  const { displayOptions, label, mainTitle, mainText, link } = data;
+type Props = {
+  data: TextBlockRecord;
+  locale: SiteLocale;
+  bg: string;
+};
+
+export default function TextBlock({ data, locale, bg }: Props) {
+  const {
+    displayOptions,
+    labelTextBlock,
+    titleTextBlock,
+    textTextBlock,
+    linkTextBlock,
+  } = data;
 
   const variants: Variants = {
     offscreen: {
@@ -21,54 +33,51 @@ export default function TextBlock({ data, locale }) {
       },
     },
   };
+
+  const classPrefix = displayOptions.includes("center")
+    ? "mx-auto prefix"
+    : "prefix";
+  const classTitle = "title max-w-screen-md";
+
   return (
-    <div className="flex justify-center">
-      <div
-        className={`container ${
-          displayOptions === "right" ? "justify-end" : ""
-        } inline-block w-auto text-${displayOptions}`}
-      >
+    <div className={`text-${displayOptions}`}>
+      <div className={`container`}>
         <motion.div
           initial="offscreen"
           whileInView="onscreen"
           viewport={{ once: true, amount: 0.1 }}
           variants={variants}
+          className={`${
+            displayOptions.includes("center")
+              ? "justify-center"
+              : displayOptions.includes("right")
+              ? "justify-end"
+              : ""
+          } grid gap-6`}
         >
-          {label && (
-            <div
-              className={displayOptions === "right" ? "flex justify-end" : ""}
-            >
-              <div
-                className={`${
-                  displayOptions === "center" ? "mx-auto" : ""
-                } prefix mb-8`}
-              >
-                {label}
-              </div>
-            </div>
+          {labelTextBlock && (
+            <div className={classPrefix}>{labelTextBlock}</div>
           )}
           <h2
-            className="title inline-block w-full mb-8"
-            dangerouslySetInnerHTML={{ __html: mainTitle }}
+            className={classTitle}
+            dangerouslySetInnerHTML={{ __html: titleTextBlock }}
           />
-          {mainText && (
+          {textTextBlock && (
             <div
-              className={`${
-                displayOptions === "right" ? "flex justify-end" : ""
-              } inline-block w-auto mb-8`}
+              className={`max-w-prose ${
+                displayOptions.includes("center") ? "mx-auto" : ""
+              }`}
             >
-              <div
-                className={`${
-                  displayOptions === "center" ? "mx-auto" : ""
-                } text`}
-              >
-                <CustomStructuredText record={mainText} locale={locale} />
-              </div>
+              <StructuredContent data={textTextBlock} locale={locale} />
             </div>
           )}
-          {link && (
-            <DynamicLink link={link} locale={locale} className={`block group`}>
-              <ButtonBlock label={link.label} />
+          {linkTextBlock && (
+            <DynamicLink
+              link={linkTextBlock}
+              locale={locale}
+              className={`block group`}
+            >
+              <ButtonBlock label={linkTextBlock.label} />
             </DynamicLink>
           )}
         </motion.div>

@@ -43,13 +43,9 @@ export default function resolveLink({
   locale,
   modelRelated = null,
 }: RouteProps): string {
-  //language prefix
   const lang = locale === config.defaultLocale ? "" : `/${locale}`;
   const slug = slugs?.find((i) => i.locale === locale)?.value;
-  // if (slug === "home") {
-  //   return lang;
-  // }
-  // custom routing
+
   if (slug) {
     const customRoute = matchCustomRoute({
       slugs,
@@ -58,11 +54,10 @@ export default function resolveLink({
       modelRelated,
     });
     if (customRoute) {
-      // console.log("custom route found: ", slug, customRoute);
       return `${lang}${customRoute}`;
     }
   }
-  // default routing
+
   switch (_modelApiKey) {
     case "page":
       if (slug === "home") {
@@ -74,16 +69,12 @@ export default function resolveLink({
       return `${lang}/${t(`eventi`, locale)}/${slug}`;
     case "post":
       return `${lang}/${t(`articoli`, locale)}/${slug}`;
-    case "legal_page":
-      return `${lang}/${t(`legal`, locale)}/${slug}`;
     case "tag":
       switch (modelRelated) {
         case "posts":
           return `${lang}/${t(`articoli`, locale)}/c/${slug.toLowerCase()}`;
         case "events":
           return `${lang}/${t(`eventi`, locale)}/c/${slug.toLowerCase()}`;
-        default:
-          return `${lang}/${t(`ispirazioni`, locale)}/c/${slug.toLowerCase()}`;
       }
     default:
       return `${lang}/${slug ? slug : ""}`;

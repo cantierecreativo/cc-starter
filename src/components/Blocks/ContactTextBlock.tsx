@@ -22,49 +22,39 @@ const ContactTextBlock = ({ data, locale }: PropsContactTextBlock) => {
     },
   };
   return (
-    <div
-      className={`container px-6 xl:px-0 md:grid md:grid-cols-12 mx-auto md:py-20 xl:py-36 py-12`}
-    >
+    <div className={`container`}>
       <motion.div
         initial="offscreen"
         whileInView="onscreen"
-        viewport={{ once: true, amount: 0.5 }}
+        viewport={{ once: true, amount: 0.1 }}
         variants={variants}
       >
-        {prefix && (
-          <div className="md:col-span-10 md:col-start-2 xl:col-span-3 xl:col-start-2">
-            <div
-              className={`uppercase text-xs font-bold tracking-widest mb-8 pb-2.5 border-b inline-block border-primary-content/20`}
-            >
-              {prefix}
+        <div className="grid gap-6">
+          {prefix && <div className="prefix">{prefix}</div>}
+          {titleContactBlock && (
+            <h2
+              className="title"
+              dangerouslySetInnerHTML={{ __html: titleContactBlock }}
+            />
+          )}
+          {textContactBlock && (
+            <h3
+              className=""
+              dangerouslySetInnerHTML={{ __html: textContactBlock }}
+            />
+          )}
+        </div>
+        <div className="grid gap-10 mt-8 lg:grid-cols-3 items-start">
+          {blocks.map((b) => (
+            <div className="bg-secondary text-secondary-content p-8" key={b.id}>
+              <strong dangerouslySetInnerHTML={{ __html: b.titleSimple }} />
+              <div
+                className=""
+                dangerouslySetInnerHTML={{ __html: b.textSimple }}
+              />
             </div>
-          </div>
-        )}
-        {titleContactBlock && (
-          <h2
-            className="text-lg md:text-xl uppercase max-w-prose font-serif font-light mb-4 md:pb-2 md:pt-4 xl:py-8 lg:text-2xl md:col-span-10 md:col-start-2 xl:col-span-7 xl:col-start-5 xl:pt-0"
-            dangerouslySetInnerHTML={{ __html: titleContactBlock }}
-          />
-        )}
-        {titleContactBlock && (
-          <h3
-            className={`py-3 xl:col-span-7 xl:col-start-5 text-md max-w-prose md:col-span-10 md:col-start-2 xl:text-md xl:pt-0`}
-            dangerouslySetInnerHTML={{ __html: titleContactBlock }}
-          />
-        )}
-        {blocks.length > 0 && (
-          <div className="grid gap-10 py-6 md:col-span-10 md:col-start-2 md:grid-cols-2 md:items-start md:mt-16 xl:col-span-7 xl:col-start-5 xl:gap-16">
-            {blocks.map((b) => (
-              <div className="grid gap-6" key={b.id}>
-                <strong dangerouslySetInnerHTML={{ __html: b.titleSimple }} />
-                <div
-                  className="grid gap-2"
-                  dangerouslySetInnerHTML={{ __html: b.textSimple }}
-                />
-              </div>
-            ))}
-          </div>
-        )}
+          ))}
+        </div>
       </motion.div>
     </div>
   );

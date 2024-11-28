@@ -7,6 +7,15 @@
     "search_label": "Search the website",
     "search_placeholder": "Search for artworks, events or else"
   },
+
+  "a11y": {
+    "firstSlideMessage": "This is the first slide",
+    "lastSlideMessage": "This is the last slide",
+    "nextSlideMessage": "Next slide",
+    "prevSlideMessage": "Previous slide",
+    "paginationBulletMessage": "Go to slide "
+  },
+
   "sending": "sending...",
   "loading": "loading...",
 

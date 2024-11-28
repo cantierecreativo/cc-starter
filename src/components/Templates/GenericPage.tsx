@@ -1,7 +1,13 @@
 "use client";
 
 import Sections from "@/components/Sections";
-import { EventRecord, PageQuery, PostRecord, SiteLocale } from "@/graphql/generated";
+import {
+  EventRecord,
+  PageQuery,
+  PostRecord,
+  SectionWrapRecord,
+  SiteLocale,
+} from "@/graphql/generated";
 import { convertToSlug } from "@/lib/convertToSlug";
 import WhichHero from "@/components/Hero/WichHero";
 import MenuInternal from "@/components/Page/MenuInternal";
@@ -18,7 +24,7 @@ export default function GenericPage({ data, page, locale }: GenericPageProps) {
   const sections = page?.sections;
 
   if (sections?.length > 0 && !page.isHome && !page.isIndex) {
-    sections.forEach((s) => {
+    sections.forEach((s: SectionWrapRecord) => {
       if (s.label) navItems.push(s.label);
     });
   }
@@ -27,16 +33,13 @@ export default function GenericPage({ data, page, locale }: GenericPageProps) {
     <div>
       {page?.hero && <WhichHero hero={page?.hero as any} locale={locale} />}
       {navItems.length > 0 && <MenuInternal navItems={navItems} />}
-      {sections?.map((section) => {
+      {sections?.map((section: SectionWrapRecord) => {
         return (
           <section
             key={section.id}
-            className={`${section.style} standard-vertical-p scroll-mt-24 lg:scroll-mt-30`}
+            className={`${section.style} standard-vertical-p scroll-mt-24 lg:scroll-mt-30 standard-vertical-gap`}
             id={section.label ? convertToSlug(section.label) : null}
           >
-            {section.title && (
-              <h2 className="title text-center standard-vertical-m">{section.title}</h2>
-            )}
             {section.blocks && (
               <Sections
                 section={section}

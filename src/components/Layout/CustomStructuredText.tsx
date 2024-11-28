@@ -9,7 +9,6 @@ import {
 } from "datocms-structured-text-utils";
 import { StructuredText, renderNodeRule } from "react-datocms";
 
-import Link from "next/link";
 import {
   AttachmentsBlockRecord,
   GallerySectionRecord,
@@ -41,7 +40,7 @@ export default function CustomStructuredText({ locale, record }: Props) {
             case "ImageBlockRecord":
               const ImageBlockRecord = record as ImageBlockRecord;
               return (
-                <div key={record.id} className="unwrapped standard-vertical-m">
+                <div key={record.id} className="standard-vertical-m">
                   <ImageBlock data={ImageBlockRecord} locale={locale} />
                 </div>
               );
@@ -49,7 +48,7 @@ export default function CustomStructuredText({ locale, record }: Props) {
             case "AttachmentsBlockRecord":
               const attachmentsBlock = record as AttachmentsBlockRecord;
               return (
-                <div key={record.id} className="unwrapped standard-vertical-m">
+                <div key={record.id} className="standard-vertical-m">
                   <AttachmentsBlock
                     style=""
                     data={attachmentsBlock}
@@ -60,7 +59,7 @@ export default function CustomStructuredText({ locale, record }: Props) {
             case "VideoSectionRecord":
               const videoSectionRecord = record as VideoSectionRecord;
               return (
-                <div key={record.id} className="unwrapped standard-vertical-m">
+                <div key={record.id} className="standard-vertical-m">
                   <Video
                     key={videoSectionRecord.id}
                     videoHeader={videoSectionRecord.videoHeader}
@@ -74,7 +73,7 @@ export default function CustomStructuredText({ locale, record }: Props) {
               const gallerySection = record as GallerySectionRecord;
 
               return (
-                <div key={record.id} className="unwrapped standard-vertical-m">
+                <div key={record.id} className="standard-vertical-m">
                   <GalleryBlock data={gallerySection} locale={locale} />
                 </div>
               );
@@ -113,8 +112,8 @@ export default function CustomStructuredText({ locale, record }: Props) {
             Tag = `h${node.level}`;
             let classTitle: string;
             if (node.level == 2) {
-              classTitle = "title mb-4 w-10/12 max-w-prose";
-            } else classTitle = "title-small mb-4 w-10/12 max-w-prose";
+              classTitle = "title mb-4 !max-w-screen-lg";
+            } else classTitle = "title-small mb-4 !max-w-screen-md";
             return (
               <Tag className={classTitle} key={key}>
                 {children}

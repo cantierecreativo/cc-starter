@@ -12,7 +12,7 @@ import Wrapper from "@/components/Wrapper";
 const locale = "en";
 const siteLocale = locale as SiteLocale;
 const defaultLocale = config.defaultLocale as SiteLocale;
-const pageSlug = "page-con-hero-gallery";
+const pageSlug = "page-with-hero-gallery";
 
 export async function generateMetadata() {
   const data = await fetchDato(
@@ -31,7 +31,6 @@ export async function generateMetadata() {
 
 export default async function Page() {
   const { isEnabled } = draftMode();
-  // console.log("PAGE by slug", pageSlug, "locale", locale);
   const data = await fetchDato(
     PageDocument,
     {

@@ -3,12 +3,12 @@ fragment textBlockRecord on TextBlockRecord {
   _modelApiKey
   __typename
   displayOptions
-  label
-  mainTitle: title
-  mainText: text {
+  labelTextBlock
+  titleTextBlock
+  textTextBlock {
     value
   }
-  link {
+  linkTextBlock {
     ... on InternalLinkRecord {
       ...internalLink
     }

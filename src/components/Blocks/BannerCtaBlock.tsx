@@ -71,16 +71,16 @@ export default function BanneCtaBlock({ data, locale }) {
           whileInView="onscreen"
           variants={textVariants}
           viewport={{ once: true, amount: 0.75 }}
-          className="lg:w-1/2 grid gap-6 lg:px-12 md:pb-16 lg:pb-0"
+          className="lg:w-1/2 grid gap-6"
         >
-          <div className="grid gap-4 pb-12 content-center">
-            {label && <div className="prefix text-primary">{label}</div>}
+          <div className="grid gap-6 content-center">
+            {label && <div className="prefix">{label}</div>}
             <h2 className="title">{title}</h2>
             <div className="text">
               <CustomStructuredText record={text} locale={locale} />
             </div>
             {link && (
-              <div className="inline-block pt-4">
+              <div className="inline-block">
                 <ButtonBlock label={link.label} />
               </div>
             )}
@@ -107,15 +107,15 @@ export default function BanneCtaBlock({ data, locale }) {
   function RenderContentBanner({ title, label, text, coverImage }) {
     return (
       <div>
-        <div className="relative z-10 py-20 lg:py-[100px] xl:py-[120px] overflow-hidden">
-          <span className="absolute left-0 top-0 -z-10 h-full w-full bg-black/80"></span>
+        <div className="relative z-10 py-20 overflow-hidden">
+          <span className="absolute inset-0 -z-10 bg-black/80"></span>
           <SRCImage
             data={coverImage.responsiveImage}
             className="object-cover w-full h-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
           <div className="container relative z-20">
-            <div className="mx-auto max-w-[575px] text-center grid gap-8 text-base-100">
-              {label && <div className="label mx-auto">{label}</div>}
+            <div className="mx-auto max-w-screen-sm text-center grid gap-6">
+              {label && <div className="prefix mx-auto">{label}</div>}
               <h2 className="title">{title}</h2>
               {text && <CustomStructuredText record={text} locale={locale} />}
               {data.link && (
@@ -149,7 +149,7 @@ export default function BanneCtaBlock({ data, locale }) {
             </div>
           ) : (
             <div
-              className={`group duration-700 container py-10 xl:py-48 relative z-0 text-center`}
+              className={`group duration-700 container py-10 relative z-0 text-center`}
             >
               <RenderContentBanner
                 title={title}

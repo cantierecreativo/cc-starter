@@ -29,15 +29,10 @@ export default function ProductsIndexPage({
     <div>
       {page?.hero && <WhichHero hero={page?.hero as any} locale={locale} />}
       {data.page?.sections?.map((section) => {
-        const sectionSpacing =
-          section.style !== "base-100 text-base-content" ||
-          "bg-base-200 text-base-content"
-            ? "xl:mx-5"
-            : "";
         return (
           <section
             key={section.id}
-            className={`${section.style} ${sectionSpacing} standard-vertical-p scroll-mt-24 lg:scroll-mt-30`}
+            className={`${section.style} standard-vertical-p scroll-mt-24 lg:scroll-mt-30 standard-vertical-gap`}
             id={section.label ? convertToSlug(section.label) : null}
           >
             {section.blocks && (

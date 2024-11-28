@@ -36,19 +36,29 @@ const FeaturesList = ({
         whileInView="onscreen"
         viewport={{ once: true, amount: 0.1 }}
         variants={variants}
+        className="grid gap-6"
       >
-        <SectionTitle
-          title={featuresHeader}
-          paragraph={featuresSubheader}
-          center
-        />
-
-        <div className="grid gap-3 md:gap-10 md:grid-cols-2 lg:grid-cols-3 mt-8">
-          {features.map((feature) => (
-            <SingleFeature key={feature.id} feature={feature} />
-          ))}
-        </div>
+        {featuresHeader && <h2 className="title">{featuresHeader}</h2>}
+        {featuresSubheader && (
+          <div
+            className=""
+            dangerouslySetInnerHTML={{ __html: featuresSubheader }}
+          />
+        )}
       </motion.div>
+
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 mt-8">
+        {features.map((feature: FeatureRecord, i: number) => (
+          <motion.div
+            initial="offscreen"
+            whileInView="onscreen"
+            viewport={{ once: true, amount: 0.3 * i }}
+            variants={variants}
+          >
+            <SingleFeature key={feature.id} feature={feature} />
+          </motion.div>
+        ))}
+      </div>
     </div>
   );
 };

@@ -18,14 +18,12 @@ const VideoEmbedded = ({ video }: { video: VideoField }) => {
   }, [video]);
 
   return (
-    <div className=" h-[calc((100%/16)*9)]">
-      <MediaPlayer title={video.title} src={video.url}>
-        <MediaProvider>
-          <Poster className="vds-poster" src={thumb} alt={video.title} />
-        </MediaProvider>
-        <DefaultVideoLayout icons={defaultLayoutIcons} />
-      </MediaPlayer>
-    </div>
+    <MediaPlayer title={video.title} src={video.url}>
+      <MediaProvider>
+        <Poster className="vds-poster" src={thumb} alt={video.title} />
+      </MediaProvider>
+      <DefaultVideoLayout icons={defaultLayoutIcons} />
+    </MediaPlayer>
   );
 };
 

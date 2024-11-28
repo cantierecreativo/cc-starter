@@ -1,6 +1,11 @@
 "use client";
 import Sections from "@/components/Sections";
-import { EventRecord, PostRecord, SiteLocale } from "@/graphql/generated";
+import {
+  EventRecord,
+  PostRecord,
+  SectionWrapRecord,
+  SiteLocale,
+} from "@/graphql/generated";
 import WhichHero from "@/components/Hero/WichHero";
 import { convertToSlug } from "@/lib/convertToSlug";
 import EventsGridRenderer from "../Event/EventsGridRenderer";
@@ -21,16 +26,11 @@ export default function EventsIndexPage({
   return (
     <div>
       {page?.hero && <WhichHero hero={page?.hero as any} locale={locale} />}
-      {page?.page?.sections?.map((section) => {
-        const sectionSpacing =
-          section.style !== "base-100 text-base-content" ||
-          "bg-base-200 text-base-content"
-            ? "xl:mx-5"
-            : "";
+      {page?.page?.sections?.map((section: SectionWrapRecord) => {
         return (
           <section
             key={section.id}
-            className={`${section.style} ${sectionSpacing} standard-vertical-p scroll-mt-24 lg:scroll-mt-30`}
+            className={`${section.style} standard-vertical-p scroll-mt-24 lg:scroll-mt-30 standard-vertical-gap`}
             id={section.label ? convertToSlug(section.label) : null}
           >
             {section.blocks && (

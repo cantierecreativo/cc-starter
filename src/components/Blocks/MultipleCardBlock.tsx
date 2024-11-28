@@ -41,7 +41,7 @@ export default function GalleryBlock({ data, locale }) {
   };
 
   return (
-    <div className="container md:px-24 md:gap-y-20 xl:px-0 py-8 md:py-16 lg:py-28">
+    <div className="container">
       <motion.div
         initial="offscreen"
         whileInView="onscreen"
@@ -51,38 +51,29 @@ export default function GalleryBlock({ data, locale }) {
         <div
           className={`${
             data.multipleImages.length === 3
-              ? "xl:grid-cols-3"
-              : "xl:grid-cols-4"
-          } xl:w-10/12 xl:mx-auto md:gap-10 px-6 xl:px-0 xl:gap-10 gap-4 grid-cols-6 grid md:grid-cols-2`}
+              ? "lg:grid-cols-3"
+              : "lg:grid-cols-4"
+          } gap-6 grid`}
         >
           {data.multipleImages.map((img: any, n: number) => {
             return (
-              <div
-                key={img.id}
-                className={`relative block ${
-                  n % 2 === 0
-                    ? "col-span-5 md:col-span-1 md:col-start-0"
-                    : "md:mt-28 col-span-5 md:col-span-1 col-start-2"
-                }`}
-              >
-                <div className="relative aspect-[2/3] w-full bg-black/10">
+              <div key={img.id} className={`relative block`}>
+                <div className="relative aspect-[2/3] w-full bg-accent">
                   <motion.div
                     variants={imageVariants}
                     viewport={{ root: scrollRef, once: true, amount: 0.75 }}
-                    className={`absolute top-0 overflow-hidden w-full ${
-                      n % 2 === 0 ? "" : "col-start-2 "
-                    } col-span-5 md:col-span-1 md:col-start-0`}
+                    className={`absolute top-0 overflow-hidden w-full`}
                   >
                     <SRCImage
                       data={img.imageAsset.responsiveImage}
-                      className="object-cover absolute inset-0 w-full h-full"
+                      className="object-cover absolute inset-0 !w-full !h-full"
                     />
                   </motion.div>
                 </div>
                 <div
-                  className="formatted py-6 text-neutral "
+                  className="mt-2"
                   dangerouslySetInnerHTML={{
-                    __html: `${img.imageDescription}`,
+                    __html: img.imageDescription,
                   }}
                 />
               </div>

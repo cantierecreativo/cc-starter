@@ -8,7 +8,6 @@ import {
   MenuDocument,
   LayoutDocument,
 } from "@/graphql/generated";
-import HeaderRenderer from "@/components/Header/HeaderRenderer";
 import Footer from "@/components/Footer";
 import fetchDato from "@/lib/fetchDato";
 import myFont from "@/lib/loadCustomFont";
@@ -39,7 +38,11 @@ export async function generateMetadata() {
   return metaObject;
 }
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const { isEnabled } = draftMode();
 
   const footerData = await fetchDato(

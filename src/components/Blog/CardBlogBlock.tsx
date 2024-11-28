@@ -14,19 +14,17 @@ type PropsCardBlog = {
 const CardBlogBlock = ({ data, locale, i }: PropsCardBlog) => {
   const { blogImage, title, tags } = data;
 
+  const titleClass = "title-small";
+
   return (
     <InternalLink className="group" record={data} locale={locale} title={title}>
-      <div className="p-6 pb-2 bg-secondary text-secondary-content duration-300 relative">
+      <div className="p-4 bg-secondary text-secondary-content duration-300 relative">
         <SRCImage data={blogImage.responsiveImage} />
-        <div className="text-center py-6 xl:py-10 grid gap-6 xl:gap-8">
+        <div className="text-center p-4 grid gap-6">
           {tags?.length > 0 && <div className="prefix">{tags[0].tag}</div>}
-          <h2 className="title-small">{title}</h2>
+          <h2 className={titleClass}>{title}</h2>
           <div className="inline-block">
-            <ButtonBlock
-              label={translate("read", locale)}
-              type="underline"
-              uppercase={true}
-            />
+            <ButtonBlock label={translate("read", locale)} />
           </div>
         </div>
       </div>

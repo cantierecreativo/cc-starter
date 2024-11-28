@@ -25,27 +25,39 @@ const variants: Variants = {
   },
 };
 
+const titleClass = "title";
+
 const FeaturedPages = ({ title, subtitle, pages, locale }: Props) => {
   return (
-    <div className="container">
-      <div className="z-[1] relative">
-        {(title || subtitle) && (
-          <motion.div
-            initial="offscreen"
-            whileInView="onscreen"
-            viewport={{ once: true, amount: 0.1 }}
-            variants={variants}
-          >
-            <SectionTitle title={title} paragraph={subtitle} />
-          </motion.div>
+    <div className="grid gap-6 container">
+      <motion.div
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={variants}
+        className="grid gap-6"
+      >
+        {title && (
+          <h2
+            className={titleClass}
+            dangerouslySetInnerHTML={{ __html: title }}
+          />
         )}
-
-        <div className="lg:grid-cols-2 grid gap-2">
-          {pages?.map((p: PageRecord, i: number) => (
-            <CardPageBlock i={i} key={p.id} data={p} locale={locale} />
-          ))}
-        </div>
-      </div>
+        {subtitle && (
+          <div className="" dangerouslySetInnerHTML={{ __html: subtitle }} />
+        )}
+      </motion.div>
+      <motion.div
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={variants}
+        className="md:grid-cols-2 lg:grid-cols-3 grid gap-6"
+      >
+        {pages?.map((p: PageRecord, i: number) => (
+          <CardPageBlock i={i} key={p.id} data={p} locale={locale} />
+        ))}
+      </motion.div>
     </div>
   );
 };

@@ -22,7 +22,7 @@
       "it": "eventi"
     },
     "pagina-con-hero-gallery": {
-      "en": "page-con-hero-gallery",
+      "en": "page-with-hero-gallery",
       "it": "pagina-con-hero-gallery"
     }
   },
@@ -133,7 +133,7 @@
         "isIndex": false
       },
       "slugs": {
-        "en": "page-con-hero-gallery",
+        "en": "page-with-hero-gallery",
         "it": "pagina-con-hero-gallery"
       }
     },

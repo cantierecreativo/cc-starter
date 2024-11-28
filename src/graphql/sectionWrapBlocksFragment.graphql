@@ -1,50 +1,56 @@
 fragment wrapSectionBlocks on SectionWrapModelBlocksField {
-  ... on ElementsListRecord {
-    ...elementsListRecord
-  }
-  ... on ContactTextBlockRecord {
-    ...contactTextBlockRecord
-  }
-  ... on ProductDetailRecord {
-    ...productDetailRecord
-  }
-  ... on FeatureListSectionRecord {
-    ...featureListSectionRecord
-  }
-  ... on MultipleCardRecord {
-    ...multipleCardRecord
-  }
-  ... on FeaturedPagesSectionRecord {
-    ...featuredPagesSectionRecord
+  ... on AttachmentsBlockRecord {
+    ...attachmentsBlockRecord
   }
   ... on BannerCtaRecord {
     ...bannerCtaRecord
   }
-  ... on TextBlockRecord {
-    ...textBlockRecord
+  ... on BrandSectionRecord {
+    ...brandSectionRecord
   }
-  ... on ImageBlockRecord {
-    ...imageBlockRecord
+  ... on ContactTextBlockRecord {
+    ...contactTextBlockRecord
   }
-  ... on GallerySectionRecord {
-    ...gallerySectionRecord
-  }
-  ... on FormBlockRecord {
-    ...formBlockRecord
+  ... on ElementsListRecord {
+    ...elementsListRecord
   }
   ... on FaqSectionRecord {
     ...faqSectionRecord
   }
-  ... on VideoSectionRecord {
-    ...videoSectionRecord
+  ... on FeatureListSectionRecord {
+    ...featureListSectionRecord
   }
-  ... on AttachmentsBlockRecord {
-    ...attachmentsBlockRecord
+  ... on FeaturedPagesSectionRecord {
+    ...featuredPagesSectionRecord
+  }
+  ... on FormBlockRecord {
+    ...formBlockRecord
+  }
+  ... on GallerySectionRecord {
+    ...gallerySectionRecord
+  }
+  ... on ImageBlockRecord {
+    ...imageBlockRecord
+  }
+  ... on MapBlockRecord {
+    ...mapBlockRecord
+  }
+  ... on MultipleCardRecord {
+    ...multipleCardRecord
+  }
+  ... on ProductDetailRecord {
+    ...productDetailRecord
   }
   ... on TeamBlockRecord {
     ...teamBlockRecord
   }
-  ... on MapBlockRecord {
-    ...mapBlockRecord
+  ... on TestimonialsBlockRecord {
+    ...testimonialsBlockRecord
+  }
+  ... on TextBlockRecord {
+    ...textBlockRecord
+  }
+  ... on VideoSectionRecord {
+    ...videoSectionRecord
   }
 }

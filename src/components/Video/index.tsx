@@ -36,17 +36,29 @@ const Video = ({
   externalVideo,
 }: PropsVideo) => {
   return (
-    <motion.div
-      initial="offscreen"
-      whileInView="onscreen"
-      viewport={{ once: true, amount: 0.1 }}
-      variants={variants}
-    >
-      <div className="container">
-        {videoHeader || videoSubheader ? (
-          <SectionTitle title={videoHeader} paragraph={videoSubheader} center />
-        ) : null}
+    <div className="container">
+      <motion.div
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={variants}
+        className="grid gap-6"
+      >
+        {videoHeader && <h2 className="title">{videoHeader}</h2>}
+        {videoSubheader && (
+          <div
+            className=""
+            dangerouslySetInnerHTML={{ __html: videoSubheader }}
+          />
+        )}
+      </motion.div>
 
+      <motion.div
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={variants}
+      >
         {externalVideo && (
           <div className="aspect-video mt-12">
             <VideoEmbedded video={externalVideo} />
@@ -57,8 +69,8 @@ const Video = ({
             <VideoInternal video={internalVideo} />
           </div>
         )}
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 };
 

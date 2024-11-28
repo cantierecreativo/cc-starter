@@ -101,17 +101,13 @@ const FAQAccordion = ({ title, subtitle, questions }: Props) => {
                 <motion.div
                   layout="position"
                   key={question.id}
-                  className={
-                    "py-8 hover:cursor-pointer border-b border-primary-content/20"
-                  }
+                  className={"py-6 border-b border-primary-content/20"}
                   onClick={() => {
                     toggleQuestion(question.id);
                   }}
                 >
                   <button className="flex w-full items-center justify-between">
-                    <div className="uppercase font-serif md:text-md">
-                      {question.question}
-                    </div>
+                    <div className="">{question.question}</div>
                     {isOpen ? closeIcon : openIcon}
                   </button>
 

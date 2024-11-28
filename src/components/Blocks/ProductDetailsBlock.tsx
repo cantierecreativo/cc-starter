@@ -115,11 +115,7 @@ const ProductDetailsBlock = ({ data, locale }: PropsProductDetailsBlock) => {
                 )}
                 {link && (
                   <DynamicLink link={link} locale={locale} className={`block`}>
-                    <ButtonBlock
-                      label={link.label}
-                      type="underline"
-                      uppercase
-                    />
+                    <ButtonBlock label={link.label} />
                   </DynamicLink>
                 )}
               </div>

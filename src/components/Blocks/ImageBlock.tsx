@@ -18,24 +18,23 @@ export default function ImageBlock({ data, locale }) {
   };
 
   return (
-    <div className="container">
-      <motion.div
-        initial="offscreen"
-        whileInView="onscreen"
-        viewport={{ once: true, amount: 0.1 }}
-        variants={variants}
-      >
-        <SRCImage
-          data={imageAsset.responsiveImage}
-          className="w-full h-auto max-w-none"
+    <motion.div
+      initial="offscreen"
+      whileInView="onscreen"
+      viewport={{ once: true, amount: 0.1 }}
+      variants={variants}
+      className="container"
+    >
+      <SRCImage
+        data={imageAsset.responsiveImage}
+        className="w-full h-auto !max-w-screen-md mx-auto"
+      />
+      {imageDescription && (
+        <div
+          className="text-sm mt-4 max-w-screen-md mx-auto"
+          dangerouslySetInnerHTML={{ __html: imageDescription }}
         />
-        {imageDescription && (
-          <div
-            className="text-sm mt-6"
-            dangerouslySetInnerHTML={{ __html: imageDescription }}
-          />
-        )}
-      </motion.div>
-    </div>
+      )}
+    </motion.div>
   );
 }

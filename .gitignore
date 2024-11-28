@@ -38,3 +38,4 @@ scripts/gpt.ts
 
 # Local Netlify folder
 .netlify
+.history

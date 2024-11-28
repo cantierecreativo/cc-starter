@@ -8,6 +8,14 @@
     "search_placeholder": "Cerca un'opera, evento, etc..."
   },
 
+  "a11y": {
+    "firstSlideMessage": "Questa è la prima slide",
+    "lastSlideMessage": "Questa è l'ultima slide",
+    "nextSlideMessage": "Slide successiva",
+    "prevSlideMessage": "Slide precedente",
+    "paginationBulletMessage": "Vai alla slide "
+  },
+
   "sending": "inviando...",
   "loading": "caricando...",
   "credits": {

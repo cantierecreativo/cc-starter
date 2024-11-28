@@ -31,7 +31,6 @@ export async function generateMetadata() {
 
 export default async function Page() {
   const { isEnabled } = draftMode();
-  // console.log("PAGE by slug", pageSlug, "locale", locale);
   const data = await fetchDato(
     PageDocument,
     {

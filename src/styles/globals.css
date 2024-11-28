@@ -18,13 +18,24 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
+@layer utilities {
   .standard-vertical-m {
-    @apply my-12 md:my-20;
+    @apply my-12 md:my-20 xl:my-32;
   }
   .standard-vertical-p {
-    @apply py-12 md:py-20;
+    @apply py-12 md:py-20 xl:py-32;
   }
+  .standard-vertical-gap {
+    @apply grid gap-12 md:gap-20 xl:gap-32;
+  }
+  .unwrapped {
+    @apply ml-[calc(-50vw+50%)] mr-[calc(-50vw+50%)];
+  }
+}
+
+@layer components {
+  /* Typography ----------------------------------- */
+
   .title {
     @apply text-xl xl:text-5xl font-bold font-serif max-w-prose;
   }
@@ -38,32 +49,8 @@
     @apply max-w-prose;
   }
   .formatted p {
-    @apply text-sm text-neutral/80 xl:text-base;
+    @apply text-sm opacity-80 xl:text-base;
   }
-  .formatted strong {
-    @apply text-base text-neutral xl:text-md;
-  }
-
-  .slider-auto-width .swiper-slide {
-    width: auto;
-  }
-
-  .checkbox-custom {
-    @apply absolute h-6 w-6 opacity-0;
-  }
-  input:checked + div div {
-    @apply w-3 h-3 opacity-100;
-  }
-  input:focus-visible + div {
-    @apply border-transparent;
-  }
-  input:checked + div svg {
-    @apply block;
-  }
-  .custom-arrow svg {
-    @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-[0.5];
-  }
-
   .formatted > ul,
   .formatted > ol,
   .formatted > p,
@@ -93,7 +80,31 @@
     @apply absolute top-[2px] -left-4 h-[7px] w-[7px] text-inherit font-bold xl:text-base text-accent;
     content: counter(my-awesome-counter) ". ";
   }
-  .unwrapped {
-    @apply ml-[calc(-50vw+50%)] mr-[calc(-50vw+50%)];
+
+  /* Swiper ----------------------------------------- */
+
+  .slider-auto-width .swiper-slide {
+    width: auto;
+  }
+  .swiper-button-disabled {
+    @apply opacity-20;
+  }
+
+  /* Checkbox custom --------------------------------- */
+
+  .checkbox-custom {
+    @apply absolute h-6 w-6 opacity-0;
+  }
+  input:checked + div div {
+    @apply w-3 h-3 opacity-100;
+  }
+  input:focus-visible + div {
+    @apply border-transparent;
+  }
+  input:checked + div svg {
+    @apply block;
+  }
+  .custom-arrow svg {
+    @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-[0.5];
   }
 }

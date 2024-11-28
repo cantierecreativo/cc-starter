@@ -3,7 +3,6 @@ import Header from ".";
 
 type Props = {
   locale: SiteLocale;
-  isDraft: boolean;
   data: MenuQuery;
   hrefs?: any;
 };
@@ -24,7 +23,7 @@ export type NotificationStripType = {
   url: string | undefined | null;
 };
 
-const HeaderRenderer = async ({ data, hrefs, locale, isDraft }: Props) => {
+const HeaderRenderer = async ({ data, hrefs, locale }: Props) => {
   return <Header hrefs={hrefs} lng={locale} data={data} />;
 };
 

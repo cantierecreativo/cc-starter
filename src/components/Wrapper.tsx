@@ -20,12 +20,7 @@ export default async function Wrapper({ hrefs, locale, children }: any) {
   );
   return (
     <>
-      <HeaderRenderer
-        hrefs={hrefs}
-        data={menuData}
-        locale={siteLocale}
-        isDraft={isEnabled}
-      />
+      <HeaderRenderer hrefs={hrefs} data={menuData} locale={siteLocale} />
       {children}
     </>
   );

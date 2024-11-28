@@ -24,10 +24,10 @@ const RightImageHero = ({
 }: Props) => {
   return (
     <motion.div
-      initial={{ height: "100vh" }}
-      animate={{ height: "90vh" }}
+      // initial={{ height: "100vh" }}
+      // animate={{ height: "90vh" }}
       transition={{ duration: 0.75, delay: 0.5 }}
-      className="w-full mt-[72px] md:mt-[104px] relative object-cover object-bottom"
+      className="w-full mt-[72px] relative object-cover object-bottom"
     >
       <div className="relative bg-secondary text-secondary-content py-[120px]">
         <div className="container">
@@ -48,7 +48,7 @@ const RightImageHero = ({
                 )}
               </div>
             </div>
-            <div className="w-full h-[200px] px-4 lg:w-7/12 relative">
+            <div className="w-full h-80 px-4 lg:w-7/12 relative">
               {image && image.responsiveImage && (
                 <SRCImage
                   className="absolute !w-full !h-full object-cover inset-0"

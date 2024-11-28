@@ -5,7 +5,7 @@ import { LinkBlockModelLinkField, SiteLocale } from "@/graphql/generated";
 type Props = {
   children: any;
   locale: SiteLocale;
-  link: LinkBlockModelLinkField;
+  link?: any;
   className?: String;
 };
 

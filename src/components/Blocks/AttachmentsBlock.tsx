@@ -6,7 +6,6 @@ import {
 } from "@/graphql/generated";
 import ExternalLink from "../Links/ExternalLink";
 import { motion, Variants } from "framer-motion";
-import { Fragment } from "react";
 
 type PropsAttachmentsBlock = {
   data: AttachmentsBlockRecord;
@@ -21,6 +20,7 @@ const AttachmentsBlock = ({ data, style, locale }: PropsAttachmentsBlock) => {
     style === "bg-secondary text-secondary-content"
       ? "bg-primary text-primary-content"
       : "bg-secondary text-secondary-content";
+
   const variants: Variants = {
     offscreen: {
       opacity: 0,
@@ -34,6 +34,7 @@ const AttachmentsBlock = ({ data, style, locale }: PropsAttachmentsBlock) => {
       },
     },
   };
+
   return (
     <div className="container">
       <motion.div
@@ -42,18 +43,16 @@ const AttachmentsBlock = ({ data, style, locale }: PropsAttachmentsBlock) => {
         viewport={{ once: true, amount: 0.1 }}
         variants={variants}
       >
-        <div
-          className={`py-16 xl:py-24 grid items-start gap-8 px-8 xl:px-20 ${bg}`}
-        >
+        <div className={`grid items-start gap-8 p-8 ${bg}`}>
           {attachmentPrefix && <div className="prefix">{attachmentPrefix}</div>}
           {attachmentTitle && <h2 className="title">{attachmentTitle}</h2>}
           {attachmentText && (
-            <h3
-              className="text"
+            <div
+              className=""
               dangerouslySetInnerHTML={{ __html: attachmentText }}
             />
           )}
-          <div className="grid gap-3 pt-6 max-w-[460px] xl:mt-8 xl:gap-4">
+          <div className="grid max-w-screen-sm gap-4">
             {attachments.map((a: AttachmentRecord) => {
               return (
                 <ExternalLink
@@ -63,14 +62,12 @@ const AttachmentsBlock = ({ data, style, locale }: PropsAttachmentsBlock) => {
                   locale={locale}
                   className="group cursor-pointer"
                 >
-                  <div className="bg-base-100 text-base-content flex items-center gap-4 rounded-md border-primary-content border p-3 duration-300 group-hover:bg-secondary group-hover:text-base-100">
+                  <div className="bg-base-100 text-base-content flex items-center gap-4 rounded-md p-3">
                     <CustomIcon
-                      classes="bg-base-content md:w-[40px] md:h-[40px] w-[23px] h-[25px] group-hover:ml-1 motion-safe:duration-300 md:scale-125 group-hover:bg-base-100"
+                      classes="bg-base-content size-6"
                       fileName="download"
                     />
-                    <div className="opacity-70 text-sm md:text-base">
-                      {a.title}
-                    </div>
+                    <div className="">{a.title}</div>
                   </div>
                 </ExternalLink>
               );
