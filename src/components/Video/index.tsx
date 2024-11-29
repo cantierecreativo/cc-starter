@@ -1,6 +1,5 @@
 "use client";
 
-import SectionTitle from "@/components/Blocks/SectionTitle";
 import VideoEmbedded from "@/components/Video/VideoEmbedded";
 import VideoInternal from "@/components/Video/VideoInternal";
 import { motion, Variants } from "framer-motion";

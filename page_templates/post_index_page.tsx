@@ -6,7 +6,7 @@ import PostIndexPage from "@/components/Templates/PostsIndexPage";
 import getSeoMeta from "@/lib/seoUtils";
 import { pickHrefs } from "@/lib/pickPageData";
 import { hrefsProp } from "@/_types";
-import Wrapper from "@/components/Wrapper";
+import Wrapper from "@/components/Layout/Wrapper";
 
 const locale = "it";
 const siteLocale = locale as SiteLocale;
@@ -14,7 +14,11 @@ const slug = "##";
 
 export async function generateMetadata() {
   const siteLocale = locale as SiteLocale;
-  const data = await fetchDato(PageDocument, { locale: siteLocale, slug }, false);
+  const data = await fetchDato(
+    PageDocument,
+    { locale: siteLocale, slug },
+    false
+  );
   const page: any = data?.page || null;
   const meta = getSeoMeta(page, locale);
   return meta;

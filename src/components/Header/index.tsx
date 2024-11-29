@@ -22,16 +22,11 @@ type Props = {
   hrefs?: any;
 };
 
-const activeClass = "text-accent underline";
+const activeClass = "bg-accent";
 const itemClass =
-  "lg:px-0 hover:underline hover:text-accent whitespace-nowrap lg:text-base duration-200 underline-offset-8 text-md px-6";
+  "lg:px-0 hover:underline whitespace-nowrap duration-200 px-6 flex items-center gap-1";
 
 const invertVariants = {
-  open: { transition: { ease: "easeOut", duration: 0.25 } },
-  closed: { transition: { ease: "easeOut", duration: 0.25 } },
-};
-
-const colorVariants = {
   open: { transition: { ease: "easeOut", duration: 0.25 } },
   closed: { transition: { ease: "easeOut", duration: 0.25 } },
 };
@@ -70,11 +65,13 @@ const Header = ({ lng, hrefs, data }: Props) => {
         id: item.id,
         title: dropdownItem.title || "Other Items",
         newTab: false,
-        submenu: subItems.map((subItem) => ({
+        submenu: subItems.map((subItem: any) => ({
           id: subItem.id,
           title: subItem.title,
           menuImage:
-            dropdownItem.dropdownType === "text_image" ? subItem.menuImage : undefined,
+            dropdownItem.dropdownType === "text_image"
+              ? subItem.menuImage
+              : undefined,
           path: resolveLink({
             ...subItem.page,
             locale: lng,
@@ -99,26 +96,27 @@ const Header = ({ lng, hrefs, data }: Props) => {
   });
 
   return (
-    <header className="header left-0 flex w-full items-center fixed top-0 z-20 after:absolute after:top-0 after:inset-x-0 border-b border-px border-base-300/20">
+    <header className="header left-0 flex w-full items-center fixed top-0 z-20">
       <div
-        className={`relative isolate z-20 w-full md:py-4 ${
+        className={`relative isolate z-20 w-full md:py-4 motion-safe:duration-300 ${
           sticky
-            ? "bg-primary text-primary-content border-primary-content/20"
-            : "motion-safe:duration-300"
+            ? "bg-primary text-primary-content"
+            : "bg-secondary text-secondary-content"
         }`}
       >
         <div className="container">
           <div className="flex items-center justify-between">
             <motion.div
-              className="w-28 xl:w-[150px] max-w-full xl:mr-12"
+              className="w-28 xl:w-[180px] max-w-full"
               animate={sticky || navbarOpen ? "open" : "closed"}
               variants={invertVariants}
             >
-              <Link href="/" className="header-logo block w-full py-9 relative">
+              <Link href="/" className="block w-full py-9 relative">
                 {data.layout.logo.url && (
                   <Image
-                    // src={data.layout.logo.url}
-                    src={data.layout.logoAlt.url}
+                    src={
+                      !sticky ? data.layout.logoAlt.url : data.layout.logo.url
+                    }
                     alt="logo"
                     className="w-full h-full absolute inset-0 object-left object-contain"
                     priority
@@ -130,44 +128,42 @@ const Header = ({ lng, hrefs, data }: Props) => {
             </motion.div>
             <div className="flex w-full justify-end lg:justify-start lg:flex-row-reverse items-center gap-x-3 pl-4">
               <div className="hidden lg:flex items-center justify-end">
-                <LanguageSelector
-                  lng={lng}
-                  hrefs={hrefs}
-                  languages={data._site.locales || []}
-                  sticky={sticky}
-                  navbarOpen={navbarOpen}
-                  isDropdownOpen={isDropdownOpen}
-                />
+                <LanguageSelector lng={lng} hrefs={hrefs} />
               </div>
               <div>
                 <ButtonMenu
                   navbarToggleHandler={navbarToggleHandler}
                   navbarOpen={navbarOpen}
+                  sticky={sticky}
                 />
                 <motion.nav
                   initial={false}
                   animate={isDropdownOpen ? "open" : "closed"}
                   id="navbarCollapse"
                   ref={containerRef}
-                  className={`absolute top-0 right-0 z-[-1] lg:z-30 w-full bg-primary motion-safe:duration-[.75s] lg:visible lg:static lg:w-auto lg:border-none lg:!bg-transparent after:motion-safe:duration-300 after:motion-safe:delay-300 after:fixed after:inset-x-0 after:h-[100px] after:-translate-y-full after:shadow-[0_200px_50px_-100px_transparent_inset] after:z-[2] grid ${
-                    navbarOpen
-                      ? "h-screen lg:h-auto after:translate-y-0 after:shadow-primary"
-                      : "h-0 lg:h-auto"
+                  className={`absolute top-0 right-0 z-[-1] lg:z-30 w-full bg-primary text-primary-content motion-safe:duration-700 lg:visible lg:static lg:w-auto lg:!bg-transparent grid lg:h-auto ${
+                    navbarOpen ? "h-screen" : "h-0"
                   }`}
                 >
                   <div className="overflow-auto lg:overflow-visible h-full">
                     <ul
                       className={`${
-                        sticky ? "lg:text-primary-content" : "lg:text-base-content"
-                      } block text-primary-content items-center xl:container lg:max-w-auto pt-28 lg:pt-0 pb-4 lg:pb-0 lg:flex xl:gap-x-8 lg:gap-x-4`}
+                        sticky
+                          ? "lg:text-primary-content"
+                          : "lg:text-base-content"
+                      } block text-primary-content items-center xl:container lg:max-w-auto pt-28 lg:pt-0 pb-4 lg:pb-0 lg:flex gap-x-8`}
                     >
-                      {menuData.map((menuItem, index) => {
-                        const isMega = menuItem.submenu?.some((i) => i.menuImage);
+                      {menuData.map((menuItem) => {
+                        const isMega = menuItem.submenu?.some(
+                          (i) => i.menuImage
+                        );
 
                         return (
                           <li
                             key={menuItem.id}
-                            className={`py-4 lg:py-2 ${isMega ? "" : "relative"}`}
+                            className={`py-4 ${
+                              isMega ? "" : "relative"
+                            } has-[.activeClass]:bg-accent`}
                           >
                             {menuItem.path ? (
                               <motion.div
@@ -176,12 +172,13 @@ const Header = ({ lng, hrefs, data }: Props) => {
                                     ? "open"
                                     : "closed"
                                 }
-                                variants={colorVariants}
                               >
                                 <Link
                                   href={menuItem.path}
                                   className={`${
-                                    pathname === menuItem.path ? activeClass : ""
+                                    pathname === menuItem.path
+                                      ? activeClass
+                                      : ""
                                   } ${itemClass}`}
                                   onClick={handleClickAndClose}
                                 >
@@ -197,6 +194,7 @@ const Header = ({ lng, hrefs, data }: Props) => {
                                 menuItem={menuItem}
                                 isDropdownOpen={isDropdownOpen}
                                 setIsDropdownOpen={setIsDropdownOpen}
+                                itemClass={itemClass}
                               />
                             )}
                           </li>
@@ -204,14 +202,7 @@ const Header = ({ lng, hrefs, data }: Props) => {
                       })}
                     </ul>
                     <div className="lg:hidden mt-10 mb-4 container">
-                      <LanguageSelector
-                        hrefs={hrefs}
-                        lng={lng}
-                        languages={data._site.locales || []}
-                        sticky={sticky}
-                        navbarOpen={navbarOpen}
-                        isDropdownOpen={isDropdownOpen}
-                      />
+                      <LanguageSelector hrefs={hrefs} lng={lng} />
                     </div>
                   </div>
                 </motion.nav>

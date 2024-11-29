@@ -6,7 +6,7 @@ import EventPage from "@/components/Templates/EventPage";
 import getSeoMeta from "@/lib/seoUtils";
 import { pickHrefs } from "@/lib/pickPageData";
 import { hrefsProp } from "@/_types";
-import Wrapper from "@/components/Wrapper";
+import Wrapper from "@/components/Layout/Wrapper";
 
 type Params = {
   params: {
@@ -19,7 +19,11 @@ const siteLocale = locale as SiteLocale;
 
 export async function generateMetadata({ params }: Params) {
   const { slug } = params;
-  const data = await fetchDato(EventDocument, { locale: siteLocale, slug }, false);
+  const data = await fetchDato(
+    EventDocument,
+    { locale: siteLocale, slug },
+    false
+  );
   const page: any = data?.event || null;
   const meta = getSeoMeta(page, locale);
   return meta;

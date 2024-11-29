@@ -10,6 +10,7 @@ export default function DropdownMenu({
   handleClickAndClose,
   isDropdownOpen,
   setIsDropdownOpen,
+  itemClass,
 }) {
   const [dropdownOpen, toggleOpen] = useCycle(false, true);
   // const containerRef = useRef(null);
@@ -103,10 +104,7 @@ export default function DropdownMenu({
         onClick={() => handleSubmenu()}
         variants={colorVariants}
       >
-        <span
-          ref={wrapperRef}
-          className={`lg:text-base whitespace-nowrap flex lg:gap-x-2 cursor-pointer items-center justify-between text-md lg:mr-0 lg:inline-flex hover:underline underline-offset-8 px-6 lg:px-0`}
-        >
+        <span ref={wrapperRef} className={itemClass}>
           {menuItem.title}
           <motion.span
             animate={sticky || navbarOpen ? "open" : "closed"}
@@ -126,10 +124,8 @@ export default function DropdownMenu({
         className={`submenu relative grid grid-rows-[0fr] ${
           isMega
             ? "top-0 lg:w-screen left-0"
-            : `${
-                sticky ? "xl:mt-[37px] drop-shadow-md" : "xl:mt-[40px]"
-              } lg:-ml-6 min-w-[260px] lg:mt-[38px]`
-        } px-6 lg:px-2 lg:absolute lg:z-[-1] bg-base-100`}
+            : `${sticky ? "drop-shadow-md" : ""} min-w-[260px] lg:mt-[40px]`
+        } px-6 lg:px-2 lg:absolute lg:z-[-1] lg:left-1/2 lg:-translate-x-1/2 bg-base-100`}
       >
         <div className="overflow-hidden h-full">
           {menuItem.submenu && (
@@ -138,7 +134,7 @@ export default function DropdownMenu({
               isMega={isMega}
               handleClickAndClose={handleClickAndClose}
               dropdownOpen={dropdownOpen}
-              // handleSubmenu={handleSubmenu}
+              itemClass={itemClass}
             />
           )}
         </div>

@@ -175,7 +175,7 @@ export type BannerCtaModelTextField = {
   value: Scalars['JsonField']['output'];
 };
 
-/** Block of type 📕 Blocco con immagine e testo (banner_cta) */
+/** Block of type 🚩 Blocco con immagine e testo (banner_cta) */
 export type BannerCtaRecord = RecordInterface & {
   __typename?: 'BannerCtaRecord';
   _createdAt: Scalars['DateTime']['output'];
@@ -201,7 +201,7 @@ export type BannerCtaRecord = RecordInterface & {
 };
 
 
-/** Block of type 📕 Blocco con immagine e testo (banner_cta) */
+/** Block of type 🚩 Blocco con immagine e testo (banner_cta) */
 export type BannerCtaRecord_SeoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
@@ -4191,44 +4191,9 @@ export type PostRecordTitleArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
 
-/** Block of type 💰 Pricing section (pricing_section) */
-export type PricingSectionRecord = RecordInterface & {
-  __typename?: 'PricingSectionRecord';
-  _createdAt: Scalars['DateTime']['output'];
-  /** Editing URL */
-  _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
-  _isValid: Scalars['BooleanType']['output'];
-  _modelApiKey: Scalars['String']['output'];
-  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
-  /** Generates SEO and Social card meta tags to be used in your frontend */
-  _seoMetaTags: Array<Tag>;
-  _status: ItemStatus;
-  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _updatedAt: Scalars['DateTime']['output'];
-  displayOption: Scalars['String']['output'];
-  id: Scalars['ItemId']['output'];
-  plans: Array<Scalars['String']['output']>;
-  pricingSectionHeader: Scalars['String']['output'];
-  pricingSectionSubheader?: Maybe<Scalars['String']['output']>;
-};
-
-
-/** Block of type 💰 Pricing section (pricing_section) */
-export type PricingSectionRecord_SeoMetaTagsArgs = {
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Block of type 💰 Pricing section (pricing_section) */
-export type PricingSectionRecordPricingSectionSubheaderArgs = {
-  markdown?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
 export type ProductDetailModelLinkField = ExternalLinkRecord | InternalLinkRecord;
 
-/** Block of type 📕 Product Detail (product_detail) */
+/** Block of type 📕 Blocco con campi vari per approfondimento (product_detail) */
 export type ProductDetailRecord = RecordInterface & {
   __typename?: 'ProductDetailRecord';
   _createdAt: Scalars['DateTime']['output'];
@@ -4256,19 +4221,19 @@ export type ProductDetailRecord = RecordInterface & {
 };
 
 
-/** Block of type 📕 Product Detail (product_detail) */
+/** Block of type 📕 Blocco con campi vari per approfondimento (product_detail) */
 export type ProductDetailRecord_SeoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
 
 
-/** Block of type 📕 Product Detail (product_detail) */
+/** Block of type 📕 Blocco con campi vari per approfondimento (product_detail) */
 export type ProductDetailRecordDescriptionArgs = {
   markdown?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** Block of type 📕 Product Detail (product_detail) */
+/** Block of type 📕 Blocco con campi vari per approfondimento (product_detail) */
 export type ProductDetailRecordImageDescriptionArgs = {
   markdown?: InputMaybe<Scalars['Boolean']['input']>;
 };
@@ -5254,6 +5219,12 @@ export type SlideRecord = RecordInterface & {
 /** Block of type 📸 Singola slide (slide) */
 export type SlideRecord_SeoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Block of type 📸 Singola slide (slide) */
+export type SlideRecordTextArgs = {
+  markdown?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 /** Block of type 🪧 Slideshow (slideshow) */

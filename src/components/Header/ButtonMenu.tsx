@@ -5,34 +5,35 @@ import React from "react";
 type Props = {
   navbarToggleHandler: any;
   navbarOpen: Boolean;
+  sticky: Boolean;
 };
 
-const ButtonMenu = ({ navbarToggleHandler, navbarOpen }: Props) => {
+const ButtonMenu = ({ navbarToggleHandler, navbarOpen, sticky }: Props) => {
   return (
     <button
       onClick={navbarToggleHandler}
       id="navbarToggler"
       aria-label="Mobile Menu"
-      className="flex text-xs items-center lg:hidden text-primary-content justify-center"
+      className={`flex text-xs items-center lg:hidden justify-center ${
+        navbarOpen ? "text-primary-content" : "text-secobdary-content"
+      }`}
     >
-      <span className="uppercase font-serif pr-2">
-        {navbarOpen ? "close" : "menu"}
-      </span>
+      <span className="pr-2">{navbarOpen ? "close" : "menu"}</span>
       <div>
         <span
           className={`relative my-1 block h-0.5 w-[20px] transition-all motion-safe:duration-300 ${
-            navbarOpen ? "top-[6px] rotate-45" : ""
-          } bg-primary-content`}
+            navbarOpen ? "!bg-primary-content top-[6px] rotate-45" : ""
+          } ${sticky ? "bg-primary-content" : "bg-secondary-content"}`}
         />
         <span
           className={`relative my-1 block h-0.5 w-[20px] transition-all motion-safe:duration-300 ${
-            navbarOpen ? "opacity-0" : ""
-          } bg-primary-content`}
+            navbarOpen ? "!bg-primary-content opacity-0" : ""
+          } ${sticky ? "bg-primary-content" : "bg-secondary-content"}`}
         />
         <span
           className={`relative my-1 block h-0.5 w-[20px] transition-all motion-safe:duration-300 ${
-            navbarOpen ? "top-[-6px] -rotate-45" : ""
-          } bg-primary-content`}
+            navbarOpen ? "!bg-primary-content top-[-6px] -rotate-45" : ""
+          } ${sticky ? "bg-primary-content" : "bg-secondary-content"}`}
         />
       </div>
     </button>

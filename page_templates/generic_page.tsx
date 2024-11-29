@@ -7,7 +7,7 @@ import getSeoMeta from "@/lib/seoUtils";
 import config from "@/data/config";
 import { pickHrefs } from "@/lib/pickPageData";
 import { hrefsProp } from "@/_types";
-import Wrapper from "@/components/Wrapper";
+import Wrapper from "@/components/Layout/Wrapper";
 
 const locale = "it";
 const siteLocale = locale as SiteLocale;

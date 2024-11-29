@@ -1,5 +1,4 @@
 import { PageRecord, SiteLocale } from "@/graphql/generated";
-import SectionTitle from "@/components/Blocks/SectionTitle";
 import { Maybe } from "graphql/jsutils/Maybe";
 import { motion, Variants } from "framer-motion";
 import CardPageBlock from "./CardPageBlock";

@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { SRCImage } from "react-datocms";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -7,7 +8,7 @@ import CustomIcon from "../Blocks/CustomIcon";
 
 export const MenuItem = ({
   submenuItem,
-  // handleSubmenu,
+  itemClass,
   handleClickAndClose,
   isMega,
   dropdownOpen,
@@ -44,12 +45,16 @@ export const MenuItem = ({
       },
     },
   };
+  const pathname = usePathname();
+
   return (
     <li>
       <Link
         tabIndex={dropdownOpen ? 0 : -1}
         href={submenuItem.path}
-        className="group"
+        className={`${
+          pathname === submenuItem.path ? "text-accent activeClass" : ""
+        } group`}
         onClick={() => handleClickAndClose()}
       >
         {submenuItem.menuImage && isMega && (
@@ -69,17 +74,10 @@ export const MenuItem = ({
         <div className="flex items-center my-2">
           <motion.div
             variants={titleVariants}
-            className={`text-accent-content text-base lg:uppercase lg:font-bold lg:text-xs xl:text-base ${
-              isMega ? "" : "hover:underline hover:underline-offset-8"
-            }`}
+            className={`itemClass ${isMega ? "" : ""}`}
           >
             {submenuItem.title}
-            {isMega && (
-              <CustomIcon
-                fileName="arrow-oblique"
-                classes="w-[14px] h-[14px] bg-base-content ml-2 group-hover:ml-6 inline-block motion-safe:duration-300"
-              />
-            )}
+            {isMega && <CustomIcon fileName="arrow-oblique" classes="" />}
           </motion.div>
         </div>
       </Link>
@@ -91,7 +89,7 @@ export default function SubMenuItems({
   items,
   isMega,
   handleClickAndClose,
-  handleSubmenu,
+  itemClass,
 }: any) {
   const variants = {
     open: {
@@ -124,7 +122,7 @@ export default function SubMenuItems({
           ? "mx-0 lg:ml-auto lg:mt-[105px] lg:container pt-6 pb-8 grid justify-center gap-5" +
             " " +
             colClass[items.length]
-          : "lg:px-4 lg:py-2"
+          : "lg:p-3"
       }`}
     >
       {items?.map((submenuItem: any, dropdownOpen: boolean) => {
@@ -135,6 +133,7 @@ export default function SubMenuItems({
             isMega={isMega}
             handleClickAndClose={handleClickAndClose}
             dropdownOpen={dropdownOpen}
+            itemClass={itemClass}
           />
         );
       })}

@@ -1,5 +1,4 @@
 import { FeatureRecord } from "@/graphql/generated";
-import SectionTitle from "@/components/Blocks/SectionTitle";
 import SingleFeature from "@/components/Blocks/SingleFeature";
 import { Maybe } from "graphql/jsutils/Maybe";
 import { motion, Variants } from "framer-motion";
