@@ -17,6 +17,7 @@ import {
   MultipleCardRecord,
   PostRecord,
   SiteLocale,
+  SlideshowRecord,
   TeamBlockRecord,
   TestimonialsBlockRecord,
   TextBlockRecord,
@@ -36,6 +37,7 @@ import FeaturedPages from "../Blocks/FeaturedPages";
 import TeamBlock from "../Blocks/TeamBlock";
 import MapBlock from "../Map/MapBlock";
 import TestimonialsBlock from "../Blocks/TestimonialsBlock";
+import Slideshow from "../Blocks/Slideshow";
 
 type Props = {
   section: any;
@@ -160,6 +162,10 @@ export default function Sections({
         content = <ProductDetailsBlock data={b} locale={locale} />;
         break;
       }
+      case "slideshow":
+        const slideshow = b as SlideshowRecord;
+        content = <Slideshow data={slideshow} locale={locale} />;
+        break;
       case "team_block": {
         const teamBlock = b as TeamBlockRecord;
         content = (

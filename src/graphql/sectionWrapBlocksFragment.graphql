@@ -41,6 +41,9 @@ fragment wrapSectionBlocks on SectionWrapModelBlocksField {
   ... on ProductDetailRecord {
     ...productDetailRecord
   }
+  ... on SlideshowRecord {
+    ...slideshowRecord
+  }
   ... on TeamBlockRecord {
     ...teamBlockRecord
   }
