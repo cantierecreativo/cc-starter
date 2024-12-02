@@ -53,8 +53,9 @@ const FeaturesList = ({
             whileInView="onscreen"
             viewport={{ once: true, amount: 0.3 * i }}
             variants={variants}
+            key={i}
           >
-            <SingleFeature key={feature.id} feature={feature} />
+            <SingleFeature feature={feature} />
           </motion.div>
         ))}
       </div>
