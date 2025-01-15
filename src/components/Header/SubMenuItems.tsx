@@ -49,13 +49,13 @@ export const MenuItem = ({
 
   return (
     <li>
-      <Link
+      <a
         tabIndex={dropdownOpen ? 0 : -1}
-        href={submenuItem.path}
+        // href={submenuItem.path}
         className={`${
           pathname === submenuItem.path ? "text-accent activeClass" : ""
         } group`}
-        onClick={() => handleClickAndClose()}
+        onClick={() => handleClickAndClose(submenuItem.path)}
       >
         {submenuItem.menuImage && isMega && (
           <div className="relative block text-sm text-primary-content aspect-[4/3] bg-base-300/20 w-full overflow-hidden">
@@ -80,7 +80,7 @@ export const MenuItem = ({
             {isMega && <CustomIcon fileName="arrow-oblique" classes="" />}
           </motion.div>
         </div>
-      </Link>
+      </a>
     </li>
   );
 };

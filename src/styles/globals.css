@@ -2,7 +2,7 @@
 
 @layer base {
   html {
-    @apply font-sans !scroll-smooth;
+    /* @apply font-sans !scroll-smooth; */
   }
   @media (prefers-reduced-motion) {
     html {

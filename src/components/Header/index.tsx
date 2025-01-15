@@ -16,6 +16,9 @@ import { motion } from "framer-motion";
 import DropdownMenu from "./DropdownMenu";
 import ButtonMenu from "./ButtonMenu";
 
+import { useRouter } from "next/navigation";
+import { animatePageOut } from "../../../animations";
+
 type Props = {
   lng: SiteLocale;
   data: MenuQuery;
@@ -95,6 +98,19 @@ const Header = ({ lng, hrefs, data }: Props) => {
     }
   });
 
+  const router = useRouter();
+  const path = usePathname();
+
+  const handleClick = (item: any) => {
+    if (item !== path) {
+      animatePageOut(item, router);
+    }
+  };
+  const handleClickMenu = (item: any) => {
+    handleClick(item);
+    handleClickAndClose;
+  };
+
   return (
     <header className="header left-0 flex w-full items-center fixed top-0 z-20">
       <div
@@ -111,7 +127,11 @@ const Header = ({ lng, hrefs, data }: Props) => {
               animate={sticky || navbarOpen ? "open" : "closed"}
               variants={invertVariants}
             >
-              <Link href="/" className="block w-full py-9 relative">
+              <a
+                // href="/"
+                className="block w-full py-9 relative cursor-pointer"
+                onClick={() => handleClickMenu("/")}
+              >
                 {data.layout.logo.url && (
                   <Image
                     src={
@@ -124,7 +144,7 @@ const Header = ({ lng, hrefs, data }: Props) => {
                     height={100}
                   />
                 )}
-              </Link>
+              </a>
             </motion.div>
             <div className="flex w-full justify-end lg:justify-start lg:flex-row-reverse items-center gap-x-3 pl-4">
               <div className="hidden lg:flex items-center justify-end">
@@ -173,24 +193,25 @@ const Header = ({ lng, hrefs, data }: Props) => {
                                     : "closed"
                                 }
                               >
-                                <Link
-                                  href={menuItem.path}
+                                <a
+                                  // href={menuItem.path}
                                   className={`${
                                     pathname === menuItem.path
                                       ? activeClass
                                       : ""
-                                  } ${itemClass}`}
-                                  onClick={handleClickAndClose}
+                                  } ${itemClass} cursor-pointer`}
+                                  onClick={() => handleClickMenu(menuItem.path)}
                                 >
                                   {menuItem.title}
-                                </Link>
+                                </a>
                               </motion.div>
                             ) : (
                               <DropdownMenu
                                 sticky={sticky}
                                 navbarOpen={navbarOpen}
                                 isMega={isMega}
-                                handleClickAndClose={handleClickAndClose}
+                                // handleClickAndClose={handleClickAndClose}
+                                handleClickAndClose={handleClickMenu}
                                 menuItem={menuItem}
                                 isDropdownOpen={isDropdownOpen}
                                 setIsDropdownOpen={setIsDropdownOpen}
