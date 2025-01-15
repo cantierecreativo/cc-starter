@@ -24,6 +24,10 @@
     "pagina-con-hero-gallery": {
       "en": "page-with-hero-gallery",
       "it": "pagina-con-hero-gallery"
+    },
+    "prodotti": {
+      "en": "products",
+      "it": "prodotti"
     }
   },
   "paths": [
@@ -34,6 +38,8 @@
     "/articoli",
     "/drop/pagina-con-hero-gallery",
     "/drop",
+    "/prodotti/[slug]",
+    "/prodotti",
     "/[slug]",
     "/eventi/c/[slug]",
     "/eventi/c",
@@ -152,6 +158,37 @@
       "slugs": {
         "en": "drop",
         "it": "drop"
+      }
+    },
+    {
+      "path": "/prodotti/[slug]",
+      "routeInfo": {
+        "model": "product",
+        "tagRef": "",
+        "querySlug": "slug",
+        "indexModel": "",
+        "isHome": false,
+        "isVirtual": false,
+        "isDynamic": true,
+        "isIndex": false
+      },
+      "slugs": {}
+    },
+    {
+      "path": "/prodotti",
+      "routeInfo": {
+        "model": "page",
+        "tagRef": "",
+        "querySlug": "prodotti",
+        "indexModel": "product",
+        "isHome": false,
+        "isVirtual": false,
+        "isDynamic": false,
+        "isIndex": true
+      },
+      "slugs": {
+        "en": "products",
+        "it": "prodotti"
       }
     },
     {

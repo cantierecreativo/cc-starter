@@ -11,7 +11,7 @@ import {
 import Footer from "@/components/Footer";
 import fetchDato from "@/lib/fetchDato";
 import myFont from "@/lib/loadCustomFont";
-import SkipLinks from "../src/components/Layout/SkipLinks";
+import SkipLinks from "@/components/Layout/SkipLinks";
 
 const locale = "it";
 const siteLocale = locale as SiteLocale;

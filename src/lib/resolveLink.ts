@@ -67,6 +67,8 @@ export default function resolveLink({
       }
     case "event":
       return `${lang}/${t(`eventi`, locale)}/${slug}`;
+    case "product":
+      return `${lang}/${t(`prodotti`, locale)}/${slug}`;
     case "post":
       return `${lang}/${t(`articoli`, locale)}/${slug}`;
     case "tag":

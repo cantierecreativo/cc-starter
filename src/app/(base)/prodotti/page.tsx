@@ -1,27 +1,26 @@
 import fetchDato from "@/lib/fetchDato";
 import { draftMode } from "next/headers";
-import { PageDocument, SiteLocale } from "@/graphql/generated";
+import {
+  PageDocument,
+  ProductsDocument,
+  SiteLocale,
+} from "@/graphql/generated";
 import { notFound } from "next/navigation";
-import GenericPage from "@/components/Templates/GenericPage";
 import getSeoMeta from "@/lib/seoUtils";
-import config from "@/data/config";
+import ProductsIndexPage from "@/components/Templates/ProductsIndexPage";
 import { pickHrefs } from "@/lib/pickPageData";
 import { hrefsProp } from "@/_types";
 import Wrapper from "@/components/Layout/Wrapper";
 
 const locale = "it";
 const siteLocale = locale as SiteLocale;
-const defaultLocale = config.defaultLocale as SiteLocale;
-const pageSlug = "home";
+const slug = "prodotti";
 
 export async function generateMetadata() {
+  const siteLocale = locale as SiteLocale;
   const data = await fetchDato(
     PageDocument,
-    {
-      locale: siteLocale,
-      fallbackLocale: [defaultLocale],
-      slug: pageSlug,
-    },
+    { locale: siteLocale, slug },
     false
   );
   const page: any = data?.page || null;
@@ -35,19 +34,41 @@ export default async function Page() {
     PageDocument,
     {
       locale: siteLocale,
-      fallbackLocale: [defaultLocale],
-      slug: pageSlug,
+      fallbackLocale: [siteLocale],
+      slug,
     },
     isEnabled
   );
-  if (!data?.page) {
-    notFound();
+
+  let list = [];
+  let allProducts = [];
+  let exitCondition = true;
+  let page = 0;
+  while (exitCondition) {
+    const results = await fetchDato(
+      ProductsDocument,
+      {
+        locale: siteLocale,
+        skip: page * 100,
+      },
+      isEnabled
+    );
+    if (results?.allProducts?.length > 0) {
+      allProducts = [...allProducts, ...results.allProducts];
+      page++;
+    } else {
+      exitCondition = false;
+    }
   }
+  list = allProducts;
+
+  if (!data) notFound();
+
   const hrefs: hrefsProp = pickHrefs(data.page);
 
   return (
     <Wrapper hrefs={hrefs} locale={locale}>
-      <GenericPage data={data} page={data.page} locale={siteLocale} />{" "}
+      <ProductsIndexPage data={data} list={list} locale={siteLocale} />;
     </Wrapper>
   );
 }

@@ -1,6 +1,6 @@
 import fetchDato from "@/lib/fetchDato";
 import { draftMode } from "next/headers";
-import { PageDocument, SiteLocale } from "@/graphql/generated";
+import { ProductDocument, SiteLocale } from "@/graphql/generated";
 import { notFound } from "next/navigation";
 import GenericPage from "@/components/Templates/GenericPage";
 import getSeoMeta from "@/lib/seoUtils";
@@ -9,45 +9,52 @@ import { pickHrefs } from "@/lib/pickPageData";
 import { hrefsProp } from "@/_types";
 import Wrapper from "@/components/Layout/Wrapper";
 
+type Params = {
+  params: {
+    slug: string;
+  };
+};
+
 const locale = "en";
 const siteLocale = locale as SiteLocale;
 const defaultLocale = config.defaultLocale as SiteLocale;
-const pageSlug = "page-with-hero-gallery";
 
-export async function generateMetadata() {
+export async function generateMetadata({ params }: any) {
+  const { slug } = params;
   const data = await fetchDato(
-    PageDocument,
+    ProductDocument,
     {
       locale: siteLocale,
       fallbackLocale: [defaultLocale],
-      slug: pageSlug,
+      slug,
     },
     false
   );
-  const page: any = data?.page || null;
+  const page: any = data?.product || null;
   const meta = getSeoMeta(page, locale);
   return meta;
 }
 
-export default async function Page() {
+export default async function Page({ params: { slug } }: Params) {
   const { isEnabled } = draftMode();
   const data = await fetchDato(
-    PageDocument,
+    ProductDocument,
     {
       locale: siteLocale,
       fallbackLocale: [defaultLocale],
-      slug: pageSlug,
+      slug,
     },
     isEnabled
   );
-  if (!data?.page) {
-    notFound();
-  }
-  const hrefs: hrefsProp = pickHrefs(data.page);
+  if (!data?.product) notFound();
+
+  const hrefs: hrefsProp = pickHrefs(data.product);
 
   return (
     <Wrapper hrefs={hrefs} locale={locale}>
-      <GenericPage data={data} page={data.page} locale={siteLocale} />{" "}
+      {JSON.stringify(data.product)}
+
+      {/* <GenericPage data={data} page={data.product} locale={siteLocale} /> */}
     </Wrapper>
   );
 }

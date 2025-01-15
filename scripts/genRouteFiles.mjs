@@ -74,6 +74,8 @@ for (let f of folders) {
         source = `generic_tag${tagRef}`;
         break;
       case "product":
+        source = "generic_product";
+        break;
       default:
         source = "empty_page";
         break;

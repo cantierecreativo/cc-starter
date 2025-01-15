@@ -41,7 +41,6 @@ export default async function Page() {
     isEnabled
   );
   if (!data?.page) {
-    console.log("PAGE not found", pageSlug, "locale", locale, data);
     notFound();
   }
   const hrefs: hrefsProp = pickHrefs(data.page);
