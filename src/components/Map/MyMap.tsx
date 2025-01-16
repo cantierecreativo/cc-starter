@@ -1,5 +1,6 @@
 import { useState } from "react";
-import ReactMapGL from "react-map-gl";
+import ReactMapGL, { NavigationControl } from "react-map-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
 
 interface MyMapProps {
   latitude: number;
@@ -29,7 +30,10 @@ function MyMap({ latitude, longitude, token, style, zoom }: MyMapProps) {
       mapboxAccessToken={token}
       onMove={(evt) => setViewport(evt.viewState)}
       attributionControl={false}
-    />
+      scrollZoom={false}
+    >
+      <NavigationControl position="top-right" />
+    </ReactMapGL>
   );
 }
 
