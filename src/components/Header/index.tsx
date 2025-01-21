@@ -123,7 +123,7 @@ const Header = ({ lng, hrefs, data }: Props) => {
         <div className="container">
           <div className="flex items-center justify-between">
             <motion.div
-              className="w-28 xl:w-[180px] max-w-full"
+              className="w-28 xl:w-[180px] max-w-full absolute left-1/2 -translate-x-1/2 z-10"
               animate={sticky || navbarOpen ? "open" : "closed"}
               variants={invertVariants}
             >
@@ -146,11 +146,11 @@ const Header = ({ lng, hrefs, data }: Props) => {
                 )}
               </a>
             </motion.div>
-            <div className="flex w-full justify-end lg:justify-start lg:flex-row-reverse items-center gap-x-3 pl-4">
+            <div className="flex w-full justify-end flex-row-reverse items-center gap-x-8 relative z-[2]">
               <div className="hidden lg:flex items-center justify-end">
                 <LanguageSelector lng={lng} hrefs={hrefs} />
               </div>
-              <div>
+              <div className="w-full flex justify-end pt-5 lg:pt-0">
                 <ButtonMenu
                   navbarToggleHandler={navbarToggleHandler}
                   navbarOpen={navbarOpen}
@@ -161,19 +161,19 @@ const Header = ({ lng, hrefs, data }: Props) => {
                   animate={isDropdownOpen ? "open" : "closed"}
                   id="navbarCollapse"
                   ref={containerRef}
-                  className={`absolute top-0 right-0 z-[-1] lg:z-30 w-full bg-primary text-primary-content motion-safe:duration-700 lg:visible lg:static lg:w-auto lg:!bg-transparent grid lg:h-auto ${
+                  className={`absolute top-0 right-0 z-[-1] lg:z-30 w-full bg-primary text-primary-content motion-safe:duration-700 lg:visible lg:static  lg:!bg-transparent grid lg:h-auto ${
                     navbarOpen ? "h-screen" : "h-0"
                   }`}
                 >
-                  <div className="overflow-auto lg:overflow-visible h-full">
+                  <div className="overflow-auto lg:overflow-visible w-full h-full">
                     <ul
                       className={`${
                         sticky
                           ? "lg:text-primary-content"
                           : "lg:text-base-content"
-                      } block text-primary-content items-center xl:container lg:max-w-auto pt-28 lg:pt-0 pb-4 lg:pb-0 lg:flex gap-x-8`}
+                      } uppercase block text-primary-content items-center w-full lg:max-w-auto pt-28 lg:pt-0 pb-4 lg:pb-0 lg:flex gap-x-8`}
                     >
-                      {menuData.map((menuItem) => {
+                      {menuData.map((menuItem, i) => {
                         const isMega = menuItem.submenu?.some(
                           (i) => i.menuImage
                         );
@@ -183,7 +183,9 @@ const Header = ({ lng, hrefs, data }: Props) => {
                             key={menuItem.id}
                             className={`py-4 ${
                               isMega ? "" : "relative"
-                            } has-[.activeClass]:bg-accent`}
+                            } has-[.activeClass]:bg-accent
+                              ${i == 4 ? "lg:justify-start lg:ml-auto" : ""}
+                              `}
                           >
                             {menuItem.path ? (
                               <motion.div
