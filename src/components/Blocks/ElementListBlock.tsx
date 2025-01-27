@@ -74,7 +74,7 @@ const ElementListBlock = ({
             <motion.div
               initial="offscreen"
               whileInView="onscreen"
-              viewport={{ once: true, amount: 0.1 * i }}
+              viewport={{ once: true, amount: Math.min(0.1 * i, 1) }}
               variants={variants}
               key={item.id}
             >
@@ -89,7 +89,7 @@ const ElementListBlock = ({
             <motion.div
               initial="offscreen"
               whileInView="onscreen"
-              viewport={{ once: true, amount: 0.1 * i }}
+              viewport={{ once: true, amount: Math.min(0.1 * i, 1) }}
               variants={variants}
               key={item.id}
             >

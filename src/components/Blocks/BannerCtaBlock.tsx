@@ -109,10 +109,12 @@ export default function BanneCtaBlock({ data, locale }) {
       <div>
         <div className="relative z-10 py-20 overflow-hidden">
           <span className="absolute inset-0 -z-10 bg-black/80"></span>
-          <SRCImage
-            data={coverImage.responsiveImage}
-            className="object-cover w-full h-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-          />
+          {coverImage && (
+            <SRCImage
+              data={coverImage.responsiveImage}
+              className="object-cover w-full h-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            />
+          )}
           <div className="container relative z-20">
             <div className="mx-auto max-w-screen-sm text-center grid gap-6">
               {label && <div className="prefix mx-auto">{label}</div>}

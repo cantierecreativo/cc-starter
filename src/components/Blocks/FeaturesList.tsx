@@ -51,7 +51,7 @@ const FeaturesList = ({
           <motion.div
             initial="offscreen"
             whileInView="onscreen"
-            viewport={{ once: true, amount: 0.3 * i }}
+            viewport={{ once: true, amount: Math.min(0.1 * i, 1) }}
             variants={variants}
             key={i}
           >

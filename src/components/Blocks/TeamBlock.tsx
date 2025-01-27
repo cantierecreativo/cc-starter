@@ -48,7 +48,7 @@ export default function TeamBlock({ content, locale, colors }: TeamBlockProps) {
           <motion.div
             initial="offscreen"
             whileInView="onscreen"
-            viewport={{ once: true, amount: 0.3 * i }}
+            viewport={{ once: true, amount: Math.min(Math.min(0.1 * i, 1), 1) }}
             variants={variants}
             key={tm.id}
             className="gap-6 grid"
