@@ -12,15 +12,17 @@ type PropsCardPost = {
 };
 
 const CardPageBlock = ({ data, locale, i }: PropsCardPost) => {
-  const { previewImage, label, abstract } = data;
-  const titleClass = "title-small";
+  console.log("data", data);
+  const { previewImage, title, abstract } = data;
+  // const titleClass = "title-small";
+  const titleClass = "text-white text-2xl font-serif";
 
   return (
-    <InternalLink className="group" record={data} locale={locale} title={label}>
-      <div className="p-4 bg-secondary text-secondary-content duration-300 relative">
+    <InternalLink className="group" record={data} locale={locale} title={title}>
+      <div className="duration-300 relative">
         <SRCImage data={previewImage.responsiveImage} />
-        <div className="text-center p-4 grid gap-6">
-          <h2 className={titleClass}>{label}</h2>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center p-4 grid gap-6">
+          <h2 className={titleClass}>{title}</h2>
           {abstract && (
             <div dangerouslySetInnerHTML={{ __html: abstract }} className="" />
           )}
