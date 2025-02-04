@@ -40,12 +40,23 @@ const Header = ({ lng, hrefs, data }: Props) => {
   const [sticky, setSticky] = useState(false);
   const containerRef = useRef(null);
   const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const handleStickyNavbar = () => setSticky(window.scrollY >= 80);
     window.addEventListener("scroll", handleStickyNavbar);
     return () => window.removeEventListener("scroll", handleStickyNavbar);
   }, []);
+
+  const handleClick = (item: any) => {
+    if (item !== pathname) {
+      animatePageOut(item, router);
+    }
+  };
+  const handleClickMenu = (item: any) => {
+    handleClick(item);
+    handleClickAndClose;
+  };
 
   const handleClickAndClose = () => {
     setNavbarOpen(false);
@@ -97,19 +108,6 @@ const Header = ({ lng, hrefs, data }: Props) => {
       };
     }
   });
-
-  const router = useRouter();
-  const path = usePathname();
-
-  const handleClick = (item: any) => {
-    if (item !== path) {
-      animatePageOut(item, router);
-    }
-  };
-  const handleClickMenu = (item: any) => {
-    handleClick(item);
-    handleClickAndClose;
-  };
 
   return (
     <header className="header left-0 flex w-full items-center fixed top-0 z-20">

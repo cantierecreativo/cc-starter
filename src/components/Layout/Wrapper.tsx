@@ -19,10 +19,11 @@ export default async function Wrapper({ hrefs, locale, children }: any) {
     },
     isEnabled
   );
+
   return (
     <>
       <HeaderRenderer hrefs={hrefs} data={menuData} locale={siteLocale} />
-      <Template>{children}</Template>
+      <Template logo={menuData.layout.logoAlt}>{children}</Template>
     </>
   );
 }
