@@ -1,6 +1,7 @@
 import CustomIcon from "@/components/Blocks/CustomIcon";
 import translate from "@/labels";
 import { SiteLocale } from "@/graphql/generated";
+import CheckboxCustom from "../Form/CheckboxCustom";
 
 type PropsNewsletter = {
   title: string;
@@ -94,6 +95,7 @@ export default function Newsletter({
                         id="gdpr_150837"
                         required
                       />
+                      <CheckboxCustom />
                       <label
                         className="cursor-pointer text-xs text-gray-light"
                         htmlFor="gdpr_150837"

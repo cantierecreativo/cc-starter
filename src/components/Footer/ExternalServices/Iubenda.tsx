@@ -24,24 +24,25 @@ export default function Iubenda({
           __html: `
           var _iub = _iub || [];
           _iub.csConfiguration = {
-            "askConsentAtCookiePolicyUpdate": true,
-            "countryDetection": true,
-            "enableFadp": true,
-            "enableLgpd": true,
-            "lgpdAppliesGlobally": false,
-            "perPurposeConsent": true,
+            "askConsentAtCookiePolicyUpdate":true,
+            "countryDetection":true,
+            "enableFadp":true,
+            "enableLgpd":true,
+            "lgpdAppliesGlobally":false,
+            "perPurposeConsent":true,
             "whitelabel":true,
-            "purposes": "1, 3, 4",
+            "purposes":"1, 3, 4",
             "siteId":${siteId},
-            "lang":"${locale}",
             "cookiePolicyId":${policyId},
+            "lang":"${locale}",
             "banner":{
               "prependOnBody":true,
+              "listPurposes":true,
+              "showPurposesToggles":true,
+              "explicitWithdrawal":true,
               "acceptButtonDisplay":true,
               "closeButtonDisplay":false,
               "customizeButtonDisplay":true,
-              "explicitWithdrawal":true,
-              "listPurposes":true,
               "position":"bottom",
               "acceptButtonColor":"${
                 colorRev
@@ -81,8 +82,6 @@ export default function Iubenda({
               "backgroundColor":"${
                 colorRev ? colorsTheme["secondary"] : colorsTheme.primary
               }",
-              "rejectButtonDisplay":true,
-              "closeButtonRejects":true
             }
           }`,
         }}
