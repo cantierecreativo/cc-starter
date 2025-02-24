@@ -119,115 +119,109 @@ const Header = ({ lng, hrefs, data }: Props) => {
         }`}
       >
         <div className="container">
-          <div className="flex items-center justify-between">
-            <motion.div
-              className="w-28 xl:w-[180px] max-w-full absolute left-1/2 -translate-x-1/2 z-10"
-              animate={sticky || navbarOpen ? "open" : "closed"}
-              variants={invertVariants}
-            >
-              <a
-                // href="/"
-                className="block w-full py-9 relative cursor-pointer"
-                onClick={() => handleClickMenu("/")}
+          <div className="lg:flex w-full justify-end flex-row-reverse items-center gap-x-8 relative z-[2]">
+            <div className="hidden lg:flex items-center justify-end">
+              <LanguageSelector lng={lng} hrefs={hrefs} />
+            </div>
+            <div className="w-full flex justify-end pt-5 lg:pt-0">
+              <motion.div
+                className="w-28 xl:w-[180px] max-w-full  z-10"
+                animate={sticky || navbarOpen ? "open" : "closed"}
+                variants={invertVariants}
               >
-                {data.layout.logo.url && (
-                  <Image
-                    src={
-                      !sticky ? data.layout.logoAlt.url : data.layout.logo.url
-                    }
-                    alt="logo"
-                    className="w-full h-full absolute inset-0 object-left object-contain"
-                    priority
-                    width={100}
-                    height={100}
-                  />
-                )}
-              </a>
-            </motion.div>
-            <div className="flex w-full justify-end flex-row-reverse items-center gap-x-8 relative z-[2]">
-              <div className="hidden lg:flex items-center justify-end">
-                <LanguageSelector lng={lng} hrefs={hrefs} />
-              </div>
-              <div className="w-full flex justify-end pt-5 lg:pt-0">
-                <ButtonMenu
-                  navbarToggleHandler={navbarToggleHandler}
-                  navbarOpen={navbarOpen}
-                  sticky={sticky}
-                />
-                <motion.nav
-                  initial={false}
-                  animate={isDropdownOpen ? "open" : "closed"}
-                  id="navbarCollapse"
-                  ref={containerRef}
-                  className={`absolute top-0 right-0 z-[-1] lg:z-30 w-full bg-primary text-primary-content motion-safe:duration-700 lg:visible lg:static  lg:!bg-transparent grid lg:h-auto ${
-                    navbarOpen ? "h-screen" : "h-0"
-                  }`}
+                <a
+                  // href="/"
+                  className="block w-full py-9 relative cursor-pointer"
+                  onClick={() => handleClickMenu("/")}
                 >
-                  <div className="overflow-auto lg:overflow-visible w-full h-full">
-                    <ul
-                      className={`${
-                        sticky
-                          ? "lg:text-primary-content"
-                          : "lg:text-base-content"
-                      } uppercase block text-primary-content items-center w-full lg:max-w-auto pt-28 lg:pt-0 pb-4 lg:pb-0 lg:flex gap-x-8`}
-                    >
-                      {menuData.map((menuItem, i) => {
-                        const isMega = menuItem.submenu?.some(
-                          (i) => i.menuImage
-                        );
+                  {data.layout.logo.url && (
+                    <Image
+                      src={
+                        !sticky ? data.layout.logoAlt.url : data.layout.logo.url
+                      }
+                      alt="logo"
+                      className="w-full h-full absolute inset-0 object-left object-contain"
+                      priority
+                      width={100}
+                      height={100}
+                    />
+                  )}
+                </a>
+              </motion.div>
+              <ButtonMenu
+                navbarToggleHandler={navbarToggleHandler}
+                navbarOpen={navbarOpen}
+                sticky={sticky}
+              />
+              <motion.nav
+                initial={false}
+                animate={isDropdownOpen ? "open" : "closed"}
+                id="navbarCollapse"
+                ref={containerRef}
+                className={`absolute top-0 right-0 z-[-1] lg:z-30  bg-primary text-primary-content motion-safe:duration-700 lg:visible lg:static  lg:!bg-transparent grid lg:h-auto ${
+                  navbarOpen ? "h-screen" : "h-0"
+                }`}
+              >
+                <div className="overflow-auto lg:overflow-visible w-full h-full">
+                  <ul
+                    className={`${
+                      sticky
+                        ? "lg:text-primary-content"
+                        : "lg:text-base-content"
+                    } uppercase block text-primary-content items-center w-full lg:max-w-auto pt-28 lg:pt-0 pb-4 lg:pb-0 lg:flex gap-x-8`}
+                  >
+                    {menuData.map((menuItem, i) => {
+                      const isMega = menuItem.submenu?.some((i) => i.menuImage);
 
-                        return (
-                          <li
-                            key={menuItem.id}
-                            className={`py-4 ${
-                              isMega ? "" : "relative"
-                            } has-[.activeClass]:bg-accent
+                      return (
+                        <li
+                          key={menuItem.id}
+                          className={`py-4 ${
+                            isMega ? "" : "relative"
+                          } has-[.activeClass]:bg-accent
                               ${i == 4 ? "lg:justify-start lg:ml-auto" : ""}
                               `}
-                          >
-                            {menuItem.path ? (
-                              <motion.div
-                                animate={
-                                  sticky || isDropdownOpen || navbarOpen
-                                    ? "open"
-                                    : "closed"
-                                }
+                        >
+                          {menuItem.path ? (
+                            <motion.div
+                              animate={
+                                sticky || isDropdownOpen || navbarOpen
+                                  ? "open"
+                                  : "closed"
+                              }
+                            >
+                              <a
+                                // href={menuItem.path}
+                                className={`${
+                                  pathname === menuItem.path ? activeClass : ""
+                                } ${itemClass} cursor-pointer`}
+                                onClick={() => handleClickMenu(menuItem.path)}
                               >
-                                <a
-                                  // href={menuItem.path}
-                                  className={`${
-                                    pathname === menuItem.path
-                                      ? activeClass
-                                      : ""
-                                  } ${itemClass} cursor-pointer`}
-                                  onClick={() => handleClickMenu(menuItem.path)}
-                                >
-                                  {menuItem.title}
-                                </a>
-                              </motion.div>
-                            ) : (
-                              <DropdownMenu
-                                sticky={sticky}
-                                navbarOpen={navbarOpen}
-                                isMega={isMega}
-                                // handleClickAndClose={handleClickAndClose}
-                                handleClickAndClose={handleClickMenu}
-                                menuItem={menuItem}
-                                isDropdownOpen={isDropdownOpen}
-                                setIsDropdownOpen={setIsDropdownOpen}
-                                itemClass={itemClass}
-                              />
-                            )}
-                          </li>
-                        );
-                      })}
-                    </ul>
-                    <div className="lg:hidden mt-10 mb-4 container">
-                      <LanguageSelector hrefs={hrefs} lng={lng} />
-                    </div>
+                                {menuItem.title}
+                              </a>
+                            </motion.div>
+                          ) : (
+                            <DropdownMenu
+                              sticky={sticky}
+                              navbarOpen={navbarOpen}
+                              isMega={isMega}
+                              // handleClickAndClose={handleClickAndClose}
+                              handleClickAndClose={handleClickMenu}
+                              menuItem={menuItem}
+                              isDropdownOpen={isDropdownOpen}
+                              setIsDropdownOpen={setIsDropdownOpen}
+                              itemClass={itemClass}
+                            />
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                  <div className="lg:hidden mt-10 mb-4 container">
+                    <LanguageSelector hrefs={hrefs} lng={lng} />
                   </div>
-                </motion.nav>
-              </div>
+                </div>
+              </motion.nav>
             </div>
           </div>
         </div>

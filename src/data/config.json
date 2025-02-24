@@ -36,10 +36,10 @@
     "/articoli/c",
     "/articoli/[slug]",
     "/articoli",
-    "/drop/pagina-con-hero-gallery",
-    "/drop",
     "/prodotti/[slug]",
     "/prodotti",
+    "/drop/pagina-con-hero-gallery",
+    "/drop",
     "/[slug]",
     "/eventi/c/[slug]",
     "/eventi/c",
@@ -127,6 +127,37 @@
       }
     },
     {
+      "path": "/prodotti/[slug]",
+      "routeInfo": {
+        "model": "product",
+        "tagRef": "",
+        "querySlug": "slug",
+        "indexModel": "",
+        "isHome": false,
+        "isVirtual": false,
+        "isDynamic": true,
+        "isIndex": false
+      },
+      "slugs": {}
+    },
+    {
+      "path": "/prodotti",
+      "routeInfo": {
+        "model": "page",
+        "tagRef": "",
+        "querySlug": "prodotti",
+        "indexModel": "product",
+        "isHome": false,
+        "isVirtual": false,
+        "isDynamic": false,
+        "isIndex": true
+      },
+      "slugs": {
+        "en": "products",
+        "it": "prodotti"
+      }
+    },
+    {
       "path": "/drop/pagina-con-hero-gallery",
       "routeInfo": {
         "model": "page",
@@ -158,37 +189,6 @@
       "slugs": {
         "en": "drop",
         "it": "drop"
-      }
-    },
-    {
-      "path": "/prodotti/[slug]",
-      "routeInfo": {
-        "model": "product",
-        "tagRef": "",
-        "querySlug": "slug",
-        "indexModel": "",
-        "isHome": false,
-        "isVirtual": false,
-        "isDynamic": true,
-        "isIndex": false
-      },
-      "slugs": {}
-    },
-    {
-      "path": "/prodotti",
-      "routeInfo": {
-        "model": "page",
-        "tagRef": "",
-        "querySlug": "prodotti",
-        "indexModel": "product",
-        "isHome": false,
-        "isVirtual": false,
-        "isDynamic": false,
-        "isIndex": true
-      },
-      "slugs": {
-        "en": "products",
-        "it": "prodotti"
       }
     },
     {
