@@ -123,7 +123,7 @@ const Header = ({ lng, hrefs, data }: Props) => {
             <div className="hidden lg:flex items-center justify-end">
               <LanguageSelector lng={lng} hrefs={hrefs} />
             </div>
-            <div className="w-full flex justify-end pt-5 lg:pt-0">
+            <div className="w-full flex justify-between items-center pt-5 lg:pt-0">
               <motion.div
                 className="w-28 xl:w-[180px] max-w-full  z-10"
                 animate={sticky || navbarOpen ? "open" : "closed"}
@@ -168,7 +168,7 @@ const Header = ({ lng, hrefs, data }: Props) => {
                       sticky
                         ? "lg:text-primary-content"
                         : "lg:text-base-content"
-                    } uppercase block text-primary-content items-center w-full lg:max-w-auto pt-28 lg:pt-0 pb-4 lg:pb-0 lg:flex gap-x-8`}
+                    }  block text-primary-content items-center w-full lg:max-w-auto pt-28 lg:pt-0 pb-4 lg:pb-0 lg:flex gap-x-8`}
                   >
                     {menuData.map((menuItem, i) => {
                       const isMega = menuItem.submenu?.some((i) => i.menuImage);

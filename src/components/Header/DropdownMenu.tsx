@@ -103,7 +103,7 @@ export default function DropdownMenu({
         animate={sticky || dropdownOpen || navbarOpen ? "open" : "closed"}
         onClick={() => handleSubmenu()}
         variants={colorVariants}
-        className="uppercase"
+        className=""
       >
         <span ref={wrapperRef} className={itemClass}>
           {menuItem.title}
