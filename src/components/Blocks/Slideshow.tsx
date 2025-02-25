@@ -20,6 +20,9 @@ type PropsSlideshow = {
 
 const Slideshow = ({ data, locale }: PropsSlideshow) => {
   const classButton = "bg-accent";
+
+  const nextEl = `#nextButton-${data.id}`;
+  const prevEl = `#prevButton-${data.id}`;
   return (
     <div className="overflow-hidden w-screen">
       <div className={`relative xl:container xl:w-9/12`}>
@@ -27,7 +30,7 @@ const Slideshow = ({ data, locale }: PropsSlideshow) => {
           <Swiper
             autoplay={{
               delay: 3000,
-              disableOnInteraction: false,
+              disableOnInteraction: true,
             }}
             modules={[Autoplay, Pagination, Navigation, A11y, Parallax, A11y]}
             breakpoints={{
@@ -40,11 +43,12 @@ const Slideshow = ({ data, locale }: PropsSlideshow) => {
             pagination={{
               clickable: true,
             }}
+            rewind={true}
             spaceBetween={10}
             className="slideshow"
             navigation={{
-              nextEl: "#nextButton",
-              prevEl: "#prevButton",
+              nextEl: nextEl,
+              prevEl: prevEl,
             }}
             keyboard={{
               enabled: true,
@@ -90,7 +94,7 @@ const Slideshow = ({ data, locale }: PropsSlideshow) => {
             })}
           </Swiper>
         </div>
-        <ButtonsSwiper classButton={classButton} />
+        <ButtonsSwiper classButton={classButton} containerId={data.id} />
       </div>
     </div>
   );
