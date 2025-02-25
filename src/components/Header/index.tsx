@@ -119,19 +119,19 @@ const Header = ({ lng, hrefs, data }: Props) => {
         }`}
       >
         <div className="container">
-          <div className="lg:flex w-full justify-end flex-row-reverse items-center gap-x-8 relative z-[2]">
+          <div className="lg:flex w-full justify-end flex-row-reverse items-center gap-x-8 z-[2]">
             <div className="hidden lg:flex items-center justify-end">
               <LanguageSelector lng={lng} hrefs={hrefs} />
             </div>
-            <div className="w-full flex justify-between items-center pt-5 lg:pt-0">
+            <div className="w-full flex justify-between items-center ">
               <motion.div
-                className="w-28 xl:w-[180px] max-w-full  z-10"
+                className="w-28 h-[80px] xl:w-[180px] max-w-full relative z-[11]"
                 animate={sticky || navbarOpen ? "open" : "closed"}
                 variants={invertVariants}
               >
                 <a
                   // href="/"
-                  className="block w-full py-9 relative cursor-pointer"
+                  className="block w-full h-full relative cursor-pointer"
                   onClick={() => handleClickMenu("/")}
                 >
                   {data.layout.logo.url && (
@@ -140,7 +140,7 @@ const Header = ({ lng, hrefs, data }: Props) => {
                         !sticky ? data.layout.logoAlt.url : data.layout.logo.url
                       }
                       alt="logo"
-                      className="w-full h-full absolute inset-0 object-left object-contain"
+                      className="w-full h-full absolute inset-0 object-center object-contain"
                       priority
                       width={100}
                       height={100}
@@ -158,7 +158,7 @@ const Header = ({ lng, hrefs, data }: Props) => {
                 animate={isDropdownOpen ? "open" : "closed"}
                 id="navbarCollapse"
                 ref={containerRef}
-                className={`absolute top-0 right-0 z-[-1] lg:z-30  bg-primary text-primary-content motion-safe:duration-700 lg:visible lg:static  lg:!bg-transparent grid lg:h-auto ${
+                className={`absolute top-[80px] left-0 right-0 z-[-1] lg:z-10  bg-primary text-primary-content motion-safe:duration-700 lg:visible lg:static  lg:!bg-transparent grid lg:h-auto ${
                   navbarOpen ? "h-screen" : "h-0"
                 }`}
               >
@@ -168,7 +168,7 @@ const Header = ({ lng, hrefs, data }: Props) => {
                       sticky
                         ? "lg:text-primary-content"
                         : "lg:text-base-content"
-                    }  block text-primary-content items-center w-full lg:max-w-auto pt-28 lg:pt-0 pb-4 lg:pb-0 lg:flex gap-x-8`}
+                    }  block text-primary-content items-center w-full lg:max-w-auto pt-6 lg:pt-0 pb-4 lg:pb-0 lg:flex gap-x-8`}
                   >
                     {menuData.map((menuItem, i) => {
                       const isMega = menuItem.submenu?.some((i) => i.menuImage);
