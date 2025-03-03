@@ -20,8 +20,7 @@ const variants: Variants = {
 
 export default function MapBlock({ locale, content }) {
   const { titleMap, textMap, map, tokenMap, urlStyleMapbox, zoom } = content;
-  const latitude = 10;
-  const longitude = 10;
+  const { latitude, longitude } = map;
   const mapContainerRef = useRef(null);
   const markerRef = useRef(null);
   const zoomLevel = Number(zoom) || 10;
@@ -40,7 +39,9 @@ export default function MapBlock({ locale, content }) {
 
     const myMap = new mapboxgl.Map({
       container: mapContainerRef.current,
-      style: urlStyleMapbox,
+      style:
+        urlStyleMapbox ||
+        "pk.eyJ1IjoiY2FudGllcmVjcmVhdGl2byIsImEiOiJjbTduM3hzaGwwcTY4Mm1yenRuaXVlcmhqIn0.ZCLvpDX2bEl-bC45Uh3rGg",
       center: [longitude, latitude],
       zoom: zoomLevel,
       scrollZoom: false,
