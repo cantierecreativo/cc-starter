@@ -1,32 +1,8 @@
-import { useInView } from "react-intersection-observer";
-import dynamic from "next/dynamic";
-import { motion, Variants } from "framer-motion";
-
-const DynamicLazyMap = dynamic(() => import("@/components/Map/MyMap"), {
-  loading: () => (
-    <div className="w-full bg-white relative">
-      <svg
-        className="animate-spin h-5 w-5 mr-3 absolute -mt-2.5 -ml-2.5 inset-1/2"
-        viewBox="0 0 24 24"
-      >
-        <circle
-          className="opacity-0"
-          cx="12"
-          cy="12"
-          r="10"
-          stroke="currentColor"
-          strokeWidth="4"
-        ></circle>
-        <path
-          className=""
-          fill="fill-current text-accent"
-          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-        ></path>
-      </svg>
-    </div>
-  ),
-  ssr: false,
-});
+import { useEffect, useRef } from "react";
+import mapboxgl from "mapbox-gl";
+import { createRoot } from "react-dom/client";
+import "mapbox-gl/dist/mapbox-gl.css";
+import { useInView, Variants } from "framer-motion";
 
 const variants: Variants = {
   offscreen: {
@@ -43,49 +19,79 @@ const variants: Variants = {
 };
 
 export default function MapBlock({ locale, content }) {
-  const { ref, inView, entry } = useInView({
-    threshold: 0.3,
-    triggerOnce: true,
-  });
   const { titleMap, textMap, map, tokenMap, urlStyleMapbox, zoom } = content;
-  const titleClass = "title-small";
+  const latitude = 10;
+  const longitude = 10;
+  const mapContainerRef = useRef(null);
+  const markerRef = useRef(null);
+  const zoomLevel = Number(zoom) || 10;
+
+  useEffect(() => {
+    if (!mapContainerRef.current || isNaN(latitude) || isNaN(longitude)) {
+      console.error(
+        "Latitudine o longitudine non valide:",
+        latitude,
+        longitude
+      );
+      return;
+    }
+
+    mapboxgl.accessToken = tokenMap;
+
+    const myMap = new mapboxgl.Map({
+      container: mapContainerRef.current,
+      style: urlStyleMapbox,
+      center: [longitude, latitude],
+      zoom: zoomLevel,
+      scrollZoom: false,
+    });
+
+    myMap.addControl(new mapboxgl.NavigationControl(), "top-right");
+    const markerDiv = document.createElement("div");
+    markerDiv.className =
+      "absolute -translate-x-1/2 -translate-y-1/2 top-0 left-0";
+    const root = createRoot(markerDiv);
+    root.render(
+      <div className="">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          className="size-8"
+        >
+          <path d="M12 2C8.134 2 5 5.134 5 9c0 5.25 7 12 7 12s7-6.75 7-12c0-3.866-3.134-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" />
+        </svg>
+      </div>
+    );
+
+    const marker = new mapboxgl.Marker(markerDiv)
+      .setLngLat([longitude, latitude])
+      .addTo(myMap);
+
+    markerRef.current = marker;
+
+    return () => {
+      marker.remove();
+      myMap.remove();
+    };
+  }, [latitude, longitude, zoomLevel]);
 
   return (
-    <section ref={ref} className={`grid gap-6 container`}>
-      <motion.div
-        initial="offscreen"
-        whileInView="onscreen"
-        viewport={{ once: true, amount: 0.1 }}
-        variants={variants}
-        className="grid gap-6"
-      >
-        {titleMap && (
-          <h2
-            className={titleClass}
-            dangerouslySetInnerHTML={{ __html: titleMap }}
-          />
-        )}
-        {textMap && (
-          <div className="" dangerouslySetInnerHTML={{ __html: textMap }} />
-        )}
-      </motion.div>
-      <motion.div
-        initial="offscreen"
-        whileInView="onscreen"
-        viewport={{ once: true, amount: 0.1 }}
-        variants={variants}
-        className="grid gap-6"
-      >
-        <div className="relative aspect-square lg:aspect-[3/1]">
-          <DynamicLazyMap
-            latitude={map.latitude}
-            longitude={map.longitude}
-            token={tokenMap}
-            style={urlStyleMapbox}
-            zoom={zoom}
+    <>
+      <div className="container">
+        <div className="grid gap-6">
+          {titleMap && <h2 className="title">{titleMap}</h2>}
+          {textMap && (
+            <div
+              dangerouslySetInnerHTML={{ __html: textMap }}
+              className="text"
+            />
+          )}
+          <div
+            ref={mapContainerRef}
+            className="w-full h-[500px] xl:h-[800px] relative overflow-hidden"
           />
         </div>
-      </motion.div>
-    </section>
+      </div>
+    </>
   );
 }
