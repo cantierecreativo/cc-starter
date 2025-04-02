@@ -34,7 +34,6 @@ export default function GalleryBlock({
   locale: string;
 }) {
   const classButton = "bg-accent";
-
   const nextEl = `#nextButton-${data.id}`;
   const prevEl = `#prevButton-${data.id}`;
   return (
