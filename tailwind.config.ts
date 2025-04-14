@@ -1,12 +1,4 @@
 import type { Config } from "tailwindcss";
-// import colorsTheme from "./src/data/colorsTheme.json";
-// import daisyui from "daisyui";
-
-// let themes: any = [
-//   {
-//     custom: colorsTheme,
-//   },
-// ];
 
 const config: Config = {
   content: [
@@ -14,9 +6,7 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  // daisyui: {
-  //   themes,
-  // },
+
   theme: {
     extend: {
       colors: {
@@ -68,6 +58,5 @@ const config: Config = {
       },
     },
   },
-  // plugins: [daisyui],
 };
 export default config;
