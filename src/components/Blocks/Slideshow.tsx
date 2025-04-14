@@ -24,9 +24,9 @@ const Slideshow = ({ data, locale }: PropsSlideshow) => {
   const nextEl = `#nextButton-${data.id}`;
   const prevEl = `#prevButton-${data.id}`;
   return (
-    <div className="overflow-hidden w-screen">
+    <div className="overflow-hidden w-full">
       <div className={`relative xl:container xl:w-9/12`}>
-        <div className="xl:mr-[calc(-50vw+50%)]">
+        <div className="xl:mr-[calc(-49vw+49%)]">
           <Swiper
             autoplay={{
               delay: 3000,
