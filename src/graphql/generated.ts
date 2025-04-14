@@ -171,6 +171,7 @@ export type BannerCtaModelLinkField = ExternalLinkRecord | InternalLinkRecord;
 export type BannerCtaModelTextField = {
   __typename?: 'BannerCtaModelTextField';
   blocks: Array<Scalars['String']['output']>;
+  inlineBlocks: Array<Scalars['String']['output']>;
   links: Array<Scalars['String']['output']>;
   value: Scalars['JsonField']['output'];
 };
@@ -447,6 +448,7 @@ export type EventModelContentBlocksField = AttachmentsBlockRecord | GallerySecti
 export type EventModelContentField = {
   __typename?: 'EventModelContentField';
   blocks: Array<EventModelContentBlocksField>;
+  inlineBlocks: Array<Scalars['String']['output']>;
   links: Array<EventRecord>;
   value: Scalars['JsonField']['output'];
 };
@@ -3476,6 +3478,7 @@ export type LayoutRecordTitleNewsletterArgs = {
 export type LegalPageModelContentField = {
   __typename?: 'LegalPageModelContentField';
   blocks: Array<Scalars['String']['output']>;
+  inlineBlocks: Array<Scalars['String']['output']>;
   links: Array<Scalars['String']['output']>;
   value: Scalars['JsonField']['output'];
 };
@@ -4184,6 +4187,7 @@ export type PostModelContentBlocksField = AttachmentsBlockRecord | GallerySectio
 export type PostModelContentField = {
   __typename?: 'PostModelContentField';
   blocks: Array<PostModelContentBlocksField>;
+  inlineBlocks: Array<Scalars['String']['output']>;
   links: Array<PostRecord>;
   value: Scalars['JsonField']['output'];
 };
@@ -4403,6 +4407,7 @@ export type ProductModelContentBlocksField = AttachmentsBlockRecord | GallerySec
 export type ProductModelContentField = {
   __typename?: 'ProductModelContentField';
   blocks: Array<ProductModelContentBlocksField>;
+  inlineBlocks: Array<Scalars['String']['output']>;
   links: Array<PostRecord>;
   value: Scalars['JsonField']['output'];
 };
@@ -5005,6 +5010,7 @@ export type QueryUploadArgs = {
 export type QuestionModelAnswerField = {
   __typename?: 'QuestionModelAnswerField';
   blocks: Array<Scalars['String']['output']>;
+  inlineBlocks: Array<Scalars['String']['output']>;
   links: Array<Scalars['String']['output']>;
   value: Scalars['JsonField']['output'];
 };
@@ -5293,6 +5299,7 @@ export type SeoFilter = {
 export type SimpleTextModelTextContentField = {
   __typename?: 'SimpleTextModelTextContentField';
   blocks: Array<LinkBlockRecord>;
+  inlineBlocks: Array<Scalars['String']['output']>;
   links: Array<SimpleTextModelTextContentLinksField>;
   value: Scalars['JsonField']['output'];
 };
@@ -5798,6 +5805,7 @@ export type TextBlockModelLinkTextBlockField = ExternalLinkRecord | InternalLink
 export type TextBlockModelTextTextBlockField = {
   __typename?: 'TextBlockModelTextTextBlockField';
   blocks: Array<Scalars['String']['output']>;
+  inlineBlocks: Array<Scalars['String']['output']>;
   links: Array<Scalars['String']['output']>;
   value: Scalars['JsonField']['output'];
 };
