@@ -18,7 +18,7 @@ const year = new Date().getFullYear();
 const ENV = process.env.DATO_ENV;
 
 const Footer = ({ data, lng }: Props) => {
-  console.log("data.layout:", data?.layout);
+  // console.log("data.layout:", data?.layout);
   if (!data?.layout) return null;
   const {
     rea,
