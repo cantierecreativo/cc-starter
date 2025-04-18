@@ -1,31 +1,19 @@
 "use client";
-
 import { VideoFileField } from "@/graphql/generated";
-
-import "@vidstack/react/player/styles/base.css";
-import "@vidstack/react/player/styles/default/theme.css";
-import "@vidstack/react/player/styles/default/layouts/video.css";
-import { MediaPlayer, MediaProvider, Poster } from "@vidstack/react";
-import {
-  defaultLayoutIcons,
-  DefaultVideoLayout,
-} from "@vidstack/react/player/layouts/default";
+import Image from "next/image";
+import Video from "next-video";
 
 const VideoInternal = ({ video }: { video: VideoFileField }) => {
   return (
-    <MediaPlayer title={video.video.title} src={video.video.streamingUrl}>
-      <MediaProvider />
-      <Poster
-        className="vds-poster"
+    <Video src={video.video.streamingUrl}>
+      <Image
+        slot="poster"
         src={video.video.thumbnailUrl}
         alt={video.title}
+        width={600}
+        height={400}
       />
-      <DefaultVideoLayout
-        thumbnails={video.video.thumbnailUrl}
-        icons={defaultLayoutIcons}
-      />
-    </MediaPlayer>
+    </Video>
   );
 };
-
 export default VideoInternal;
