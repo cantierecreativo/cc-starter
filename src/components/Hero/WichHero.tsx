@@ -3,6 +3,7 @@
 import { HeroSectionRecord, SiteLocale } from "@/graphql/generated";
 import RightImageHero from "./RightImageHero";
 import BackgroundImageHero from "./BackgroundImage";
+import BackgroundVideoHero from "./BackgroundVideo";
 import Carousel from "@/components/Hero/Carousel";
 import TextHero from "./TextHero";
 
@@ -36,6 +37,16 @@ export default function WhichHero({ hero, locale }: PropsWhichHero) {
       );
     case "hero_slider":
       return <Carousel hero={hero} locale={locale} />;
+    case "hero_video":
+      return (
+        <BackgroundVideoHero
+          heroTitle={hero.heroTitle}
+          heroSubtitle={hero.heroSubtitle}
+          video={hero.heroVideo}
+          link={hero.link}
+          locale={locale}
+        />
+      );
     case "hero_text":
       return (
         <TextHero
