@@ -116,7 +116,7 @@ export default function GalleryBlock({
                       <div className="relative aspect-video flex items-center justify-center">
                         <SRCImage
                           data={img.imageAsset.responsiveImage}
-                          className={`object-${data.typeGallery} absolute !w-full !h-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2`}
+                          className={`object-${data.typeGallery} absolute w-full! h-full! top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2`}
                         />
                       </div>
                       {img.imageDescription && (

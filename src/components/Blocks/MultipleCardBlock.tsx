@@ -58,7 +58,7 @@ export default function GalleryBlock({ data, locale }) {
           {data.multipleImages.map((img: any, n: number) => {
             return (
               <div key={img.id} className={`relative block`}>
-                <div className="relative aspect-[2/3] w-full bg-accent">
+                <div className="relative aspect-2/3 w-full bg-accent">
                   <motion.div
                     variants={imageVariants}
                     viewport={{ root: scrollRef, once: true, amount: 0.75 }}
@@ -66,7 +66,7 @@ export default function GalleryBlock({ data, locale }) {
                   >
                     <SRCImage
                       data={img.imageAsset.responsiveImage}
-                      className="object-cover absolute inset-0 !w-full !h-full"
+                      className="object-cover absolute inset-0 w-full! h-full!"
                     />
                   </motion.div>
                 </div>

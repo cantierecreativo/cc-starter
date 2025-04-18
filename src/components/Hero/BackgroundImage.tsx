@@ -33,7 +33,7 @@ const BackgroundImageHero = ({
     >
       <SRCImage
         data={image?.responsiveImage}
-        className="object-cover object-center absolute inset-0 !w-full !h-full !max-w-none"
+        className="object-cover object-center absolute inset-0 w-full! h-full! max-w-none!"
         priority={true}
       />
       <div className="relative z-0 flex items-center h-full mt-[72px] md:mt-[104px]">

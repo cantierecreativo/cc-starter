@@ -25,7 +25,7 @@ const ProductPage = ({ data, locale }: Props) => {
 
           <div className="md:flex w-full">
             <div className="shrink-0 md:w-[48%] lg:w-[43%] mr-10 lg:mr-24">
-              <div className="aspect-square relative md:aspect-[2/1] ">
+              <div className="aspect-square relative md:aspect-2/1 ">
                 <SRCImage
                   className="object-cover  inset-0"
                   data={productImage.responsiveImage}
