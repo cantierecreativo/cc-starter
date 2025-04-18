@@ -9,7 +9,7 @@ import CustomIcon from "../Blocks/CustomIcon";
 export const MenuItem = ({
   submenuItem,
   itemClass,
-  handleClickAndClose,
+  handleClickMenu,
   isMega,
   dropdownOpen,
 }) => {
@@ -51,11 +51,11 @@ export const MenuItem = ({
     <li>
       <a
         tabIndex={dropdownOpen ? 0 : -1}
-        // href={submenuItem.path}
+        href={submenuItem.path}
         className={`${
           pathname === submenuItem.path ? "text-accent activeClass" : ""
         } group`}
-        onClick={() => handleClickAndClose(submenuItem.path)}
+        onClick={(e) => handleClickMenu(submenuItem.path, e)}
       >
         {submenuItem.menuImage && isMega && (
           <div className="relative block text-sm text-primary-content aspect-4/3 bg-base-300/20 w-full overflow-hidden">
@@ -74,7 +74,7 @@ export const MenuItem = ({
         <div className="flex items-center my-2">
           <motion.div
             variants={titleVariants}
-            className={`itemClass ${isMega ? "" : ""}`}
+            className={`${itemClass} ${isMega ? "" : ""}`}
           >
             {submenuItem.title}
             {isMega && <CustomIcon fileName="arrow-oblique" classes="" />}
@@ -88,7 +88,7 @@ export const MenuItem = ({
 export default function SubMenuItems({
   items,
   isMega,
-  handleClickAndClose,
+  handleClickMenu,
   itemClass,
 }: any) {
   const variants = {
@@ -131,7 +131,7 @@ export default function SubMenuItems({
             key={submenuItem.id}
             submenuItem={submenuItem}
             isMega={isMega}
-            handleClickAndClose={handleClickAndClose}
+            handleClickMenu={handleClickMenu}
             dropdownOpen={dropdownOpen}
             itemClass={itemClass}
           />

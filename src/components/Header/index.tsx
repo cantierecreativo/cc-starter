@@ -5,6 +5,7 @@ import { useEffect, useState, useRef } from "react";
 import { usePathname } from "next/navigation"; // Importa il nuovo hook
 import LanguageSelector from "./LanguageSelector";
 import {
+  ExternalLinkItemRecord,
   MenuDropdownRecord,
   MenuItemRecord,
   MenuQuery,
@@ -27,7 +28,7 @@ type Props = {
 
 const activeClass = "bg-accent";
 const itemClass =
-  "lg:px-0 hover:underline whitespace-nowrap duration-200 px-6 flex items-center gap-1";
+  "hover:underline whitespace-nowrap duration-200 px-4 py-2 flex items-center gap-1";
 
 const invertVariants = {
   open: { transition: { ease: "easeOut", duration: 0.25 } },
@@ -48,13 +49,16 @@ const Header = ({ lng, hrefs, data }: Props) => {
     return () => window.removeEventListener("scroll", handleStickyNavbar);
   }, []);
 
-  const handleClick = (item: any) => {
-    if (item !== pathname) {
+  const handleClick = (item: any, newTab: boolean) => {
+    if (item !== pathname && !newTab) {
       animatePageOut(item, router);
+    } else {
+      window.open(item);
     }
   };
-  const handleClickMenu = (item: any) => {
-    handleClick(item);
+  const handleClickMenu = (item: any, e: any, newTab: boolean) => {
+    e.preventDefault();
+    handleClick(item, newTab);
     handleClickAndClose;
   };
 
@@ -94,6 +98,15 @@ const Header = ({ lng, hrefs, data }: Props) => {
           newTab: true,
         })),
       };
+    } else if (item._modelApiKey === "external_link_item") {
+      const menuItem = item as ExternalLinkItemRecord;
+
+      return {
+        id: menuItem.id,
+        title: menuItem.title,
+        path: menuItem.link.url,
+        newTab: true,
+      };
     } else {
       const menuItem = item as MenuItemRecord;
       return {
@@ -130,9 +143,9 @@ const Header = ({ lng, hrefs, data }: Props) => {
                 variants={invertVariants}
               >
                 <a
-                  // href="/"
+                  href="/"
                   className="block w-full h-full relative cursor-pointer"
-                  onClick={() => handleClickMenu("/")}
+                  onClick={(e) => handleClickMenu("/", e, false)}
                 >
                   {data.layout.logo.url && (
                     <Image
@@ -168,15 +181,14 @@ const Header = ({ lng, hrefs, data }: Props) => {
                       sticky
                         ? "lg:text-primary-content"
                         : "lg:text-base-content"
-                    }  block text-primary-content items-center w-full lg:max-w-auto pt-6 lg:pt-0 pb-4 lg:pb-0 lg:flex gap-x-8`}
+                    }  block text-primary-content items-center w-full lg:max-w-auto pt-6 lg:pt-0 pb-4 lg:pb-0 lg:flex gap-x-2`}
                   >
                     {menuData.map((menuItem, i) => {
                       const isMega = menuItem.submenu?.some((i) => i.menuImage);
-
                       return (
                         <li
                           key={menuItem.id}
-                          className={`py-4 ${
+                          className={`${
                             isMega ? "" : "relative"
                           } has-[.activeClass]:bg-accent
                               ${i == 4 ? "lg:justify-start lg:ml-auto" : ""}
@@ -191,11 +203,18 @@ const Header = ({ lng, hrefs, data }: Props) => {
                               }
                             >
                               <a
-                                // href={menuItem.path}
+                                href={menuItem.path}
                                 className={`${
                                   pathname === menuItem.path ? activeClass : ""
-                                } ${itemClass} cursor-pointer`}
-                                onClick={() => handleClickMenu(menuItem.path)}
+                                } ${itemClass} cursor-pointer px-4 py-2`}
+                                target={menuItem.newTab ? "_blank" : ""}
+                                onClick={(e) =>
+                                  handleClickMenu(
+                                    menuItem.path,
+                                    e,
+                                    menuItem.newTab
+                                  )
+                                }
                               >
                                 {menuItem.title}
                               </a>
@@ -206,7 +225,7 @@ const Header = ({ lng, hrefs, data }: Props) => {
                               navbarOpen={navbarOpen}
                               isMega={isMega}
                               // handleClickAndClose={handleClickAndClose}
-                              handleClickAndClose={handleClickMenu}
+                              handleClickMenu={handleClickMenu}
                               menuItem={menuItem}
                               isDropdownOpen={isDropdownOpen}
                               setIsDropdownOpen={setIsDropdownOpen}

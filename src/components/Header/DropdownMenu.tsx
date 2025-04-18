@@ -7,7 +7,7 @@ export default function DropdownMenu({
   navbarOpen,
   menuItem,
   isMega,
-  handleClickAndClose,
+  handleClickMenu,
   isDropdownOpen,
   setIsDropdownOpen,
   itemClass,
@@ -103,7 +103,7 @@ export default function DropdownMenu({
         animate={sticky || dropdownOpen || navbarOpen ? "open" : "closed"}
         onClick={() => handleSubmenu()}
         variants={colorVariants}
-        className=""
+        className="cursor-pointer"
       >
         <span ref={wrapperRef} className={itemClass}>
           {menuItem.title}
@@ -133,7 +133,7 @@ export default function DropdownMenu({
             <SubMenuItems
               items={menuItem.submenu}
               isMega={isMega}
-              handleClickAndClose={handleClickAndClose}
+              handleClickMenu={handleClickMenu}
               dropdownOpen={dropdownOpen}
               itemClass={itemClass}
             />

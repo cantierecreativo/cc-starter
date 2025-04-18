@@ -65,19 +65,17 @@ query Menu($locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
           }
         }
       }
+      ... on ExternalLinkItemRecord {
+        id
+        _modelApiKey
+        title
+        link {
+          ...externalLink
+        }
+      }
     }
   }
   _site {
     locales
   }
-}
-
-fragment DatoImage_responsiveImage on ResponsiveImage {
-  src
-  srcSet
-  base64
-  width
-  height
-  alt
-  title
 }
