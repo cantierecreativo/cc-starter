@@ -27,5 +27,4 @@ const VideoInternal = ({ video }: { video: VideoFileField }) => {
     </MediaPlayer>
   );
 };
-
 export default VideoInternal;

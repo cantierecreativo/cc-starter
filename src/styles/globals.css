@@ -215,6 +215,9 @@ layer(base);
 }
 
 @layer components {
+  .next-video-bg-text {
+    @apply block!;
+  }
   input:checked + div div {
     @apply w-3 h-3 opacity-100;
   }

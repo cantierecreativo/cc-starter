@@ -12,6 +12,9 @@ fragment heroFragment on HeroSectionRecord {
   heroSubtitle
   heroTitle
   displayOptions
+  heroVideo {
+    url
+  }
   heroImage {
     responsiveImage(
       sizes: "100vw"

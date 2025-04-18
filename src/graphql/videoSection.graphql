@@ -5,6 +5,7 @@ fragment videoSectionRecord on VideoSectionRecord {
   videoHeader
   videoSubheader
   internalVideo {
+    url
     video {
       muxPlaybackId
       title
