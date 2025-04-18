@@ -40,7 +40,7 @@ const Footer = ({ data, lng }: Props) => {
   } = data?.layout;
   return (
     <>
-      <footer>
+      <footer id="footer">
         <div className="">
           <div className="container px-6 py-12">
             <div className="flex border-y border-secondary flex-wrap gap-6 py-8 gap-y-8 md:justify-center md:gap-x-12 md:px-12 xl:py-12">
