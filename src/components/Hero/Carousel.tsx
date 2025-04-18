@@ -29,10 +29,10 @@ export default function Carousel({
     <header className={`relative hero-carousel mt-[72px] md:mt-[104px]`}>
       <Swiper
         speed={1000}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: true,
-        }}
+        // autoplay={{
+        //   delay: 3000,
+        //   disableOnInteraction: true,
+        // }}
         pagination={{
           clickable: true,
         }}
@@ -62,7 +62,7 @@ export default function Carousel({
                   <SRCImage
                     data={image.responsiveImage}
                     priority={i === 0 ? true : false}
-                    className="!h-full !w-full z-0 !max-w-none object-cover"
+                    className="h-full! w-full! z-0 max-w-none! object-cover"
                   />
                   <div className="absolute max-w-[700px] grid gap-10 top-1/2 font-serif left-1/2 z-20 -translate-y-1/2 -translate-x-1/2 w-2/3 text-center text-base-100">
                     {title && (

@@ -96,7 +96,7 @@ export default function BanneCtaBlock({ data, locale }) {
           >
             <SRCImage
               data={bannerCtaImage.responsiveImage}
-              className="mx-auto xl:mx-0 xl:!w-full"
+              className="mx-auto xl:mx-0 xl:w-full!"
             />
           </motion.div>
         )}

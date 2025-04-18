@@ -58,7 +58,7 @@ export const MenuItem = ({
         onClick={() => handleClickAndClose(submenuItem.path)}
       >
         {submenuItem.menuImage && isMega && (
-          <div className="relative block text-sm text-primary-content aspect-[4/3] bg-base-300/20 w-full overflow-hidden">
+          <div className="relative block text-sm text-primary-content aspect-4/3 bg-base-300/20 w-full overflow-hidden">
             <motion.div
               variants={imageVariants}
               className="absolute top-0 overflow-hidden w-full"

@@ -76,12 +76,12 @@ export function FacetDropdown({
             list: "space-y-4",
             item: "cursor-pointer hover:font-bold",
             checkbox:
-              "relative mr-2 h-5 w-5 peer appearance-none checked:bg-border before:z-[1] before:block before:w-5 before:h-5 before:border before:border-neutral after:bg-accent after:w-5 after:h-5 checked:after:scale-[.6] after:scale-[0] after:duration-300 after:absolute after:lef-0 after:top-0 before:mr-2",
+              "relative mr-2 h-5 w-5 peer appearance-none checked:bg-border before:z-1 before:block before:w-5 before:h-5 before:border before:border-neutral after:bg-accent after:w-5 after:h-5 checked:after:scale-[.6] after:scale-0 after:duration-300 after:absolute after:lef-0 after:top-0 before:mr-2",
             label: "cursor-pointer relative flex items-start ",
             count:
               "ml-2 px-[3px] bg-border rounded-md text-sm font-bold translate-y-px",
             selectedItem: "font-bold",
-            searchBox: "my-2 p-2 rounded ",
+            searchBox: "my-2 p-2 rounded-sm ",
           }}
           attribute={attribute}
         />

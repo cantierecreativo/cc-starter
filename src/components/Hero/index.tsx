@@ -33,7 +33,7 @@ const Hero = ({ heroTitle, heroSubtitle }: Props) => {
                   <h1 className="mb-5 text-3xl font-bold leading-tight text-base-content  sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
                     {heroTitle}
                   </h1>
-                  <div className="mb-12 text-base-content font-medium !leading-relaxed sm:text-lg md:text-xl">
+                  <div className="mb-12 text-base-content font-medium leading-relaxed! sm:text-lg md:text-xl">
                     <ReactMarkdown>{heroSubtitle || ""}</ReactMarkdown>
                   </div>
                 </motion.div>

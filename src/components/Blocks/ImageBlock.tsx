@@ -27,7 +27,7 @@ export default function ImageBlock({ data, locale }) {
     >
       <SRCImage
         data={imageAsset.responsiveImage}
-        className="w-full h-auto !max-w-screen-md mx-auto"
+        className="w-full h-auto max-w-screen-md! mx-auto"
       />
       {imageDescription && (
         <div

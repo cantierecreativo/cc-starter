@@ -57,7 +57,7 @@ export default function TeamBlock({ content, locale, colors }: TeamBlockProps) {
               <div className="relative h-[300px]">
                 <SRCImage
                   data={tm.imageMember.responsiveImage}
-                  className="!max-w-none !w-full !h-full absolute inset-0 object-cover"
+                  className="max-w-none! w-full! h-full! absolute inset-0 object-cover"
                 />
               </div>
               <div className="grid gap-2 p-6">

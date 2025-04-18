@@ -66,14 +66,14 @@ const Slideshow = ({ data, locale }: PropsSlideshow) => {
               const { text, title, image } = s;
 
               return (
-                <SwiperSlide className="!w-[450px]" key={i}>
+                <SwiperSlide className="w-[450px]!" key={i}>
                   <div className="text-primary-content bg-primary">
                     <div className="p-10 gap-6 grid">
                       {image && (
                         <div className="w-full relative">
                           <SRCImage
                             data={image.responsiveImage}
-                            className="w-full h-full !max-w-none !object-contain"
+                            className="w-full h-full max-w-none! object-contain!"
                           />
                         </div>
                       )}

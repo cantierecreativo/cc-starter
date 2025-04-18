@@ -16,7 +16,7 @@ export default function MenuFooter({ data, logo, locale }: Props) {
 
   return (
     <div className="lg:flex lg:justify-between lg:gap-x-16">
-      <div className="relative aspect-[3/1] w-[200px] grayscale">
+      <div className="relative aspect-3/1 w-[200px] grayscale">
         <Image
           src={logo}
           fill

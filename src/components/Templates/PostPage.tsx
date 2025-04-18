@@ -41,7 +41,7 @@ const PostPage = ({ data, locale }: Props) => {
               className="pt-4 md:text-md md:pt-6"
             />
           )}
-          <div className="aspect-square mt-8 xl:col-start-2 xl:col-span-10 relative md:aspect-[2/1] md:mt-20">
+          <div className="aspect-square mt-8 xl:col-start-2 xl:col-span-10 relative md:aspect-2/1 md:mt-20">
             <SRCImage
               className="absolute w-full h-full object-cover inset-0"
               data={blogImage.responsiveImage}

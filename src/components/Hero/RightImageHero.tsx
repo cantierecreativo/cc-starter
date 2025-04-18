@@ -51,7 +51,7 @@ const RightImageHero = ({
             <div className="w-full h-80 px-4 lg:w-7/12 relative">
               {image && image.responsiveImage && (
                 <SRCImage
-                  className="absolute !w-full !h-full object-cover inset-0"
+                  className="absolute w-full! h-full! object-cover inset-0"
                   data={image.responsiveImage}
                 />
               )}

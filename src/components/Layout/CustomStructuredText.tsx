@@ -112,8 +112,8 @@ export default function CustomStructuredText({ locale, record }: Props) {
             Tag = `h${node.level}`;
             let classTitle: string;
             if (node.level == 2) {
-              classTitle = "title mb-4 !max-w-screen-lg";
-            } else classTitle = "title-small mb-4 !max-w-screen-md";
+              classTitle = "title mb-4 max-w-screen-lg!";
+            } else classTitle = "title-small mb-4 max-w-screen-md!";
             return (
               <Tag className={classTitle} key={key}>
                 {children}

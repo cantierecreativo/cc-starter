@@ -119,13 +119,13 @@ const Header = ({ lng, hrefs, data }: Props) => {
         }`}
       >
         <div className="container">
-          <div className="lg:flex w-full justify-end flex-row-reverse items-center gap-x-8 z-[2]">
+          <div className="lg:flex w-full justify-end flex-row-reverse items-center gap-x-8 z-2">
             <div className="hidden lg:flex items-center justify-end">
               <LanguageSelector lng={lng} hrefs={hrefs} />
             </div>
             <div className="w-full flex justify-between items-center ">
               <motion.div
-                className="w-28 h-[80px] xl:w-[180px] max-w-full relative z-[11]"
+                className="w-28 h-[80px] xl:w-[180px] max-w-full relative z-11"
                 animate={sticky || navbarOpen ? "open" : "closed"}
                 variants={invertVariants}
               >

@@ -51,8 +51,8 @@ export default function TextBlock({ data, locale, bg }: Props) {
             displayOptions.includes("center")
               ? "justify-center"
               : displayOptions.includes("right")
-              ? "justify-end"
-              : ""
+                ? "justify-end"
+                : ""
           } grid gap-6`}
         >
           {labelTextBlock && (

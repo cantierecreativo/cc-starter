@@ -28,7 +28,7 @@ const SingleBrand = ({ brand }: { brand: BrandRecord }) => {
         src={brandLogo.url}
         alt={brandName}
         fill
-        className="!object-contain !w-[90%] !h-[90%] absolute !left-1/2 !top-1/2 -translate-x-1/2 -translate-y-1/2"
+        className="object-contain! w-[90%]! h-[90%]! absolute left-1/2! top-1/2! -translate-x-1/2 -translate-y-1/2"
       />
     </div>
   );

@@ -89,7 +89,7 @@ const ProductDetailsBlock = ({ data, locale }: PropsProductDetailsBlock) => {
               </div>
               {productDetailImage && (
                 <div className="">
-                  <div className="rounded-full bg-primary mt-20 aspect-[5/7] relative md:mt-10">
+                  <div className="rounded-full bg-primary mt-20 aspect-5/7 relative md:mt-10">
                     <div className="w-[70%] h-[70%] absolute inset-1/2 -translate-x-1/2 -translate-y-1/2">
                       <SRCImage
                         data={productDetailImage.responsiveImage}
