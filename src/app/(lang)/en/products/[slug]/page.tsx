@@ -8,6 +8,7 @@ import config from "@/data/config";
 import { pickHrefs } from "@/lib/pickPageData";
 import { hrefsProp } from "@/_types";
 import Wrapper from "@/components/Layout/Wrapper";
+import ProductPage from "@/components/Templates/ProductPage";
 
 type Params = {
   params: {
@@ -52,9 +53,7 @@ export default async function Page({ params: { slug } }: Params) {
 
   return (
     <Wrapper hrefs={hrefs} locale={locale}>
-      {JSON.stringify(data.product)}
-
-      {/* <GenericPage data={data} page={data.product} locale={siteLocale} /> */}
+      <ProductPage data={data.product} locale={siteLocale} />
     </Wrapper>
   );
 }
