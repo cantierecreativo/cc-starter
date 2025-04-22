@@ -119,7 +119,7 @@ export default function SubMenuItems({
       variants={variants}
       className={`${
         isMega
-          ? " mx-0 lg:ml-auto lg:mt-[105px] lg:container pt-6 pb-8 grid justify-center gap-5" +
+          ? " mx-0 lg:ml-auto lg:container p-8 grid justify-center gap-5" +
             " " +
             colClass[items.length]
           : "lg:p-3"

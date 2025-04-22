@@ -26,7 +26,7 @@ type Props = {
   hrefs?: any;
 };
 
-const activeClass = "bg-accent";
+const activeClass = "bg-accent text-accent-content";
 const itemClass =
   "hover:underline whitespace-nowrap duration-200 px-4 py-2 flex items-center gap-1";
 
@@ -64,10 +64,11 @@ const Header = ({ lng, hrefs, data }: Props) => {
 
   const handleClickAndClose = () => {
     setNavbarOpen(false);
-    if (isDropdownOpen) setIsDropdownOpen(false);
+    setIsDropdownOpen(!isDropdownOpen);
   };
 
   const navbarToggleHandler = () => setNavbarOpen(!navbarOpen);
+  const wrapperRef = useRef(null);
 
   if (!data) return null;
 
@@ -129,7 +130,8 @@ const Header = ({ lng, hrefs, data }: Props) => {
           sticky
             ? "bg-primary text-primary-content"
             : "bg-secondary text-secondary-content"
-        }`}
+        }
+        ${isDropdownOpen ? "drop-shadow-md" : ""}`}
       >
         <div className="container">
           <div className="lg:flex w-full justify-end flex-row-reverse items-center gap-x-8 z-2">
@@ -179,7 +181,7 @@ const Header = ({ lng, hrefs, data }: Props) => {
                   <ul
                     className={`${
                       sticky
-                        ? "lg:text-primary-content"
+                        ? "lg:text-primary-content [&_.chevron]:bg-primary-content!"
                         : "lg:text-base-content"
                     }  block text-primary-content items-center w-full lg:max-w-auto pt-6 lg:pt-0 pb-4 lg:pb-0 lg:flex gap-x-2`}
                   >
@@ -190,7 +192,7 @@ const Header = ({ lng, hrefs, data }: Props) => {
                           key={menuItem.id}
                           className={`${
                             isMega ? "" : "relative"
-                          } has-[.activeClass]:bg-accent
+                          } group has-[.activeClass]:bg-accent has-[.activeClass]:text-accent-content 
                               ${i == 4 ? "lg:justify-start lg:ml-auto" : ""}
                               `}
                         >
@@ -230,6 +232,7 @@ const Header = ({ lng, hrefs, data }: Props) => {
                               isDropdownOpen={isDropdownOpen}
                               setIsDropdownOpen={setIsDropdownOpen}
                               itemClass={itemClass}
+                              containerRef={containerRef}
                             />
                           )}
                         </li>

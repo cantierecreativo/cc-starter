@@ -64,7 +64,9 @@ export default async function RootLayout({
     <html lang={locale} data-theme="custom">
       <body className={`md:min-h-screen ${myFont.variable}`}>
         <SkipLinks locale={locale} />
-        <main id="content">{children}</main>
+        <main className="mt-28" id="content">
+          {children}
+        </main>
         <Footer data={footerData} locale={siteLocale} />
       </body>
     </html>

@@ -11,6 +11,7 @@ export default function DropdownMenu({
   isDropdownOpen,
   setIsDropdownOpen,
   itemClass,
+  containerRef,
 }) {
   const [dropdownOpen, toggleOpen] = useCycle(false, true);
   // const containerRef = useRef(null);
@@ -69,8 +70,6 @@ export default function DropdownMenu({
     if (event.key === "Escape") {
       if (dropdownOpen) {
         toggleOpen();
-      }
-      if (isDropdownOpen) {
         setIsDropdownOpen(false);
       }
     }
@@ -81,8 +80,13 @@ export default function DropdownMenu({
       if (ref.current && !ref.current.contains(event.target) && dropdownOpen) {
         toggleOpen();
       }
-      if (isDropdownOpen) {
-        setIsDropdownOpen(!isDropdownOpen);
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target)
+      ) {
+        if (isDropdownOpen) {
+          setIsDropdownOpen(!isDropdownOpen);
+        }
       }
     }
     useEffect(() => {
@@ -96,7 +100,6 @@ export default function DropdownMenu({
   }
   const wrapperRef = useRef(null);
   useClickOutside(wrapperRef);
-
   return (
     <>
       <motion.button
@@ -112,7 +115,7 @@ export default function DropdownMenu({
             variants={invertVariants}
           >
             <CustomIcon
-              classes={`w-3 h-3 bg-primary`}
+              classes={`chevron w-3 h-3 bg-primary group-has-[.activeClass]:bg-accent-content`}
               fileName="chevron-down"
             />
           </motion.span>
@@ -124,9 +127,9 @@ export default function DropdownMenu({
         variants={dropdownVariants}
         className={`submenu relative grid grid-rows-[0fr] ${
           isMega
-            ? "top-0 lg:w-screen left-0"
-            : `${sticky ? "drop-shadow-md" : ""} min-w-[260px] lg:mt-[40px]`
-        } px-6 lg:px-2 lg:absolute lg:z-[-1] lg:left-1/2 lg:-translate-x-1/2 bg-base-100`}
+            ? " lg:w-screen left-0"
+            : `${sticky ? "drop-shadow-md" : ""} min-w-[260px]`
+        }  drop-shadow-md lg:mt-[36px]  lg:absolute lg:z-[-1] lg:left-1/2 lg:-translate-x-1/2 bg-base-100 text-base-content`}
       >
         <div className="overflow-hidden h-full">
           {menuItem.submenu && (
