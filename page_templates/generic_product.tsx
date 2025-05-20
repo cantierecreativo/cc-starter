@@ -2,7 +2,7 @@ import fetchDato from "@/lib/fetchDato";
 import { draftMode } from "next/headers";
 import { ProductDocument, SiteLocale } from "@/graphql/generated";
 import { notFound } from "next/navigation";
-import GenericPage from "@/components/Templates/GenericPage";
+import ProductPage from "@/components/Templates/ProductPage";
 import getSeoMeta from "@/lib/seoUtils";
 import config from "@/data/config";
 import { pickHrefs } from "@/lib/pickPageData";
@@ -47,8 +47,7 @@ export default async function Page() {
 
   return (
     <Wrapper hrefs={hrefs} locale={locale}>
-      {JSON.stringify(data.product)}
-      {/* <GenericPage data={data} page={data.page} locale={siteLocale} />{" "} */}
+      <ProductPage data={data.product} locale={siteLocale} />{" "}
     </Wrapper>
   );
 }
