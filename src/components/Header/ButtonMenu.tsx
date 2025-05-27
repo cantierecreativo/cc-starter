@@ -20,15 +20,22 @@ const ButtonMenu = ({ navbarToggleHandler, navbarOpen, sticky }: Props) => {
       <div>
         <span
           className={`relative my-1 block h-0.5 w-[20px] transition-all motion-safe:duration-300 
-          ${sticky ? "bg-primary-content" : "bg-secondary-content"}`}
+          ${sticky ? "bg-primary-content" : "bg-secondary-content"}
+          ${navbarOpen ? " top-[6px] rotate-45" : ""}
+          `}
         />
         <span
           className={`relative my-1 block h-0.5 w-[20px] transition-all motion-safe:duration-300 
-          ${sticky ? "bg-primary-content" : "bg-secondary-content"}`}
+          ${sticky ? "bg-primary-content" : "bg-secondary-content"}
+          ${navbarOpen ? " opacity-0" : ""}
+
+          `}
         />
         <span
           className={`relative my-1 block h-0.5 w-[20px] transition-all motion-safe:duration-300 
-          ${sticky ? "bg-primary-content" : "bg-secondary-content"}`}
+          ${sticky ? "bg-primary-content" : "bg-secondary-content"}
+          ${navbarOpen ? " top-[-6px] -rotate-45" : ""}
+          `}
         />
       </div>
     </button>
