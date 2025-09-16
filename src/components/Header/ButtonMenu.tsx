@@ -1,20 +1,39 @@
 "use client";
 
+import { SiteLocale } from "@/graphql/generated";
 import React from "react";
 
 type Props = {
   navbarToggleHandler: any;
   navbarOpen: Boolean;
   sticky: Boolean;
+  locale: SiteLocale;
 };
 
-const ButtonMenu = ({ navbarToggleHandler, navbarOpen, sticky }: Props) => {
+const ButtonMenu = ({
+  navbarToggleHandler,
+  navbarOpen,
+  sticky,
+  locale,
+}: Props) => {
   return (
     <button
       onClick={navbarToggleHandler}
       id="navbarToggler"
-      aria-label="Mobile Menu"
+      rel="noopener noreferrer"
+      aria-controls="main-nav"
+      aria-label={
+        locale === "it"
+          ? "Apri/chiudi il menu principale"
+          : "Oepn/close main navigation"
+      }
+      title={
+        locale === "it"
+          ? "Apri/chiudi il menu principale"
+          : "Oepn/close main navigation"
+      }
       className={`flex text-xs items-center lg:hidden justify-center `}
+      aria-expanded={`${navbarOpen ? "true" : "false"}`}
     >
       <span className="pr-2">{navbarOpen ? "close" : "menu"}</span>
       <div>

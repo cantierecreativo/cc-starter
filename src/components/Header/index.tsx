@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
 import { usePathname } from "next/navigation"; // Importa il nuovo hook
 import LanguageSelector from "./LanguageSelector";
@@ -167,6 +166,7 @@ const Header = ({ lng, hrefs, data }: Props) => {
                 navbarToggleHandler={navbarToggleHandler}
                 navbarOpen={navbarOpen}
                 sticky={sticky}
+                locale={lng}
               />
               <motion.nav
                 initial={false}
