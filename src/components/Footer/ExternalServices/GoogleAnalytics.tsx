@@ -5,7 +5,7 @@ export default function GoogleAnalytics({ id }) {
     <>
       <Script
         id="gtm"
-        async={true}
+        strategy="lazyOnload"
         type="plain/text"
         className="_iub_cs_activate"
         data-iub-purposes="4"
@@ -16,6 +16,7 @@ export default function GoogleAnalytics({ id }) {
         type="plain/text"
         className="_iub_cs_activate"
         data-iub-purposes="4"
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{
           __html: `
           window.dataLayer = window.dataLayer || [];

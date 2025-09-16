@@ -35,9 +35,9 @@ import ElementListBlock from "@/components/Blocks/ElementListBlock";
 import AttachmentsBlock from "@/components/Blocks/AttachmentsBlock";
 import FeaturedPages from "../Blocks/FeaturedPages";
 import TeamBlock from "../Blocks/TeamBlock";
-import MapBlock from "../Map/MapBlock";
 import TestimonialsBlock from "../Blocks/TestimonialsBlock";
 import Slideshow from "../Blocks/Slideshow";
+import dynamic from "next/dynamic";
 
 type Props = {
   section: any;
@@ -45,6 +45,15 @@ type Props = {
   lastPosts?: PostRecord[];
   lastEvents?: EventRecord[];
 };
+
+const MapBlock = dynamic(() => import("../Map/MapBlock"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-[500px] flex items-center justify-center bg-gray-100">
+      Caricamento mappa…
+    </div>
+  ),
+});
 
 export default function Sections({
   section,

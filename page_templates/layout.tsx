@@ -5,18 +5,16 @@ import "@/styles/globals.css";
 import {
   FooterDocument,
   SiteLocale,
-  MenuDocument,
   LayoutDocument,
 } from "@/graphql/generated";
 import Footer from "@/components/Footer";
 import fetchDato from "@/lib/fetchDato";
-import myFont from "@/lib/loadCustomFont";
+import { Inter } from "next/font/google";
 import SkipLinks from "@/components/Layout/SkipLinks";
 
 const locale = "it";
 const siteLocale = locale as SiteLocale;
 const defaultLocale = config.defaultLocale as SiteLocale;
-
 export async function generateMetadata() {
   const siteLocale = locale as SiteLocale;
   const data = await fetchDato(LayoutDocument, { locale: siteLocale }, false);
@@ -39,6 +37,13 @@ export async function generateMetadata() {
   return metaObject;
 }
 
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
 export default async function RootLayout({
   children,
 }: {
@@ -51,18 +56,10 @@ export default async function RootLayout({
     { locale: siteLocale, fallbackLocale: [defaultLocale] },
     isEnabled
   );
-  const menuData = await fetchDato(
-    MenuDocument,
-    {
-      locale: siteLocale,
-      fallbackLocale: [defaultLocale],
-    },
-    isEnabled
-  );
 
   return (
     <html lang={locale} data-theme="custom">
-      <body className={`md:min-h-screen ${myFont.variable}`}>
+      <body className={`md:min-h-screen ${inter.variable}`}>
         <SkipLinks locale={locale} />
         <main id="content">{children}</main>
         <Footer data={footerData} locale={siteLocale} />

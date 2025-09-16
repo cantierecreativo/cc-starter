@@ -1,6 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap")
-layer(base);
-
 @import "tailwindcss";
 :root {
   --sectra-font: "GT Sectra Display", serif;
@@ -27,7 +24,7 @@ layer(base);
   --color-error: #ff5861;
   --color-error-content: #181b1d;
 
-  --font-sans: Inter, sans-serif;
+  --font-sans: var(--font-sans), sans-serif;
   --font-serif: var(--sectra-font);
 
   --text-xs: 12px;
@@ -48,7 +45,6 @@ layer(base);
   --text-3xl--line-height: 60px;
   --text-4xl: 67px;
   --text-4xl--line-height: 75px;
-
   --breakpoint-3xl: 1920px;
 }
 
@@ -143,45 +139,23 @@ layer(base);
 
 /* Typography */
 .title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  font-family: serif;
-  max-width: 65ch;
-}
-@media (min-width: 1280px) {
-  .title {
-    font-size: 3rem;
-  }
+  @apply font-serif text-2xl;
 }
 
 .title-small {
-  font-size: 1.25rem;
-  font-weight: 700;
-  font-family: serif;
-  max-width: 65ch;
+  @apply font-serif text-xl;
 }
 
 .prefix {
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  font-weight: 700;
-  display: inline-block;
-  max-width: 65ch;
+  @apply uppercase text-sm;
 }
 
 .text {
-  max-width: 65ch;
+  @apply max-w-prose;
 }
 
-/* Formatted content */
 .formatted p {
-  font-size: 0.875rem;
-  opacity: 0.8;
-}
-@media (min-width: 1280px) {
-  .formatted p {
-    font-size: 1rem;
-  }
+  @apply max-w-prose;
 }
 
 .formatted > ul,
@@ -284,9 +258,6 @@ layer(base);
     }
   }
   body {
-    /* Optional: background-color and text color */
-    /* background-color: var(--color-base-100); */
-    /* color: var(--color-base-content); */
   }
 }
 

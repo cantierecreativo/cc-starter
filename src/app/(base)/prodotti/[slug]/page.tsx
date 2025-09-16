@@ -2,13 +2,12 @@ import fetchDato from "@/lib/fetchDato";
 import { draftMode } from "next/headers";
 import { ProductDocument, SiteLocale } from "@/graphql/generated";
 import { notFound } from "next/navigation";
-import GenericPage from "@/components/Templates/GenericPage";
+import ProductPage from "@/components/Templates/ProductPage";
 import getSeoMeta from "@/lib/seoUtils";
 import config from "@/data/config";
 import { pickHrefs } from "@/lib/pickPageData";
 import { hrefsProp } from "@/_types";
 import Wrapper from "@/components/Layout/Wrapper";
-import ProductPage from "@/components/Templates/ProductPage";
 
 type Params = {
   params: {
@@ -53,7 +52,7 @@ export default async function Page({ params: { slug } }: Params) {
 
   return (
     <Wrapper hrefs={hrefs} locale={locale}>
-      <ProductPage data={data.product} locale={siteLocale} />
+      <ProductPage data={data.product} locale={siteLocale} />{" "}
     </Wrapper>
   );
 }

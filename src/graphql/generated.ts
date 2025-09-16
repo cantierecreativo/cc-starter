@@ -110,11 +110,11 @@ export type AttachmentRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -137,11 +137,11 @@ export type AttachmentsBlockRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -182,11 +182,11 @@ export type BannerCtaRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -219,11 +219,11 @@ export type BrandRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -247,11 +247,11 @@ export type BrandSectionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -311,11 +311,11 @@ export type ColumnsMenuFooterRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -338,11 +338,11 @@ export type ContactTextBlockRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -411,11 +411,11 @@ export type ElementsListRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -527,12 +527,12 @@ export type EventRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _locales: Array<SiteLocale>;
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -630,11 +630,11 @@ export type ExternalLinkItemRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -698,11 +698,11 @@ export type ExternalLinkRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -725,11 +725,11 @@ export type FaqSectionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -765,11 +765,11 @@ export type FeatureListSectionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -799,11 +799,11 @@ export type FeatureRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -833,11 +833,11 @@ export type FeaturedPagesSectionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -1038,11 +1038,11 @@ export type FormBlockRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -1085,11 +1085,11 @@ export type GallerySectionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -1123,11 +1123,11 @@ export type HeroSectionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -1246,11 +1246,11 @@ export type ImageBlockRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -3215,11 +3215,11 @@ export type InternalLinkRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -3320,11 +3320,11 @@ export type KeyValueRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -3348,11 +3348,11 @@ export type LanguagePresetRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -3394,12 +3394,12 @@ export type LayoutRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _locales: Array<SiteLocale>;
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -3566,12 +3566,12 @@ export type LegalPageRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _locales: Array<SiteLocale>;
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -3623,11 +3623,11 @@ export type LinkBlockRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -3702,11 +3702,11 @@ export type MapBlockRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -3738,11 +3738,11 @@ export type MegaMenuItemRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -3766,11 +3766,11 @@ export type MenuDropdownRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -3795,11 +3795,11 @@ export type MenuFooterRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -3821,11 +3821,11 @@ export type MenuItemRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -3848,11 +3848,11 @@ export type MultipleCardRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -3946,12 +3946,12 @@ export type PageRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _locales: Array<SiteLocale>;
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -4114,12 +4114,12 @@ export type PersonRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _locales: Array<SiteLocale>;
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -4288,12 +4288,12 @@ export type PostRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _locales: Array<SiteLocale>;
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -4391,11 +4391,11 @@ export type ProductDetailRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -4511,12 +4511,12 @@ export type ProductRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _locales: Array<SiteLocale>;
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -5049,11 +5049,11 @@ export type QuestionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -5076,11 +5076,11 @@ export type QuoteRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -5108,11 +5108,11 @@ export type RecordInterface = {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -5226,11 +5226,11 @@ export type RouteItemRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -5274,11 +5274,11 @@ export type SectionWrapRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -5340,11 +5340,11 @@ export type SimpleTextRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -5393,11 +5393,11 @@ export type SlideRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -5428,11 +5428,11 @@ export type SlideshowRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -5466,11 +5466,11 @@ export type SocialMediaIconRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -5619,11 +5619,11 @@ export type TagRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -5736,11 +5736,11 @@ export type TeamBlockRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -5770,11 +5770,11 @@ export type TeamMemberRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -5800,11 +5800,11 @@ export type TestimonialsBlockRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -5844,11 +5844,11 @@ export type TextBlockRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -5894,11 +5894,11 @@ export type TextSimpleBlockRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -6410,11 +6410,11 @@ export type VideoSectionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -6454,7 +6454,7 @@ export type BrandSectionRecordFragment = { __typename: 'BrandSectionRecord', id:
 
 export type ContactTextBlockRecordFragment = { __typename?: 'ContactTextBlockRecord', id: string, _modelApiKey: string, prefix: string, titleContactBlock?: string | null, textContactBlock?: string | null, blocks: Array<{ __typename?: 'TextSimpleBlockRecord', id: string, _modelApiKey: string, titleSimple: string, textSimple?: string | null }> };
 
-export type ElementsListRecordFragment = { __typename: 'ElementsListRecord', id: string, _modelApiKey: string, itemsPrefix?: string | null, itemsTitle?: string | null, automatic?: boolean | null, model?: string | null, itemsButton?: { __typename: 'InternalLinkRecord', _modelApiKey: string, id: string, label: string, page: { __typename: 'PageRecord', _modelApiKey: string, id: string, slug: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null } } | null, elements: Array<{ __typename?: 'EventRecord', _publishedAt?: string | null, _modelApiKey: string, slug: string, id: string, title: string, dateEndEvent?: string | null, dateStartEvent: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, eventImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } } | { __typename?: 'PostRecord', _publishedAt?: string | null, _modelApiKey: string, slug: string, id: string, _createdAt: string, title: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, blogImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } } | { __typename?: 'ProductRecord' }> };
+export type ElementsListRecordFragment = { __typename: 'ElementsListRecord', id: string, _modelApiKey: string, itemsPrefix?: string | null, itemsTitle?: string | null, automatic?: boolean | null, model?: string | null, itemsButton?: { __typename: 'InternalLinkRecord', _modelApiKey: string, id: string, label: string, page: { __typename: 'PageRecord', _modelApiKey: string, id: string, slug: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null } } | null, elements: Array<{ __typename?: 'EventRecord', _publishedAt: string, _modelApiKey: string, slug: string, id: string, title: string, dateEndEvent?: string | null, dateStartEvent: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, eventImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } } | { __typename?: 'PostRecord', _publishedAt: string, _modelApiKey: string, slug: string, id: string, _createdAt: string, title: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, blogImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } } | { __typename?: 'ProductRecord' }> };
 
 export type EventQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']['input']>;
@@ -6463,9 +6463,9 @@ export type EventQueryVariables = Exact<{
 }>;
 
 
-export type EventQuery = { __typename?: 'Query', event?: { __typename?: 'EventRecord', _publishedAt?: string | null, _modelApiKey: string, dateStartEvent: string, dateEndEvent?: string | null, title: string, abstract?: string | null, date: string, eventImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null }, tags: Array<{ __typename?: 'TagRecord', id: string, tag: string, slug: string, _modelApiKey: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null }>, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, content: { __typename?: 'EventModelContentField', value: unknown, links: Array<{ __typename: 'EventRecord', _publishedAt?: string | null, slug: string, id: string, title: string, tags: Array<{ __typename?: 'TagRecord', tag: string }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null }>, blocks: Array<{ __typename: 'AttachmentsBlockRecord', id: string, _modelApiKey: string, attachmentPrefix?: string | null, attachmentTitle?: string | null, attachmentText?: string | null, attachments: Array<{ __typename?: 'AttachmentRecord', id: string, title: string, file: { __typename?: 'FileField', id: string, url: string } }> } | { __typename: 'GallerySectionRecord', id: string, _modelApiKey: string, typeGallery: string, galleryImages: Array<{ __typename?: 'ImageBlockRecord', id: string, _modelApiKey: string, imageDescription?: string | null, imageAsset: { __typename?: 'ImageAltTitleFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } }, imageAssetCarousel: { __typename?: 'ImageAltTitleFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } }> } | { __typename: 'ImageBlockRecord', id: string, _modelApiKey: string, imageDescription?: string | null, imageAsset: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } } | { __typename: 'VideoSectionRecord', _modelApiKey: string, id: string, videoHeader: string, videoSubheader?: string | null, internalVideo?: { __typename?: 'VideoFileField', url: string, video: { __typename?: 'UploadVideoField', muxPlaybackId: string, title?: string | null, width: number, height: number, blurUpThumb?: string | null, mp4Url?: string | null, thumbnailUrl: string, muxAssetId: string, framerate?: number | null, duration?: number | null, streamingUrl: string } } | null, externalVideo?: { __typename?: 'VideoField', url: string, provider: string, providerUid: string, thumbnailUrl: string } | null }> } } | null, allPosts: Array<{ __typename?: 'PostRecord', _publishedAt?: string | null, _modelApiKey: string, slug: string, id: string, _createdAt: string, title: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, blogImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } }>, allEvents: Array<{ __typename?: 'EventRecord', _publishedAt?: string | null, _modelApiKey: string, slug: string, id: string, title: string, dateEndEvent?: string | null, dateStartEvent: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, eventImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } }>, _allPostsMeta: { __typename?: 'CollectionMetadata', count: number }, _allEventsMeta: { __typename?: 'CollectionMetadata', count: number }, layout?: { __typename?: 'LayoutRecord', footerSubtitle?: string | null, socialMediaLinks: Array<{ __typename?: 'SocialMediaIconRecord', url: string, name?: string | null, id: string, icon: { __typename?: 'FileField', url: string, height?: number | null, width?: number | null } }> } | null, allTags: Array<{ __typename?: 'TagRecord', tag: string, slug: string, id: string, _modelApiKey: string, _allReferencingPostsMeta: { __typename?: 'CollectionMetadata', count: number }, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null }> };
+export type EventQuery = { __typename?: 'Query', event?: { __typename?: 'EventRecord', _publishedAt: string, _modelApiKey: string, dateStartEvent: string, dateEndEvent?: string | null, title: string, abstract?: string | null, date: string, eventImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null }, tags: Array<{ __typename?: 'TagRecord', id: string, tag: string, slug: string, _modelApiKey: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null }>, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, content: { __typename?: 'EventModelContentField', value: unknown, links: Array<{ __typename: 'EventRecord', _publishedAt: string, slug: string, id: string, title: string, tags: Array<{ __typename?: 'TagRecord', tag: string }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null }>, blocks: Array<{ __typename: 'AttachmentsBlockRecord', id: string, _modelApiKey: string, attachmentPrefix?: string | null, attachmentTitle?: string | null, attachmentText?: string | null, attachments: Array<{ __typename?: 'AttachmentRecord', id: string, title: string, file: { __typename?: 'FileField', id: string, url: string } }> } | { __typename: 'GallerySectionRecord', id: string, _modelApiKey: string, typeGallery: string, galleryImages: Array<{ __typename?: 'ImageBlockRecord', id: string, _modelApiKey: string, imageDescription?: string | null, imageAsset: { __typename?: 'ImageAltTitleFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } }, imageAssetCarousel: { __typename?: 'ImageAltTitleFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } }> } | { __typename: 'ImageBlockRecord', id: string, _modelApiKey: string, imageDescription?: string | null, imageAsset: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } } | { __typename: 'VideoSectionRecord', _modelApiKey: string, id: string, videoHeader: string, videoSubheader?: string | null, internalVideo?: { __typename?: 'VideoFileField', url: string, video: { __typename?: 'UploadVideoField', muxPlaybackId: string, title?: string | null, width: number, height: number, blurUpThumb?: string | null, mp4Url?: string | null, thumbnailUrl: string, muxAssetId: string, framerate?: number | null, duration?: number | null, streamingUrl: string } } | null, externalVideo?: { __typename?: 'VideoField', url: string, provider: string, providerUid: string, thumbnailUrl: string } | null }> } } | null, allPosts: Array<{ __typename?: 'PostRecord', _publishedAt: string, _modelApiKey: string, slug: string, id: string, _createdAt: string, title: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, blogImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } }>, allEvents: Array<{ __typename?: 'EventRecord', _publishedAt: string, _modelApiKey: string, slug: string, id: string, title: string, dateEndEvent?: string | null, dateStartEvent: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, eventImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } }>, _allPostsMeta: { __typename?: 'CollectionMetadata', count: number }, _allEventsMeta: { __typename?: 'CollectionMetadata', count: number }, layout?: { __typename?: 'LayoutRecord', footerSubtitle?: string | null, socialMediaLinks: Array<{ __typename?: 'SocialMediaIconRecord', url: string, name?: string | null, id: string, icon: { __typename?: 'FileField', url: string, height?: number | null, width?: number | null } }> } | null, allTags: Array<{ __typename?: 'TagRecord', tag: string, slug: string, id: string, _modelApiKey: string, _allReferencingPostsMeta: { __typename?: 'CollectionMetadata', count: number }, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null }> };
 
-export type EventPreviewFragmentFragment = { __typename?: 'EventRecord', _publishedAt?: string | null, _modelApiKey: string, slug: string, id: string, title: string, dateEndEvent?: string | null, dateStartEvent: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, eventImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } };
+export type EventPreviewFragmentFragment = { __typename?: 'EventRecord', _publishedAt: string, _modelApiKey: string, slug: string, id: string, title: string, dateEndEvent?: string | null, dateStartEvent: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, eventImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } };
 
 export type EventsQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
@@ -6473,7 +6473,7 @@ export type EventsQueryVariables = Exact<{
 }>;
 
 
-export type EventsQuery = { __typename?: 'Query', allEvents: Array<{ __typename?: 'EventRecord', _publishedAt?: string | null, _modelApiKey: string, slug: string, id: string, title: string, dateEndEvent?: string | null, dateStartEvent: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, eventImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } }>, _allEventsMeta: { __typename?: 'CollectionMetadata', count: number } };
+export type EventsQuery = { __typename?: 'Query', allEvents: Array<{ __typename?: 'EventRecord', _publishedAt: string, _modelApiKey: string, slug: string, id: string, title: string, dateEndEvent?: string | null, dateStartEvent: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, eventImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } }>, _allEventsMeta: { __typename?: 'CollectionMetadata', count: number } };
 
 export type ExternalLinkFragment = { __typename: 'ExternalLinkRecord', _modelApiKey: string, id: string, label: string, url: string };
 
@@ -6481,7 +6481,7 @@ export type FaqSectionRecordFragment = { __typename?: 'FaqSectionRecord', _model
 
 export type FeatureListSectionRecordFragment = { __typename?: 'FeatureListSectionRecord', id: string, _modelApiKey: string, featuresHeader?: string | null, featuresSubheader?: string | null, feature: Array<{ __typename?: 'FeatureRecord', id: string, featureTitle: string, featureDescription: string, featureIcon: { __typename?: 'FileField', url: string } }> };
 
-export type FeaturedPagesSectionRecordFragment = { __typename?: 'FeaturedPagesSectionRecord', _modelApiKey: string, id: string, featuredPagesHeader?: string | null, featuredPagesSubheader?: string | null, featuredPages: Array<{ __typename?: 'PageRecord', _modelApiKey: string, _publishedAt?: string | null, slug: string, id: string, abstract?: string | null, label: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, previewImage: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } }> };
+export type FeaturedPagesSectionRecordFragment = { __typename?: 'FeaturedPagesSectionRecord', _modelApiKey: string, id: string, featuredPagesHeader?: string | null, featuredPagesSubheader?: string | null, featuredPages: Array<{ __typename?: 'PageRecord', _modelApiKey: string, _publishedAt: string, slug: string, id: string, abstract?: string | null, label: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, previewImage: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } }> };
 
 export type FooterQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
@@ -6548,7 +6548,7 @@ export type PageQueryVariables = Exact<{
 }>;
 
 
-export type PageQuery = { __typename?: 'Query', page?: { __typename?: 'PageRecord', id: string, label: string, abstract?: string | null, _modelApiKey: string, isIndex?: boolean | null, isHome?: boolean | null, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, seo: Array<{ __typename?: 'Tag', attributes?: Record<string, string> | null, content?: string | null, tag: string }>, hero: { __typename?: 'HeroSectionRecord', _modelApiKey: string, id: string, heroSubtitle?: string | null, heroTitle?: string | null, displayOptions: string, link?: { __typename: 'ExternalLinkRecord', _modelApiKey: string, id: string, label: string, url: string } | { __typename: 'InternalLinkRecord', _modelApiKey: string, id: string, label: string, page: { __typename: 'PageRecord', _modelApiKey: string, id: string, slug: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null } } | null, heroVideo?: { __typename?: 'VideoFileField', url: string } | null, heroImage?: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } | null, sliders: Array<{ __typename?: 'SlideRecord', id: string, title?: string | null, text?: string | null, image: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } }, link?: { __typename: 'ExternalLinkRecord', _modelApiKey: string, id: string, label: string, url: string } | { __typename: 'InternalLinkRecord', _modelApiKey: string, id: string, label: string, page: { __typename: 'PageRecord', _modelApiKey: string, id: string, slug: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null } } | null }> }, sections: Array<{ __typename?: 'SectionWrapRecord', id: string, label?: string | null, _modelApiKey: string, title?: string | null, style?: string | null, blocks: Array<{ __typename: 'AttachmentsBlockRecord', id: string, _modelApiKey: string, attachmentPrefix?: string | null, attachmentTitle?: string | null, attachmentText?: string | null, attachments: Array<{ __typename?: 'AttachmentRecord', id: string, title: string, file: { __typename?: 'FileField', id: string, url: string } }> } | { __typename?: 'BannerCtaRecord', id: string, _modelApiKey: string, displayOptions: string, label?: string | null, title: string, text?: { __typename?: 'BannerCtaModelTextField', value: unknown } | null, bannerCtaImage?: { __typename?: 'ImageAltTitleFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } | null, coverImage?: { __typename?: 'ImageAltTitleFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } | null, link?: { __typename: 'ExternalLinkRecord', _modelApiKey: string, id: string, label: string, url: string } | { __typename: 'InternalLinkRecord', _modelApiKey: string, id: string, label: string, page: { __typename: 'PageRecord', _modelApiKey: string, id: string, slug: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null } } | null } | { __typename: 'BrandSectionRecord', id: string, _modelApiKey: string, titleBrand?: string | null, textBrand?: string | null, brands: Array<{ __typename: 'BrandRecord', id: string, _modelApiKey: string, brandName: string, brandUrl?: string | null, brandLogo: { __typename?: 'FileField', url: string } }> } | { __typename?: 'ContactTextBlockRecord', id: string, _modelApiKey: string, prefix: string, titleContactBlock?: string | null, textContactBlock?: string | null, blocks: Array<{ __typename?: 'TextSimpleBlockRecord', id: string, _modelApiKey: string, titleSimple: string, textSimple?: string | null }> } | { __typename: 'ElementsListRecord', id: string, _modelApiKey: string, itemsPrefix?: string | null, itemsTitle?: string | null, automatic?: boolean | null, model?: string | null, itemsButton?: { __typename: 'InternalLinkRecord', _modelApiKey: string, id: string, label: string, page: { __typename: 'PageRecord', _modelApiKey: string, id: string, slug: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null } } | null, elements: Array<{ __typename?: 'EventRecord', _publishedAt?: string | null, _modelApiKey: string, slug: string, id: string, title: string, dateEndEvent?: string | null, dateStartEvent: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, eventImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } } | { __typename?: 'PostRecord', _publishedAt?: string | null, _modelApiKey: string, slug: string, id: string, _createdAt: string, title: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, blogImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } } | { __typename?: 'ProductRecord' }> } | { __typename?: 'FaqSectionRecord', _modelApiKey: string, id: string, title: string, subtitle?: string | null, questions: Array<{ __typename?: 'QuestionRecord', question: string, id: string, answer: { __typename?: 'QuestionModelAnswerField', value: unknown } }> } | { __typename?: 'FeatureListSectionRecord', id: string, _modelApiKey: string, featuresHeader?: string | null, featuresSubheader?: string | null, feature: Array<{ __typename?: 'FeatureRecord', id: string, featureTitle: string, featureDescription: string, featureIcon: { __typename?: 'FileField', url: string } }> } | { __typename?: 'FeaturedPagesSectionRecord', _modelApiKey: string, id: string, featuredPagesHeader?: string | null, featuredPagesSubheader?: string | null, featuredPages: Array<{ __typename?: 'PageRecord', _modelApiKey: string, _publishedAt?: string | null, slug: string, id: string, abstract?: string | null, label: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, previewImage: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } }> } | { __typename?: 'FormBlockRecord', _modelApiKey: string, id: string, titleForm?: string | null, textForm?: string | null } | { __typename: 'GallerySectionRecord', id: string, _modelApiKey: string, typeGallery: string, galleryImages: Array<{ __typename?: 'ImageBlockRecord', id: string, _modelApiKey: string, imageDescription?: string | null, imageAsset: { __typename?: 'ImageAltTitleFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } }, imageAssetCarousel: { __typename?: 'ImageAltTitleFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } }> } | { __typename: 'ImageBlockRecord', id: string, _modelApiKey: string, imageDescription?: string | null, imageAsset: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } } | { __typename: 'MapBlockRecord', id: string, _modelApiKey: string, titleMap?: string | null, textMap?: string | null, tokenMap: string, urlStyleMapbox?: string | null, map: { __typename?: 'LatLonField', latitude: number, longitude: number } } | { __typename?: 'MultipleCardRecord', id: string, _modelApiKey: string, multipleImages: Array<{ __typename?: 'ImageBlockRecord', id: string, _modelApiKey: string, imageDescription?: string | null, imageAsset: { __typename?: 'ImageAltTitleFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } }> } | { __typename?: 'ProductDetailRecord', id: string, title: string, description?: string | null, label?: string | null, _modelApiKey: string, imageDescription?: string | null, link?: { __typename: 'ExternalLinkRecord', _modelApiKey: string, id: string, label: string, url: string } | { __typename: 'InternalLinkRecord', _modelApiKey: string, id: string, label: string, page: { __typename: 'PageRecord', _modelApiKey: string, id: string, slug: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null } } | null, productDetailImage?: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } | null, logo?: { __typename?: 'FileField', url: string } | null, values: Array<{ __typename?: 'KeyValueRecord', id: string, key: string, value?: string | null, star?: boolean | null }> } | { __typename?: 'SlideshowRecord', id: string, _modelApiKey: string, slides: Array<{ __typename?: 'SlideRecord', id: string, title?: string | null, text?: string | null, image: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } }> } | { __typename: 'TeamBlockRecord', id: string, _modelApiKey: string, title: string, subtitle?: string | null, teamMembers: Array<{ __typename: 'TeamMemberRecord', id: string, _modelApiKey: string, nameMember: string, phoneMember?: string | null, emailMember?: string | null, descriptionMember?: string | null, imageMember?: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } | null }> } | { __typename: 'TestimonialsBlockRecord', id: string, _modelApiKey: string, titleTestimonialsBlock?: string | null, textTestimonialsBlock?: string | null, testimonials: Array<{ __typename: 'QuoteRecord', id: string, _modelApiKey: string, textQuote: string, whoQuote: string, roleQuote: string }> } | { __typename: 'TextBlockRecord', id: string, _modelApiKey: string, displayOptions: string, labelTextBlock?: string | null, titleTextBlock: string, textTextBlock?: { __typename?: 'TextBlockModelTextTextBlockField', value: unknown } | null, linkTextBlock?: { __typename: 'ExternalLinkRecord', _modelApiKey: string, id: string, label: string, url: string } | { __typename: 'InternalLinkRecord', _modelApiKey: string, id: string, label: string, page: { __typename: 'PageRecord', _modelApiKey: string, id: string, slug: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null } } | null } | { __typename: 'VideoSectionRecord', _modelApiKey: string, id: string, videoHeader: string, videoSubheader?: string | null, internalVideo?: { __typename?: 'VideoFileField', url: string, video: { __typename?: 'UploadVideoField', muxPlaybackId: string, title?: string | null, width: number, height: number, blurUpThumb?: string | null, mp4Url?: string | null, thumbnailUrl: string, muxAssetId: string, framerate?: number | null, duration?: number | null, streamingUrl: string } } | null, externalVideo?: { __typename?: 'VideoField', url: string, provider: string, providerUid: string, thumbnailUrl: string } | null }> }> } | null, allPosts: Array<{ __typename?: 'PostRecord', _publishedAt?: string | null, _modelApiKey: string, slug: string, id: string, _createdAt: string, title: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, blogImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } }>, allEvents: Array<{ __typename?: 'EventRecord', _publishedAt?: string | null, _modelApiKey: string, slug: string, id: string, title: string, dateEndEvent?: string | null, dateStartEvent: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, eventImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } }>, _allPostsMeta: { __typename?: 'CollectionMetadata', count: number }, _allEventsMeta: { __typename?: 'CollectionMetadata', count: number } };
+export type PageQuery = { __typename?: 'Query', page?: { __typename?: 'PageRecord', id: string, label: string, abstract?: string | null, _modelApiKey: string, isIndex?: boolean | null, isHome?: boolean | null, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, seo: Array<{ __typename?: 'Tag', attributes?: Record<string, string> | null, content?: string | null, tag: string }>, hero: { __typename?: 'HeroSectionRecord', _modelApiKey: string, id: string, heroSubtitle?: string | null, heroTitle?: string | null, displayOptions: string, link?: { __typename: 'ExternalLinkRecord', _modelApiKey: string, id: string, label: string, url: string } | { __typename: 'InternalLinkRecord', _modelApiKey: string, id: string, label: string, page: { __typename: 'PageRecord', _modelApiKey: string, id: string, slug: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null } } | null, heroVideo?: { __typename?: 'VideoFileField', url: string } | null, heroImage?: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } | null, sliders: Array<{ __typename?: 'SlideRecord', id: string, title?: string | null, text?: string | null, image: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } }, link?: { __typename: 'ExternalLinkRecord', _modelApiKey: string, id: string, label: string, url: string } | { __typename: 'InternalLinkRecord', _modelApiKey: string, id: string, label: string, page: { __typename: 'PageRecord', _modelApiKey: string, id: string, slug: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null } } | null }> }, sections: Array<{ __typename?: 'SectionWrapRecord', id: string, label?: string | null, _modelApiKey: string, title?: string | null, style?: string | null, blocks: Array<{ __typename: 'AttachmentsBlockRecord', id: string, _modelApiKey: string, attachmentPrefix?: string | null, attachmentTitle?: string | null, attachmentText?: string | null, attachments: Array<{ __typename?: 'AttachmentRecord', id: string, title: string, file: { __typename?: 'FileField', id: string, url: string } }> } | { __typename?: 'BannerCtaRecord', id: string, _modelApiKey: string, displayOptions: string, label?: string | null, title: string, text?: { __typename?: 'BannerCtaModelTextField', value: unknown } | null, bannerCtaImage?: { __typename?: 'ImageAltTitleFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } | null, coverImage?: { __typename?: 'ImageAltTitleFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } | null, link?: { __typename: 'ExternalLinkRecord', _modelApiKey: string, id: string, label: string, url: string } | { __typename: 'InternalLinkRecord', _modelApiKey: string, id: string, label: string, page: { __typename: 'PageRecord', _modelApiKey: string, id: string, slug: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null } } | null } | { __typename: 'BrandSectionRecord', id: string, _modelApiKey: string, titleBrand?: string | null, textBrand?: string | null, brands: Array<{ __typename: 'BrandRecord', id: string, _modelApiKey: string, brandName: string, brandUrl?: string | null, brandLogo: { __typename?: 'FileField', url: string } }> } | { __typename?: 'ContactTextBlockRecord', id: string, _modelApiKey: string, prefix: string, titleContactBlock?: string | null, textContactBlock?: string | null, blocks: Array<{ __typename?: 'TextSimpleBlockRecord', id: string, _modelApiKey: string, titleSimple: string, textSimple?: string | null }> } | { __typename: 'ElementsListRecord', id: string, _modelApiKey: string, itemsPrefix?: string | null, itemsTitle?: string | null, automatic?: boolean | null, model?: string | null, itemsButton?: { __typename: 'InternalLinkRecord', _modelApiKey: string, id: string, label: string, page: { __typename: 'PageRecord', _modelApiKey: string, id: string, slug: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null } } | null, elements: Array<{ __typename?: 'EventRecord', _publishedAt: string, _modelApiKey: string, slug: string, id: string, title: string, dateEndEvent?: string | null, dateStartEvent: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, eventImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } } | { __typename?: 'PostRecord', _publishedAt: string, _modelApiKey: string, slug: string, id: string, _createdAt: string, title: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, blogImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } } | { __typename?: 'ProductRecord' }> } | { __typename?: 'FaqSectionRecord', _modelApiKey: string, id: string, title: string, subtitle?: string | null, questions: Array<{ __typename?: 'QuestionRecord', question: string, id: string, answer: { __typename?: 'QuestionModelAnswerField', value: unknown } }> } | { __typename?: 'FeatureListSectionRecord', id: string, _modelApiKey: string, featuresHeader?: string | null, featuresSubheader?: string | null, feature: Array<{ __typename?: 'FeatureRecord', id: string, featureTitle: string, featureDescription: string, featureIcon: { __typename?: 'FileField', url: string } }> } | { __typename?: 'FeaturedPagesSectionRecord', _modelApiKey: string, id: string, featuredPagesHeader?: string | null, featuredPagesSubheader?: string | null, featuredPages: Array<{ __typename?: 'PageRecord', _modelApiKey: string, _publishedAt: string, slug: string, id: string, abstract?: string | null, label: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, previewImage: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } }> } | { __typename?: 'FormBlockRecord', _modelApiKey: string, id: string, titleForm?: string | null, textForm?: string | null } | { __typename: 'GallerySectionRecord', id: string, _modelApiKey: string, typeGallery: string, galleryImages: Array<{ __typename?: 'ImageBlockRecord', id: string, _modelApiKey: string, imageDescription?: string | null, imageAsset: { __typename?: 'ImageAltTitleFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } }, imageAssetCarousel: { __typename?: 'ImageAltTitleFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } }> } | { __typename: 'ImageBlockRecord', id: string, _modelApiKey: string, imageDescription?: string | null, imageAsset: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } } | { __typename: 'MapBlockRecord', id: string, _modelApiKey: string, titleMap?: string | null, textMap?: string | null, tokenMap: string, urlStyleMapbox?: string | null, map: { __typename?: 'LatLonField', latitude: number, longitude: number } } | { __typename?: 'MultipleCardRecord', id: string, _modelApiKey: string, multipleImages: Array<{ __typename?: 'ImageBlockRecord', id: string, _modelApiKey: string, imageDescription?: string | null, imageAsset: { __typename?: 'ImageAltTitleFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } }> } | { __typename?: 'ProductDetailRecord', id: string, title: string, description?: string | null, label?: string | null, _modelApiKey: string, imageDescription?: string | null, link?: { __typename: 'ExternalLinkRecord', _modelApiKey: string, id: string, label: string, url: string } | { __typename: 'InternalLinkRecord', _modelApiKey: string, id: string, label: string, page: { __typename: 'PageRecord', _modelApiKey: string, id: string, slug: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null } } | null, productDetailImage?: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } | null, logo?: { __typename?: 'FileField', url: string } | null, values: Array<{ __typename?: 'KeyValueRecord', id: string, key: string, value?: string | null, star?: boolean | null }> } | { __typename?: 'SlideshowRecord', id: string, _modelApiKey: string, slides: Array<{ __typename?: 'SlideRecord', id: string, title?: string | null, text?: string | null, image: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } }> } | { __typename: 'TeamBlockRecord', id: string, _modelApiKey: string, title: string, subtitle?: string | null, teamMembers: Array<{ __typename: 'TeamMemberRecord', id: string, _modelApiKey: string, nameMember: string, phoneMember?: string | null, emailMember?: string | null, descriptionMember?: string | null, imageMember?: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } | null }> } | { __typename: 'TestimonialsBlockRecord', id: string, _modelApiKey: string, titleTestimonialsBlock?: string | null, textTestimonialsBlock?: string | null, testimonials: Array<{ __typename: 'QuoteRecord', id: string, _modelApiKey: string, textQuote: string, whoQuote: string, roleQuote: string }> } | { __typename: 'TextBlockRecord', id: string, _modelApiKey: string, displayOptions: string, labelTextBlock?: string | null, titleTextBlock: string, textTextBlock?: { __typename?: 'TextBlockModelTextTextBlockField', value: unknown } | null, linkTextBlock?: { __typename: 'ExternalLinkRecord', _modelApiKey: string, id: string, label: string, url: string } | { __typename: 'InternalLinkRecord', _modelApiKey: string, id: string, label: string, page: { __typename: 'PageRecord', _modelApiKey: string, id: string, slug: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null } } | null } | { __typename: 'VideoSectionRecord', _modelApiKey: string, id: string, videoHeader: string, videoSubheader?: string | null, internalVideo?: { __typename?: 'VideoFileField', url: string, video: { __typename?: 'UploadVideoField', muxPlaybackId: string, title?: string | null, width: number, height: number, blurUpThumb?: string | null, mp4Url?: string | null, thumbnailUrl: string, muxAssetId: string, framerate?: number | null, duration?: number | null, streamingUrl: string } } | null, externalVideo?: { __typename?: 'VideoField', url: string, provider: string, providerUid: string, thumbnailUrl: string } | null }> }> } | null, allPosts: Array<{ __typename?: 'PostRecord', _publishedAt: string, _modelApiKey: string, slug: string, id: string, _createdAt: string, title: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, blogImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } }>, allEvents: Array<{ __typename?: 'EventRecord', _publishedAt: string, _modelApiKey: string, slug: string, id: string, title: string, dateEndEvent?: string | null, dateStartEvent: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, eventImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } }>, _allPostsMeta: { __typename?: 'CollectionMetadata', count: number }, _allEventsMeta: { __typename?: 'CollectionMetadata', count: number } };
 
 export type PostQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']['input']>;
@@ -6557,9 +6557,9 @@ export type PostQueryVariables = Exact<{
 }>;
 
 
-export type PostQuery = { __typename?: 'Query', post?: { __typename?: 'PostRecord', _publishedAt?: string | null, _modelApiKey: string, title: string, abstract?: string | null, date: string, blogImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null }, tags: Array<{ __typename?: 'TagRecord', id: string, tag: string, slug: string, _modelApiKey: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null }>, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, content: { __typename?: 'PostModelContentField', value: unknown, links: Array<{ __typename: 'PostRecord', _publishedAt?: string | null, slug: string, id: string, title: string, tags: Array<{ __typename?: 'TagRecord', tag: string }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null }>, blocks: Array<{ __typename: 'AttachmentsBlockRecord', id: string, _modelApiKey: string, attachmentPrefix?: string | null, attachmentTitle?: string | null, attachmentText?: string | null, attachments: Array<{ __typename?: 'AttachmentRecord', id: string, title: string, file: { __typename?: 'FileField', id: string, url: string } }> } | { __typename: 'GallerySectionRecord', id: string, _modelApiKey: string, typeGallery: string, galleryImages: Array<{ __typename?: 'ImageBlockRecord', id: string, _modelApiKey: string, imageDescription?: string | null, imageAsset: { __typename?: 'ImageAltTitleFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } }, imageAssetCarousel: { __typename?: 'ImageAltTitleFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } }> } | { __typename: 'ImageBlockRecord', id: string, _modelApiKey: string, imageDescription?: string | null, imageAsset: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } } | { __typename: 'VideoSectionRecord', _modelApiKey: string, id: string, videoHeader: string, videoSubheader?: string | null, internalVideo?: { __typename?: 'VideoFileField', url: string, video: { __typename?: 'UploadVideoField', muxPlaybackId: string, title?: string | null, width: number, height: number, blurUpThumb?: string | null, mp4Url?: string | null, thumbnailUrl: string, muxAssetId: string, framerate?: number | null, duration?: number | null, streamingUrl: string } } | null, externalVideo?: { __typename?: 'VideoField', url: string, provider: string, providerUid: string, thumbnailUrl: string } | null }> } } | null };
+export type PostQuery = { __typename?: 'Query', post?: { __typename?: 'PostRecord', _publishedAt: string, _modelApiKey: string, title: string, abstract?: string | null, date: string, blogImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null }, tags: Array<{ __typename?: 'TagRecord', id: string, tag: string, slug: string, _modelApiKey: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null }>, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, content: { __typename?: 'PostModelContentField', value: unknown, links: Array<{ __typename: 'PostRecord', _publishedAt: string, slug: string, id: string, title: string, tags: Array<{ __typename?: 'TagRecord', tag: string }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null }>, blocks: Array<{ __typename: 'AttachmentsBlockRecord', id: string, _modelApiKey: string, attachmentPrefix?: string | null, attachmentTitle?: string | null, attachmentText?: string | null, attachments: Array<{ __typename?: 'AttachmentRecord', id: string, title: string, file: { __typename?: 'FileField', id: string, url: string } }> } | { __typename: 'GallerySectionRecord', id: string, _modelApiKey: string, typeGallery: string, galleryImages: Array<{ __typename?: 'ImageBlockRecord', id: string, _modelApiKey: string, imageDescription?: string | null, imageAsset: { __typename?: 'ImageAltTitleFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } }, imageAssetCarousel: { __typename?: 'ImageAltTitleFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } }> } | { __typename: 'ImageBlockRecord', id: string, _modelApiKey: string, imageDescription?: string | null, imageAsset: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } } | { __typename: 'VideoSectionRecord', _modelApiKey: string, id: string, videoHeader: string, videoSubheader?: string | null, internalVideo?: { __typename?: 'VideoFileField', url: string, video: { __typename?: 'UploadVideoField', muxPlaybackId: string, title?: string | null, width: number, height: number, blurUpThumb?: string | null, mp4Url?: string | null, thumbnailUrl: string, muxAssetId: string, framerate?: number | null, duration?: number | null, streamingUrl: string } } | null, externalVideo?: { __typename?: 'VideoField', url: string, provider: string, providerUid: string, thumbnailUrl: string } | null }> } } | null };
 
-export type PostPreviewFragmentFragment = { __typename?: 'PostRecord', _publishedAt?: string | null, _modelApiKey: string, slug: string, id: string, _createdAt: string, title: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, blogImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } };
+export type PostPreviewFragmentFragment = { __typename?: 'PostRecord', _publishedAt: string, _modelApiKey: string, slug: string, id: string, _createdAt: string, title: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, blogImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } };
 
 export type PostsQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
@@ -6567,7 +6567,7 @@ export type PostsQueryVariables = Exact<{
 }>;
 
 
-export type PostsQuery = { __typename?: 'Query', allPosts: Array<{ __typename?: 'PostRecord', _publishedAt?: string | null, _modelApiKey: string, slug: string, id: string, title: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, blogImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } }>, _allPostsMeta: { __typename?: 'CollectionMetadata', count: number } };
+export type PostsQuery = { __typename?: 'Query', allPosts: Array<{ __typename?: 'PostRecord', _publishedAt: string, _modelApiKey: string, slug: string, id: string, title: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, blogImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } }>, _allPostsMeta: { __typename?: 'CollectionMetadata', count: number } };
 
 export type ProductQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']['input']>;
@@ -6576,7 +6576,7 @@ export type ProductQueryVariables = Exact<{
 }>;
 
 
-export type ProductQuery = { __typename?: 'Query', product?: { __typename?: 'ProductRecord', _publishedAt?: string | null, _modelApiKey: string, id: string, title: string, abstract?: string | null, productImage: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } } | null };
+export type ProductQuery = { __typename?: 'Query', product?: { __typename?: 'ProductRecord', _publishedAt: string, _modelApiKey: string, id: string, title: string, abstract?: string | null, productImage: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } } | null };
 
 export type ProductDetailRecordFragment = { __typename?: 'ProductDetailRecord', id: string, title: string, description?: string | null, label?: string | null, _modelApiKey: string, imageDescription?: string | null, link?: { __typename: 'ExternalLinkRecord', _modelApiKey: string, id: string, label: string, url: string } | { __typename: 'InternalLinkRecord', _modelApiKey: string, id: string, label: string, page: { __typename: 'PageRecord', _modelApiKey: string, id: string, slug: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null } } | null, productDetailImage?: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } | null, logo?: { __typename?: 'FileField', url: string } | null, values: Array<{ __typename?: 'KeyValueRecord', id: string, key: string, value?: string | null, star?: boolean | null }> };
 
@@ -6586,7 +6586,7 @@ export type ProductsQueryVariables = Exact<{
 }>;
 
 
-export type ProductsQuery = { __typename?: 'Query', allProducts: Array<{ __typename?: 'ProductRecord', _publishedAt?: string | null, _modelApiKey: string, slug: string, id: string, title: string, abstract?: string | null, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, productImage: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } }>, _allProductsMeta: { __typename?: 'CollectionMetadata', count: number } };
+export type ProductsQuery = { __typename?: 'Query', allProducts: Array<{ __typename?: 'ProductRecord', _publishedAt: string, _modelApiKey: string, slug: string, id: string, title: string, abstract?: string | null, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, productImage: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } }>, _allProductsMeta: { __typename?: 'CollectionMetadata', count: number } };
 
 export type RImageFragment = { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null };
 
@@ -6598,13 +6598,13 @@ type WrapSectionBlocks_BrandSectionRecord_Fragment = { __typename: 'BrandSection
 
 type WrapSectionBlocks_ContactTextBlockRecord_Fragment = { __typename?: 'ContactTextBlockRecord', id: string, _modelApiKey: string, prefix: string, titleContactBlock?: string | null, textContactBlock?: string | null, blocks: Array<{ __typename?: 'TextSimpleBlockRecord', id: string, _modelApiKey: string, titleSimple: string, textSimple?: string | null }> };
 
-type WrapSectionBlocks_ElementsListRecord_Fragment = { __typename: 'ElementsListRecord', id: string, _modelApiKey: string, itemsPrefix?: string | null, itemsTitle?: string | null, automatic?: boolean | null, model?: string | null, itemsButton?: { __typename: 'InternalLinkRecord', _modelApiKey: string, id: string, label: string, page: { __typename: 'PageRecord', _modelApiKey: string, id: string, slug: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null } } | null, elements: Array<{ __typename?: 'EventRecord', _publishedAt?: string | null, _modelApiKey: string, slug: string, id: string, title: string, dateEndEvent?: string | null, dateStartEvent: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, eventImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } } | { __typename?: 'PostRecord', _publishedAt?: string | null, _modelApiKey: string, slug: string, id: string, _createdAt: string, title: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, blogImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } } | { __typename?: 'ProductRecord' }> };
+type WrapSectionBlocks_ElementsListRecord_Fragment = { __typename: 'ElementsListRecord', id: string, _modelApiKey: string, itemsPrefix?: string | null, itemsTitle?: string | null, automatic?: boolean | null, model?: string | null, itemsButton?: { __typename: 'InternalLinkRecord', _modelApiKey: string, id: string, label: string, page: { __typename: 'PageRecord', _modelApiKey: string, id: string, slug: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null } } | null, elements: Array<{ __typename?: 'EventRecord', _publishedAt: string, _modelApiKey: string, slug: string, id: string, title: string, dateEndEvent?: string | null, dateStartEvent: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, eventImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } } | { __typename?: 'PostRecord', _publishedAt: string, _modelApiKey: string, slug: string, id: string, _createdAt: string, title: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, blogImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } } | { __typename?: 'ProductRecord' }> };
 
 type WrapSectionBlocks_FaqSectionRecord_Fragment = { __typename?: 'FaqSectionRecord', _modelApiKey: string, id: string, title: string, subtitle?: string | null, questions: Array<{ __typename?: 'QuestionRecord', question: string, id: string, answer: { __typename?: 'QuestionModelAnswerField', value: unknown } }> };
 
 type WrapSectionBlocks_FeatureListSectionRecord_Fragment = { __typename?: 'FeatureListSectionRecord', id: string, _modelApiKey: string, featuresHeader?: string | null, featuresSubheader?: string | null, feature: Array<{ __typename?: 'FeatureRecord', id: string, featureTitle: string, featureDescription: string, featureIcon: { __typename?: 'FileField', url: string } }> };
 
-type WrapSectionBlocks_FeaturedPagesSectionRecord_Fragment = { __typename?: 'FeaturedPagesSectionRecord', _modelApiKey: string, id: string, featuredPagesHeader?: string | null, featuredPagesSubheader?: string | null, featuredPages: Array<{ __typename?: 'PageRecord', _modelApiKey: string, _publishedAt?: string | null, slug: string, id: string, abstract?: string | null, label: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, previewImage: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } }> };
+type WrapSectionBlocks_FeaturedPagesSectionRecord_Fragment = { __typename?: 'FeaturedPagesSectionRecord', _modelApiKey: string, id: string, featuredPagesHeader?: string | null, featuredPagesSubheader?: string | null, featuredPages: Array<{ __typename?: 'PageRecord', _modelApiKey: string, _publishedAt: string, slug: string, id: string, abstract?: string | null, label: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, previewImage: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } }> };
 
 type WrapSectionBlocks_FormBlockRecord_Fragment = { __typename?: 'FormBlockRecord', _modelApiKey: string, id: string, titleForm?: string | null, textForm?: string | null };
 
@@ -6641,7 +6641,7 @@ export type TagQueryVariables = Exact<{
 }>;
 
 
-export type TagQuery = { __typename?: 'Query', tag?: { __typename?: 'TagRecord', id: string, tag: string, _modelApiKey: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, seo: Array<{ __typename?: 'Tag', attributes?: Record<string, string> | null, content?: string | null, tag: string }>, hero?: { __typename?: 'HeroSectionRecord', _modelApiKey: string, id: string, heroSubtitle?: string | null, heroTitle?: string | null, displayOptions: string, link?: { __typename: 'ExternalLinkRecord', _modelApiKey: string, id: string, label: string, url: string } | { __typename: 'InternalLinkRecord', _modelApiKey: string, id: string, label: string, page: { __typename: 'PageRecord', _modelApiKey: string, id: string, slug: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null } } | null, heroVideo?: { __typename?: 'VideoFileField', url: string } | null, heroImage?: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } | null, sliders: Array<{ __typename?: 'SlideRecord', id: string, title?: string | null, text?: string | null, image: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } }, link?: { __typename: 'ExternalLinkRecord', _modelApiKey: string, id: string, label: string, url: string } | { __typename: 'InternalLinkRecord', _modelApiKey: string, id: string, label: string, page: { __typename: 'PageRecord', _modelApiKey: string, id: string, slug: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null } } | null }> } | null, sections: Array<{ __typename?: 'SectionWrapRecord', id: string, label?: string | null, _modelApiKey: string, title?: string | null, style?: string | null, blocks: Array<{ __typename: 'AttachmentsBlockRecord', id: string, _modelApiKey: string, attachmentPrefix?: string | null, attachmentTitle?: string | null, attachmentText?: string | null, attachments: Array<{ __typename?: 'AttachmentRecord', id: string, title: string, file: { __typename?: 'FileField', id: string, url: string } }> } | { __typename?: 'BannerCtaRecord', id: string, _modelApiKey: string, displayOptions: string, label?: string | null, title: string, text?: { __typename?: 'BannerCtaModelTextField', value: unknown } | null, bannerCtaImage?: { __typename?: 'ImageAltTitleFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } | null, coverImage?: { __typename?: 'ImageAltTitleFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } | null, link?: { __typename: 'ExternalLinkRecord', _modelApiKey: string, id: string, label: string, url: string } | { __typename: 'InternalLinkRecord', _modelApiKey: string, id: string, label: string, page: { __typename: 'PageRecord', _modelApiKey: string, id: string, slug: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null } } | null } | { __typename: 'BrandSectionRecord', id: string, _modelApiKey: string, titleBrand?: string | null, textBrand?: string | null, brands: Array<{ __typename: 'BrandRecord', id: string, _modelApiKey: string, brandName: string, brandUrl?: string | null, brandLogo: { __typename?: 'FileField', url: string } }> } | { __typename?: 'ContactTextBlockRecord', id: string, _modelApiKey: string, prefix: string, titleContactBlock?: string | null, textContactBlock?: string | null, blocks: Array<{ __typename?: 'TextSimpleBlockRecord', id: string, _modelApiKey: string, titleSimple: string, textSimple?: string | null }> } | { __typename: 'ElementsListRecord', id: string, _modelApiKey: string, itemsPrefix?: string | null, itemsTitle?: string | null, automatic?: boolean | null, model?: string | null, itemsButton?: { __typename: 'InternalLinkRecord', _modelApiKey: string, id: string, label: string, page: { __typename: 'PageRecord', _modelApiKey: string, id: string, slug: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null } } | null, elements: Array<{ __typename?: 'EventRecord', _publishedAt?: string | null, _modelApiKey: string, slug: string, id: string, title: string, dateEndEvent?: string | null, dateStartEvent: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, eventImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } } | { __typename?: 'PostRecord', _publishedAt?: string | null, _modelApiKey: string, slug: string, id: string, _createdAt: string, title: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, blogImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } } | { __typename?: 'ProductRecord' }> } | { __typename?: 'FaqSectionRecord', _modelApiKey: string, id: string, title: string, subtitle?: string | null, questions: Array<{ __typename?: 'QuestionRecord', question: string, id: string, answer: { __typename?: 'QuestionModelAnswerField', value: unknown } }> } | { __typename?: 'FeatureListSectionRecord', id: string, _modelApiKey: string, featuresHeader?: string | null, featuresSubheader?: string | null, feature: Array<{ __typename?: 'FeatureRecord', id: string, featureTitle: string, featureDescription: string, featureIcon: { __typename?: 'FileField', url: string } }> } | { __typename?: 'FeaturedPagesSectionRecord', _modelApiKey: string, id: string, featuredPagesHeader?: string | null, featuredPagesSubheader?: string | null, featuredPages: Array<{ __typename?: 'PageRecord', _modelApiKey: string, _publishedAt?: string | null, slug: string, id: string, abstract?: string | null, label: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, previewImage: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } }> } | { __typename?: 'FormBlockRecord', _modelApiKey: string, id: string, titleForm?: string | null, textForm?: string | null } | { __typename: 'GallerySectionRecord', id: string, _modelApiKey: string, typeGallery: string, galleryImages: Array<{ __typename?: 'ImageBlockRecord', id: string, _modelApiKey: string, imageDescription?: string | null, imageAsset: { __typename?: 'ImageAltTitleFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } }, imageAssetCarousel: { __typename?: 'ImageAltTitleFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } }> } | { __typename: 'ImageBlockRecord', id: string, _modelApiKey: string, imageDescription?: string | null, imageAsset: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } } | { __typename: 'MapBlockRecord', id: string, _modelApiKey: string, titleMap?: string | null, textMap?: string | null, tokenMap: string, urlStyleMapbox?: string | null, map: { __typename?: 'LatLonField', latitude: number, longitude: number } } | { __typename?: 'MultipleCardRecord', id: string, _modelApiKey: string, multipleImages: Array<{ __typename?: 'ImageBlockRecord', id: string, _modelApiKey: string, imageDescription?: string | null, imageAsset: { __typename?: 'ImageAltTitleFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } }> } | { __typename?: 'ProductDetailRecord', id: string, title: string, description?: string | null, label?: string | null, _modelApiKey: string, imageDescription?: string | null, link?: { __typename: 'ExternalLinkRecord', _modelApiKey: string, id: string, label: string, url: string } | { __typename: 'InternalLinkRecord', _modelApiKey: string, id: string, label: string, page: { __typename: 'PageRecord', _modelApiKey: string, id: string, slug: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null } } | null, productDetailImage?: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } | null, logo?: { __typename?: 'FileField', url: string } | null, values: Array<{ __typename?: 'KeyValueRecord', id: string, key: string, value?: string | null, star?: boolean | null }> } | { __typename?: 'SlideshowRecord', id: string, _modelApiKey: string, slides: Array<{ __typename?: 'SlideRecord', id: string, title?: string | null, text?: string | null, image: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } }> } | { __typename: 'TeamBlockRecord', id: string, _modelApiKey: string, title: string, subtitle?: string | null, teamMembers: Array<{ __typename: 'TeamMemberRecord', id: string, _modelApiKey: string, nameMember: string, phoneMember?: string | null, emailMember?: string | null, descriptionMember?: string | null, imageMember?: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } | null }> } | { __typename: 'TestimonialsBlockRecord', id: string, _modelApiKey: string, titleTestimonialsBlock?: string | null, textTestimonialsBlock?: string | null, testimonials: Array<{ __typename: 'QuoteRecord', id: string, _modelApiKey: string, textQuote: string, whoQuote: string, roleQuote: string }> } | { __typename: 'TextBlockRecord', id: string, _modelApiKey: string, displayOptions: string, labelTextBlock?: string | null, titleTextBlock: string, textTextBlock?: { __typename?: 'TextBlockModelTextTextBlockField', value: unknown } | null, linkTextBlock?: { __typename: 'ExternalLinkRecord', _modelApiKey: string, id: string, label: string, url: string } | { __typename: 'InternalLinkRecord', _modelApiKey: string, id: string, label: string, page: { __typename: 'PageRecord', _modelApiKey: string, id: string, slug: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null } } | null } | { __typename: 'VideoSectionRecord', _modelApiKey: string, id: string, videoHeader: string, videoSubheader?: string | null, internalVideo?: { __typename?: 'VideoFileField', url: string, video: { __typename?: 'UploadVideoField', muxPlaybackId: string, title?: string | null, width: number, height: number, blurUpThumb?: string | null, mp4Url?: string | null, thumbnailUrl: string, muxAssetId: string, framerate?: number | null, duration?: number | null, streamingUrl: string } } | null, externalVideo?: { __typename?: 'VideoField', url: string, provider: string, providerUid: string, thumbnailUrl: string } | null }> }>, posts: Array<{ __typename?: 'PostRecord', _publishedAt?: string | null, _modelApiKey: string, slug: string, id: string, _createdAt: string, title: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, blogImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } }>, events: Array<{ __typename?: 'EventRecord', _publishedAt?: string | null, _modelApiKey: string, slug: string, id: string, title: string, dateEndEvent?: string | null, dateStartEvent: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, eventImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } }> } | null };
+export type TagQuery = { __typename?: 'Query', tag?: { __typename?: 'TagRecord', id: string, tag: string, _modelApiKey: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, seo: Array<{ __typename?: 'Tag', attributes?: Record<string, string> | null, content?: string | null, tag: string }>, hero?: { __typename?: 'HeroSectionRecord', _modelApiKey: string, id: string, heroSubtitle?: string | null, heroTitle?: string | null, displayOptions: string, link?: { __typename: 'ExternalLinkRecord', _modelApiKey: string, id: string, label: string, url: string } | { __typename: 'InternalLinkRecord', _modelApiKey: string, id: string, label: string, page: { __typename: 'PageRecord', _modelApiKey: string, id: string, slug: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null } } | null, heroVideo?: { __typename?: 'VideoFileField', url: string } | null, heroImage?: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } | null, sliders: Array<{ __typename?: 'SlideRecord', id: string, title?: string | null, text?: string | null, image: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } }, link?: { __typename: 'ExternalLinkRecord', _modelApiKey: string, id: string, label: string, url: string } | { __typename: 'InternalLinkRecord', _modelApiKey: string, id: string, label: string, page: { __typename: 'PageRecord', _modelApiKey: string, id: string, slug: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null } } | null }> } | null, sections: Array<{ __typename?: 'SectionWrapRecord', id: string, label?: string | null, _modelApiKey: string, title?: string | null, style?: string | null, blocks: Array<{ __typename: 'AttachmentsBlockRecord', id: string, _modelApiKey: string, attachmentPrefix?: string | null, attachmentTitle?: string | null, attachmentText?: string | null, attachments: Array<{ __typename?: 'AttachmentRecord', id: string, title: string, file: { __typename?: 'FileField', id: string, url: string } }> } | { __typename?: 'BannerCtaRecord', id: string, _modelApiKey: string, displayOptions: string, label?: string | null, title: string, text?: { __typename?: 'BannerCtaModelTextField', value: unknown } | null, bannerCtaImage?: { __typename?: 'ImageAltTitleFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } | null, coverImage?: { __typename?: 'ImageAltTitleFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } | null, link?: { __typename: 'ExternalLinkRecord', _modelApiKey: string, id: string, label: string, url: string } | { __typename: 'InternalLinkRecord', _modelApiKey: string, id: string, label: string, page: { __typename: 'PageRecord', _modelApiKey: string, id: string, slug: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null } } | null } | { __typename: 'BrandSectionRecord', id: string, _modelApiKey: string, titleBrand?: string | null, textBrand?: string | null, brands: Array<{ __typename: 'BrandRecord', id: string, _modelApiKey: string, brandName: string, brandUrl?: string | null, brandLogo: { __typename?: 'FileField', url: string } }> } | { __typename?: 'ContactTextBlockRecord', id: string, _modelApiKey: string, prefix: string, titleContactBlock?: string | null, textContactBlock?: string | null, blocks: Array<{ __typename?: 'TextSimpleBlockRecord', id: string, _modelApiKey: string, titleSimple: string, textSimple?: string | null }> } | { __typename: 'ElementsListRecord', id: string, _modelApiKey: string, itemsPrefix?: string | null, itemsTitle?: string | null, automatic?: boolean | null, model?: string | null, itemsButton?: { __typename: 'InternalLinkRecord', _modelApiKey: string, id: string, label: string, page: { __typename: 'PageRecord', _modelApiKey: string, id: string, slug: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null } } | null, elements: Array<{ __typename?: 'EventRecord', _publishedAt: string, _modelApiKey: string, slug: string, id: string, title: string, dateEndEvent?: string | null, dateStartEvent: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, eventImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } } | { __typename?: 'PostRecord', _publishedAt: string, _modelApiKey: string, slug: string, id: string, _createdAt: string, title: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, blogImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } } | { __typename?: 'ProductRecord' }> } | { __typename?: 'FaqSectionRecord', _modelApiKey: string, id: string, title: string, subtitle?: string | null, questions: Array<{ __typename?: 'QuestionRecord', question: string, id: string, answer: { __typename?: 'QuestionModelAnswerField', value: unknown } }> } | { __typename?: 'FeatureListSectionRecord', id: string, _modelApiKey: string, featuresHeader?: string | null, featuresSubheader?: string | null, feature: Array<{ __typename?: 'FeatureRecord', id: string, featureTitle: string, featureDescription: string, featureIcon: { __typename?: 'FileField', url: string } }> } | { __typename?: 'FeaturedPagesSectionRecord', _modelApiKey: string, id: string, featuredPagesHeader?: string | null, featuredPagesSubheader?: string | null, featuredPages: Array<{ __typename?: 'PageRecord', _modelApiKey: string, _publishedAt: string, slug: string, id: string, abstract?: string | null, label: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, previewImage: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } }> } | { __typename?: 'FormBlockRecord', _modelApiKey: string, id: string, titleForm?: string | null, textForm?: string | null } | { __typename: 'GallerySectionRecord', id: string, _modelApiKey: string, typeGallery: string, galleryImages: Array<{ __typename?: 'ImageBlockRecord', id: string, _modelApiKey: string, imageDescription?: string | null, imageAsset: { __typename?: 'ImageAltTitleFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } }, imageAssetCarousel: { __typename?: 'ImageAltTitleFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } }> } | { __typename: 'ImageBlockRecord', id: string, _modelApiKey: string, imageDescription?: string | null, imageAsset: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } } | { __typename: 'MapBlockRecord', id: string, _modelApiKey: string, titleMap?: string | null, textMap?: string | null, tokenMap: string, urlStyleMapbox?: string | null, map: { __typename?: 'LatLonField', latitude: number, longitude: number } } | { __typename?: 'MultipleCardRecord', id: string, _modelApiKey: string, multipleImages: Array<{ __typename?: 'ImageBlockRecord', id: string, _modelApiKey: string, imageDescription?: string | null, imageAsset: { __typename?: 'ImageAltTitleFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } }> } | { __typename?: 'ProductDetailRecord', id: string, title: string, description?: string | null, label?: string | null, _modelApiKey: string, imageDescription?: string | null, link?: { __typename: 'ExternalLinkRecord', _modelApiKey: string, id: string, label: string, url: string } | { __typename: 'InternalLinkRecord', _modelApiKey: string, id: string, label: string, page: { __typename: 'PageRecord', _modelApiKey: string, id: string, slug: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null } } | null, productDetailImage?: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } | null, logo?: { __typename?: 'FileField', url: string } | null, values: Array<{ __typename?: 'KeyValueRecord', id: string, key: string, value?: string | null, star?: boolean | null }> } | { __typename?: 'SlideshowRecord', id: string, _modelApiKey: string, slides: Array<{ __typename?: 'SlideRecord', id: string, title?: string | null, text?: string | null, image: { __typename?: 'ImageAltTitleFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } }> } | { __typename: 'TeamBlockRecord', id: string, _modelApiKey: string, title: string, subtitle?: string | null, teamMembers: Array<{ __typename: 'TeamMemberRecord', id: string, _modelApiKey: string, nameMember: string, phoneMember?: string | null, emailMember?: string | null, descriptionMember?: string | null, imageMember?: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } | null }> } | { __typename: 'TestimonialsBlockRecord', id: string, _modelApiKey: string, titleTestimonialsBlock?: string | null, textTestimonialsBlock?: string | null, testimonials: Array<{ __typename: 'QuoteRecord', id: string, _modelApiKey: string, textQuote: string, whoQuote: string, roleQuote: string }> } | { __typename: 'TextBlockRecord', id: string, _modelApiKey: string, displayOptions: string, labelTextBlock?: string | null, titleTextBlock: string, textTextBlock?: { __typename?: 'TextBlockModelTextTextBlockField', value: unknown } | null, linkTextBlock?: { __typename: 'ExternalLinkRecord', _modelApiKey: string, id: string, label: string, url: string } | { __typename: 'InternalLinkRecord', _modelApiKey: string, id: string, label: string, page: { __typename: 'PageRecord', _modelApiKey: string, id: string, slug: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null } } | null } | { __typename: 'VideoSectionRecord', _modelApiKey: string, id: string, videoHeader: string, videoSubheader?: string | null, internalVideo?: { __typename?: 'VideoFileField', url: string, video: { __typename?: 'UploadVideoField', muxPlaybackId: string, title?: string | null, width: number, height: number, blurUpThumb?: string | null, mp4Url?: string | null, thumbnailUrl: string, muxAssetId: string, framerate?: number | null, duration?: number | null, streamingUrl: string } } | null, externalVideo?: { __typename?: 'VideoField', url: string, provider: string, providerUid: string, thumbnailUrl: string } | null }> }>, posts: Array<{ __typename?: 'PostRecord', _publishedAt: string, _modelApiKey: string, slug: string, id: string, _createdAt: string, title: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, blogImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } }>, events: Array<{ __typename?: 'EventRecord', _publishedAt: string, _modelApiKey: string, slug: string, id: string, title: string, dateEndEvent?: string | null, dateStartEvent: string, slugs?: Array<{ __typename?: 'StringNonNullMultiLocaleField', locale?: SiteLocale | null, value: string }> | null, tags: Array<{ __typename?: 'TagRecord', tag: string }>, eventImage: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } }> } | null };
 
 export type TeamBlockRecordFragment = { __typename: 'TeamBlockRecord', id: string, _modelApiKey: string, title: string, subtitle?: string | null, teamMembers: Array<{ __typename: 'TeamMemberRecord', id: string, _modelApiKey: string, nameMember: string, phoneMember?: string | null, emailMember?: string | null, descriptionMember?: string | null, imageMember?: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } | null }> };
 
