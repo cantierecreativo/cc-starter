@@ -1,7 +1,7 @@
 {
   "locale": "English",
   "layout": {
-    "open_new_window": "Open in new window",
+    "go_to_external": "(Open in new window)",
     "close": "Close",
     "main_page": "Main page",
     "search_label": "Search the website",
@@ -19,12 +19,6 @@
   "sending": "sending...",
   "loading": "loading...",
 
-  "credits": {
-    "text": "Website design & development",
-    "url": "https://www.cantierecreativo.net",
-    "title": "Web agency & digital partner based in Florence"
-  },
-
   "404": {
     "title": "Page not found",
     "text": "The address may be misspelled or may not exist.",
@@ -35,7 +29,12 @@
     "start": "First",
     "end": "Last",
     "forward": "Forward",
-    "back": "Back"
+    "back": "Back",
+    "title": "Paginations",
+    "pagePrev": "Go to previous page",
+    "pageNext": "Go to next page",
+    "pageGoTo": "Go to page",
+    "pageOf": "of"
   },
 
   "search-pagination": {

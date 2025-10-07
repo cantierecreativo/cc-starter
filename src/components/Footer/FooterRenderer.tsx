@@ -113,7 +113,7 @@ const Footer = ({ data, lng }: Props) => {
                 <span className="px-1 xl:px-0 hidden xl:block"> - </span>
                 <div className="">
                   <ExternalLink
-                    url="https//www.cantierecreativo.net"
+                    url="https://www.cantierecreativo.net"
                     title="Cantiere Creativo Agenzia web Firenze"
                     locale={lng}
                     className="hover:underline hover:underline-offset-4"

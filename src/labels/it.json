@@ -1,7 +1,7 @@
 {
   "locale": "Italiano",
   "layout": {
-    "open_new_window": "Apre in un'altra finestra",
+    "go_to_external": "(Apre in un'altra finestra)",
     "close": "Chiudi",
     "main_page": "Pagina principale",
     "search_label": "Cerca nel sito",
@@ -18,11 +18,6 @@
 
   "sending": "inviando...",
   "loading": "caricando...",
-  "credits": {
-    "text": "Progettazione e sviluppo",
-    "url": "https://www.cantierecreativo.net",
-    "title": "Cantiere Creativo Agenzia web Ruby on Rails Firenze"
-  },
 
   "404": {
     "title": "Pagina non trovata",
