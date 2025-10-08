@@ -5,11 +5,11 @@ import Pagination from "../Layout/Pagination";
 import { useState } from "react";
 
 type Props = {
-  lng: SiteLocale;
+  locale: SiteLocale;
   data: EventRecord[];
 };
 
-const EventsGridRenderer = ({ lng, data }: Props) => {
+const EventsGridRenderer = ({ locale, data }: Props) => {
   const pageSize = 9;
   const [currentPage, setCurrentPage] = useState(0);
 
@@ -27,13 +27,13 @@ const EventsGridRenderer = ({ lng, data }: Props) => {
           <CardEventBlock
             key={event.id}
             data={event as EventRecord}
-            locale={lng}
+            locale={locale}
             i={i}
           />
         ))}
       </div>
       <Pagination
-        locale={lng}
+        locale={locale}
         pageSize={pageSize}
         totals={data.length}
         currentPage={currentPage}

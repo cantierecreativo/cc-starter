@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "bdev": "bun --bun run dev",
-    "dev": "next dev --turbo",
+    "dev": "next dev",
     "build": "bun run macina && next build",
     "analyze": "ANALYZE=true bun run build",
     "start": "next start",

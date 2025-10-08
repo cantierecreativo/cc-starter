@@ -25,24 +25,26 @@ const FormBlock = ({ data, locale }: PropsFormBlock) => {
   const { titleForm, textForm } = data;
   return (
     <>
-      <div className="container">
-        <motion.div
-          initial="offscreen"
-          whileInView="onscreen"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={variants}
-        >
-          <div className="grid gap-6">
-            {titleForm && <div className="title">{titleForm}</div>}
-            {textForm && (
-              <div
-                className="text"
-                dangerouslySetInnerHTML={{ __html: textForm }}
-              />
-            )}
-            <Form locale={locale} />
-          </div>
-        </motion.div>
+      <div className="standard-vertical-m">
+        <div className="container">
+          <motion.div
+            initial="offscreen"
+            whileInView="onscreen"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={variants}
+          >
+            <div className="grid gap-6">
+              {titleForm && <div className="title">{titleForm}</div>}
+              {textForm && (
+                <div
+                  className="text"
+                  dangerouslySetInnerHTML={{ __html: textForm }}
+                />
+              )}
+              <Form locale={locale} />
+            </div>
+          </motion.div>
+        </div>
       </div>
     </>
   );

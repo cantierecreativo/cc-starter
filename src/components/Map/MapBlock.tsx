@@ -78,19 +78,21 @@ export default function MapBlock({ locale, content }) {
 
   return (
     <>
-      <div className="container">
-        <div className="grid gap-6">
-          {titleMap && <h2 className="title">{titleMap}</h2>}
-          {textMap && (
+      <div className="standard-vertical-m">
+        <div className="container">
+          <div className="grid gap-6">
+            {titleMap && <h2 className="title">{titleMap}</h2>}
+            {textMap && (
+              <div
+                dangerouslySetInnerHTML={{ __html: textMap }}
+                className="text"
+              />
+            )}
             <div
-              dangerouslySetInnerHTML={{ __html: textMap }}
-              className="text"
+              ref={mapContainerRef}
+              className="w-full h-[500px] xl:h-[800px] relative overflow-hidden"
             />
-          )}
-          <div
-            ref={mapContainerRef}
-            className="w-full h-[500px] xl:h-[800px] relative overflow-hidden"
-          />
+          </div>
         </div>
       </div>
     </>

@@ -21,5 +21,22 @@ query Product(
         ...rImage
       }
     }
+    blocks {
+      ... on AttachmentsBlockRecord {
+        ...attachmentsBlockRecord
+      }
+      ... on TextBlockRecord {
+        ...textBlockRecord
+      }
+      ... on ImageBlockRecord {
+        ...imageBlockRecord
+      }
+      ... on GallerySectionRecord {
+        ...gallerySectionRecord
+      }
+      ... on VideoSectionRecord {
+        ...videoSectionRecord
+      }
+    }
   }
 }

@@ -4,8 +4,8 @@ import { SiteLocale, EventQuery } from "@/graphql/generated";
 import { notFound } from "next/navigation";
 import CustomIcon from "../Blocks/CustomIcon";
 import { getDate } from "@/lib/getDate";
-import CustomStructuredText from "../Layout/CustomStructuredText";
 import { Fragment } from "react";
+import Sections from "../Sections";
 
 type Props = {
   data: EventQuery;
@@ -13,8 +13,15 @@ type Props = {
 };
 
 const EventPage = ({ data, locale }: Props) => {
-  const { tags, title, abstract, eventImage, dateEndEvent, dateStartEvent } =
-    data.event;
+  const {
+    tags,
+    title,
+    abstract,
+    eventImage,
+    dateEndEvent,
+    dateStartEvent,
+    blocks,
+  } = data.event;
   if (!data.event) notFound();
   return (
     <section className="">
@@ -55,11 +62,11 @@ const EventPage = ({ data, locale }: Props) => {
             />
           </div>
         </div>
-        <div className="flex items-center overflow-hidden">
-          <div className="formatted standard-vertical-m container inline-block w-auto">
-            <CustomStructuredText record={data.event.content} locale={locale} />
-          </div>
-        </div>
+        {blocks.length > 0 && (
+          <section className={`py-px -mt-[2px]`}>
+            {blocks && <Sections section={data.event} locale={locale} />}
+          </section>
+        )}
       </div>
     </section>
   );

@@ -3,6 +3,7 @@ import { SRCImage } from "react-datocms";
 import { SiteLocale, ProductQuery, ProductRecord } from "@/graphql/generated";
 import { notFound } from "next/navigation";
 import CustomIcon from "../Blocks/CustomIcon";
+import Sections from "../Sections";
 
 type Props = {
   data: ProductQuery["product"];
@@ -10,7 +11,7 @@ type Props = {
 };
 
 const ProductPage = ({ data, locale }: Props) => {
-  const { title, productImage } = data;
+  const { title, productImage, blocks } = data;
   if (!data) notFound();
 
   return (
@@ -35,6 +36,11 @@ const ProductPage = ({ data, locale }: Props) => {
           </div>
         </div>
       </section>
+      {blocks.length > 0 && (
+        <section className={`py-px -mt-[2px]`}>
+          {blocks && <Sections section={data} locale={locale} />}
+        </section>
+      )}
     </>
   );
 };

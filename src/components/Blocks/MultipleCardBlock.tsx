@@ -41,46 +41,48 @@ export default function GalleryBlock({ data, locale }) {
   };
 
   return (
-    <div className="container">
-      <motion.div
-        initial="offscreen"
-        whileInView="onscreen"
-        ref={scrollRef}
-        variants={containerVariants}
-      >
-        <div
-          className={`${
-            data.multipleImages.length === 3
-              ? "lg:grid-cols-3"
-              : "lg:grid-cols-4"
-          } gap-6 grid`}
+    <div className="standard-vertical-m">
+      <div className="container">
+        <motion.div
+          initial="offscreen"
+          whileInView="onscreen"
+          ref={scrollRef}
+          variants={containerVariants}
         >
-          {data.multipleImages.map((img: any, n: number) => {
-            return (
-              <div key={img.id} className={`relative block`}>
-                <div className="relative aspect-2/3 w-full bg-accent">
-                  <motion.div
-                    variants={imageVariants}
-                    viewport={{ root: scrollRef, once: true, amount: 0.75 }}
-                    className={`absolute top-0 overflow-hidden w-full`}
-                  >
-                    <SRCImage
-                      data={img.imageAsset.responsiveImage}
-                      className="object-cover absolute inset-0 w-full! h-full!"
-                    />
-                  </motion.div>
+          <div
+            className={`${
+              data.multipleImages.length === 3
+                ? "lg:grid-cols-3"
+                : "lg:grid-cols-4"
+            } gap-6 grid`}
+          >
+            {data.multipleImages.map((img: any, n: number) => {
+              return (
+                <div key={img.id} className={`relative block`}>
+                  <div className="relative aspect-2/3 w-full bg-accent">
+                    <motion.div
+                      variants={imageVariants}
+                      viewport={{ root: scrollRef, once: true, amount: 0.75 }}
+                      className={`absolute top-0 overflow-hidden w-full`}
+                    >
+                      <SRCImage
+                        data={img.imageAsset.responsiveImage}
+                        className="object-cover absolute inset-0 w-full! h-full!"
+                      />
+                    </motion.div>
+                  </div>
+                  <div
+                    className="mt-2"
+                    dangerouslySetInnerHTML={{
+                      __html: img.imageDescription,
+                    }}
+                  />
                 </div>
-                <div
-                  className="mt-2"
-                  dangerouslySetInnerHTML={{
-                    __html: img.imageDescription,
-                  }}
-                />
-              </div>
-            );
-          })}
-        </div>
-      </motion.div>
+              );
+            })}
+          </div>
+        </motion.div>
+      </div>
     </div>
   );
 }

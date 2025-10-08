@@ -89,17 +89,7 @@
 
 /* Spacing utilities */
 .standard-vertical-m {
-  margin-block: 3rem;
-}
-@media (min-width: 768px) {
-  .standard-vertical-m {
-    margin-block: 5rem;
-  }
-}
-@media (min-width: 1280px) {
-  .standard-vertical-m {
-    margin-block: 8rem;
-  }
+  @apply my-12 lg:my-24;
 }
 
 .standard-vertical-p {

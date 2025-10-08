@@ -50,7 +50,7 @@ export default function EventsSearch({ data, locale }: GenericPageProps) {
 
       <EventsGridRendererSearch
         hits={hits as any}
-        lng={locale}
+        locale={locale}
         isSearchResult={true}
       />
     </div>

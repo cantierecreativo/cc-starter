@@ -24,77 +24,79 @@ const Slideshow = ({ data, locale }: PropsSlideshow) => {
   const nextEl = `#nextButton-${data.id}`;
   const prevEl = `#prevButton-${data.id}`;
   return (
-    <div className="overflow-hidden w-full">
-      <div className={`relative xl:container xl:w-9/12`}>
-        <div className="xl:mr-[calc(-49vw+49%)]">
-          <Swiper
-            autoplay={{
-              delay: 3000,
-              disableOnInteraction: true,
-            }}
-            modules={[Autoplay, Pagination, Navigation, A11y, Parallax, A11y]}
-            breakpoints={{
-              1024: {
-                spaceBetween: 40,
-              },
-            }}
-            slidesPerView={"auto"}
-            speed={1000}
-            pagination={{
-              clickable: true,
-            }}
-            rewind={true}
-            spaceBetween={10}
-            className="slideshow"
-            navigation={{
-              nextEl: nextEl,
-              prevEl: prevEl,
-            }}
-            keyboard={{
-              enabled: true,
-            }}
-            a11y={{
-              firstSlideMessage: translate("firstSlideMessage", locale),
-              lastSlideMessage: translate("This is the last slide", locale),
-              nextSlideMessage: translate("Next slide", locale),
-              prevSlideMessage: translate("Previous slide", locale),
-              paginationBulletMessage:
-                translate("Go to slide", locale) + "{{index}}",
-            }}
-          >
-            {data.slides.map((s: SlideRecord, i: number) => {
-              const { text, title, image } = s;
+    <div className="standard-vertical-m">
+      <div className="overflow-hidden w-full">
+        <div className={`relative xl:container xl:w-9/12`}>
+          <div className="xl:mr-[calc(-49vw+49%)]">
+            <Swiper
+              autoplay={{
+                delay: 3000,
+                disableOnInteraction: true,
+              }}
+              modules={[Autoplay, Pagination, Navigation, A11y, Parallax, A11y]}
+              breakpoints={{
+                1024: {
+                  spaceBetween: 40,
+                },
+              }}
+              slidesPerView={"auto"}
+              speed={1000}
+              pagination={{
+                clickable: true,
+              }}
+              rewind={true}
+              spaceBetween={10}
+              className="slideshow"
+              navigation={{
+                nextEl: nextEl,
+                prevEl: prevEl,
+              }}
+              keyboard={{
+                enabled: true,
+              }}
+              a11y={{
+                firstSlideMessage: translate("firstSlideMessage", locale),
+                lastSlideMessage: translate("This is the last slide", locale),
+                nextSlideMessage: translate("Next slide", locale),
+                prevSlideMessage: translate("Previous slide", locale),
+                paginationBulletMessage:
+                  translate("Go to slide", locale) + "{{index}}",
+              }}
+            >
+              {data.slides.map((s: SlideRecord, i: number) => {
+                const { text, title, image } = s;
 
-              return (
-                <SwiperSlide className="w-[450px]!" key={i}>
-                  <div className="text-primary-content bg-primary">
-                    <div className="p-10 gap-6 grid">
-                      {image && (
-                        <div className="w-full relative">
-                          <SRCImage
-                            data={image.responsiveImage}
-                            className="w-full h-full max-w-none! object-contain!"
-                          />
-                        </div>
-                      )}
-                      <div
-                        dangerouslySetInnerHTML={{ __html: text }}
-                        className=""
-                      />
-                      {title && (
-                        <h2
-                          dangerouslySetInnerHTML={{ __html: title }}
-                          className="title-small"
+                return (
+                  <SwiperSlide className="w-[450px]!" key={i}>
+                    <div className="text-primary-content bg-primary">
+                      <div className="p-10 gap-6 grid">
+                        {image && (
+                          <div className="w-full relative">
+                            <SRCImage
+                              data={image.responsiveImage}
+                              className="w-full h-full max-w-none! object-contain!"
+                            />
+                          </div>
+                        )}
+                        <div
+                          dangerouslySetInnerHTML={{ __html: text }}
+                          className=""
                         />
-                      )}
+                        {title && (
+                          <h2
+                            dangerouslySetInnerHTML={{ __html: title }}
+                            className="title-small"
+                          />
+                        )}
+                      </div>
                     </div>
-                  </div>
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+          </div>
+          <ButtonsSwiper classButton={classButton} containerId={data.id} />
         </div>
-        <ButtonsSwiper classButton={classButton} containerId={data.id} />
       </div>
     </div>
   );

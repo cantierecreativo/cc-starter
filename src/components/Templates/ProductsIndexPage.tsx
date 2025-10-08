@@ -32,7 +32,7 @@ export default function ProductsIndexPage({
         return (
           <section
             key={section.id}
-            className={`${section.style} standard-vertical-p scroll-mt-24 lg:scroll-mt-30 standard-vertical-gap`}
+            className={`${section.style} py-px -mt-[2px]`}
             id={section.label ? convertToSlug(section.label) : null}
           >
             {section.blocks && (

@@ -23,7 +23,7 @@ const SingleBrand = ({ brand }: { brand: BrandRecord }) => {
   const { brandUrl, brandLogo, brandName } = brand;
 
   return (
-    <div className="relative h-32 w-full bg-secondary">
+    <div className="relative h-32 w-full bg-secondary standard-vertical-m">
       <Image
         src={brandLogo.url}
         alt={brandName}

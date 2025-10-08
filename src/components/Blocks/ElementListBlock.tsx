@@ -49,54 +49,60 @@ const ElementListBlock = ({
   const titleClass = "title";
 
   return (
-    <div id="targetElement" className="grid gap-6 container">
-      <motion.div
-        initial="offscreen"
-        whileInView="onscreen"
-        viewport={{ once: true, amount: 0.1 }}
-        variants={variants}
-        className="grid gap-6"
-      >
-        {itemsPrefix && <div className={prefixClass}>{itemsPrefix}</div>}
-        <h2
-          className={titleClass}
-          dangerouslySetInnerHTML={{ __html: itemsTitle }}
-        />
-        {itemsButton && (
-          <InternalLink record={itemsButton?.page} locale={locale}>
-            <ButtonBlock label={itemsButton?.label} />
-          </InternalLink>
-        )}
-      </motion.div>
-      <div className="md:grid-cols-2 lg:grid-cols-3 grid gap-6">
-        {results.flat().map((item, i: number) =>
-          item._modelApiKey === "event" ? (
-            <motion.div
-              initial="offscreen"
-              whileInView="onscreen"
-              viewport={{ once: true, amount: Math.min(0.1 * i, 1) }}
-              variants={variants}
-              key={item.id}
-            >
-              <CardEventBlock
+    <div id="targetElement" className="standard-vertical-m">
+      <div className="grid gap-6 container">
+        <motion.div
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={variants}
+          className="grid gap-6"
+        >
+          {itemsPrefix && <div className={prefixClass}>{itemsPrefix}</div>}
+          <h2
+            className={titleClass}
+            dangerouslySetInnerHTML={{ __html: itemsTitle }}
+          />
+          {itemsButton && (
+            <InternalLink record={itemsButton?.page} locale={locale}>
+              <ButtonBlock label={itemsButton?.label} />
+            </InternalLink>
+          )}
+        </motion.div>
+        <div className="md:grid-cols-2 lg:grid-cols-3 grid gap-6">
+          {results.flat().map((item, i: number) =>
+            item._modelApiKey === "event" ? (
+              <motion.div
+                initial="offscreen"
+                whileInView="onscreen"
+                viewport={{ once: true, amount: Math.min(0.1 * i, 1) }}
+                variants={variants}
                 key={item.id}
-                data={item as any}
-                locale={locale}
-                i={i}
-              />
-            </motion.div>
-          ) : (
-            <motion.div
-              initial="offscreen"
-              whileInView="onscreen"
-              viewport={{ once: true, amount: Math.min(0.1 * i, 1) }}
-              variants={variants}
-              key={item.id}
-            >
-              <CardBlogBlock data={item as PostRecord} locale={locale} i={i} />
-            </motion.div>
-          )
-        )}
+              >
+                <CardEventBlock
+                  key={item.id}
+                  data={item as any}
+                  locale={locale}
+                  i={i}
+                />
+              </motion.div>
+            ) : (
+              <motion.div
+                initial="offscreen"
+                whileInView="onscreen"
+                viewport={{ once: true, amount: Math.min(0.1 * i, 1) }}
+                variants={variants}
+                key={item.id}
+              >
+                <CardBlogBlock
+                  data={item as PostRecord}
+                  locale={locale}
+                  i={i}
+                />
+              </motion.div>
+            )
+          )}
+        </div>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import "@/styles/globals.css";
 import { SiteLocale, MenuDocument, LayoutDocument } from "@/graphql/generated";
 import HeaderRenderer from "@/components/Header/HeaderRenderer";
 import fetchDato from "@/lib/fetchDato";
-import resolveLink from "@/lib/resolveLink";
+// import resolveLink from "@/lib/resolveLink";
 import Template from "./Template";
 
 export default async function Wrapper({ hrefs, locale, children }: any) {

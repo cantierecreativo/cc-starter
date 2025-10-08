@@ -52,7 +52,7 @@ export default async function Page({ params: { slug } }: Params) {
 
   return (
     <Wrapper hrefs={hrefs} locale={locale}>
-      <ProductPage data={data.product} locale={siteLocale} />{" "}
+      <ProductPage data={data.product} locale={siteLocale} />
     </Wrapper>
   );
 }

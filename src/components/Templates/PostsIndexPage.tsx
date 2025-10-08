@@ -32,7 +32,7 @@ export default function PostsIndexPage({
         return (
           <section
             key={section.id}
-            className={`${section.style} standard-vertical-p scroll-mt-24 lg:scroll-mt-30 standard-vertical-gap`}
+            className={`${section.style} py-px -mt-[2px]`}
             id={section.label ? convertToSlug(section.label) : null}
           >
             {section.blocks && (
@@ -46,7 +46,7 @@ export default function PostsIndexPage({
           </section>
         );
       })}
-      <PostGridRenderer data={list as PostRecord[]} lng={locale} />
+      <PostGridRenderer data={list as PostRecord[]} locale={locale} />
     </div>
   );
 }

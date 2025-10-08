@@ -47,7 +47,7 @@ export default async function Page() {
 
   return (
     <Wrapper hrefs={hrefs} locale={locale}>
-      <GenericPage data={data} page={data.page} locale={siteLocale} />{" "}
+      <GenericPage data={data} page={data.page} locale={siteLocale} />
     </Wrapper>
   );
 }

@@ -37,44 +37,48 @@ const AttachmentsBlock = ({ data, style, locale }: PropsAttachmentsBlock) => {
 
   return (
     <div className="container">
-      <motion.div
-        initial="offscreen"
-        whileInView="onscreen"
-        viewport={{ once: true, amount: 0.1 }}
-        variants={variants}
-      >
-        <div className={`grid items-start gap-8 p-8 ${bg}`}>
-          {attachmentPrefix && <div className="prefix">{attachmentPrefix}</div>}
-          {attachmentTitle && <h2 className="title">{attachmentTitle}</h2>}
-          {attachmentText && (
-            <div
-              className=""
-              dangerouslySetInnerHTML={{ __html: attachmentText }}
-            />
-          )}
-          <div className="grid max-w-screen-sm gap-4">
-            {attachments.map((a: AttachmentRecord) => {
-              return (
-                <ExternalLink
-                  key={a.id}
-                  url={a.file.url}
-                  title={a.title}
-                  locale={locale}
-                  className="group cursor-pointer"
-                >
-                  <div className="bg-base-100 text-base-content flex items-center gap-4 rounded-md p-3">
-                    <CustomIcon
-                      classes="bg-base-content size-6"
-                      fileName="download"
-                    />
-                    <div className="">{a.title}</div>
-                  </div>
-                </ExternalLink>
-              );
-            })}
+      <div className="standard-vertical-m">
+        <motion.div
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={variants}
+        >
+          <div className={`grid items-start gap-8 p-8 ${bg}`}>
+            {attachmentPrefix && (
+              <div className="prefix">{attachmentPrefix}</div>
+            )}
+            {attachmentTitle && <h2 className="title">{attachmentTitle}</h2>}
+            {attachmentText && (
+              <div
+                className=""
+                dangerouslySetInnerHTML={{ __html: attachmentText }}
+              />
+            )}
+            <div className="grid max-w-screen-sm gap-4">
+              {attachments.map((a: AttachmentRecord) => {
+                return (
+                  <ExternalLink
+                    key={a.id}
+                    url={a.file.url}
+                    title={a.title}
+                    locale={locale}
+                    className="group cursor-pointer"
+                  >
+                    <div className="bg-base-100 text-base-content flex items-center gap-4 rounded-md p-3">
+                      <CustomIcon
+                        classes="bg-base-content size-6"
+                        fileName="download"
+                      />
+                      <div className="">{a.title}</div>
+                    </div>
+                  </ExternalLink>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </div>
   );
 };

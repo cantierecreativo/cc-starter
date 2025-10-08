@@ -31,49 +31,21 @@ query Post($slug: String, $locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
       locale
       value
     }
-    content {
-      value
-      links {
-        _publishedAt
-        __typename
-        slug
-        id
-        title
-        tags {
-          tag
-        }
-        seoTags {
-          description
-          image {
-            responsiveImage {
-              srcSet
-              webpSrcSet
-              sizes
-              src
-              width
-              height
-              aspectRatio
-              alt
-              title
-              bgColor
-              base64
-            }
-          }
-        }
+    blocks {
+      ... on AttachmentsBlockRecord {
+        ...attachmentsBlockRecord
       }
-      blocks {
-        ... on ImageBlockRecord {
-          ...imageBlockRecord
-        }
-        ... on AttachmentsBlockRecord {
-          ...attachmentsBlockRecord
-        }
-        ... on VideoSectionRecord {
-          ...videoSectionRecord
-        }
-        ... on GallerySectionRecord {
-          ...gallerySectionRecord
-        }
+      ... on TextBlockRecord {
+        ...textBlockRecord
+      }
+      ... on ImageBlockRecord {
+        ...imageBlockRecord
+      }
+      ... on GallerySectionRecord {
+        ...gallerySectionRecord
+      }
+      ... on VideoSectionRecord {
+        ...videoSectionRecord
       }
     }
   }

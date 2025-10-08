@@ -40,47 +40,49 @@ export default function TextBlock({ data, locale, bg }: Props) {
   const classTitle = "title max-w-screen-md";
 
   return (
-    <div className={`text-${displayOptions}`}>
-      <div className={`container`}>
-        <motion.div
-          initial="offscreen"
-          whileInView="onscreen"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={variants}
-          className={`${
-            displayOptions.includes("center")
-              ? "justify-center"
-              : displayOptions.includes("right")
+    <div className={`standard-vertical-m`}>
+      <div className={`text-${displayOptions}`}>
+        <div className={`container`}>
+          <motion.div
+            initial="offscreen"
+            whileInView="onscreen"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={variants}
+            className={`${
+              displayOptions.includes("center")
+                ? "justify-center"
+                : displayOptions.includes("right")
                 ? "justify-end"
                 : ""
-          } grid gap-6`}
-        >
-          {labelTextBlock && (
-            <div className={classPrefix}>{labelTextBlock}</div>
-          )}
-          <h2
-            className={classTitle}
-            dangerouslySetInnerHTML={{ __html: titleTextBlock }}
-          />
-          {textTextBlock && (
-            <div
-              className={`max-w-prose ${
-                displayOptions.includes("center") ? "mx-auto" : ""
-              }`}
-            >
-              <StructuredContent data={textTextBlock} locale={locale} />
-            </div>
-          )}
-          {linkTextBlock && (
-            <DynamicLink
-              link={linkTextBlock}
-              locale={locale}
-              className={`block group`}
-            >
-              <ButtonBlock label={linkTextBlock.label} />
-            </DynamicLink>
-          )}
-        </motion.div>
+            } grid gap-6`}
+          >
+            {labelTextBlock && (
+              <div className={classPrefix}>{labelTextBlock}</div>
+            )}
+            <h2
+              className={classTitle}
+              dangerouslySetInnerHTML={{ __html: titleTextBlock }}
+            />
+            {textTextBlock && (
+              <div
+                className={`max-w-prose ${
+                  displayOptions.includes("center") ? "mx-auto" : ""
+                }`}
+              >
+                <StructuredContent data={textTextBlock} locale={locale} />
+              </div>
+            )}
+            {linkTextBlock && (
+              <DynamicLink
+                link={linkTextBlock}
+                locale={locale}
+                className={`block group`}
+              >
+                <ButtonBlock label={linkTextBlock.label} />
+              </DynamicLink>
+            )}
+          </motion.div>
+        </div>
       </div>
     </div>
   );

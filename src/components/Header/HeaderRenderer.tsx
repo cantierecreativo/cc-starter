@@ -24,7 +24,7 @@ export type NotificationStripType = {
 };
 
 const HeaderRenderer = async ({ data, hrefs, locale }: Props) => {
-  return <Header hrefs={hrefs} lng={locale} data={data} />;
+  return <Header hrefs={hrefs} locale={locale} data={data} />;
 };
 
 export default HeaderRenderer;

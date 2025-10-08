@@ -28,39 +28,43 @@ const titleClass = "title";
 
 const FeaturedPages = ({ title, subtitle, pages, locale }: Props) => {
   return (
-    <div className="container">
-      {(title || subtitle) && (
+    <div className="standard-vertical-m">
+      <div className="container">
+        {(title || subtitle) && (
+          <motion.div
+            initial="offscreen"
+            whileInView="onscreen"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={variants}
+          >
+            {title && (
+              <h2
+                className={titleClass}
+                dangerouslySetInnerHTML={{ __html: title }}
+              />
+            )}
+            {subtitle && (
+              <div
+                className=""
+                dangerouslySetInnerHTML={{ __html: subtitle }}
+              />
+            )}
+          </motion.div>
+        )}
         <motion.div
           initial="offscreen"
           whileInView="onscreen"
           viewport={{ once: true, amount: 0.1 }}
           variants={variants}
+          className=""
         >
-          {" "}
-          {title && (
-            <h2
-              className={titleClass}
-              dangerouslySetInnerHTML={{ __html: title }}
-            />
-          )}
-          {subtitle && (
-            <div className="" dangerouslySetInnerHTML={{ __html: subtitle }} />
-          )}
+          {pages?.map((p: PageRecord, i: number) => (
+            <div key={p.id} className="sticky top-0">
+              <CardPageBlock i={i} data={p} locale={locale} />
+            </div>
+          ))}
         </motion.div>
-      )}
-      <motion.div
-        initial="offscreen"
-        whileInView="onscreen"
-        viewport={{ once: true, amount: 0.1 }}
-        variants={variants}
-        className=""
-      >
-        {pages?.map((p: PageRecord, i: number) => (
-          <div key={p.id} className="sticky top-0">
-            <CardPageBlock i={i} data={p} locale={locale} />
-          </div>
-        ))}
-      </motion.div>
+      </div>
     </div>
   );
 };

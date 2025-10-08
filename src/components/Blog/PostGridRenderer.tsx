@@ -10,11 +10,11 @@ import { useState } from "react";
 
 type Props = {
   data: PostRecord[];
-  lng: SiteLocale;
+  locale: SiteLocale;
   postMeta?: CollectionMetadata;
 };
 
-const PostGridRenderer = ({ data, lng }: Props) => {
+const PostGridRenderer = ({ data, locale }: Props) => {
   const pageSize = 9;
   const [currentPage, setCurrentPage] = useState(0);
 
@@ -32,13 +32,13 @@ const PostGridRenderer = ({ data, lng }: Props) => {
           <CardBlogBlock
             key={post.id}
             data={post as PostRecord}
-            locale={lng}
+            locale={locale}
             i={i}
           />
         ))}
       </div>
       <Pagination
-        locale={lng}
+        locale={locale}
         pageSize={pageSize}
         totals={data.length}
         currentPage={currentPage}

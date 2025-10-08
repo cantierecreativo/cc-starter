@@ -14,7 +14,7 @@ import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 type Props = {
   hits: any;
-  lng: SiteLocale;
+  locale: SiteLocale;
   isSearchResult?: boolean;
   results?: any;
   uiState?: any;
@@ -24,7 +24,7 @@ type Props = {
 
 const EventGridRendererSearch = ({
   hits,
-  lng,
+  locale,
   isSearchResult = false,
 }: Props) => {
   const pageSize = 11;
@@ -61,7 +61,7 @@ const EventGridRendererSearch = ({
         className="bg-base-200 w-full mt-6 p-3 py-5 flex gap-2 items-center font-bold uppercase text-base font-serif lg:hidden"
       >
         <CustomIcon fileName="filter" classes="w-4 h-4 bg-base-content" />
-        <span>{translate("openFilter", lng)}</span>
+        <span>{translate("openFilter", locale)}</span>
       </button>
       <div
         className={`${
@@ -69,13 +69,13 @@ const EventGridRendererSearch = ({
         } motion-safe:duration-[.75s] lg:!h-auto overflow-hidden lg:overflow-visible border-b lg:border-none lg:my-6 lg:bg-base-200 lg:px-24 lg:py-12`}
       >
         <div className="uppercase md:mb-0 font-serif font-bold tracking-wider hidden lg:block pb-8">
-          {translate("search.search_for", lng)}
+          {translate("search.search_for", locale)}
         </div>
         <div className="lg:grid-cols-3 xl:grid-cols-4 lg:grid lg:gap-3">
           <div className="flex gap-2 border-x border-gray-200 px-3 items-center lg:px-4 lg:border lg:border-base-300 lg:bg-base-100">
             <MagnifyingGlassIcon className="h-6 w-6 text-accent" />
             <SearchBox
-              placeholder={translate(`search.search_name`, lng)}
+              placeholder={translate(`search.search_name`, locale)}
               classNames={{
                 root: "",
                 input:
@@ -90,7 +90,7 @@ const EventGridRendererSearch = ({
               htmlFor="startDate"
               className="font-bold text-sm absolute lg:right-auto right-9 lg:-top-6 top-5 left-auto"
             >
-              {translate("filters.startDate", lng)}
+              {translate("filters.startDate", locale)}
             </label>
             <DatePicker
               id="startDate"
@@ -103,7 +103,7 @@ const EventGridRendererSearch = ({
               htmlFor="endDate"
               className="font-bold text-sm absolute lg:right-auto right-9 lg:-top-6 top-5 left-auto"
             >
-              {translate("filters.endDate", lng)}
+              {translate("filters.endDate", locale)}
             </label>
             <DatePicker
               id="endDate"
@@ -112,13 +112,13 @@ const EventGridRendererSearch = ({
             />
           </div>
           <div>
-            <FacetDropdown attribute="category" locale={lng} />
+            <FacetDropdown attribute="category" locale={locale} />
           </div>
           <div>
-            <FacetDropdown attribute="target" locale={lng} />
+            <FacetDropdown attribute="target" locale={locale} />
           </div>
           <div>
-            <FacetDropdown attribute="place" locale={lng} />
+            <FacetDropdown attribute="place" locale={locale} />
           </div>
         </div>
         {/* </div> */}
@@ -139,7 +139,7 @@ const EventGridRendererSearch = ({
               >
                 <CardEventBlock
                   data={event as EventRecord & any}
-                  locale={lng}
+                  locale={locale}
                   isSearchResult={isSearchResult}
                   i={i}
                 />
@@ -189,12 +189,12 @@ const EventGridRendererSearch = ({
                   {currentPage}
                 </div>
               ) as any,
-            previousPageItemAriaLabel: translate("pagePrev", lng),
-            nextPageItemAriaLabel: translate("pageNext", lng),
+            previousPageItemAriaLabel: translate("pagePrev", locale),
+            nextPageItemAriaLabel: translate("pageNext", locale),
             pageItemAriaLabel: ({ currentPage, nbPages }) =>
-              `${translate("pageGoTo", lng)} ${currentPage} ${translate(
+              `${translate("pageGoTo", locale)} ${currentPage} ${translate(
                 "pageOf",
-                lng
+                locale
               )} ${nbPages}`,
           }}
         />

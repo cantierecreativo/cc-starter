@@ -35,40 +35,42 @@ const Video = ({
   externalVideo,
 }: PropsVideo) => {
   return (
-    <div className="container">
-      <motion.div
-        initial="offscreen"
-        whileInView="onscreen"
-        viewport={{ once: true, amount: 0.1 }}
-        variants={variants}
-        className="grid gap-6"
-      >
-        {videoHeader && <h2 className="title">{videoHeader}</h2>}
-        {videoSubheader && (
-          <div
-            className=""
-            dangerouslySetInnerHTML={{ __html: videoSubheader }}
-          />
-        )}
-      </motion.div>
+    <div className="standard-vertical-m">
+      <div className="container">
+        <motion.div
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={variants}
+          className="grid gap-6"
+        >
+          {videoHeader && <h2 className="title">{videoHeader}</h2>}
+          {videoSubheader && (
+            <div
+              className=""
+              dangerouslySetInnerHTML={{ __html: videoSubheader }}
+            />
+          )}
+        </motion.div>
 
-      <motion.div
-        initial="offscreen"
-        whileInView="onscreen"
-        viewport={{ once: true, amount: 0.1 }}
-        variants={variants}
-      >
-        {externalVideo && (
-          <div className="aspect-video mt-12">
-            <VideoEmbedded video={externalVideo} />
-          </div>
-        )}
-        {internalVideo && (
-          <div className="aspect-video mt-12">
-            <VideoInternal video={internalVideo} />
-          </div>
-        )}
-      </motion.div>
+        <motion.div
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={variants}
+        >
+          {externalVideo && (
+            <div className="aspect-video mt-12">
+              <VideoEmbedded video={externalVideo} />
+            </div>
+          )}
+          {internalVideo && (
+            <div className="aspect-video mt-12">
+              <VideoInternal video={internalVideo} />
+            </div>
+          )}
+        </motion.div>
+      </div>
     </div>
   );
 };

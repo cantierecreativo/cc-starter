@@ -20,7 +20,7 @@ import { useRouter } from "next/navigation";
 import { animatePageOut } from "../../../animations";
 
 type Props = {
-  lng: SiteLocale;
+  locale: SiteLocale;
   data: MenuQuery;
   hrefs?: any;
 };
@@ -34,7 +34,7 @@ const invertVariants = {
   closed: { transition: { ease: "easeOut", duration: 0.25 } },
 };
 
-const Header = ({ lng, hrefs, data }: Props) => {
+const Header = ({ locale, hrefs, data }: Props) => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
@@ -92,7 +92,7 @@ const Header = ({ lng, hrefs, data }: Props) => {
               : undefined,
           path: resolveLink({
             ...subItem.page,
-            locale: lng,
+            locale: locale,
             modelRelated: null,
           }),
           newTab: true,
@@ -114,7 +114,7 @@ const Header = ({ lng, hrefs, data }: Props) => {
         title: menuItem.title,
         path: resolveLink({
           ...menuItem.page,
-          locale: lng,
+          locale: locale,
           modelRelated: null,
         }),
         newTab: false,
@@ -135,7 +135,7 @@ const Header = ({ lng, hrefs, data }: Props) => {
         <div className="container">
           <div className="lg:flex w-full justify-end flex-row-reverse items-center gap-x-8 z-2">
             <div className="hidden lg:flex items-center justify-end">
-              <LanguageSelector lng={lng} hrefs={hrefs} />
+              <LanguageSelector locale={locale} hrefs={hrefs} />
             </div>
             <div className="w-full flex justify-between items-center ">
               <motion.div
@@ -166,7 +166,7 @@ const Header = ({ lng, hrefs, data }: Props) => {
                 navbarToggleHandler={navbarToggleHandler}
                 navbarOpen={navbarOpen}
                 sticky={sticky}
-                locale={lng}
+                locale={locale}
               />
               <motion.nav
                 initial={false}
@@ -240,7 +240,7 @@ const Header = ({ lng, hrefs, data }: Props) => {
                     })}
                   </ul>
                   <div className="lg:hidden mt-10 mb-4 container">
-                    <LanguageSelector hrefs={hrefs} lng={lng} />
+                    <LanguageSelector hrefs={hrefs} locale={locale} />
                   </div>
                 </div>
               </motion.nav>

@@ -23,39 +23,44 @@ const ContactTextBlock = ({ data, locale }: PropsContactTextBlock) => {
   };
   return (
     <div className={`container`}>
-      <motion.div
-        initial="offscreen"
-        whileInView="onscreen"
-        viewport={{ once: true, amount: 0.1 }}
-        variants={variants}
-      >
-        <div className="grid gap-6">
-          {prefix && <div className="prefix">{prefix}</div>}
-          {titleContactBlock && (
-            <h2
-              className="title"
-              dangerouslySetInnerHTML={{ __html: titleContactBlock }}
-            />
-          )}
-          {textContactBlock && (
-            <h3
-              className=""
-              dangerouslySetInnerHTML={{ __html: textContactBlock }}
-            />
-          )}
-        </div>
-        <div className="grid gap-10 mt-8 lg:grid-cols-3 items-start">
-          {blocks.map((b) => (
-            <div className="bg-secondary text-secondary-content p-8" key={b.id}>
-              <strong dangerouslySetInnerHTML={{ __html: b.titleSimple }} />
-              <div
-                className=""
-                dangerouslySetInnerHTML={{ __html: b.textSimple }}
+      <div className="standard-vertical-m">
+        <motion.div
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={variants}
+        >
+          <div className="grid gap-6">
+            {prefix && <div className="prefix">{prefix}</div>}
+            {titleContactBlock && (
+              <h2
+                className="title"
+                dangerouslySetInnerHTML={{ __html: titleContactBlock }}
               />
-            </div>
-          ))}
-        </div>
-      </motion.div>
+            )}
+            {textContactBlock && (
+              <h3
+                className=""
+                dangerouslySetInnerHTML={{ __html: textContactBlock }}
+              />
+            )}
+          </div>
+          <div className="grid gap-10 mt-8 lg:grid-cols-3 items-start">
+            {blocks.map((b) => (
+              <div
+                className="bg-secondary text-secondary-content p-8"
+                key={b.id}
+              >
+                <strong dangerouslySetInnerHTML={{ __html: b.titleSimple }} />
+                <div
+                  className=""
+                  dangerouslySetInnerHTML={{ __html: b.textSimple }}
+                />
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
     </div>
   );
 };

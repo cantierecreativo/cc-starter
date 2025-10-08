@@ -7,7 +7,7 @@ type Props = {
 };
 
 const Footer = async ({ locale, data }: Props) => {
-  return <FooterRenderer data={data} lng={locale} />;
+  return <FooterRenderer data={data} locale={locale} />;
 };
 
 export default Footer;

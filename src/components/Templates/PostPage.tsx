@@ -3,7 +3,7 @@ import { SRCImage } from "react-datocms";
 import { PostQuery, SiteLocale } from "@/graphql/generated";
 import { notFound } from "next/navigation";
 import { Fragment } from "react";
-import CustomStructuredText from "../Layout/CustomStructuredText";
+import Sections from "../Sections";
 
 type Props = {
   data: PostQuery;
@@ -11,7 +11,7 @@ type Props = {
 };
 
 const PostPage = ({ data, locale }: Props) => {
-  const { tags, title, abstract, blogImage } = data.post;
+  const { tags, title, abstract, blogImage, blocks } = data.post;
   if (!data.post) notFound();
   return (
     <section className="">
@@ -48,11 +48,11 @@ const PostPage = ({ data, locale }: Props) => {
             />
           </div>
         </div>
-        <div className="flex items-center overflow-hidden">
-          <div className="formatted standard-vertical-m container inline-block w-auto">
-            <CustomStructuredText record={data.post.content} locale={locale} />
-          </div>
-        </div>
+        {blocks.length > 0 && (
+          <section className={`py-px -mt-[2px]`}>
+            {blocks && <Sections section={data.post} locale={locale} />}
+          </section>
+        )}
       </div>
     </section>
   );

@@ -30,7 +30,7 @@ export default function EventsIndexPage({
         return (
           <section
             key={section.id}
-            className={`${section.style} standard-vertical-p scroll-mt-24 lg:scroll-mt-30 standard-vertical-gap`}
+            className={`${section.style} py-px -mt-[2px]`}
             id={section.label ? convertToSlug(section.label) : null}
           >
             {section.blocks && (
@@ -44,7 +44,7 @@ export default function EventsIndexPage({
           </section>
         );
       })}
-      <EventsGridRenderer data={list as EventRecord[]} lng={locale} />
+      <EventsGridRenderer data={list as EventRecord[]} locale={locale} />
     </div>
   );
 }

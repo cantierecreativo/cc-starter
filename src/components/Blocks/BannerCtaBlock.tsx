@@ -64,7 +64,7 @@ export default function BanneCtaBlock({ data, locale }) {
       <div
         className={`${
           displayOptions === "text-right" ? "lg:flex-row-reverse" : ""
-        } h-full lg:flex xl:items-stretch`}
+        } h-full lg:flex xl:items-stretch standard-vertical-m`}
       >
         <motion.div
           initial="offscreen"

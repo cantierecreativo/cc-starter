@@ -10,14 +10,14 @@ import MenuFooter from "@/components/Footer/MenuFooter";
 
 type Props = {
   data: any;
-  lng: SiteLocale;
+  locale: SiteLocale;
 };
 
 const year = new Date().getFullYear();
 
 const ENV = process.env.DATO_ENV;
 
-const Footer = ({ data, lng }: Props) => {
+const Footer = ({ data, locale }: Props) => {
   // console.log("data.layout:", data?.layout);
   if (!data?.layout) return null;
   const {
@@ -47,7 +47,7 @@ const Footer = ({ data, lng }: Props) => {
               <MenuFooter
                 data={footerMenu as any}
                 logo={footerLogo.url as string}
-                locale={lng}
+                locale={locale}
               />
             </div>
             <div className="md:grid gap-6 md:grid-cols-2 pb-6 items-start md:gap-x-12 xl:grid-cols-12 lg:gap-x-24">
@@ -56,7 +56,7 @@ const Footer = ({ data, lng }: Props) => {
                   title={titleNewsletter}
                   subtitle={textNewsletter}
                   url={urlNewsletter}
-                  locale={lng}
+                  locale={locale}
                 />
               )}
               <div className="grid gap-3 md:pt-12 border-b border-secondary/40 md:border-none pb-12 xl:col-span-4">
@@ -67,9 +67,9 @@ const Footer = ({ data, lng }: Props) => {
                     className="group font-bold flex items-center"
                     url={googleMaps}
                     title="Link Google Maps"
-                    locale={lng}
+                    locale={locale}
                   >
-                    {translate("googleMaps", lng)}
+                    {translate("googleMaps", locale)}
                     <CustomIcon
                       classes="w-[14px] h-[14px] bg-primary-content ml-2 group-hover:ml-6 inline-block motion-safe:duration-300"
                       fileName="arrow-oblique"
@@ -96,7 +96,7 @@ const Footer = ({ data, lng }: Props) => {
                 )}
               </div>
               {socialMediaLinks.length > 0 && (
-                <Socials socials={socialMediaLinks} locale={lng} />
+                <Socials socials={socialMediaLinks} locale={locale} />
               )}
             </div>
           </div>
@@ -115,19 +115,10 @@ const Footer = ({ data, lng }: Props) => {
                   <ExternalLink
                     url="https://www.cantierecreativo.net"
                     title="Cantiere Creativo Agenzia web Firenze"
-                    locale={lng}
+                    locale={locale}
                     className="hover:underline hover:underline-offset-4"
                   >
                     Design & dev Cantiere Creativo
-                  </ExternalLink>
-                  <span className="px-1"> - </span>
-                  <ExternalLink
-                    url="https://www.datocms.com"
-                    title="DatoCMS headless CMS"
-                    locale={lng}
-                    className="hover:underline hover:underline-offset-4"
-                  >
-                    Made with DatoCMS
                   </ExternalLink>
                 </div>
               </div>
@@ -158,7 +149,7 @@ const Footer = ({ data, lng }: Props) => {
                   className="iubenda-cs-preferences-link"
                 >
                   <span className="hover:underline hover:underline-offset-4 ">
-                    {translate("preferencePolicy", lng)}
+                    {translate("preferencePolicy", locale)}
                   </span>
                 </a>
               </div>
@@ -168,7 +159,7 @@ const Footer = ({ data, lng }: Props) => {
       </footer>
       {iubendaSiteId && iubendaPolicyId && ENV !== "develop" && (
         <Iubenda
-          locale={lng}
+          locale={locale}
           siteId={iubendaSiteId}
           policyId={iubendaPolicyId}
           colorRev={colorReverseBanner}
