@@ -29,7 +29,7 @@ export default function Pagination({
     "relative z-0 flex justify-center items-center space-x-2 md:space-x-4 py-12 lg:col-start-2 lg:col-span-3 xl:pb-20";
   const disabled = "cursor-auto opacity-10";
   const classButton =
-    "border group border-base-300 w-9 h-9 md:w-[60px] md:h-[60px] rounded-full relative duration-300";
+    "border cursor-pointer group border-base-300 w-9 h-9 md:w-[60px] md:h-[60px] rounded-full relative duration-300";
   let dotsAdded = false;
 
   if (pages.length > 1) {
@@ -48,7 +48,7 @@ export default function Pagination({
             aria-label={translate("pagination.pagePrev", locale)}
             className={`${
               currentPage >= 1 ? "hover:bg-primary" : disabled
-            } ${classButton} bg-primary-content md:mr-6`}
+            } ${classButton} bg-base-200 md:mr-6`}
           >
             <CustomIcon
               classes="bg-secondary-content group-hover:bg-primary-content w-20 h-20 absolute inset-1/2 -translate-x-1/2 -translate-y-1/2"
@@ -67,10 +67,10 @@ export default function Pagination({
               return (
                 <button
                   key={p}
-                  className={`${
+                  className={`cursor-pointer ${
                     p == currentPage
-                      ? "bg-primary text-primary-content border-base-200 "
-                      : "bg-base-100 border-base-200 hover:bg-primary"
+                      ? "bg-accent text-primary-content border-base-200 "
+                      : "bg-primary border-base-200 hover:bg-accent"
                   } ${classButton}`}
                   onClick={() => handleChangePage(p)}
                   aria-current={p == currentPage ? true : false}
@@ -107,10 +107,10 @@ export default function Pagination({
               Number(currentPage) < totalPages - 1
                 ? "hover:bg-primary"
                 : disabled
-            } ${classButton} bg-primary-content md:!ml-10`}
+            } ${classButton} bg-base-200 md:!ml-2`}
           >
             <CustomIcon
-              classes="bg-secondary-content group-hover:bg-primary-content w-20 h-20 absolute inset-1/2 -translate-x-1/2 -translate-y-1/2"
+              classes="bg-primary-content w-20 h-20 absolute inset-1/2 -translate-x-1/2 -translate-y-1/2"
               fileName="chevron-right"
             />
           </button>
