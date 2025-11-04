@@ -6,15 +6,15 @@ import React from "react";
 import translate from "@/labels";
 
 type Props = {
-  locale: SiteLocale;
+  lng: SiteLocale;
   hrefs?: any;
 };
 
-const LanguageSelector = ({ locale, hrefs }: Props) => {
+const LanguageSelector = ({ lng, hrefs }: Props) => {
   return (
     <div className="flex gap-2">
       {Object.entries(hrefs).map(([locale, url]) => {
-        if (locale !== locale) {
+        if (locale !== lng) {
           return (
             <div key={locale}>
               <Link href={url} className="" role="menuitem">

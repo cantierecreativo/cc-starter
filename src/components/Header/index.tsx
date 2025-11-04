@@ -135,7 +135,7 @@ const Header = ({ locale, hrefs, data }: Props) => {
         <div className="container">
           <div className="lg:flex w-full justify-end flex-row-reverse items-center gap-x-8 z-2">
             <div className="hidden lg:flex items-center justify-end">
-              <LanguageSelector locale={locale} hrefs={hrefs} />
+              <LanguageSelector lng={locale} hrefs={hrefs} />
             </div>
             <div className="w-full flex justify-between items-center ">
               <motion.div
@@ -240,7 +240,7 @@ const Header = ({ locale, hrefs, data }: Props) => {
                     })}
                   </ul>
                   <div className="lg:hidden mt-10 mb-4 container">
-                    <LanguageSelector hrefs={hrefs} locale={locale} />
+                    <LanguageSelector hrefs={hrefs} lng={locale} />
                   </div>
                 </div>
               </motion.nav>
