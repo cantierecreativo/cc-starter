@@ -34,16 +34,48 @@ query Footer($locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
       }
     }
     footerMenu {
-      id
-      label
-      page {
-        label
-        slug
-        slugs: _allSlugLocales {
-          locale
-          value
-        }
+      ... on ColumnsMenuFooterRecord {
+        id
         _modelApiKey
+        __typename
+        label
+        page {
+          __typename
+          ... on PageRecord {
+            id
+            _modelApiKey
+            label
+            slug
+            slugs: _allSlugLocales {
+              locale
+              value
+            }
+          }
+          ... on ExternalLinkRecord {
+            ...externalLink
+          }
+        }
+      }
+      ... on ColumnsTextFooterRecord {
+        id
+        _modelApiKey
+        label
+        content {
+          value
+          blocks {
+            id
+            _modelApiKey
+            __typename
+            link {
+              ... on InternalLinkRecord {
+                ...internalLink
+              }
+              ... on ExternalLinkRecord {
+                ...externalLink
+              }
+            }
+          }
+        }
       }
     }
   }
