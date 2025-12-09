@@ -7,6 +7,8 @@ import Socials from "@/components/Footer/Socials";
 import Iubenda from "@/components/Footer/ExternalServices/Iubenda";
 import GoogleAnalytics from "@/components/Footer/ExternalServices/GoogleAnalytics";
 import MenuFooter from "@/components/Footer/MenuFooter";
+import StructuredContent from "@/components/Layout/StructuredContent";
+import Image from "next/image";
 
 type Props = {
   data: any;
@@ -15,10 +17,9 @@ type Props = {
 
 const year = new Date().getFullYear();
 
-const ENV = process.env.DATO_ENV;
+const ENV = process.env.NEXT_PUBLIC_DATO_ENV;
 
 const Footer = ({ data, locale }: Props) => {
-  // console.log("data.layout:", data?.layout);
   if (!data?.layout) return null;
   const {
     rea,
@@ -44,11 +45,42 @@ const Footer = ({ data, locale }: Props) => {
         <div className="">
           <div className="container px-6 py-12">
             <div className="flex border-y border-secondary flex-wrap gap-6 py-8 gap-y-8 md:justify-center md:gap-x-12 md:px-12 xl:py-12">
-              <MenuFooter
-                data={footerMenu as any}
-                logo={footerLogo.url as string}
-                locale={locale}
-              />
+              <div className="relative aspect-3/1 w-[200px] grayscale">
+                <Image
+                  src={footerLogo.url}
+                  fill
+                  alt={footerLogo.alt}
+                  title={footerLogo.title ? footerLogo.title : footerLogo.alt}
+                  className="object-left object-contain"
+                />
+              </div>
+              {footerMenu.map((fmi: any) => {
+                return (
+                  <>
+                    <div key={fmi.id} className="lg:basis-auto text-left  ">
+                      <div className="font-serif uppercase mb-2 lg:mb-4 pb-2 lg:pb-4 border-b border-b-white md:text-sm ">
+                        <span className={`${fmi.label ? "" : "invisible"}`}>
+                          {fmi.label ? fmi.label : ". "}
+                        </span>
+                      </div>
+
+                      {fmi._modelApiKey == "columns_text_footer" && (
+                        <div className=" text-base">
+                          <StructuredContent
+                            data={fmi.content}
+                            locale={locale}
+                          />
+                        </div>
+                      )}
+                      {fmi.page?.length > 0 && (
+                        <div className=" text-base">
+                          <MenuFooter data={fmi.page as any} locale={locale} />
+                        </div>
+                      )}
+                    </div>
+                  </>
+                );
+              })}
             </div>
             <div className="md:grid gap-6 md:grid-cols-2 pb-6 items-start md:gap-x-12 xl:grid-cols-12 lg:gap-x-24">
               {urlNewsletter && (
